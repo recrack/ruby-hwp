@@ -33,25 +33,27 @@ module Record::Data
 			@num_range_tag = array[6]
 			@num_align = array[7]
 			@para_instance_id = array[8]
-			puts "@chars = #{array[0]}"
-			puts "@control_mask = #{array[1]}"
-			puts "@ref_para_shape_id = #{array[2]}"
-			puts "@ref_para_style_id = #{array[3]}"
-			puts "@a_kind_of_column = #{array[4]}"
-			puts "@num_char_shape = #{array[5]}"
-			puts "@num_range_tag = #{array[6]}"
-			puts "@num_align = #{array[7]}"
-			puts "@para_instance_id = #{array[8]}"
+#			puts "@chars = #{array[0]}"
+#			puts "@control_mask = #{array[1]}"
+#			puts "@ref_para_shape_id = #{array[2]}"
+#			puts "@ref_para_style_id = #{array[3]}"
+#			puts "@a_kind_of_column = #{array[4]}"
+#			puts "@num_char_shape = #{array[5]}"
+#			puts "@num_range_tag = #{array[6]}"
+#			puts "@num_align = #{array[7]}"
+#			puts "@para_instance_id = #{array[8]}"
 		end
 	end
 
 	class ParaText
 		attr_accessor :raw_text, :utf8_text_wo_ctrl, :utf8_text_w_ctrl
 		def initialize data
-
 			begin
-				puts @utf8_text = Iconv.iconv("utf-8", "utf-16", data)[0].chomp
+				# [\x01-\x1f]\x00 로 시작해서 [\x01-\x1f]\x00 로 끝나는 문자열 감지
+				filtered_data = data.gsub(/(?<ctrl>[\x01-\x1f]\x00)............\k<ctrl>/, "")
+				puts @utf8_text = Iconv.iconv("utf-8", "utf-16", filtered_data)[0].chomp
 			rescue
+				p data
 				puts "ERROR: Iconv.iconv(\"utf-8\", \"utf-16\", data)[0].chomp"
 			end
 		end
@@ -64,7 +66,7 @@ module Record::Data
 			(data.size/8).times do |i|
 				@m_pos = data[(i * 8)..(i*8+3)].unpack("I*")[0] # 4 bytse
 				@m_id  = data[(i*8+4)..(i*8+7)].unpack("I*")[0] # 4 bytes
-				puts "m_pos=#{@m_pos}, m_id=#{@m_id}"
+				#puts "m_pos=#{@m_pos}, m_id=#{@m_id}"
 			end
 		end
 	end
@@ -103,7 +105,7 @@ module Record::Data
 			foot_margin = array[7]
 			binding_margin = array[8]
 			property = array[9]
-			print "PageDef: "; p array
+			#print "PageDef: "; p array
 		end
 	end
 
