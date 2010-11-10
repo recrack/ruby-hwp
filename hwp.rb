@@ -227,100 +227,100 @@ module Record
 
 					case HWPTAGS[header.tag_id]
 					when :HWPTAG_PARA_HEADER
-						p HWPTAGS[header.tag_id]
+						#p HWPTAGS[header.tag_id]
 						Record::Data::ParaHeader.new data
 					when :HWPTAG_PARA_TEXT
-						p HWPTAGS[header.tag_id]
-						p data
+						#p HWPTAGS[header.tag_id]
+						#p data
 						Record::Data::ParaText.new data
 					when :HWPTAG_PARA_CHAR_SHAPE
-						p HWPTAGS[header.tag_id]
+						#p HWPTAGS[header.tag_id]
 						Record::Data::ParaCharShape.new data
 					when :HWPTAG_PARA_LINE_SEG
-						p HWPTAGS[header.tag_id]
-						p data
+						#p HWPTAGS[header.tag_id]
+						#p data
 					when :HWPTAG_PARA_RANGE_TAG
-						p HWPTAGS[header.tag_id]
-						p data
+						#p HWPTAGS[header.tag_id]
+						#p data
 					when :HWPTAG_CTRL_HEADER
-						p HWPTAGS[header.tag_id]
-						p data
+						#p HWPTAGS[header.tag_id]
+						#p data
 						Record::Data::CtrlHeader.new data
 					when :HWPTAG_LIST_HEADER
-						p HWPTAGS[header.tag_id]
-						p data
+						#p HWPTAGS[header.tag_id]
+						#p data
 					when :HWPTAG_PAGE_DEF
-						p HWPTAGS[header.tag_id]
+						#p HWPTAGS[header.tag_id]
 						Record::Data::PageDef.new data
 					when :HWPTAG_FOOTNOTE_SHAPE
-						p HWPTAGS[header.tag_id]
-						p data.size
+						#p HWPTAGS[header.tag_id]
+						#p data.size
 					when :HWPTAG_PAGE_BORDER_FILL
-						p HWPTAGS[header.tag_id]
-						p data
+						#p HWPTAGS[header.tag_id]
+						#p data
 					when :HWPTAG_SHAPE_COMPONENT
-						p HWPTAGS[header.tag_id]
-						p data
+						#p HWPTAGS[header.tag_id]
+						#p data
 					when :HWPTAG_TABLE
-						p HWPTAGS[header.tag_id]
-						p data
+						#p HWPTAGS[header.tag_id]
+						#p data
 						Record::Data::Table.new data
 					when :HWPTAG_SHAPE_COMPONENT_LINE
-						p HWPTAGS[header.tag_id]
-						p data
+						#p HWPTAGS[header.tag_id]
+						#p data
 					when :HWPTAG_SHAPE_COMPONENT_RECTANGLE
-						p HWPTAGS[header.tag_id]
-						p data
+						#p HWPTAGS[header.tag_id]
+						#p data
 					when :HWPTAG_SHAPE_COMPONENT_ELLIPSE
-						p HWPTAGS[header.tag_id]
-						p data
+						#p HWPTAGS[header.tag_id]
+						#p data
 					when :HWPTAG_SHAPE_COMPONENT_ARC
-						p HWPTAGS[header.tag_id]
-						p data
+						#p HWPTAGS[header.tag_id]
+						#p data
 					when :HWPTAG_SHAPE_COMPONENT_POLYGON
-						p HWPTAGS[header.tag_id]
-						p data
+						#p HWPTAGS[header.tag_id]
+						#p data
 					when :HWPTAG_SHAPE_COMPONENT_CURVE
-						p HWPTAGS[header.tag_id]
-						p data
+						#p HWPTAGS[header.tag_id]
+						#p data
 					when :HWPTAG_SHAPE_COMPONENT_OLE
-						p HWPTAGS[header.tag_id]
-						p data
+						#p HWPTAGS[header.tag_id]
+						#p data
 					when :HWPTAG_SHAPE_COMPONENT_PICTURE
-						p HWPTAGS[header.tag_id]
-						p data
+						#p HWPTAGS[header.tag_id]
+						#p data
 					when :HWPTAG_SHAPE_COMPONENT_CONTAINER
-						p HWPTAGS[header.tag_id]
-						p data
+						#p HWPTAGS[header.tag_id]
+						#p data
 					when :HWPTAG_CTRL_DATA
 						Record::Data::CtrlData.new data
 					when :HWPTAG_EQEDIT
-						p HWPTAGS[header.tag_id]
-						p data
+						#p HWPTAGS[header.tag_id]
+						#p data
 					when :RESERVED
-						p HWPTAGS[header.tag_id]
-						p data
+						#p HWPTAGS[header.tag_id]
+						#p data
 					when :HWPTAG_SHAPE_COMPONENT_TEXTART
-						p HWPTAGS[header.tag_id]
-						p data
+						#p HWPTAGS[header.tag_id]
+						#p data
 					when :HWPTAG_FORM_OBJECT
-						p HWPTAGS[header.tag_id]
-						p data
+						#p HWPTAGS[header.tag_id]
+						#p data
 					when :HWPTAG_MEMO_SHAPE
-						p HWPTAGS[header.tag_id]
-						p data
+						#p HWPTAGS[header.tag_id]
+						#p data
 					when :HWPTAG_MEMO_LIST
-						p HWPTAGS[header.tag_id]
-						p data
+						#p HWPTAGS[header.tag_id]
+						#p data
 					when :HWPTAG_CHART_DATA
-						p HWPTAGS[header.tag_id]
-						p data
+						#p HWPTAGS[header.tag_id]
+						#p data
 					when :HWPTAG_SHAPE_COMPONENT_UNKNOWN
-						p HWPTAGS[header.tag_id]
-						p data
+						#p HWPTAGS[header.tag_id]
+						#p data
 					else
-						p HWPTAGS[header.tag_id]
-						p data
+						#p HWPTAGS[header.tag_id]
+						#p data
 						raise "unknown tag"
 					end
 				end
