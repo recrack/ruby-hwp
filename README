@@ -1,9 +1,12 @@
+요구 조건
+ruby 1.9.x 이상
+# apt-get install ruby1.9.1
+
+ruby-ole
+# gem install ruby-ole
+
 사용법
 $ ruby1.9.1 hwp2txt.rb filename.hwp
-
-요구 사항
-ruby 1.9.x 이상
-ruby-ole
 
 버그 및 개선 사항 보고
 https://github.com/cogniti/libhwp/issues
