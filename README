@@ -1,0 +1,15 @@
+사용법
+$ ruby1.9.1 hwp2txt.rb filename.hwp
+
+요구 사항
+ruby 1.9.x 이상
+ruby-ole
+
+버그 및 개선 사항 보고
+https://github.com/cogniti/libhwp/issues
+
+위키
+https://github.com/cogniti/libhwp/wiki
+
+메일링 리스트
+http://groups.google.com/group/libhwp?hl=ko
