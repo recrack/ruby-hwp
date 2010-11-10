@@ -49,9 +49,42 @@ module Record::Data
 		attr_accessor :raw_text, :utf8_text_wo_ctrl, :utf8_text_w_ctrl
 		def initialize data
 			begin
-				# [\x01-\x1f]\x00 로 시작해서 시작한 패턴으로 끝나는 문자열 감지
-				# \k<ctrl> 를 사용하여 짝(pair)까지 맞아야 하는 정규표현식이다.  \1 을 사용해도 된다.
-				filtered_data = data.gsub(/(?<ctrl>[\x01-\x1f]\x00)............\k<ctrl>/m, "")
+				# 8 * 2 bytes
+				# \k 를 사용하여 짝(pair)까지 맞아야 하는 정규표현식이다.  \1 을 사용해도 된다.
+				filtered_data = data.gsub(/(?<ctrl>[\x01-\x08]\x00)............\k<ctrl>/m, "")
+				# tab
+				filtered_data.gsub!(/(?<ctrl>\x09\x00)............\k<ctrl>/m, "\t\x00")
+				# 1 * 2 bytes
+				filtered_data.gsub!(/\x0a\x00/m, "")
+				# 8 * 2 bytes
+				filtered_data.gsub!(/(?<ctrl>[\x0b|\x0c]\x00)............\k<ctrl>/m, "")
+				# 1 * 2 bytes
+				filtered_data.gsub!(/\x0d\x00/m, "")
+				# 8 * 2 bytes
+				filtered_data.gsub!(/(?<ctrl>[\x0e-\x17]\x00)............\k<ctrl>/m, "")
+				# 1 * 2 bytes
+				filtered_data.gsub!(/[\x18-\x1d]\x00/m, "")
+				# space
+				filtered_data.gsub!(/\x1e\x00/m, " \x00")
+				filtered_data.gsub!(/\x1f\x00/m, "")
+
+				# 유니코드 문자 교정, 한자 영역 등의 다른 영영과 겹칠지도 모른다.
+				# 초성 filler utf-16 값 "_\x11"
+				filtered_data.gsub!(/\x84\xF7/m, "_\x11")
+
+				# 중성 ㅘ		utf-16 값 "j\x11"
+				filtered_data.gsub!(/\x1C\xF8/m, "j\x11")
+				# 중성 ㅙ		utf-16 값 "k\x11"
+				filtered_data.gsub!(/\x1D\xF8/m, "k\x11")
+
+				# 중성 ㅝ		utf-16 값 "o\x11"
+				filtered_data.gsub!(/4\xF8/m, "o\x11")
+
+				# 종성 ㅆ		utf-16 값 "\xBB\x11"
+				filtered_data.gsub!(/\xCD\xF8/m, "\xBB\x11")
+
+				#p data
+				#p filtered_data
 				puts @utf8_text = Iconv.iconv("utf-8", "utf-16", filtered_data)[0].chomp
 			rescue
 				p data
