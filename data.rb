@@ -51,7 +51,7 @@ module Record::Data
 			begin
 				# [\x01-\x1f]\x00 로 시작해서 시작한 패턴으로 끝나는 문자열 감지
 				# \k<ctrl> 를 사용하여 짝(pair)까지 맞아야 하는 정규표현식이다.  \1 을 사용해도 된다.
-				filtered_data = data.gsub(/(?<ctrl>[\x01-\x1f]\x00)............\k<ctrl>/, "")
+				filtered_data = data.gsub(/(?<ctrl>[\x01-\x1f]\x00)............\k<ctrl>/m, "")
 				puts @utf8_text = Iconv.iconv("utf-8", "utf-16", filtered_data)[0].chomp
 			rescue
 				p data
