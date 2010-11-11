@@ -178,10 +178,54 @@ class FileHeader
 end
 
 module Record
-	class DocInfo;end
-	class PrvText;end
+	class DocInfo
+		attr_accessor :docinfo
+		def initialize(dirent, gzipped=true)
+			@gzipped = gzipped
+			@dirent = dirent
+		end
+
+		def parse
+			if @gzipped
+				z = Zlib::Inflate.new(-Zlib::MAX_WBITS)
+				@docinfo = StringIO.new(z.inflate @dirent.read)
+				z.finish
+				z.close
+			else
+				@docinfo = StringIO.new(@dirent.read)
+			end
+
+			while(bytes = @docinfo.read(HWP::DWORD))  # 레코드 헤더를 읽는다
+				header = Record::Header.new(bytes)
+				data = @docinfo.read(header.size)
+
+				p HWPTAGS[header.tag_id]
+			end
+		end
+	end
+
+	class PrvText
+		def initialize(dirent)
+			@dirent = dirent
+		end
+
+		def parse
+			puts Iconv.iconv('utf-8', 'utf-16', @dirent.read)
+		end
+	end
+
+	class PrvImage
+		def initialize(dirent)
+			@dirent = dirent
+		end
+
+		def parse
+			p @dirent.read
+		end
+	end
+
 	class Scripts;end
-	class PrvImage;end
+
 	class DocOptions;end
 	class HwpSummaryInformation;end
 	class Header
@@ -226,107 +270,41 @@ module Record
 					data = section.read(header.size)
 
 					case HWPTAGS[header.tag_id]
-					when :HWPTAG_PARA_HEADER
-						#p HWPTAGS[header.tag_id]
-						Record::Data::ParaHeader.new data
-					when :HWPTAG_PARA_TEXT
-						#p HWPTAGS[header.tag_id]
-						#p data
-						Record::Data::ParaText.new data
-					when :HWPTAG_PARA_CHAR_SHAPE
-						#p HWPTAGS[header.tag_id]
-						Record::Data::ParaCharShape.new data
-					when :HWPTAG_PARA_LINE_SEG
-						#p HWPTAGS[header.tag_id]
-						#p data
-					when :HWPTAG_PARA_RANGE_TAG
-						#p HWPTAGS[header.tag_id]
-						#p data
-					when :HWPTAG_CTRL_HEADER
-						#p HWPTAGS[header.tag_id]
-						#p data
-						Record::Data::CtrlHeader.new data
-					when :HWPTAG_LIST_HEADER
-						#p HWPTAGS[header.tag_id]
-						#p data
-					when :HWPTAG_PAGE_DEF
-						#p HWPTAGS[header.tag_id]
-						Record::Data::PageDef.new data
-					when :HWPTAG_FOOTNOTE_SHAPE
-						#p HWPTAGS[header.tag_id]
-						#p data.size
-					when :HWPTAG_PAGE_BORDER_FILL
-						#p HWPTAGS[header.tag_id]
-						#p data
-					when :HWPTAG_SHAPE_COMPONENT
-						#p HWPTAGS[header.tag_id]
-						#p data
-					when :HWPTAG_TABLE
-						#p HWPTAGS[header.tag_id]
-						#p data
-						Record::Data::Table.new data
-					when :HWPTAG_SHAPE_COMPONENT_LINE
-						#p HWPTAGS[header.tag_id]
-						#p data
-					when :HWPTAG_SHAPE_COMPONENT_RECTANGLE
-						#p HWPTAGS[header.tag_id]
-						#p data
-					when :HWPTAG_SHAPE_COMPONENT_ELLIPSE
-						#p HWPTAGS[header.tag_id]
-						#p data
-					when :HWPTAG_SHAPE_COMPONENT_ARC
-						#p HWPTAGS[header.tag_id]
-						#p data
-					when :HWPTAG_SHAPE_COMPONENT_POLYGON
-						#p HWPTAGS[header.tag_id]
-						#p data
-					when :HWPTAG_SHAPE_COMPONENT_CURVE
-						#p HWPTAGS[header.tag_id]
-						#p data
-					when :HWPTAG_SHAPE_COMPONENT_OLE
-						#p HWPTAGS[header.tag_id]
-						#p data
-					when :HWPTAG_SHAPE_COMPONENT_PICTURE
-						#p HWPTAGS[header.tag_id]
-						#p data
-					when :HWPTAG_SHAPE_COMPONENT_CONTAINER
-						#p HWPTAGS[header.tag_id]
-						#p data
-					when :HWPTAG_CTRL_DATA
-						Record::Data::CtrlData.new data
-					when :HWPTAG_EQEDIT
-						#p HWPTAGS[header.tag_id]
-						#p data
-					when :RESERVED
-						#p HWPTAGS[header.tag_id]
-						#p data
-					when :HWPTAG_SHAPE_COMPONENT_TEXTART
-						#p HWPTAGS[header.tag_id]
-						#p data
-					when :HWPTAG_FORM_OBJECT
-						#p HWPTAGS[header.tag_id]
-						#p data
-					when :HWPTAG_MEMO_SHAPE
-						#p HWPTAGS[header.tag_id]
-						#p data
-					when :HWPTAG_MEMO_LIST
-						#p HWPTAGS[header.tag_id]
-						#p data
-					when :HWPTAG_CHART_DATA
-						#p HWPTAGS[header.tag_id]
-						#p data
-					when :HWPTAG_SHAPE_COMPONENT_UNKNOWN
-						#p HWPTAGS[header.tag_id]
-						#p data
+					when :HWPTAG_PARA_HEADER		then	Record::Data::ParaHeader.new data
+					when :HWPTAG_PARA_TEXT			then	Record::Data::ParaText.new data
+					when :HWPTAG_PARA_CHAR_SHAPE	then	Record::Data::ParaCharShape.new data
+					when :HWPTAG_PARA_LINE_SEG		then	Record::Data::ParaLineSeg.new data
+					when :HWPTAG_PARA_RANGE_TAG		then	Record::Data::ParaRangeTag.new data
+					when :HWPTAG_CTRL_HEADER		then	Record::Data::CtrlHeader.new data
+					when :HWPTAG_LIST_HEADER		then	Record::Data::ListHeader.new data
+					when :HWPTAG_PAGE_DEF			then	Record::Data::PageDef.new data
+					when :HWPTAG_FOOTNOTE_SHAPE		then	Record::Data::FootnoteShape.new data
+					when :HWPTAG_PAGE_BORDER_FILL	then	Record::Data::PageBorderFill.new data
+					when :HWPTAG_SHAPE_COMPONENT	then	Record::Data::ShapeComponent.new data
+					when :HWPTAG_TABLE				then	Record::Data::Table.new data
+					when :HWPTAG_SHAPE_COMPONENT_LINE		then	Record::Data::ShapeComponentLine.new data
+					when :HWPTAG_SHAPE_COMPONENT_RECTANGLE	then	Record::Data::ShapeComponentRectangle.new data
+					when :HWPTAG_SHAPE_COMPONENT_ELLIPSE	then	Record::Data::ShapeComponentEllipse.new data
+					when :HWPTAG_SHAPE_COMPONENT_ARC		then	Record::Data::ShapeComponentArc.new data
+					when :HWPTAG_SHAPE_COMPONENT_POLYGON	then	Record::Data::ShapeComponentPolygon.new data
+					when :HWPTAG_SHAPE_COMPONENT_CURVE		then	Record::Data::ShapeComponentCurve.new data
+					when :HWPTAG_SHAPE_COMPONENT_OLE		then	Record::Data::ShapeComponentOle.new data
+					when :HWPTAG_SHAPE_COMPONENT_PICTURE	then	Record::Data::ShapeComponentPicture.new data
+					when :HWPTAG_SHAPE_COMPONENT_CONTAINER	then	Record::Data::ShapeComponentContainer.new data
+					when :HWPTAG_CTRL_DATA			then	Record::Data::CtrlData.new data
+					when :HWPTAG_EQEDIT				then	Record::Data::EQEdit.new data
+					when :RESERVED					then	Record::Data::Reserved.new data
+					when :HWPTAG_SHAPE_COMPONENT_TEXTART	then	Record::Data::ShapeComponentTextart.new data
+					when :HWPTAG_FORM_OBJECT	then	Record::Data::FormObject.new data
+					when :HWPTAG_MEMO_SHAPE		then	Record::Data::MemoShape.new data
+					when :HWPTAG_MEMO_LIST		then	Record::Data::MemoList.new data
+					when :HWPTAG_CHART_DATA		then	Record::Data::ChartData.new data
+					when :HWPTAG_SHAPE_COMPONENT_UNKNOWN	then	Record::Data::ShapeComponentUnknown.new data
 					else
-						#p HWPTAGS[header.tag_id]
-						#p data
-						raise "unknown tag"
+						raise "Unknown tag: #{HWPTAGS[header.tag_id]}"
 					end
 				end
 			end
 		end
 	end # of (class BodyText)
 end # of (module Record)
-
-
