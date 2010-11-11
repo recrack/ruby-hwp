@@ -10,6 +10,36 @@
 module Record;end
 
 module Record::Data
+	class FootnoteShape
+		def initialize data
+			#p self
+			# 스펙 문서 57쪽 크기 불일치 26 != 28
+			#p data.unpack("ISSSSSSSSCCIS") # 마지막 2바이트 S, 총 28바이트
+		end
+	end
+
+	class PageBorderFill
+		def initialize data
+			#p self
+			# 스펙 문서 58쪽 크기 불일치 12 != 14
+			#p data.unpack("ISSSSS") # 마지막 2바이트 S, 총 14바이트
+		end
+	end
+
+	class EQEdit
+		def initialize data
+			io = StringIO.new(data)
+			property = io.read(4).unpack("I")	# INT32
+			len = io.read(2).unpack("s")[0]	# WORD
+			#io.read(len * 2).unpack("S*").pack("U*")		# WCHAR
+			p script = Iconv.iconv("utf-8", "utf-16", io.read(len * 2))[0].chomp		# WCHAR
+			#p unknown = io.read(2).unpack("S")	# 스펙 50쪽과 다름
+			#p size = io.read(4).unpack("I")		# HWPUNIT
+			#p color = io.read(4).unpack("I")	# COLORREF
+			#p baseline = io.read(2).unpack("s")	# INT16
+		end
+	end
+
 	class ParaHeader
 		attr_accessor(
 			:chars,
@@ -97,31 +127,33 @@ module Record::Data
 		attr_accessor :m_pos, :m_id
 
 		def initialize data
-			(data.size/8).times do |i|
-				@m_pos = data[(i * 8)..(i*8+3)].unpack("I*")[0] # 4 bytse
-				@m_id  = data[(i*8+4)..(i*8+7)].unpack("I*")[0] # 4 bytes
-				#puts "m_pos=#{@m_pos}, m_id=#{@m_id}"
+			n = data.bytesize / 8
+			array = data.unpack("I" * n)
+			array.each_with_index do |element, i|
+				@m_pos = element if i % 2
+				@m_id  = element if i % 2
+			#puts "m_pos=#{@m_pos}, m_id=#{@m_id}"
 			end
 		end
 	end
 
 	class ParaLineSeg
+		# 스펙 문서에 안 나와 있음
 	end
 
 	class ParaRangeTag
 		attr_accessor :start, :end, :tag
 		def initialize data
-			@start = data[0..3].unpack("I*")[0]
-			@end = data[4..7].unpack("I*")[0]
-			@tag = data[8..11].unpack("b*")[0]
+			@start, @end, @tag = data.unpack("IIb*")
 		end
 	end
 
 	class CtrlHeader
 		attr_accessor :ctrl_id
 		def initialize data
-		# 스펙 문서 오류
-			@ctrl_id = data
+		# 스펙 문서 오류, 사이즈 28 나온다.
+			#p self
+			#p data
 		end
 	end
 
@@ -146,8 +178,11 @@ module Record::Data
 	class ListHeader
 		attr_accessor :num_para, :property
 		def initialize data
-			@num_para = data[0..1].unpack("I*")[0]
-			@property = data[2..5].unpack("b*")[0]
+		# 스펙 문서 오류, 사이즈 18 나온다.
+#			p self
+#			p data
+#			p @num_para = data[0..1].unpack("s*")[0]
+#			p @property = data[2..5].unpack("b*")[0]
 		end
 	end
 
