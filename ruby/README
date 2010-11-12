@@ -1,0 +1,22 @@
+디렉토리를 변경하였으니
+require 을 적절한 디렉토리로 수정한 후 테스트하시기 바랍니다.
+
+요구 조건
+ ruby 1.9.1 이상
+  # apt-get install ruby1.9.1
+
+ ruby-ole, builder
+  # apt-get install libole-ruby1.9.1 libbuilder-ruby1.9.1
+
+사용법
+ $ ruby1.9.1 hwp2txt.rb filename.hwp
+ $ ruby1.9.1 hwp2html.rb filename.hwp > hwp.html
+
+버그 및 개선 사항 보고
+ https://github.com/cogniti/libhwp/issues
+
+위키
+ https://github.com/cogniti/libhwp/wiki
+
+메일링 리스트
+ http://groups.google.com/group/libhwp?hl=ko
