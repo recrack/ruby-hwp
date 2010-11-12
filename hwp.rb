@@ -14,8 +14,8 @@ require 'iconv'
 require 'ole/storage'
 require 'zlib'
 require 'stringio'
-require './data.rb'
-require './tags.rb'
+require '~/libhwp/model.rb'
+require '~/libhwp/tags.rb'
 
 module HWP
 # unpack, pack
@@ -61,7 +61,7 @@ module HWP
 	COLORREF = 4
 
 	class Reader
-		attr_reader :file_header, :doc_info, :body_text, :view_text,
+		attr_reader :header, :doc_info, :bodytext, :view_text,
 					:summary_info, :bin_data, :prv_text, :pre_image,
 					:doc_options, :scripts, :xml_template, :doc_history
 
@@ -77,9 +77,16 @@ module HWP
 				if _entries.include? entry
 					dirent = @ole.dirent_from_path entry
 					case entry
-					when "FileHeader"	then @file_header = FileHeader.new dirent
-					when "DocInfo"		then @doc_info = Record::DocInfo.new dirent
-					when "BodyText"		then @body_text = Record::BodyText.new dirent
+					when "FileHeader"	then @header = FileHeader.new dirent
+					when "DocInfo"
+						if @header.gzipped?
+							z = Zlib::Inflate.new(-Zlib::MAX_WBITS)
+							@doc_info = StringIO.new(z.inflate dirent.read)
+							z.finish; z.close
+						else
+							@doc_info = StringIO.new(dirent.read)
+						end
+					when "BodyText"		then @bodytext = Record::BodyText.new dirent
 					when "ViewText"		then @view_text = Record::ViewText.new dirent
 					when "\005HwpSummaryInformation"
 						@summary_info = Record::HwpSummaryInformation.new dirent
@@ -90,15 +97,15 @@ module HWP
 					when "Scripts"		then @scripts = Record::Scripts.new dirent
 					when "XMLTemplate"	then @xml_template = Record::XMLTemplate.new dirent
 					when "DocHistory"	then @doc_history = Record::DocHistory.new dirent
-					else puts "unknown tags"
+					else raise "unknown entry"
 					end
 					_entries = _entries - [entry]
 				end
 			end
 
 			unless _entries.empty?
-				puts "unknown tags"
 				p _entries
+				raise "unknown entries"
 			end
 		end
 
@@ -107,7 +114,7 @@ module HWP
 		end
 
 		def to_s
-			@file_header.to_s
+			@header.to_s
 			@doc_info.to_s
 			@bodytext.to_s
 			@view_text.to_s
@@ -178,32 +185,6 @@ class FileHeader
 end
 
 module Record
-	class DocInfo
-		attr_accessor :docinfo
-		def initialize(dirent, gzipped=true)
-			@gzipped = gzipped
-			@dirent = dirent
-		end
-
-		def parse
-			if @gzipped
-				z = Zlib::Inflate.new(-Zlib::MAX_WBITS)
-				@docinfo = StringIO.new(z.inflate @dirent.read)
-				z.finish
-				z.close
-			else
-				@docinfo = StringIO.new(@dirent.read)
-			end
-
-			while(bytes = @docinfo.read(HWP::DWORD))  # 레코드 헤더를 읽는다
-				header = Record::Header.new(bytes)
-				data = @docinfo.read(header.size)
-
-				p HWPTAGS[header.tag_id]
-			end
-		end
-	end
-
 	class PrvText
 		def initialize(dirent)
 			@dirent = dirent
@@ -228,10 +209,9 @@ module Record
 
 	class DocOptions;end
 	class HwpSummaryInformation;end
-	class Header
-		attr_accessor :tag_id, :level, :size
 
-		def initialize bytes=nil
+	module Header
+		def self.decode bytes
 			lsb_first = bytes.unpack("b*")[0] # 이진수, LSB first, bit 0 가 맨 앞에 온다.
 
 			if lsb_first
@@ -240,69 +220,28 @@ module Record
 				@size	= lsb_first[20..31].reverse.to_i(2) # 31~20
 			end
 		end
+
+		def self.tag_id;	@tag_id;	end
+		def self.level;		@level;		end
+		def self.size;		@size;		end
 	end
 
 	class BodyText
-		attr_accessor :bodytext
+		attr_accessor :sections
 		def initialize(dirent, gzipped=true)
-			@gzipped = gzipped
 			@dirent = dirent
-			@bodytext = []
-		end
+			@sections = []
 
-		def parse
-			if @gzipped
+			if gzipped
 				@dirent.each_child do |section|
 					z = Zlib::Inflate.new(-Zlib::MAX_WBITS)
-					@bodytext << StringIO.new(z.inflate section.read)
+					@sections << StringIO.new(z.inflate section.read)
 					z.finish
 					z.close
 				end
 			else
 				@dirent.each_child do |section|
-					@bodytext << StringIO.new(section)
-				end
-			end
-
-			@bodytext.each do |section|
-				while(bytes = section.read(HWP::DWORD))  # 레코드 헤더를 읽는다
-					header = Record::Header.new(bytes)
-					data = section.read(header.size)
-
-					case HWPTAGS[header.tag_id]
-					when :HWPTAG_PARA_HEADER		then	Record::Data::ParaHeader.new data
-					when :HWPTAG_PARA_TEXT			then	Record::Data::ParaText.new data
-					when :HWPTAG_PARA_CHAR_SHAPE	then	Record::Data::ParaCharShape.new data
-					when :HWPTAG_PARA_LINE_SEG		then	Record::Data::ParaLineSeg.new data
-					when :HWPTAG_PARA_RANGE_TAG		then	Record::Data::ParaRangeTag.new data
-					when :HWPTAG_CTRL_HEADER		then	Record::Data::CtrlHeader.new data
-					when :HWPTAG_LIST_HEADER		then	Record::Data::ListHeader.new data
-					when :HWPTAG_PAGE_DEF			then	Record::Data::PageDef.new data
-					when :HWPTAG_FOOTNOTE_SHAPE		then	Record::Data::FootnoteShape.new data
-					when :HWPTAG_PAGE_BORDER_FILL	then	Record::Data::PageBorderFill.new data
-					when :HWPTAG_SHAPE_COMPONENT	then	Record::Data::ShapeComponent.new data
-					when :HWPTAG_TABLE				then	Record::Data::Table.new data
-					when :HWPTAG_SHAPE_COMPONENT_LINE		then	Record::Data::ShapeComponentLine.new data
-					when :HWPTAG_SHAPE_COMPONENT_RECTANGLE	then	Record::Data::ShapeComponentRectangle.new data
-					when :HWPTAG_SHAPE_COMPONENT_ELLIPSE	then	Record::Data::ShapeComponentEllipse.new data
-					when :HWPTAG_SHAPE_COMPONENT_ARC		then	Record::Data::ShapeComponentArc.new data
-					when :HWPTAG_SHAPE_COMPONENT_POLYGON	then	Record::Data::ShapeComponentPolygon.new data
-					when :HWPTAG_SHAPE_COMPONENT_CURVE		then	Record::Data::ShapeComponentCurve.new data
-					when :HWPTAG_SHAPE_COMPONENT_OLE		then	Record::Data::ShapeComponentOle.new data
-					when :HWPTAG_SHAPE_COMPONENT_PICTURE	then	Record::Data::ShapeComponentPicture.new data
-					when :HWPTAG_SHAPE_COMPONENT_CONTAINER	then	Record::Data::ShapeComponentContainer.new data
-					when :HWPTAG_CTRL_DATA			then	Record::Data::CtrlData.new data
-					when :HWPTAG_EQEDIT				then	Record::Data::EQEdit.new data
-					when :RESERVED					then	Record::Data::Reserved.new data
-					when :HWPTAG_SHAPE_COMPONENT_TEXTART	then	Record::Data::ShapeComponentTextart.new data
-					when :HWPTAG_FORM_OBJECT	then	Record::Data::FormObject.new data
-					when :HWPTAG_MEMO_SHAPE		then	Record::Data::MemoShape.new data
-					when :HWPTAG_MEMO_LIST		then	Record::Data::MemoList.new data
-					when :HWPTAG_CHART_DATA		then	Record::Data::ChartData.new data
-					when :HWPTAG_SHAPE_COMPONENT_UNKNOWN	then	Record::Data::ShapeComponentUnknown.new data
-					else
-						raise "Unknown tag: #{HWPTAGS[header.tag_id]}"
-					end
+					@sections << StringIO.new(section)
 				end
 			end
 		end
