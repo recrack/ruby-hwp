@@ -2,16 +2,5 @@
 magic number 추가하여 hwp 파일 인식할 것
 파서(parser) 개선
 hwp2html 개발
-hwp2xml 개발(hwp2hwpml)
+hwp2odt 개발
 hwp2pdf 개발
-libhwp c 개발
-hwp viewer (HwpView 위젯) 개발
-오픈오피스 필터 개발
-
-많은 참여 또는 개발 정보 공유 부탁드립니다.
-
-위키
-https://github.com/cogniti/libhwp/wiki
-
-메일링 리스트
-http://groups.google.com/group/libhwp?hl=ko
