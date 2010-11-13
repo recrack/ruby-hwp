@@ -14,8 +14,11 @@ require 'iconv'
 require 'ole/storage'
 require 'zlib'
 require 'stringio'
-require '~/libhwp/model.rb'
-require '~/libhwp/tags.rb'
+require 'hwp/model.rb'
+require 'hwp/tags.rb'
+##
+require 'hwp/datatypes.rb'
+require 'hwp/parser.rb'
 
 module HWP
 # unpack, pack

@@ -1,0 +1,42 @@
+#!/usr/bin/ruby1.9.1
+# coding: utf-8
+# apt-get install libole-ruby or gem install ruby-ole
+
+require 'optparse'
+require 'hwp'
+require 'hwp/parser'
+
+opts = {}
+op = OptionParser.new do |op|
+	#op.banner = "Usage: hwp2txt [OPTION] [FILE]"
+	op.banner = "Usage: hwp2txt [OPTION] [FILE]"
+	op.separator ' '
+	#op.separator "Output control:"
+	#op.on('-o', '--output=FILE', 'output file') { opts[:action] = :output }
+	#op.separator ''
+	op.on_tail('-h', '--help', 'Show this message') { puts op; exit }
+end
+
+files = op.parse ARGV
+
+if files.empty?
+	puts 'Must specify 1 .hwp file.'
+	puts op
+	exit 1
+end
+
+hwp = HWP::Reader.new(ARGV[0])
+hwp.bodytext.sections.each do |section|
+	parser = HWP::Parser.new section
+	while parser.has_next?
+		response = parser.pull
+		case response.class.to_s
+		when "Record::Data::ParaText"
+			puts response.to_s
+		when "Record::Data::EQEdit"
+			puts response.to_s
+		else
+		end
+	end
+end
+hwp.close

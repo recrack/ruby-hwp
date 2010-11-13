@@ -8,7 +8,7 @@
 #NO WARRANTY
 require 'iconv'
 require 'stringio'
-require '~/libhwp/datatypes.rb'
+require 'hwp/datatypes'
 
 module Record;end
 module Record::Data
