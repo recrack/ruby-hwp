@@ -10,10 +10,7 @@
  $ ruby1.9.1 hwp2html.rb filename.hwp > hwp.html
 
 버그 및 개선 사항 보고
- https://github.com/cogniti/libhwp/issues
+ https://github.com/cogniti/ruby-hwp/issues
 
 위키
- https://github.com/cogniti/libhwp/wiki
-
-메일링 리스트
- http://groups.google.com/group/libhwp?hl=ko
+ https://github.com/cogniti/ruby-hwp/wiki
