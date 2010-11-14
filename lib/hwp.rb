@@ -63,7 +63,11 @@ module HWP
 	HWPUNIT16 = 2
 	COLORREF = 4
 
-	class Reader
+	def self.open file
+		Document.new file
+	end
+
+	class Document
 		attr_reader :header, :doc_info, :bodytext, :view_text,
 					:summary_info, :bin_data, :prv_text, :pre_image,
 					:doc_options, :scripts, :xml_template, :doc_history
