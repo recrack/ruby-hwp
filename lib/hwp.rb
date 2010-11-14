@@ -68,51 +68,46 @@ module HWP
 	end
 
 	class Document
-		attr_reader :header, :doc_info, :bodytext, :view_text,
-					:summary_info, :bin_data, :prv_text, :pre_image,
+		attr_reader :entries, :header, :doc_info, :bodytext, :view_text,
+					:summary_info, :bin_data, :prv_text, :prv_image,
 					:doc_options, :scripts, :xml_template, :doc_history
 
 		def initialize file
 			@ole = Ole::Storage.open(file, 'rb')
 			_entries = @ole.dir.entries('/') - ['.', '..']
 
-			ordered_entries = [ "FileHeader", "DocInfo", "BodyText", "ViewText",
+			_ROOT_ELEMENTS = [ "FileHeader", "DocInfo", "BodyText", "ViewText",
 						"\005HwpSummaryInformation", "BinData", "PrvText", "PrvImage",
 						"DocOptions", "Scripts", "XMLTemplate", "DocHistory" ]
 
-			ordered_entries.each do |entry|
-				if _entries.include? entry
-					dirent = @ole.dirent_from_path entry
-					case entry
-					when "FileHeader"	then @header = FileHeader.new dirent
-					when "DocInfo"
-						if @header.gzipped?
-							z = Zlib::Inflate.new(-Zlib::MAX_WBITS)
-							@doc_info = StringIO.new(z.inflate dirent.read)
-							z.finish; z.close
-						else
-							@doc_info = StringIO.new(dirent.read)
-						end
-					when "BodyText"		then @bodytext = Record::BodyText.new dirent
-					when "ViewText"		then @view_text = Record::ViewText.new dirent
-					when "\005HwpSummaryInformation"
-						@summary_info = Record::HwpSummaryInformation.new dirent
-					when "BinData"		then @bin_data = Record::BinData.new dirent
-					when "PrvText"		then @prv_text = Record::PrvText.new dirent
-					when "PrvImage"		then @prv_image = Record::PrvImage.new dirent
-					when "DocOptions"	then @doc_options = Record::DocOptions.new dirent
-					when "Scripts"		then @scripts = Record::Scripts.new dirent
-					when "XMLTemplate"	then @xml_template = Record::XMLTemplate.new dirent
-					when "DocHistory"	then @doc_history = Record::DocHistory.new dirent
-					else raise "unknown entry"
-					end
-					_entries = _entries - [entry]
-				end
-			end
+			# sorting by priority
+			@entries = _ROOT_ELEMENTS - (_ROOT_ELEMENTS - _entries)
 
-			unless _entries.empty?
-				p _entries
-				raise "unknown entries"
+			@entries.each do |entry|
+				dirent = @ole.dirent_from_path entry
+				case entry
+				when "FileHeader"	then @header = FileHeader.new dirent
+				when "DocInfo"
+					if @header.gzipped?
+						z = Zlib::Inflate.new(-Zlib::MAX_WBITS)
+						@doc_info = StringIO.new(z.inflate dirent.read)
+						z.finish; z.close
+					else
+						@doc_info = StringIO.new(dirent.read)
+					end
+				when "BodyText"		then @bodytext = Record::BodyText.new dirent
+				when "ViewText"		then @view_text = Record::ViewText.new dirent
+				when "\005HwpSummaryInformation"
+					@summary_info = Record::SummaryInformation.new dirent
+				when "BinData"		then @bin_data = Record::BinData.new dirent
+				when "PrvText"		then @prv_text = Record::PrvText.new dirent
+				when "PrvImage"		then @prv_image = Record::PrvImage.new dirent
+				when "DocOptions"	then @doc_options = Record::DocOptions.new dirent
+				when "Scripts"		then @scripts = Record::Scripts.new dirent
+				when "XMLTemplate"	then @xml_template = Record::XMLTemplate.new dirent
+				when "DocHistory"	then @doc_history = Record::DocHistory.new dirent
+				else raise "unknown entry"
+				end
 			end
 		end
 
@@ -121,18 +116,18 @@ module HWP
 		end
 
 		def to_s
-			@header.to_s
-			@doc_info.to_s
-			@bodytext.to_s
-			@view_text.to_s
-			@summary_info.to_s
-			@bin_data.to_s
-			@prv_text.to_s
-			@pre_image.to_s
-			@doc_options.to_s
-			@scripts.to_s
-			@xml_template.to_s
-			@doc_history.to_s
+			@header.to_s		if defined? @header
+			@doc_info.to_s		if defined? @doc_info
+			@bodytext.to_s		if defined? @bodytext
+			@view_text.to_s		if defined? @view_text
+			@summary_info.to_s	if defined? @summary_info
+			@bin_data.to_s		if defined? @bin_data
+			@prv_text.to_s		if defined? @prv_text
+			@prv_image.to_s		if defined? @prv_image
+			@doc_options.to_s	if defined? @doc_options
+			@scripts.to_s		if defined? @scripts
+			@xml_template.to_s	if defined? @xml_template
+			@doc_history.to_s	if defined? @doc_history
 		end
 	end
 
@@ -215,7 +210,7 @@ module Record
 	class Scripts;end
 
 	class DocOptions;end
-	class HwpSummaryInformation;end
+	class SummaryInformation;end
 
 	module Header
 		def self.decode bytes
