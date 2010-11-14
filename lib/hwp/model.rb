@@ -59,7 +59,6 @@ module Record::Data
 	class CharShape
 		include Datatype
 		attr_reader :size
-		@@char_shapes = []
 		def initialize data
 			@fields = {
 				word(7)		=>	:face_id,
@@ -80,10 +79,6 @@ module Record::Data
 			}
 			decode data,@fields
 			@@char_shapes << self
-		end
-
-		def self.char_shapes
-			@@char_shapes
 		end
 	end
 
