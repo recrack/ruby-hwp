@@ -196,30 +196,6 @@ module Record
 		def self.size;		@size;		end
 	end
 
-	class DocInfo
-		attr_reader :char_shapes
-		def initialize(dirent, header)
-			if header.gzipped?
-				z = Zlib::Inflate.new(-Zlib::MAX_WBITS)
-				@doc_info = StringIO.new(z.inflate dirent.read)
-				z.finish; z.close
-			else
-				@doc_info = StringIO.new(dirent.read)
-			end
-
-			@char_shapes = []
-
-			parser = HWP::Parser.new @doc_info
-			while parser.has_next?
-				response = parser.pull
-				case response.class.to_s
-				when "Record::Data::CharShape"
-					@char_shapes << response
-				end
-			end
-		end
-	end
-
 	class BodyText
 		attr_accessor :sections
 		def initialize(dirent, header)
