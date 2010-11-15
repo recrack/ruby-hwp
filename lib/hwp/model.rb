@@ -78,7 +78,6 @@ module Record::Data
 				#colorref	=>	:color_cancel_line
 			}
 			decode data,@fields
-			@@char_shapes << self
 		end
 	end
 
