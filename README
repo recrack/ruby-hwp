@@ -6,7 +6,7 @@ git clone git://github.com/cogniti/ruby-hwp.git
 설치
 $ cd ruby-hwp
 $ rake
-$ gem install build/ruby-hwp-x.x.x.gem
+# gem install build/ruby-hwp-x.x.x.gem
 
 요구 사항
  ruby 1.9.1 이상,  ruby-ole, builder
