@@ -12,28 +12,52 @@ require 'stringio'
 require 'hwp/datatypes'
 
 module Record;end
-module Record::Data
-	class DocumentProperties
+module Record
+	class DocInfo
+		attr_reader :char_shapes
+		def initialize(dirent, header)
+			if header.gzipped?
+				z = Zlib::Inflate.new(-Zlib::MAX_WBITS)
+				@doc_info = StringIO.new(z.inflate dirent.read)
+				z.finish; z.close
+			else
+				@doc_info = StringIO.new(dirent.read)
+			end
+
+			@char_shapes = []
+
+			parser = HWP::Parser.new @doc_info
+			while parser.has_next?
+				response = parser.pull
+				case response.class.to_s
+				when "Record::Data::CharShape"
+					@char_shapes << response
+				end
+			end
+		end
+	end
+
+	class DocInfo::DocumentProperties
 		def initialize data
 			# 스펙 불일치
 			data.unpack("SSSSSSSIII")
 		end
 	end
 
-	class IDMappings
+	class DocInfo::IDMappings
 		def initialize data
 			# 스펙 불일치
 		end
 	end
 
-	class BinData
+	class DocInfo::BinData
 		def initialize data
 			#p data.bytesize
 			#p data.unpack("s30")
 		end
 	end
 
-	class FaceName
+	class DocInfo::FaceName
 		def initialize data
 			# 스펙 불일치
 			#p data.bytesize
@@ -51,12 +75,12 @@ module Record::Data
 		end
 	end
 
-	class BorderFill
+	class DocInfo::BorderFill
 		def initialize data
 		end
 	end
 
-	class CharShape
+	class DocInfo::CharShape
 		include Datatype
 
 		def initialize data
@@ -85,59 +109,64 @@ module Record::Data
 		end
 	end
 
-	class TabDef
+	class DocInfo::TabDef
 		def initialize data
 		end
 	end
 
-	class Numbering
+	class DocInfo::Numbering
 		def initialize data
 		end
 	end
 
-	class Bullet
+	class DocInfo::Bullet
 		def initialize data
 		end
 	end
 
-	class ParaShape
+	class DocInfo::ParaShape
 		def initialize data
 		end
 	end
 
-	class Style
+	class DocInfo::Style
 		def initialize data
 		end
 	end
 
-	class DocData
+	class DocInfo::DocData
 		def initialize data
 		end
 	end
 
-	class DistributeDocData
+	class DocInfo::DistributeDocData
 		def initialize data
 		end
 	end
 
+	class DocInfo::Reserved
+		def initialize data
+		end
+	end
+
+	class DocInfo::CompatibleDocument
+		def initialize data
+		end
+	end
+
+	class DocInfo::LayoutCompatibility
+		def initialize data
+		end
+	end
+
+	class DocInfo::ForbiddenChar
+		def initialize data
+		end
+	end
+end
+
+module Record::Data
 	class Reserved
-		def initialize data
-		end
-	end
-
-	class CompatibleDocument
-		def initialize data
-		end
-	end
-
-	class LayouCompatibility
-		def initialize data
-		end
-	end
-
-	class ForbiddenChar
-		def initialize data
-		end
 	end
 
 	class FootnoteShape
