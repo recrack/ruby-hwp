@@ -27,11 +27,6 @@ end
 
 hwp = HWP.open(ARGV[0])
 
-parser = HWP::Parser.new hwp.doc_info
-while parser.has_next?
-	response = parser.pull
-end
-
 builder = Builder::XmlMarkup.new(:target=>STDOUT, :indent=>2)
 builder.html do
 	builder.head do
@@ -49,7 +44,7 @@ builder.html do
 					parser.push response
 				when "Record::Data::ParaCharShape"
 					# FIXME m_pos 적용해야 한다.
-					size = Record::Data::CharShape.char_shapes[response.m_id[0]].size[0]/100
+					size = hwp.doc_info.char_shapes[response.m_id[0]].size[0]/100
 					builder.div('style'=> "font-size: #{size}pt") do
 						builder.p parser.pop.to_s
 					end
