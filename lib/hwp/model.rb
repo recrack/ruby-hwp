@@ -14,7 +14,24 @@ require 'hwp/datatypes'
 module Record;end
 module Record
 	class DocInfo
-		attr_reader :char_shapes
+		attr_reader :document_properties,
+					:id_mappings,
+					:bin_data,
+					:face_names,
+					:border_fill,
+					:char_shapes,
+					:tab_def,
+					:numbering,
+					:bullet,
+					:para_shape,
+					:style,
+					:doc_data,
+					:distribute_doc_data,
+					:reserved,
+					:compatible_document,
+					:layout_compatibility,
+					:forbidden_char
+
 		def initialize(dirent, header)
 			if header.gzipped?
 				z = Zlib::Inflate.new(-Zlib::MAX_WBITS)
@@ -24,35 +41,149 @@ module Record
 				@doc_info = StringIO.new(dirent.read)
 			end
 
-			@char_shapes = []
+			@document_properties	= []
+			@id_mappings			= []
+			@bin_data				= []
+			@face_names				= []
+			@border_fill			= []
+			@char_shapes			= []
+			@tab_def				= []
+			@numbering				= []
+			@bullet					= []
+			@para_shape				= []
+			@style					= []
+			@doc_data				= []
+			@distribute_doc_data	= []
+			@reserved				= []
+			@compatible_document	= []
+			@layout_compatibility	= []
+			@forbidden_char			= []
 
 			parser = HWP::Parser.new @doc_info
 			while parser.has_next?
 				response = parser.pull
 				case response.class.to_s
+				when "Record::DocInfo::DocumentProperties"
+					@document_properties << response
+				when "Record::DocInfo::IDMappings"
+					@id_mappings << response
+				when "Record::DocInfo::BinData"
+					@bin_data << response
+				when "Record::DocInfo::FaceName"
+					@face_names << response
+				when "Record::DocInfo::BorderFill"
+					@border_fill << response
 				when "Record::DocInfo::CharShape"
 					@char_shapes << response
+				when "Record::DocInfo::TabDef"
+					@tab_def << response
+				when "Record::DocInfo::Numbering"
+					@numbering << response
+				when "Record::DocInfo::Bullet"
+					@bullet << response
+				when "Record::DocInfo::ParaShape"
+					@para_shape << response
+				when "Record::DocInfo::Style"
+					@style << response
+				when "Record::DocInfo::DocData"
+					@doc_data << response
+				when "Record::DocInfo::DistributeDocData"
+					@distribute_doc_data << response
+				when "Record::DocInfo::Reserved"
+					@reserved << response
+				when "Record::DocInfo::CompatibleDocument"
+					@compatible_document << response
+				when "Record::DocInfo::LayoutCompatibility"
+					@layout_compatibility << response
+				when "Record::DocInfo::ForbiddenChar"
+					@forbidden_char << response
+				else
+					raise "UNKNOWN RECORD"
 				end
 			end
 		end
 	end
-
+#     V    | Fixnum  | treat four characters as an unsigned
+#          |         | long in little-endian byte order
+#   -------+---------+-----------------------------------------
+#     v    | Fixnum  | treat two characters as an unsigned
+#          |         | short in little-endian byte order
 	class DocInfo::DocumentProperties
+		attr_reader :section_count,
+					# begin num
+					:page_start_num,
+					:footnote_start_num,
+					:endnote_start_num,
+					:picture_start_num,
+					:table_start_num,
+					:equation_start_num,
+					# caret pos
+					:caret_pos_list_id,
+					:caret_pos_para_id,
+					:caret_pos_char_pos
+
 		def initialize data
-			# 스펙 불일치
-			data.unpack("SSSSSSSIII")
+			@section_count,
+			# begin num
+			@page_start_num,
+			@footnote_start_num,
+			@endnote_start_num,
+			@picture_start_num,
+			@table_start_num,
+			@equation_start_num,
+			# caret pos
+			@caret_pos_list_id,
+			@caret_pos_para_id,
+			@caret_pos_char_pos = data.unpack("v7V*")
 		end
 	end
 
-	class DocInfo::IDMappings
+	class DocInfo::IDMappings # count
+		attr_reader :bin_data_count,
+					# font count
+					:korean_font_count,
+					:english_font_count,
+					:hanja_font_count,
+					:japanese_font_count,
+					:others_font_count,
+					:symbol_font_count,
+					:user_font_count,
+
+					:border_fill_count,
+					:char_shape_count,
+					:tab_def_count,
+					:para_numbering_count,
+					:bullet_count,
+					:para_shape_count,
+					:style_count,
+					:memo_shape_count
+
 		def initialize data
-			# 스펙 불일치
+			@bin_data_count,
+			# font count
+			@korean_font_count,
+			@english_font_count,
+			@hanja_font_count,
+			@japanese_font_count,
+			@others_font_count,
+			@symbol_font_count,
+			@user_font_count,
+
+			@border_fill_count,
+			@char_shape_count,
+			@tab_def_count,
+			@para_numbering_count,
+			@bullet_count,
+			@para_shape_count,
+			@style_count,
+			@memo_shape_count = data.unpack("V*")
+
 		end
 	end
 
 	class DocInfo::BinData
 		def initialize data
-			#p data.bytesize
+			p data.bytesize
 			#p data.unpack("s30")
 		end
 	end
