@@ -34,38 +34,37 @@ module HWP
 			case HWPTAGS[Record::Header.tag_id]
 			# doc info
 			when :HWPTAG_DOCUMENT_PROPERTIES
-				# 스펙 오류
-				Record::Data::DocumentProperties.new data
+				Record::DocInfo::DocumentProperties.new data
 			when :HWPTAG_ID_MAPPINGS
-				Record::Data::IDMappings.new data
+				Record::DocInfo::IDMappings.new data
 			when :HWPTAG_BIN_DATA
-				Record::Data::BinData.new data
+				Record::DocInfo::BinData.new data
 			when :HWPTAG_FACE_NAME
-				Record::Data::FaceName.new data
+				Record::DocInfo::FaceName.new data
 			when :HWPTAG_BORDER_FILL
-				Record::Data::BorderFill.new data
+				Record::DocInfo::BorderFill.new data
 			when :HWPTAG_CHAR_SHAPE
-				Record::Data::CharShape.new data
+				Record::DocInfo::CharShape.new data
 			when :HWPTAG_TAB_DEF
-				Record::Data::TabDef.new data
+				Record::DocInfo::TabDef.new data
 			when :HWPTAG_NUMBERING
-				Record::Data::Numbering.new data
+				Record::DocInfo::Numbering.new data
 			when :HWPTAG_BULLET
-				Record::Data::Bullet.new data
+				Record::DocInfo::Bullet.new data
 			when :HWPTAG_PARA_SHAPE
-				Record::Data::ParaShape.new data
+				Record::DocInfo::ParaShape.new data
 			when :HWPTAG_STYLE
-				Record::Data::Style.new data
+				Record::DocInfo::Style.new data
 			when :HWPTAG_DOC_DATA
-				Record::Data::DocData.new data
+				Record::DocInfo::DocData.new data
 			when :HWPTAG_DISTRIBUTE_DOC_DATA
-				Record::Data::DistributeDocData.new data
+				Record::DocInfo::DistributeDocData.new data
 			when :RESERVED
-				Record::Data::Reserved.new data
+				Record::DocInfo::Reserved.new data
 			when :HWPTAG_COMPATIBLE_DOCUMENT
-				Record::Data::CompatibleDocument.new data
+				Record::DocInfo::CompatibleDocument.new data
 			when :HWPTAG_LAYOUT_COMPATIBILITY
-				Record::Data::LayouCompatibility.new data
+				Record::DocInfo::LayoutCompatibility.new data
 			when :HWPTAG_FORBIDDEN_CHAR
 				Record::Data::ForbiddenChar.new data
 			# body text
