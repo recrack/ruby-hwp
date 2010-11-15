@@ -87,25 +87,18 @@ module HWP
 				dirent = @ole.dirent_from_path entry
 				case entry
 				when "FileHeader"	then @header = FileHeader.new dirent
-				when "DocInfo"
-					if @header.gzipped?
-						z = Zlib::Inflate.new(-Zlib::MAX_WBITS)
-						@doc_info = StringIO.new(z.inflate dirent.read)
-						z.finish; z.close
-					else
-						@doc_info = StringIO.new(dirent.read)
-					end
-				when "BodyText"		then @bodytext = Record::BodyText.new dirent
+				when "DocInfo"		then @doc_info = Record::DocInfo.new(dirent, @header)
+				when "BodyText"		then @bodytext = Record::BodyText.new(dirent, @header)
 				when "ViewText"		then @view_text = Record::ViewText.new dirent
 				when "\005HwpSummaryInformation"
 					@summary_info = Record::SummaryInformation.new dirent
-				when "BinData"		then @bin_data = Record::BinData.new dirent
+				when "BinData"		then @bin_data = Record::BinData.new(dirent, @header)
 				when "PrvText"		then @prv_text = Record::PrvText.new dirent
 				when "PrvImage"		then @prv_image = Record::PrvImage.new dirent
 				when "DocOptions"	then @doc_options = Record::DocOptions.new dirent
 				when "Scripts"		then @scripts = Record::Scripts.new dirent
 				when "XMLTemplate"	then @xml_template = Record::XMLTemplate.new dirent
-				when "DocHistory"	then @doc_history = Record::DocHistory.new dirent
+				when "DocHistory"	then @doc_history = Record::DocHistory.new(dirent, @header)
 				else raise "unknown entry"
 				end
 			end
@@ -187,6 +180,80 @@ class FileHeader
 end
 
 module Record
+	module Header
+		def self.decode bytes
+			lsb_first = bytes.unpack("b*")[0] # 이진수, LSB first, bit 0 가 맨 앞에 온다.
+
+			if lsb_first
+				@tag_id	= lsb_first[0..9].reverse.to_i(2) # 9~0
+				@level	= lsb_first[10..19].reverse.to_i(2) # 19~10
+				@size	= lsb_first[20..31].reverse.to_i(2) # 31~20
+			end
+		end
+
+		def self.tag_id;	@tag_id;	end
+		def self.level;		@level;		end
+		def self.size;		@size;		end
+	end
+
+	class DocInfo
+		attr_reader :char_shapes
+		def initialize(dirent, header)
+			if header.gzipped?
+				z = Zlib::Inflate.new(-Zlib::MAX_WBITS)
+				@doc_info = StringIO.new(z.inflate dirent.read)
+				z.finish; z.close
+			else
+				@doc_info = StringIO.new(dirent.read)
+			end
+
+			@char_shapes = []
+
+			parser = HWP::Parser.new @doc_info
+			while parser.has_next?
+				response = parser.pull
+				case response.class.to_s
+				when "Record::Data::CharShape"
+					@char_shapes << response
+				end
+			end
+		end
+	end
+
+	class BodyText
+		attr_accessor :sections
+		def initialize(dirent, header)
+			@dirent = dirent
+			@sections = []
+
+			if header.gzipped?
+				@dirent.each_child do |section|
+					z = Zlib::Inflate.new(-Zlib::MAX_WBITS)
+					@sections << StringIO.new(z.inflate section.read)
+					z.finish
+					z.close
+				end
+			else
+				@dirent.each_child do |section|
+					@sections << StringIO.new(section)
+				end
+			end
+		end
+	end # of (class BodyText)
+
+	class ViewText
+		def initialize dirent
+			raise NotImplementedError.new("ViewText is not supported")
+		end
+	end
+
+	class SummaryInformation
+	end
+
+	class BinData
+		def initialize(dirent, header);end
+	end
+
 	class PrvText
 		def initialize(dirent)
 			@dirent = dirent
@@ -207,45 +274,11 @@ module Record
 		end
 	end
 
-	class Scripts;end
-
 	class DocOptions;end
-	class SummaryInformation;end
+	class Scripts;end
+	class XMLTemplate;end
 
-	module Header
-		def self.decode bytes
-			lsb_first = bytes.unpack("b*")[0] # 이진수, LSB first, bit 0 가 맨 앞에 온다.
-
-			if lsb_first
-				@tag_id	= lsb_first[0..9].reverse.to_i(2) # 9~0
-				@level	= lsb_first[10..19].reverse.to_i(2) # 19~10
-				@size	= lsb_first[20..31].reverse.to_i(2) # 31~20
-			end
-		end
-
-		def self.tag_id;	@tag_id;	end
-		def self.level;		@level;		end
-		def self.size;		@size;		end
+	class DocHistory
+		def initialize(dirent, header);end
 	end
-
-	class BodyText
-		attr_accessor :sections
-		def initialize(dirent, gzipped=true)
-			@dirent = dirent
-			@sections = []
-
-			if gzipped
-				@dirent.each_child do |section|
-					z = Zlib::Inflate.new(-Zlib::MAX_WBITS)
-					@sections << StringIO.new(z.inflate section.read)
-					z.finish
-					z.close
-				end
-			else
-				@dirent.each_child do |section|
-					@sections << StringIO.new(section)
-				end
-			end
-		end
-	end # of (class BodyText)
 end # of (module Record)
