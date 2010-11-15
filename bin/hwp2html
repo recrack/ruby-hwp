@@ -44,9 +44,11 @@ builder.html do
 					parser.push response
 				when "Record::Data::ParaCharShape"
 					# FIXME m_pos 적용해야 한다.
-					size = hwp.doc_info.char_shapes[response.m_id[0]].size[0]/100
-					builder.div('style'=> "font-size: #{size}pt") do
-						builder.p parser.pop.to_s
+					size = hwp.doc_info.char_shapes[response.m_id[0]].size / 100
+					builder.p do
+						builder.div('style'=> "font-size: #{size}px") do
+							builder.text! parser.pop.to_s
+						end
 					end
 				when "Record::Data::EQEdit"
 					builder.p response.to_s

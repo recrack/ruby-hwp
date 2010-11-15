@@ -58,7 +58,7 @@ module Record::Data
 
 	class CharShape
 		include Datatype
-		attr_reader :size
+
 		def initialize data
 			@fields = {
 				word(7)		=>	:face_id,
@@ -78,6 +78,10 @@ module Record::Data
 				#colorref	=>	:color_cancel_line
 			}
 			decode data,@fields
+		end
+
+		def size
+			@size[0]
 		end
 	end
 
