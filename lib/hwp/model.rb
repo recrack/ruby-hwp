@@ -30,7 +30,7 @@ module Record
 			while parser.has_next?
 				response = parser.pull
 				case response.class.to_s
-				when "Record::Data::CharShape"
+				when "Record::DocInfo::CharShape"
 					@char_shapes << response
 				end
 			end
