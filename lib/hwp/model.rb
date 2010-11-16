@@ -11,6 +11,7 @@ require 'iconv'
 require 'stringio'
 require 'hwp/datatypes'
 
+# TODO close string io
 module Record;end
 module Record
 	class DocInfo
@@ -182,27 +183,72 @@ module Record
 	end
 
 	class DocInfo::BinData
+		attr_reader :type,
+					:abs_path,
+					:rel_path,
+					:id,
+					:format,
+					:gzip_policy,	# deprecated method
+					:status			# deprecated method
+
 		def initialize data
-			p data.bytesize
-			#p data.unpack("s30")
+			s_io = StringIO.new data
+			p flag = s_io.read(2).unpack("v")[0]
+
+			# bit 0 ~ 3
+			case flag & 0b0000_0000_0000_0011
+			when 0b0000
+				@type = 'link'
+				len = s_io.read(2).unpack("v")[0]
+				@abs_path = s_io.read(len*2).unpack("v*").pack("U*")
+				len = s_io.read(2).unpack("v")[0]
+				@rel_path = s_io.read(len*2).unpack("v*").pack("U*")
+			when 0b0001
+				@type = 'embedding'
+				@id = s_io.read(2).unpack("v")[0]
+				len = s_io.read(2).unpack("v")[0]
+				@format = s_io.read(len*2).unpack("v*").pack("U*")
+			when 0b0010
+				@type = 'storage'
+				@id = s_io.read(2).unpack("v")[0]
+				len = s_io.read(2).unpack("v")[0]
+				@format = s_io.read(len*2).unpack("v*").pack("U*")
+			when 0b0011
+				raise "UNKNOWN TYPE"
+			end
+			# bit 4 ~ 5
+			case flag & 0b0000_0000_0011_0000
+			when 0b0000	then @gzip_policy = 'default'
+			when 0b0100	then @gzip_policy = 'force_gzipped'
+			when 0b1000	then @gzip_policy = 'force_plain'
+			when 0b1100	then raise "UNKNOWN GZIP POLICY"
+			end
+			# bit 6 ~ 7
+			case flag & 0b0000_0000_1100_0000
+			when 0b0000_0000 then @status = 'not yet accessed'
+			when 0b0100_0000 then @status = 'access success and file found'
+			when 0b1000_0000 then @status = 'access fail and error'
+			when 0b1100_0000 then @status = 'access fail and ignore'
+			end
 		end
 	end
 
 	class DocInfo::FaceName
 		def initialize data
-			# 스펙 불일치
-			#p data.bytesize
-			io = StringIO.new data
-			property = io.read(1)
-			len1 = (io.read 2).unpack("s")[0]
-			name = Iconv.iconv('utf-8', 'utf-16', io.read(len1 * 2))[0]
+			# TODO MUST REVERSE-ENGINEER
+			p data.bytesize
+			s_io = StringIO.new data
+			p property = s_io.read(1).unpack("C")[0]
+			len1 = s_io.read(2).unpack("v")[0]
+			p name = s_io.read(len1*2).unpack("v*").pack("U*")
+			97 & 0x80
 			#substitute_type = io.read 1
 			#p len2 = (io.read 2).unpack("s")[0]
 			#p substitute_name = io.read(len2 * 2)#.unpack("S*").pack("C*")
 			# 스펙 불일치
-			type = io.read 10
-			len3 = (io.read 2).unpack("s")[0]
-			default_name = io.read(len3 * 2).unpack("S*").pack("C*")
+			type = s_io.read 10
+			len3 = (s_io.read 2).unpack("s")[0]
+			default_name = s_io.read(len3 * 2).unpack("S*").pack("C*")
 		end
 	end
 
