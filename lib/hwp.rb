@@ -246,7 +246,7 @@ module Record
 		end
 
 		def parse
-			p @dirent.read
+			@dirent.read
 		end
 	end
 
