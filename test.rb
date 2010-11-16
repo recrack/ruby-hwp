@@ -3,12 +3,23 @@
 $LOAD_PATH << '/home/cogniti/ruby-hwp/lib'
 
 require 'hwp'
-hwp = HWP.open 'samples/kreg1.hwp'
+hwp = HWP.open ARGV[0]
 
-p hwp.header.gzipped?
-p hwp.doc_info
-p hwp.doc_info.char_shapes.length
+# hwp.header.gzipped?
+# hwp.doc_info
+# hwp.doc_info.char_shapes.length
 # hwp.doc_info.char_shapes.each { |shape| p shape }
+# hwp.doc_info.document_properties
+# hwp.doc_info.id_mappings
+# p hwp.doc_info.bin_data
+# p hwp.doc_info.bin_data[0].type
+# p hwp.doc_info.bin_data[0].id
+# p hwp.doc_info.bin_data[0].format
+# p hwp.doc_info.bin_data[0].compress_policy
+# p hwp.doc_info.bin_data[0].status
+# p hwp.doc_info.face_names
+# p hwp.doc_info.face_names[0].font_type_info
+# p hwp.doc_info.face_names[0].font_type_info.family
 
 #p hwp.bodytext
 #p hwp.bodytext.sections

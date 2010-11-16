@@ -1,8 +1,10 @@
 # (주)한글과컴퓨터의 한컴오피스 hwp 문서 파일 구조 공개정책에 따라 이루어졌습니다.
 # 이렇게 말하면 ruby-hwp 개발자가 (주)한글과컴퓨터社와 어떤 관계가 있는 것처럼 오해받을 수 있지만
 # hwp 스펙 문서 11쪽 저작권 관련 내용을 보면 이렇게 표시하라고 해서 이렇게 표시했을 뿐입니다.
-# ruby-hwp는 (주)한글과컴퓨터社가 만든 것이 아니며, (주)한글과컴퓨터社가 지원하지 않으며, (주)한글과컴퓨터社가 유지보수하지 않습니다.
-# Note that ruby-hwp is not manufactured, approved, supported, maintained by Hancom Inc.
+# ruby-hwp는 (주)한글과컴퓨터社가 만든 것이 아니며, (주)한글과컴퓨터社가 지원하지 않으며,
+# (주)한글과컴퓨터社가 유지보수하지 않습니다.
+# Note that ruby-hwp is 
+# not manufactured, not approved, not supported, not maintained by Hancom Inc.
 # ruby-hwp 개발자는 (주)한글과컴퓨터社와 아무런 관련이 없습니다.
 # ruby-hwp 및 ruby-hwp 관련 문서 내용을 사용하여 발생된 모든 결과에 대하여 책임지지 않습니다.
 # NO WARRANTY
@@ -11,7 +13,8 @@ require 'iconv'
 require 'stringio'
 require 'hwp/datatypes'
 
-# TODO close string io
+# TODO close StringIO instances
+
 module Record;end
 module Record
 	class DocInfo
@@ -178,7 +181,6 @@ module Record
 			@para_shape_count,
 			@style_count,
 			@memo_shape_count = data.unpack("V*")
-
 		end
 	end
 
@@ -188,15 +190,14 @@ module Record
 					:rel_path,
 					:id,
 					:format,
-					:gzip_policy,	# deprecated method
+					:compress_policy,	# deprecated method
 					:status			# deprecated method
 
 		def initialize data
 			s_io = StringIO.new data
-			p flag = s_io.read(2).unpack("v")[0]
-
+			flag = s_io.read(2).unpack("v")[0]
 			# bit 0 ~ 3
-			case flag & 0b0000_0000_0000_0011
+			case flag & 0b0011
 			when 0b0000
 				@type = 'link'
 				len = s_io.read(2).unpack("v")[0]
@@ -205,26 +206,25 @@ module Record
 				@rel_path = s_io.read(len*2).unpack("v*").pack("U*")
 			when 0b0001
 				@type = 'embedding'
-				@id = s_io.read(2).unpack("v")[0]
-				len = s_io.read(2).unpack("v")[0]
+				@id, len = s_io.read(4).unpack("vv")
 				@format = s_io.read(len*2).unpack("v*").pack("U*")
 			when 0b0010
 				@type = 'storage'
-				@id = s_io.read(2).unpack("v")[0]
-				len = s_io.read(2).unpack("v")[0]
+				@id, len = s_io.read(4).unpack("vv")
 				@format = s_io.read(len*2).unpack("v*").pack("U*")
 			when 0b0011
 				raise "UNKNOWN TYPE"
 			end
+			s_io.close
 			# bit 4 ~ 5
-			case flag & 0b0000_0000_0011_0000
-			when 0b0000	then @gzip_policy = 'default'
-			when 0b0100	then @gzip_policy = 'force_gzipped'
-			when 0b1000	then @gzip_policy = 'force_plain'
-			when 0b1100	then raise "UNKNOWN GZIP POLICY"
+			case flag & 0b11_0000
+			when 0b00_0000	then @compress_policy = 'default'
+			when 0b01_0000	then @compress_policy = 'force_compress'
+			when 0b10_0000	then @compress_policy = 'force_plain'
+			when 0b11_0000	then raise "UNKNOWN GZIP POLICY"
 			end
 			# bit 6 ~ 7
-			case flag & 0b0000_0000_1100_0000
+			case flag & 0b1100_0000
 			when 0b0000_0000 then @status = 'not yet accessed'
 			when 0b0100_0000 then @status = 'access success and file found'
 			when 0b1000_0000 then @status = 'access fail and error'
@@ -234,23 +234,225 @@ module Record
 	end
 
 	class DocInfo::FaceName
+		attr_reader :font_name, # done
+					:subst_font_type, # done
+					:subst_font_name, # done
+					:rep_font_name, # done
+					:font_type_info
+
+		class TypeInfo
+			# PANNOSE v1.0
+			# http://www.monotypeimaging.com/ProductsServices/pan2.aspx
+			attr_reader :family,
+						:serif_style,
+						:weight,
+						:proportion,
+						:contrast,
+						:stroke_variation,
+						:arm_style,
+						:letter_form,
+						:midline,
+						:x_height
+
+			Family = [
+				'Any',
+				'No Fit',
+				'Latin Text',
+				'Latin Hand Written',
+				'Latin Decorative',
+				'Latin Symbol'
+			]
+
+			Serif_Style = [
+				'Any',
+				'No Fit',
+				'Cove',
+				'Obtuse Cove',
+				'Square Cove',
+				'Obtuse Square Cove',
+				'Square',
+				'Thin',
+				'Oval',
+				'Exaggerated',
+				'Triangle',
+				'Normal Sans',
+				'Obtuse Sans',
+				'Perpendicular Sans',
+				'Flared',
+				'Rounded'
+			]
+
+			Weight = [
+				'Any',
+				'No Fit',
+				'Very Light',
+				'Light',
+				'Thin',
+				'Book',
+				'Medium',
+				'Demi',
+				'Bold',
+				'Heavy',
+				'Black',
+				'Extra Black'
+			]
+
+			Proportion = [
+				'Any',
+				'No fit',
+				'Old Style',
+				'Modern',
+				'Even Width',
+				'Extended',
+				'Condensed',
+				'Very Extended',
+				'Very Condensed',
+				'Monospaced'
+			]
+
+			Contrast = [
+				'Any',
+				'No Fit',
+				'None',
+				'Very Low',
+				'Low',
+				'Medium Low',
+				'Medium',
+				'Medium High',
+				'High',
+				'Very High'
+			]
+
+			Stroke_Variation = [
+				'Any',
+				'No Fit',
+				'No Variation',
+				'Gradual/Diagonal',
+				'Gradual/Transitional',
+				'Gradual/Vertical',
+				'Gradual/Horizontal',
+				'Rapid/Vertical',
+				'Rapid/Horizontal',
+				'Instant/Vertical',
+				'Instant/Horizontal'
+			]
+
+			Arm_Style = [
+				'Any',
+				'No Fit',
+				'Straight Arms/Horizontal',
+				'Straight Arms/Wedge',
+				'Straight Arms/Vertical',
+				'Straight Arms/Single Serif',
+				'Straight Arms/Double Serif',
+				'Non-Straight/Horizontal',
+				'Non-Straight/Wedge',
+				'Non-Straight/Vertical',
+				'Non-Straight/Single Serif',
+				'Non-Straight/Double Serif'
+			]
+
+			Letter_Form = [
+				'Any',
+				'No Fit',
+				'Normal/Contact',
+				'Normal/Weighted',
+				'Normal/Boxed',
+				'Normal/Flattened',
+				'Normal/Rounded',
+				'Normal/Off Center',
+				'Normal/Square',
+				'Oblique/Contact',
+				'Oblique/Weighted',
+				'Oblique/Boxed',
+				'Oblique/Flattened',
+				'Oblique/Rounded',
+				'Oblique/Off Center',
+				'Oblique/Square'
+			]
+
+			Midline = [
+				'Any',
+				'No Fit',
+				'Standard/Trimmed',
+				'Standard/Pointed',
+				'Standard/Serifed',
+				'High/Trimmed',
+				'High/Pointed',
+				'High/Serifed',
+				'Constant/Trimmed',
+				'Constant/Pointed',
+				'Constant/Serifed',
+				'Low/Trimmed',
+				'Low/Pointed',
+				'Low/Serifed'
+			]
+
+			X_Height = [
+				'Any',
+				'No Fit',
+				'Constant/Small',
+				'Constant/Standard',
+				'Constant/Large',
+				'Ducking/Small',
+				'Ducking/Standard',
+				'Ducking/Large'
+			]
+
+			def initialize panose
+				@family				= Family[panose[0]]
+				@serif_style		= Serif_Style[panose[1]]
+				@weight				= Weight[panose[2]]
+				@proportion			= Proportion[panose[3]]
+				@contrast			= Contrast[panose[4]]
+				@stroke_variation	= Stroke_Variation[panose[5]]
+				@arm_style			= Arm_Style[panose[6]]
+				@letter_form		= Letter_Form[panose[7]]
+				@midline			= Midline[panose[8]]
+				@x_height			= X_Height[panose[9]]
+			end
+		end # class TypeInfo
+
 		def initialize data
-			# TODO MUST REVERSE-ENGINEER
-			p data.bytesize
 			s_io = StringIO.new data
-			p property = s_io.read(1).unpack("C")[0]
-			len1 = s_io.read(2).unpack("v")[0]
-			p name = s_io.read(len1*2).unpack("v*").pack("U*")
-			97 & 0x80
-			#substitute_type = io.read 1
-			#p len2 = (io.read 2).unpack("s")[0]
-			#p substitute_name = io.read(len2 * 2)#.unpack("S*").pack("C*")
-			# 스펙 불일치
-			type = s_io.read 10
-			len3 = (s_io.read 2).unpack("s")[0]
-			default_name = s_io.read(len3 * 2).unpack("S*").pack("C*")
+			@flag, len = s_io.read(3).unpack("Cv")
+			@font_name = s_io.read(len*2).unpack("v*").pack("U*")
+
+			if exist_subst_font?
+				case s_io.read(1).unpack("C")
+				when 0	then @subst_font_type = 'unknown' # rep ?
+				when 1	then @subst_font_type = 'ttf'
+				when 2	then @subst_font_type = 'hft'
+				else
+					raise "UNKNOWN SUBST_FONT_TYPE"
+				end
+				len = s_io.read(2).unpack("v")[0]
+				@subst_font_name = s_io.read(len * 2).unpack("v*").pack("U*")
+			end
+
+			if exist_font_type_info?
+				panose = s_io.read(10).unpack("C*")
+				@font_type_info = TypeInfo.new panose
+			end
+
+			if exist_rep_font?
+				len = s_io.read(2).unpack("v")[0]
+				@rep_font_name = s_io.read(len * 2).unpack("v*").pack("U*")
+			end
+		end # def initialize
+
+		def exist_subst_font?
+			not (@flag & 0x80).zero?
 		end
-	end
+
+		def exist_font_type_info?
+			not (@flag & 0x40).zero?
+		end
+
+		def exist_rep_font?
+			not (@flag & 0x20).zero?
+		end
+	end # class DocInfo::FaceName
 
 	class DocInfo::BorderFill
 		def initialize data
