@@ -23,6 +23,7 @@ hwp = HWP.open ARGV[0]
 
 #p hwp.bodytext
 #p hwp.bodytext.sections
-#p hwp.bodytext.sections[0]
-#p hwp.bodytext.sections.each { |id, data| }
-
+parser = HWP::Parser.new hwp.bodytext.sections[0]
+while parser.has_next?
+	response = parser.pull
+end
