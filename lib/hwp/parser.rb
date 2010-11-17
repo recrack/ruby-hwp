@@ -68,36 +68,36 @@ module HWP
 			when :HWPTAG_FORBIDDEN_CHAR
 				Record::Data::ForbiddenChar.new data
 			# body text
-			when :HWPTAG_PARA_HEADER		then	Record::Data::ParaHeader.new data
-			when :HWPTAG_PARA_TEXT			then	Record::Data::ParaText.new data
-			when :HWPTAG_PARA_CHAR_SHAPE	then	Record::Data::ParaCharShape.new data
-			when :HWPTAG_PARA_LINE_SEG		then	Record::Data::ParaLineSeg.new data
-			when :HWPTAG_PARA_RANGE_TAG		then	Record::Data::ParaRangeTag.new data
-			when :HWPTAG_CTRL_HEADER		then	Record::Data::CtrlHeader.new data
-			when :HWPTAG_LIST_HEADER		then	Record::Data::ListHeader.new data
-			when :HWPTAG_PAGE_DEF			then	Record::Data::PageDef.new data
-			when :HWPTAG_FOOTNOTE_SHAPE		then	Record::Data::FootnoteShape.new data
-			when :HWPTAG_PAGE_BORDER_FILL	then	Record::Data::PageBorderFill.new data
-			when :HWPTAG_SHAPE_COMPONENT	then	Record::Data::ShapeComponent.new data
-			when :HWPTAG_TABLE				then	Record::Data::Table.new data
-			when :HWPTAG_SHAPE_COMPONENT_LINE		then	Record::Data::ShapeComponentLine.new data
-			when :HWPTAG_SHAPE_COMPONENT_RECTANGLE	then	Record::Data::ShapeComponentRectangle.new data
-			when :HWPTAG_SHAPE_COMPONENT_ELLIPSE	then	Record::Data::ShapeComponentEllipse.new data
-			when :HWPTAG_SHAPE_COMPONENT_ARC		then	Record::Data::ShapeComponentArc.new data
-			when :HWPTAG_SHAPE_COMPONENT_POLYGON	then	Record::Data::ShapeComponentPolygon.new data
-			when :HWPTAG_SHAPE_COMPONENT_CURVE		then	Record::Data::ShapeComponentCurve.new data
-			when :HWPTAG_SHAPE_COMPONENT_OLE		then	Record::Data::ShapeComponentOle.new data
-			when :HWPTAG_SHAPE_COMPONENT_PICTURE	then	Record::Data::ShapeComponentPicture.new data
-			when :HWPTAG_SHAPE_COMPONENT_CONTAINER	then	Record::Data::ShapeComponentContainer.new data
-			when :HWPTAG_CTRL_DATA			then	Record::Data::CtrlData.new data
-			when :HWPTAG_EQEDIT				then	Record::Data::EQEdit.new data
-			when :RESERVED					then	Record::Data::Reserved.new data
-			when :HWPTAG_SHAPE_COMPONENT_TEXTART	then	Record::Data::ShapeComponentTextart.new data
-			when :HWPTAG_FORM_OBJECT	then	Record::Data::FormObject.new data
-			when :HWPTAG_MEMO_SHAPE		then	Record::Data::MemoShape.new data
-			when :HWPTAG_MEMO_LIST		then	Record::Data::MemoList.new data
-			when :HWPTAG_CHART_DATA		then	Record::Data::ChartData.new data
-			when :HWPTAG_SHAPE_COMPONENT_UNKNOWN	then	Record::Data::ShapeComponentUnknown.new data
+			when :HWPTAG_PARA_HEADER		then	Record::Section::ParaHeader.new data
+			when :HWPTAG_PARA_TEXT			then	Record::Section::ParaText.new data
+			when :HWPTAG_PARA_CHAR_SHAPE	then	Record::Section::ParaCharShape.new data
+			when :HWPTAG_PARA_LINE_SEG		then	Record::Section::ParaLineSeg.new data
+			when :HWPTAG_PARA_RANGE_TAG		then	Record::Section::ParaRangeTag.new data
+			when :HWPTAG_CTRL_HEADER		then	Record::Section::CtrlHeader.new data
+			when :HWPTAG_LIST_HEADER		then	Record::Section::ListHeader.new data
+			when :HWPTAG_PAGE_DEF			then	Record::Section::PageDef.new data
+			when :HWPTAG_FOOTNOTE_SHAPE		then	Record::Section::FootnoteShape.new data
+			when :HWPTAG_PAGE_BORDER_FILL	then	Record::Section::PageBorderFill.new data
+			when :HWPTAG_SHAPE_COMPONENT	then	Record::Section::ShapeComponent.new data
+			when :HWPTAG_TABLE				then	Record::Section::Table.new data
+			when :HWPTAG_SHAPE_COMPONENT_LINE		then	Record::Section::ShapeComponentLine.new data
+			when :HWPTAG_SHAPE_COMPONENT_RECTANGLE	then	Record::Section::ShapeComponentRectangle.new data
+			when :HWPTAG_SHAPE_COMPONENT_ELLIPSE	then	Record::Section::ShapeComponentEllipse.new data
+			when :HWPTAG_SHAPE_COMPONENT_ARC		then	Record::Section::ShapeComponentArc.new data
+			when :HWPTAG_SHAPE_COMPONENT_POLYGON	then	Record::Section::ShapeComponentPolygon.new data
+			when :HWPTAG_SHAPE_COMPONENT_CURVE		then	Record::Section::ShapeComponentCurve.new data
+			when :HWPTAG_SHAPE_COMPONENT_OLE		then	Record::Section::ShapeComponentOLE.new data
+			when :HWPTAG_SHAPE_COMPONENT_PICTURE	then	Record::Section::ShapeComponentPicture.new data
+			when :HWPTAG_SHAPE_COMPONENT_CONTAINER	then	Record::Section::ShapeComponentContainer.new data
+			when :HWPTAG_CTRL_DATA			then	Record::Section::CtrlData.new data
+			when :HWPTAG_EQEDIT				then	Record::Section::EQEdit.new data
+			when :RESERVED					then	Record::Section::Reserved.new data
+			when :HWPTAG_SHAPE_COMPONENT_TEXTART	then	Record::Section::ShapeComponentTextArt.new data
+			when :HWPTAG_FORM_OBJECT	then	Record::Section::FormObject.new data
+			when :HWPTAG_MEMO_SHAPE		then	Record::Section::MemoShape.new data
+			when :HWPTAG_MEMO_LIST		then	Record::Section::MemoList.new data
+			when :HWPTAG_CHART_DATA		then	Record::Section::ChartData.new data
+			when :HWPTAG_SHAPE_COMPONENT_UNKNOWN	then	Record::Section::ShapeComponentUnknown.new data
 			else
 				raise "Unknown tag: #{HWPTAGS[Record::Header.tag_id]}"
 			end
