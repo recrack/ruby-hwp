@@ -193,6 +193,7 @@ module Record
 					:compress_policy,	# deprecated method
 					:status			# deprecated method
 
+		# TODO remove s_io, use unpack "x"
 		def initialize data
 			s_io = StringIO.new data
 			flag = s_io.read(2).unpack("v")[0]
@@ -241,7 +242,7 @@ module Record
 					:font_type_info
 
 		class TypeInfo
-			# PANNOSE v1.0
+			# PANOSE v1.0
 			# http://www.monotypeimaging.com/ProductsServices/pan2.aspx
 			attr_reader :family,
 						:serif_style,
@@ -419,7 +420,7 @@ module Record
 			@font_name = s_io.read(len*2).unpack("v*").pack("U*")
 
 			if exist_subst_font?
-				case s_io.read(1).unpack("C")
+				case s_io.read(1).unpack("C")[0]
 				when 0	then @subst_font_type = 'unknown' # rep ?
 				when 1	then @subst_font_type = 'ttf'
 				when 2	then @subst_font_type = 'hft'
@@ -454,42 +455,237 @@ module Record
 		end
 	end # class DocInfo::FaceName
 
+	# TODO REVERSE-ENGINEERING
 	class DocInfo::BorderFill
+		attr_reader :slash,
+					:backslash,
+					:left_border,
+					:right_border,
+					:top_border,
+					:bottom_border,
+					:diagonal,
+					:type,
+					:size
+
+		class Border
+			attr_reader :type, :width, :color
+			def initialize type, width, color
+				@type  = type
+				@width = width
+				@color = color
+			end
+		end
+
+		class LeftBorder < Border;end
+		class RightBorder < Border;end
+		class TopBorder < Border;end
+		class BottomBorder < Border;end
+		class Diagonal
+			attr_accessor :type, :width, :color
+			def initialize type, width, color
+				@type  = type
+				@width = width
+				@color = color
+			end
+		end
+
+		SLASH_TYPE = {
+			'000' => 'none',
+			'010' => 'break cell separate line',
+			'011' => 'counter backslash',
+			'110' => 'counter slash',
+			'111' => 'crooked slash'
+		}
+
+		BORDER_LINE_TYPE = [
+			'solid line',
+			'dotted line',
+			'-.-.-.-.',
+			'-..-..-..',
+			'long dash',
+			'big dot',
+			'double line',
+			'thin and thick double line',
+			'thick and thin double line',
+			'wave',
+			'double wave',
+			'thick 3d',
+			'negative thick 3d',
+			'3d',
+			'negative 3d'
+		]
+
+		BORDER_LINE_WIDTH = [
+			'0.1mm',
+			'0.12mm',
+			'0.15mm',
+			'0.2mm',
+			'0.25mm',
+			'0.3mm',
+			'0.4mm',
+			'0.5mm',
+			'0.6mm',
+			'0.7mm',
+			'1.0mm',
+			'1.5mm',
+			'2.0mm',
+			'3.0mm',
+			'4.0mm',
+			'5.0mm'
+		]
+
+		DIAGONAL_LINE = [
+			'slash',
+			'backslash',
+			'crooked slash'
+		]
+
 		def initialize data
+			@bit,
+			left_type,  right_type,  top_type,  bottom_type,
+			left_width, right_width, top_width, bottom_width,
+			left_color, right_color, top_color, bottom_color,
+			diagonal_type, diagonal_width, diagonal_color,
+			type, size = data.unpack("b8 CCCC CCCC VVVV CCV V V")
+
+			@slash		= SLASH_TYPE[@bit[2..4]]
+			@back_slash	= SLASH_TYPE[@bit[5..7]]
+
+			@left_border	= LeftBorder.new(left_border, left_type, left_width)
+			@right_border	= RightBorder.new(right_border, right_type, right_width)
+			@top_border		= TopBorder.new(top_border,top_type,top_width)
+			@bottom_border	= BottomBorder.new(bottom_border,bottom_type,bottom_width)
+
+			@left_border = LeftBorder.new left_type, left_width, left_color
+			@right_border = RightBorder.new(right_type, right_width, right_color)
+			@top_border = TopBorder.new top_type, top_width, top_color
+			@bottom_border = BottomBorder.new(bottom_type, bottom_width, bottom_color)
+			@diagonal = Diagonal.new(diagonal_type, diagonal_width, diagonal_color)
+			@type = BORDER_LINE_TYPE[type]
+			@size = BORDER_LINE_TYPE[size]
+			# FIXME
+			gradation_step_center = data[-1].unpack("C")[0]
+			# TODO make sub class
+			if data.bytesize > 40
+				face_color,
+				hatch_color,
+				hatch_style,
+				gradation_type,
+				gradation_angle,
+				gradation_center_x,
+				gradation_center_y,
+				gradation_step,
+				gradation_color_num = data.unpack("x39 VVV vvvvvv")[0]
+				gradation_colors = data.unpack "x63 V#{gradation_color_num}"
+				image_brush_mode,
+				bright,
+				contrast,
+				effect,
+				bin_item_id,
+				additional_gradation,
+				additional_gradation_center = data.unpack "x#{67+4*gradation_color_num} C cccv VC"
+			end
+		end
+
+		def three_d?
+			not @bit[0].zero?
+		end
+
+		def shadow?
+			not @bit[1].zero?
 		end
 	end
 
 	class DocInfo::CharShape
-		include Datatype
+		attr_reader :lang,
+					:ratio,
+					:char_spacing,
+					:rel_size,
+					:char_offset,
+					:size,
+					:prop,
+					:space_between_shadows1,
+					:space_between_shadows1,
+					:color_letter,
+					:color_underline,
+					:color_shade,
+					:color_shadow
 
-		def initialize data
-			@fields = {
-				word(7)		=>	:face_id,
-				uint8(7)	=>	:width_letter,
-				int8(7)		=>	:space_between_letters,
-				uint8(7)	=>	:rel,
-				int8(7)		=>	:pos,
-				uint32		=>	:size, # 1000 = 10 px
-				uint32		=>	:prop,
-				int8		=>	:space_between_shadows1,
-				int8		=>	:space_between_shadows1,
-				colorref	=>	:color_letter,
-				colorref	=>	:color_underline,
-				colorref	=>	:color_shade,
-				colorref	=>	:color_shadow,
-				#uint16		=>	:char_shape_border_fill_id,
-				#colorref	=>	:color_cancel_line
-			}
-			decode data,@fields
+		class Lang
+			attr_accessor	:font_id,
+							:ratio,
+							:char_spacing,
+							:rel_size,
+							:char_offset
 		end
 
-		def size
-			@size[0]
+		def initialize data
+			@lang = {
+				:korean		=> Lang.new,
+				:english	=> Lang.new,
+				:hanja		=> Lang.new,
+				:japanese	=> Lang.new,
+				:others		=> Lang.new,
+				:symbol		=> Lang.new,
+				:user		=> Lang.new
+			}
+			@lang[:korean].font_id,
+			@lang[:english].font_id,
+			@lang[:hanja].font_id,
+			@lang[:japanese].font_id,
+			@lang[:others].font_id,
+			@lang[:symbol].font_id,
+			@lang[:user].font_id,
+
+			@lang[:korean].ratio,
+			@lang[:english].ratio,
+			@lang[:hanja].ratio,
+			@lang[:japanese].ratio,
+			@lang[:others].ratio,
+			@lang[:symbol].ratio,
+			@lang[:user].ratio,
+
+			@lang[:korean].char_spacing,
+			@lang[:english].char_spacing,
+			@lang[:hanja].char_spacing,
+			@lang[:japanese].char_spacing,
+			@lang[:others].char_spacing,
+			@lang[:symbol].char_spacing,
+			@lang[:user].char_spacing,
+
+			@lang[:korean].rel_size,
+			@lang[:english].rel_size,
+			@lang[:hanja].rel_size,
+			@lang[:japanese].rel_size,
+			@lang[:others].rel_size,
+			@lang[:symbol].rel_size,
+			@lang[:user].rel_size,
+
+			@lang[:korean].char_offset,
+			@lang[:english].char_offset,
+			@lang[:hanja].char_offset,
+			@lang[:japanese].char_offset,
+			@lang[:others].char_offset,
+			@lang[:symbol].char_offset,
+			@lang[:user].char_offset,
+
+			@size,
+			@prop,
+			@space_between_shadows1,
+			@space_between_shadows1,
+			@color_letter,
+			@color_underline,
+			@color_shade,
+			@color_shadow =
+				data.unpack("v7 C7 c7 C7 c7 V V c c VVVV")
 		end
 	end
 
+	# TODO REVERSE-ENGINEERING
 	class DocInfo::TabDef
 		def initialize data
+			#P data.bytesize
+			#p data.unpack("V v V C C v")
 		end
 	end
 
@@ -503,21 +699,45 @@ module Record
 		end
 	end
 
+	# TODO REVERSE-ENGINEERING
 	class DocInfo::ParaShape
 		def initialize data
+			#p data.bytesize
+			#p data.unpack("b32VVVVVVvvvvvvvVVV")
 		end
 	end
 
+	# TODO REVERSE-ENGINEERING
 	class DocInfo::Style
 		def initialize data
+			#p data.bytesize
+			len1 = data.unpack("v")[0]
+			local_style_name = data.unpack("x2 v#{len1}").pack("U*")
+			len2 = data.unpack("x#{2+2*len1} v")[0]
+			data.unpack("x#{4+2*len1} v#{len2}").pack("U*")
+			data.unpack("x#{4+2*len1+2*len2} ccsvv")
 		end
 	end
 
+	# TODO REVERSE-ENGINEERING
 	class DocInfo::DocData
 		def initialize data
+			s_io = StringIO.new data
+			param_set_id = s_io.read(2)
+			n = s_io.read(2).unpack("c")[0]
+
+			param_item_id = s_io.read(2)
+			param_item_type = s_io.read(2).unpack("CC")
+
+			param_item_type[0]
+			param_item_type[1] & 0x8000
+			param_item_type[1] & 0x8001
+			param_item_type[1] & 0x8002
+			s_io.close
 		end
 	end
 
+	# TODO REVERSE-ENGINEERING
 	class DocInfo::DistributeDocData
 		def initialize data
 		end
@@ -544,45 +764,7 @@ module Record
 	end
 end
 
-module Record::Data
-	class Reserved
-	end
-
-	class FootnoteShape
-		def initialize data
-			#p self
-			# 스펙 문서 57쪽 크기 불일치 26 != 28
-			#p data.unpack("ISSSSSSSSCCIS") # 마지막 2바이트 S, 총 28바이트
-		end
-	end
-
-	class PageBorderFill
-		def initialize data
-			#p self
-			# 스펙 문서 58쪽 크기 불일치 12 != 14
-			#p data.unpack("ISSSSS") # 마지막 2바이트 S, 총 14바이트
-		end
-	end
-
-	class EQEdit
-		# TODO DOT 훈DOT 민 DOT 정 DOT 음
-		def initialize data
-			io = StringIO.new(data)
-			property = io.read(4).unpack("I")	# INT32
-			len = io.read(2).unpack("s")[0]	# WORD
-			#io.read(len * 2).unpack("S*").pack("U*")		# WCHAR
-			@script = Iconv.iconv("utf-8", "utf-16", io.read(len * 2))[0].chomp		# WCHAR
-			#p unknown = io.read(2).unpack("S")	# 스펙 50쪽과 다름
-			#p size = io.read(4).unpack("I")		# HWPUNIT
-			#p color = io.read(4).unpack("I")	# COLORREF
-			#p baseline = io.read(2).unpack("s")	# INT16
-		end
-
-		def to_s
-			@script
-		end
-	end
-
+module Record::Section
 	class ParaHeader
 		attr_accessor(
 			:chars,
@@ -654,7 +836,7 @@ module Record::Data
 		def to_s
 			@utf8_text
 		end
-	end
+	end # ParaText
 
 	class ParaCharShape
 		attr_accessor :m_pos, :m_id
@@ -691,17 +873,6 @@ module Record::Data
 		end
 	end
 
-	class PageDef
-		def initialize data
-			# I | HWPUNIT unsigned int
-			horizontal_size,	vertical_size,	left_margin,
-			right_margin,		top_margin,		bottom_margin,
-			head_margin,		foot_margin,	binding_margin,
-			property = data.unpack("IIIIIIIIII")
-			#print "PageDef: "; p array
-		end
-	end
-
 	class ListHeader
 		attr_accessor :num_para, :property
 		def initialize data
@@ -713,11 +884,34 @@ module Record::Data
 		end
 	end
 
-	class CtrlData
-		attr_accessor :var
+	class PageDef
 		def initialize data
-			@var = data # 표 45 참조
+			# I | HWPUNIT unsigned int
+			horizontal_size,	vertical_size,	left_margin,
+			right_margin,		top_margin,		bottom_margin,
+			head_margin,		foot_margin,	binding_margin,
+			property = data.unpack("IIIIIIIIII")
+			#print "PageDef: "; p array
 		end
+	end
+
+	class FootnoteShape
+		def initialize data
+			#p self
+			# 스펙 문서 57쪽 크기 불일치 26 != 28
+			#p data.unpack("ISSSSSSSSCCIS") # 마지막 2바이트 S, 총 28바이트
+		end
+	end
+
+	class PageBorderFill
+		def initialize data
+			#p self
+			# 스펙 문서 58쪽 크기 불일치 12 != 14
+			#p data.unpack("ISSSSS") # 마지막 2바이트 S, 총 14바이트
+		end
+	end
+
+	class ShapeComponent
 	end
 
 # 스펙 문서 43 쪽 표 70
@@ -729,47 +923,47 @@ module Record::Data
 		end
 	end
 
-	class PropertyOfTableProperty
-		def initialize
+	class ShapeComponentLine;end
+	class ShapeComponentRectangle;end
+	class ShapeComponentEllipse;end
+	class ShapeComponentArc;end
+	class ShapeComponentPolygon;end
+	class ShapeComponentCurve;end
+	class ShapeComponentOLE;end
+	class ShapeComponentPicture;end
+	class ShapeComponentContainer;end
+
+	class CtrlData
+		attr_accessor :var
+		def initialize data
+			@var = data # 표 45 참조
 		end
 	end
 
-	class InfoInsideMargin
-		def initialize
-			@left
-			@right
-			@upper
-			@bottom
+	class EQEdit
+		# TODO DOT 훈DOT 민 DOT 정 DOT 음
+		def initialize data
+			io = StringIO.new(data)
+			property = io.read(4).unpack("I")	# INT32
+			len = io.read(2).unpack("s")[0]	# WORD
+			#io.read(len * 2).unpack("S*").pack("U*")		# WCHAR
+			@script = Iconv.iconv("utf-8", "utf-16", io.read(len * 2))[0].chomp		# WCHAR
+			#p unknown = io.read(2).unpack("S")	# 스펙 50쪽과 다름
+			#p size = io.read(4).unpack("I")		# HWPUNIT
+			#p color = io.read(4).unpack("I")	# COLORREF
+			#p baseline = io.read(2).unpack("s")	# INT16
+		end
+
+		def to_s
+			@script
 		end
 	end
 
-	class FieldProperty
-		def initialize
-			@addr_col_start
-			@addr_row_start
-			@addr_col_end
-			@addr_row_end
-			@border_fill_id
-		end
-	end
-
-	class CellList
-		def initialize
-			@header_para_list
-			@cell_property
-		end
-	end
-
-	class CellProperty
-		def initialize
-			@addr_cell_col
-			@addr_cell_row
-			@num_col_merge
-			@num_row_merge
-			@width
-			@height
-			@margins
-			@border_and_backgroud_id
-		end
-	end
-end
+	class Reserved;end
+	class ShapeComponentTextArt;end
+	class FormObject;end
+	class MemoShape;end
+	class MemoList;end
+	class ChartData;end
+	class ShapeComponentUnknown;end
+end # Record::Section
