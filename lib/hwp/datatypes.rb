@@ -38,13 +38,13 @@ module Datatype
 	class UInt8 < OneByte;	PACK = "C";	end
 
 	class TwoBytes < Type;	SIZE_OF = 2;end
-	class UInt16 < TwoBytes;PACK = "S";	end
-	class Word < TwoBytes;	PACK = "S";	end
+	class UInt16 < TwoBytes;PACK = "v";	end
+	class Word < TwoBytes;	PACK = "v";	end
 
 	class FourBytes < Type;		SIZE_OF = 4;end
 	class Int32 < FourBytes;	PACK = "i";	end
-	class UInt32 < FourBytes;	PACK = "I";	end
-	class ColorRef < FourBytes;	PACK = "I";	end
+	class UInt32 < FourBytes;	PACK = "V";	end
+	class ColorRef < FourBytes;	PACK = "V";	end
 
 	def int8 a_size=1;		return Int8.new a_size;		end
 	def int32 a_size=1;		return Int32.new a_size;	end
