@@ -40,9 +40,9 @@ builder.html do
 			while parser.has_next?
 				response = parser.pull
 				case response.class.to_s
-				when "Record::Data::ParaText"
+				when "Record::Section::ParaText"
 					parser.push response
-				when "Record::Data::ParaCharShape"
+				when "Record::Section::ParaCharShape"
 					# FIXME m_pos 적용해야 한다.
 					size = hwp.doc_info.char_shapes[response.m_id[0]].size / 100
 					builder.p do
@@ -50,7 +50,7 @@ builder.html do
 							builder.text! parser.pop.to_s
 						end
 					end
-				when "Record::Data::EQEdit"
+				when "Record::Section::EQEdit"
 					builder.p response.to_s
 				else
 				end
