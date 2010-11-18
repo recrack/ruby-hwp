@@ -684,7 +684,7 @@ module Record
 	# TODO REVERSE-ENGINEERING
 	class DocInfo::TabDef
 		def initialize data
-			#P data.bytesize
+			#p data.bytesize
 			#p data.unpack("V v V C C v")
 		end
 	end
@@ -766,77 +766,80 @@ end
 
 module Record::Section
 	class ParaHeader
-		attr_accessor(
-			:chars,
-			:control_mask,
-			:ref_para_shape_id,
-			:ref_para_style_id,
-			:a_kind_of_column,
-			:num_char_shape,
-			:num_range_tag,
-			:num_align,
-			:para_instance_id)
+		attr_reader :chars,
+					:control_mask,
+					:ref_para_shape_id,
+					:ref_para_style_id,
+					:column_type,
+					:num_char_shape,
+					:num_range_tag,
+					:num_align,
+					:para_instance_id
 
 		def initialize data
-			@chars,				@control_mask,
-			@ref_para_shape_id,	@ref_para_style_id,
-			@a_kind_of_column,	@num_char_shape,
-			@num_range_tag,		@num_align,
-			@para_instance_id = data.unpack("IISCCSSSI")
+			@chars,
+			@control_mask,
+			@ref_para_shape_id,
+			@ref_para_style_id,
+			@column_type,
+			@num_char_shape,
+			@num_range_tag,
+			@num_align,
+			@para_instance_id = data.unpack("VVvCCvvvV")
 		end
 	end
 
 	class ParaText
-		attr_accessor :utf8_text
 		def initialize data
-			begin
-				# 8 * 2 bytes
-				# \k 를 사용하여 짝(pair)까지 맞아야 하는 정규표현식이다.  \1 을 사용해도 된다.
-				filtered_data = data.gsub(/(?<ctrl>[\x01-\x08]\x00)............\k<ctrl>/m, "")
-				# tab
-				filtered_data.gsub!(/(?<ctrl>\x09\x00)............\k<ctrl>/m, "\t\x00")
-				# 1 * 2 bytes
-				filtered_data.gsub!(/\x0a\x00/m, "")
-				# 8 * 2 bytes
-				filtered_data.gsub!(/(?<ctrl>[\x0b|\x0c]\x00)............\k<ctrl>/m, "")
-				# 1 * 2 bytes
-				filtered_data.gsub!(/\x0d\x00/m, "")
-				# 8 * 2 bytes
-				filtered_data.gsub!(/(?<ctrl>[\x0e-\x17]\x00)............\k<ctrl>/m, "")
-				# 1 * 2 bytes
-				filtered_data.gsub!(/[\x18-\x1d]\x00/m, "")
-				# space
-				filtered_data.gsub!(/\x1e\x00/m, " \x00")
-				filtered_data.gsub!(/\x1f\x00/m, "")
+			s_io = StringIO.new data
+			@byte_str = ""
 
-				# 유니코드 문자 교정, 한자 영역 등의 다른 영영과 겹칠지도 모른다.
-				# 초성 filler utf-16 값 "_\x11"
-				filtered_data.gsub!(/\x84\xF7/m, "_\x11")
+			while(ch = s_io.read(2))
+				case ch.unpack("v")[0]
+				# 2-byte control string
+				when 0,10,13,24,25,26,27,28,29,31
+					#@byte_str << ch
+				when 30 # 0x1e record separator (RS)
+					@byte_str << " \x00"
 
-				# 중성 ㅘ		utf-16 값 "j\x11"
-				filtered_data.gsub!(/\x1C\xF8/m, "j\x11")
-				# 중성 ㅙ		utf-16 값 "k\x11"
-				filtered_data.gsub!(/\x1D\xF8/m, "k\x11")
+				# 16-byte control string, inline
+				when 4,5,6,7,8,19,20
+					s_io.pos = s_io.pos + 14
+				when 9 # tab
+					@byte_str << "\t\x00"
+					s_io.pos = s_io.pos + 14
 
-				# 중성 ㅝ		utf-16 값 "o\x11"
-				filtered_data.gsub!(/4\xF8/m, "o\x11")
+				# 16-byte control string, extended
+				when 1,2,3,11,12,14,15,16,17,18,21,22,23
+					s_io.pos = s_io.pos + 14
 
-				# 종성 ㅆ		utf-16 값 "\xBB\x11"
-				filtered_data.gsub!(/\xCD\xF8/m, "\xBB\x11")
-
-				#p data
-				#p filtered_data
-				@utf8_text = Iconv.iconv("utf-8", "utf-16", filtered_data)[0].chomp
-			rescue
-				p data
-				raise "ERROR: Iconv.iconv(\"utf-8\", \"utf-16\", data)[0].chomp"
+				# 유니코드 문자 교정, 한자 영역 등의 다른 영역과 겹칠지도 모른다.
+				# L filler utf-16 값 "_\x11"
+				when 0xf784 # "\x84\xf7
+					@byte_str << "_\x11"
+				# V ㅘ		utf-16 값 "j\x11"
+				when 0xf81c # "\x1c\xf8"
+					@byte_str << "j\x11"
+				# V ㅙ		utf-16 값 "k\x11"
+				when 0xf81d # "\x1d\xf8"
+					@byte_str << "k\x11"
+				# V ㅝ		utf-16 값 "o\x11"
+				when 0xf834 # "\x34\xf8" "4\xf8"
+					@byte_str << "o\x11"
+				# T ㅆ		utf-16 값 "\xBB\x11"
+				when 0xf8cd # "\xcd\xf8"
+					@byte_str << "\xBB\x11"
+				else
+					@byte_str << ch
+				end
 			end
+			s_io.close
 		end
 
 		def to_s
-			@utf8_text
+			@byte_str.unpack("v*").pack("U*")
 		end
-	end # ParaText
+	end # class ParaText
 
 	class ParaCharShape
 		attr_accessor :m_pos, :m_id
@@ -853,34 +856,53 @@ module Record::Section
 		end
 	end
 
+	# TODO REVERSE-ENGINEERING
 	class ParaLineSeg
-		# 스펙 문서에 안 나와 있음
+		def initialize data
+		end
 	end
 
 	class ParaRangeTag
 		attr_accessor :start, :end, :tag
 		def initialize data
-			@start, @end, @tag = data.unpack("IIb*")
+			@start, @end, @tag = data.unpack("VVb*")
 		end
 	end
 
+	# TODO REVERSE-ENGINEERING
 	class CtrlHeader
 		attr_accessor :ctrl_id
 		def initialize data
-		# 스펙 문서 오류, 사이즈 28 나온다.
-			#p self
-			#p data
 		end
 	end
 
 	class ListHeader
 		attr_accessor :num_para, :property
 		def initialize data
-		# 스펙 문서 오류, 사이즈 18 나온다.
-#			p self
-#			p data
-#			p @num_para = data[0..1].unpack("s*")[0]
-#			p @property = data[2..5].unpack("b*")[0]
+		end
+	end
+
+	class CtrlData
+		attr_accessor :var
+		def initialize data
+		end
+	end
+
+	# TODO REVERSE-ENGINEERING
+	class Table
+		def initialize data
+			prop,
+			row_count,
+			n_cols,
+			cell_spacing,
+			margin1,
+			margin2,
+			margin3,
+			margin4 = data.unpack("Vvvvvvvv")
+			row_size = data.unpack("x18 C#{2*row_count} CC")
+			border_fill_id,
+			valid_zone_info_size = 
+				data.unpack("x#{18+2*row_count} CC")
 		end
 	end
 
@@ -911,15 +933,12 @@ module Record::Section
 		end
 	end
 
+	# TODO REVERSE-ENGINEERING
 	class ShapeComponent
-	end
-
-# 스펙 문서 43 쪽 표 70
-# UINT32 4바이트
-	class Table
 		def initialize data
-			@common_property,	@num_row,	@num_col,
-			@cell_spacing,		@num_col = data.unpack("ISSSS")
+			#ctrl_id = data.unpack("CCCC").pack("U*").reverse
+			#p data.unpack("CCCCCCCC").pack("U*").reverse
+			#p data.unpack("x8 iivvVVVVVvii")
 		end
 	end
 
@@ -930,15 +949,15 @@ module Record::Section
 	class ShapeComponentPolygon;end
 	class ShapeComponentCurve;end
 	class ShapeComponentOLE;end
-	class ShapeComponentPicture;end
-	class ShapeComponentContainer;end
 
-	class CtrlData
-		attr_accessor :var
+	# TODO REVERSE-ENGINEERING
+	class ShapeComponentPicture
 		def initialize data
-			@var = data # 표 45 참조
+			data.unpack("V6sv4Vv vV vVvV")
 		end
 	end
+
+	class ShapeComponentContainer;end
 
 	class EQEdit
 		# TODO DOT 훈DOT 민 DOT 정 DOT 음
