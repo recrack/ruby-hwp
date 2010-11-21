@@ -3,7 +3,7 @@
 # hwp 스펙 문서 11쪽 저작권 관련 내용을 보면 이렇게 표시하라고 해서 이렇게 표시했을 뿐입니다.
 # ruby-hwp는 (주)한글과컴퓨터社가 만든 것이 아니며, (주)한글과컴퓨터社가 지원하지 않으며,
 # (주)한글과컴퓨터社가 유지보수하지 않습니다.
-# Note that ruby-hwp is 
+# Note that ruby-hwp is
 # not manufactured, not approved, not supported, not maintained by Hancom Inc.
 # ruby-hwp 개발자는 (주)한글과컴퓨터社와 아무런 관련이 없습니다.
 # ruby-hwp 및 ruby-hwp 관련 문서 내용을 사용하여 발생된 모든 결과에 대하여 책임지지 않습니다.
@@ -193,7 +193,6 @@ module Record
 					:compress_policy,	# deprecated method
 					:status			# deprecated method
 
-		# TODO remove s_io, use unpack "x"
 		def initialize data
 			s_io = StringIO.new data
 			flag = s_io.read(2).unpack("v")[0]
@@ -465,7 +464,10 @@ module Record
 					:bottom_border,
 					:diagonal,
 					:type,
-					:size
+					:size,
+					:window_brush,
+					:gradation,
+					:image_brush
 
 		class Border
 			attr_reader :type, :width, :color
@@ -540,51 +542,80 @@ module Record
 			'crooked slash'
 		]
 
+		module FillBrush
+			class WindowBrush
+				attr_reader :face_color,
+							:hatch_color,
+							:hatch_style
+				def initialize data
+					@face_color, @hatch_color, @hatch_style = data.unpack("VVV")
+				end
+			end
+
+			class Gradation
+				attr_accessor :type,
+							  :angle,
+							  :center_x,
+							  :center_y,
+							  :step,
+							  :step_center,
+							  :colors
+			end
+
+			class ImageBrush
+				attr_reader :mode,
+							:bright,
+							:contrast,
+							:effect,
+							:bin_item
+				def initialize data
+					@mode,
+					@bright,
+					@contrast, @effect, @bin_item = data.unpack("")
+				end
+			end
+		end
+
 		def initialize data
-			@bit,
+			s_io = StringIO.new data
+
+			@bit = s_io.read(1).unpack("b8")
+
 			left_type,  right_type,  top_type,  bottom_type,
 			left_width, right_width, top_width, bottom_width,
 			left_color, right_color, top_color, bottom_color,
 			diagonal_type, diagonal_width, diagonal_color,
-			type, size = data.unpack("b8 CCCC CCCC VVVV CCV V V")
+			type, size = s_io.read(38).unpack("C8V4CCVVV")
 
 			@slash		= SLASH_TYPE[@bit[2..4]]
 			@back_slash	= SLASH_TYPE[@bit[5..7]]
 
-			@left_border	= LeftBorder.new(left_border, left_type, left_width)
-			@right_border	= RightBorder.new(right_border, right_type, right_width)
-			@top_border		= TopBorder.new(top_border,top_type,top_width)
-			@bottom_border	= BottomBorder.new(bottom_border,bottom_type,bottom_width)
+			# type, width, color
+			@left_border	= LeftBorder.new(left_type, left_width, left_color)
+			@right_border	= RightBorder.new(right_type, right_width, right_color)
+			@top_border		= TopBorder.new(top_type,top_width,top_color)
+			@bottom_border	= BottomBorder.new(bottom_type,bottom_width,bottom_color)
 
-			@left_border = LeftBorder.new left_type, left_width, left_color
-			@right_border = RightBorder.new(right_type, right_width, right_color)
-			@top_border = TopBorder.new top_type, top_width, top_color
-			@bottom_border = BottomBorder.new(bottom_type, bottom_width, bottom_color)
 			@diagonal = Diagonal.new(diagonal_type, diagonal_width, diagonal_color)
 			@type = BORDER_LINE_TYPE[type]
 			@size = BORDER_LINE_TYPE[size]
-			# FIXME
-			gradation_step_center = data[-1].unpack("C")[0]
-			# TODO make sub class
+			@gradation = FillBrush::Gradation.new
+
 			if data.bytesize > 40
-				face_color,
-				hatch_color,
-				hatch_style,
-				gradation_type,
-				gradation_angle,
-				gradation_center_x,
-				gradation_center_y,
-				gradation_step,
-				gradation_color_num = data.unpack("x39 VVV vvvvvv")[0]
-				gradation_colors = data.unpack "x63 V#{gradation_color_num}"
-				image_brush_mode,
-				bright,
-				contrast,
-				effect,
-				bin_item_id,
+				@window_brush = FillBrush::WindowBrush.new s_io.read(12)
+				@gradation.type,
+				@gradation.angle,
+				@gradation.center_x,
+				@gradation.center_y,
+				@gradation.step,
+				gradation_color_num = s_io.read(12).unpack("vvvvvv")
+				@gradation.colors = s_io.read(4*gradation_color_num).unpack("V*")
+				@image_brush = FillBrush::ImageBrush.new s_io.read(6)
 				additional_gradation,
-				additional_gradation_center = data.unpack "x#{67+4*gradation_color_num} C cccv VC"
+				additional_gradation_center = s_io.read(5).unpack "VC"
 			end
+			@gradation.step_center = s_io.read(1).unpack("C")[0]
+			s_io.close
 		end
 
 		def three_d?
@@ -681,85 +712,137 @@ module Record
 		end
 	end
 
-	# TODO REVERSE-ENGINEERING
+	# TODO TEST
 	class DocInfo::TabDef
+		attr_reader :count, :tab_items
+
+		class TabItem
+			attr_reader :pos, :type, :leader
+			def initialize data
+				@pos, @type, @leader = data.unpack("VCC")
+			end
+		end
+
 		def initialize data
-			#p data.bytesize
-			#p data.unpack("V v V C C v")
+			@tab_items = []
+			s_io = StringIO.new data
+			@bit, @count = s_io.read(6).unpack("b32v")
+			s_io.pos += 2 # dummy
+
+			@count.times do
+				@tab_items << TabItem.new(s_io.read 6)
+				s_io.pos += 2 # dummy
+			end
+			s_io.close
+		end
+
+		def auto_tab_left?
+			not @bit[0].zero?
+		end
+
+		def auto_tab_right?
+			not @bit[1].zero?
 		end
 	end
 
 	class DocInfo::Numbering
 		def initialize data
+			raise NotImplementedError.new "DocInfo::Numbering"
 		end
 	end
 
 	class DocInfo::Bullet
 		def initialize data
+			raise NotImplementedError.new "DocInfo::Bullet"
 		end
 	end
 
 	# TODO REVERSE-ENGINEERING
 	class DocInfo::ParaShape
 		def initialize data
+			#raise NotImplementedError.new "DocInfo::ParaShape"
 			#p data.bytesize
-			#p data.unpack("b32VVVVVVvvvvvvvVVV")
+			s_io = StringIO.new data
+			s_io.read(4).unpack("b32") # property
+			# PARA MARGIN
+			left = s_io.read(4).unpack("V")
+			right = s_io.read(4).unpack("V")
+			indent = s_io.read(4).unpack("V")
+			prev = s_io.read(4).unpack("V")
+			_next = s_io.read(4).unpack("V")
+			line_spacing = s_io.read(4).unpack("V")
+			s_io.read(2).unpack("v")
+			heading = s_io.read(2).unpack("v")
+			# PARA BORDER
+			s_io.read(2).unpack("v")
+			s_io.read(2).unpack("v")
+			s_io.read(2).unpack("v")
+			s_io.read(2).unpack("v")
+			s_io.read(2).unpack("v")
+			# FIXME SIZE DISMATCH
+			#p s_io.read(4).unpack("V")
+			#p s_io.read(4).unpack("V")
+			#p s_io.read(4).unpack("V")
+			#p s_io.pos
+			s_io.close
 		end
 	end
 
-	# TODO REVERSE-ENGINEERING
 	class DocInfo::Style
 		def initialize data
-			#p data.bytesize
-			len1 = data.unpack("v")[0]
-			local_style_name = data.unpack("x2 v#{len1}").pack("U*")
-			len2 = data.unpack("x#{2+2*len1} v")[0]
-			data.unpack("x#{4+2*len1} v#{len2}").pack("U*")
-			data.unpack("x#{4+2*len1+2*len2} ccsvv")
+			s_io = StringIO.new data
+			len = s_io.read(2).unpack('v')[0]
+			name = s_io.read(len*2).unpack('v*').pack("U*")
+			len = s_io.read(2).unpack('v')[0]
+			eng_name = s_io.read(len*2).unpack('v*').pack("U*")
+			bit, next_style_id = s_io.read(2).unpack('b8C')
+
+			lang_id = s_io.read(2).unpack('v') # TODO TEST
+			para_shape_id, char_shape_id = s_io.read(4).unpack('vv')
+			lock_form = s_io.read(2).unpack('v') # TODO TEST
 		end
 	end
 
 	# TODO REVERSE-ENGINEERING
 	class DocInfo::DocData
 		def initialize data
+			#p data.bytesize # => 72
 			s_io = StringIO.new data
-			param_set_id = s_io.read(2)
-			n = s_io.read(2).unpack("c")[0]
-
-			param_item_id = s_io.read(2)
-			param_item_type = s_io.read(2).unpack("CC")
-
-			param_item_type[0]
-			param_item_type[1] & 0x8000
-			param_item_type[1] & 0x8001
-			param_item_type[1] & 0x8002
+			param_set_id = s_io.read(2).unpack("v")#.pack("U")
+			count = s_io.read(2).unpack("v")[0]
+			param_item_id = s_io.read(2).unpack("v")[0]
+			#bit = s_io.read(2).unpack("b16")[0]
 			s_io.close
 		end
 	end
 
-	# TODO REVERSE-ENGINEERING
 	class DocInfo::DistributeDocData
 		def initialize data
+			raise NotImplementedError.new "DocInfo::DistributeDocData"
 		end
 	end
 
 	class DocInfo::Reserved
 		def initialize data
+			raise NotImplementedError.new "DocInfo::Reserved"
 		end
 	end
 
 	class DocInfo::CompatibleDocument
 		def initialize data
+			raise NotImplementedError.new "DocInfo::CompatibleDocument"
 		end
 	end
 
 	class DocInfo::LayoutCompatibility
 		def initialize data
+			raise NotImplementedError.new "DocInfo::LayoutCompatibility"
 		end
 	end
 
 	class DocInfo::ForbiddenChar
 		def initialize data
+			raise NotImplementedError.new "DocInfo::ForbiddenChar"
 		end
 	end
 end
@@ -779,8 +862,8 @@ module Record::Section
 		def initialize data
 			@chars,
 			@control_mask,
-			@ref_para_shape_id,
-			@ref_para_style_id,
+			@para_shape_id,
+			@para_style_id,
 			@column_type,
 			@num_char_shape,
 			@num_range_tag,
@@ -813,6 +896,7 @@ module Record::Section
 				when 1,2,3,11,12,14,15,16,17,18,21,22,23
 					s_io.pos = s_io.pos + 14
 
+				# TODO mapping table
 				# 유니코드 문자 교정, 한자 영역 등의 다른 영역과 겹칠지도 모른다.
 				# L filler utf-16 값 "_\x11"
 				when 0xf784 # "\x84\xf7
@@ -865,7 +949,8 @@ module Record::Section
 	class ParaRangeTag
 		attr_accessor :start, :end, :tag
 		def initialize data
-			@start, @end, @tag = data.unpack("VVb*")
+			raise NotImplementedError.new "Record::Section::ParaRangeTag"
+			#@start, @end, @tag = data.unpack("VVb*")
 		end
 	end
 
@@ -873,91 +958,193 @@ module Record::Section
 	class CtrlHeader
 		attr_accessor :ctrl_id
 		def initialize data
+			s_io = StringIO.new data
+			ctrl_id = s_io.read(4).unpack("C4").pack("U*").reverse
+			#p s_io.read.unpack("v*")
+			s_io.close
 		end
 	end
 
+	# TODO REVERSE-ENGINEERING
 	class ListHeader
 		attr_accessor :num_para, :property
 		def initialize data
+			s_io = StringIO.new data
+			s_io.read(2).unpack("v")
+			#p data.bytesize
+			# 바이트가 남는다
+			s_io.close
 		end
 	end
 
 	class CtrlData
 		attr_accessor :var
 		def initialize data
+			raise NotImplementedError.new "Record::Section::CtrlData"
 		end
 	end
 
 	# TODO REVERSE-ENGINEERING
 	class Table
 		def initialize data
-			prop,
-			row_count,
-			n_cols,
-			cell_spacing,
-			margin1,
-			margin2,
-			margin3,
-			margin4 = data.unpack("Vvvvvvvv")
-			row_size = data.unpack("x18 C#{2*row_count} CC")
-			border_fill_id,
-			valid_zone_info_size = 
-				data.unpack("x#{18+2*row_count} CC")
+			s_io = StringIO.new data
+			prop = s_io.read(4).unpack("V")
+			row_count = s_io.read(2).unpack("v")[0]
+			n_cols = s_io.read(2).unpack("v")[0]
+			cell_spacing = s_io.read(2).unpack("v")
+			margin1 = s_io.read(2).unpack("v")
+			margin2 = s_io.read(2).unpack("v")
+			margin3 = s_io.read(2).unpack("v")
+			margin4 = s_io.read(2).unpack("v")
+			row_size = s_io.read(2*row_count).unpack("v*")
+			border_fill_id = s_io.read(2).unpack("v")
+			#valid_zone_info_size = s_io.read(2).unpack("v")[0]
+			#zone_prop = s_io.read(10*valid_zone_info_size).unpack("v*")
+			s_io.close
+		end
+	end
+
+	class ShapeComponent
+		attr_reader :scale_matrices, :rotate_matrices
+		FLIP_TYPE = ['horz flip', 'vert flip']
+
+		def initialize data
+			@scale_matrices, @rotate_matrices = [], []
+			s_io = StringIO.new data
+			# NOTE ctrl_id 가 두 번 반복됨을 주의하자
+			ctrl_id = s_io.read(4).unpack("C4").pack("U*").reverse
+			ctrl_id = s_io.read(4).unpack("C4").pack("U*").reverse
+
+			x_pos = s_io.read(4).unpack("I")[0]
+			y_pos = s_io.read(4).unpack("I")[0]
+			group_level = s_io.read(2).unpack("v")[0]
+			local_file_version = s_io.read(2).unpack("v")[0]
+
+			ori_width = s_io.read(4).unpack("V")[0]
+			ori_height = s_io.read(4).unpack("V")[0]
+			cur_width = s_io.read(4).unpack("V")[0]
+			cur_height = s_io.read(4).unpack("V")[0]
+
+			flip = FLIP_TYPE[s_io.read(4).unpack("V")[0]]
+
+			angle = s_io.read(2).unpack("v")[0]
+			center_x = s_io.read(4).unpack("V")[0]
+			center_y = s_io.read(4).unpack("V")[0]
+
+			count = s_io.read(2).unpack("v")[0]
+			trans_matrix = s_io.read(48).unpack("E6")
+
+			count.times do
+				@scale_matrices  << s_io.read(48).unpack("E6")
+				@rotate_matrices << s_io.read(48).unpack("E6")
+			end
+		end
+	end
+
+	class ShapeComponentLine
+		def initialize data
+			raise NotImplementedError.new "Record::Section::ShapeComponentLine"
+		end
+	end
+
+	class ShapeComponentRectangle
+		def initialize data
+			raise NotImplementedError.new "Record::Section::ShapeComponentRectangle"
+		end
+	end
+
+	class ShapeComponentEllipse
+		def initialize data
+			raise NotImplementedError.new "Record::Section::ShapeComponentEllipse"
+		end
+	end
+	
+	class ShapeComponentArc
+		def initialize data
+			raise NotImplementedError.new "Record::Section::ShapeComponentArc"
+		end
+	end
+
+	class ShapeComponentPolygon
+		def initialize data
+			raise NotImplementedError.new "Record::Section::ShapeComponentPolygon"
+		end
+	end
+	
+	class ShapeComponentCurve
+		def initialize data
+			raise NotImplementedError.new "Record::Section::ShapeComponentCurve"
+		end
+	end
+	
+	class ShapeComponentOLE
+		def initialize data
+			raise NotImplementedError.new "Record::Section::ShapeComponentOLE"
+		end
+	end
+
+	# TODO REVERSE-ENGINEERING
+	class ShapeComponentPicture
+		def initialize data
+			p data.unpack("V6sv4Vv vV vVvV")
+		end
+	end
+
+	class ShapeComponentContainer
+		def initialize data
+			raise NotImplementedError.new "Record::Section::ShapeComponentContainer"
+		end
+	end
+
+	class ShapeComponentTextArt
+		def initialize data
+			raise NotImplementedError.new "Record::Section::ShapeComponentTextArt"
+		end
+	end
+
+	class ShapeComponentUnknown
+		def initialize data
+			raise NotImplementedError.new "Record::Section::ShapeComponentUnknown"
 		end
 	end
 
 	class PageDef
 		def initialize data
-			# I | HWPUNIT unsigned int
-			horizontal_size,	vertical_size,	left_margin,
-			right_margin,		top_margin,		bottom_margin,
-			head_margin,		foot_margin,	binding_margin,
-			property = data.unpack("IIIIIIIIII")
-			#print "PageDef: "; p array
+			width,	height,
+			left_margin,	right_margin,
+			top_margin,		bottom_margin,
+			header_margin,	footer_margin,
+			gutter_margin,	property = data.unpack("V*")
 		end
 	end
 
+	# TODO REVERSE-ENGINEERING
 	class FootnoteShape
 		def initialize data
-			#p self
-			# 스펙 문서 57쪽 크기 불일치 26 != 28
-			#p data.unpack("ISSSSSSSSCCIS") # 마지막 2바이트 S, 총 28바이트
+			s_io = StringIO.new data
+			s_io.read(4)
+			s_io.read(2)
+			s_io.read(2).unpack("CC").pack("U*")
+			s_io.read(2)
+			s_io.read(2)
+			s_io.read(2)
+			s_io.read(2)
+			s_io.read(2)
+			s_io.read(2)
+			s_io.read(1)
+			s_io.read(1)
+			s_io.read(4)
+			# 바이트가 남는다
+			s_io.close
 		end
 	end
 
 	class PageBorderFill
 		def initialize data
-			#p self
 			# 스펙 문서 58쪽 크기 불일치 12 != 14
 			#p data.unpack("ISSSSS") # 마지막 2바이트 S, 총 14바이트
 		end
 	end
-
-	# TODO REVERSE-ENGINEERING
-	class ShapeComponent
-		def initialize data
-			#ctrl_id = data.unpack("CCCC").pack("U*").reverse
-			#p data.unpack("CCCCCCCC").pack("U*").reverse
-			#p data.unpack("x8 iivvVVVVVvii")
-		end
-	end
-
-	class ShapeComponentLine;end
-	class ShapeComponentRectangle;end
-	class ShapeComponentEllipse;end
-	class ShapeComponentArc;end
-	class ShapeComponentPolygon;end
-	class ShapeComponentCurve;end
-	class ShapeComponentOLE;end
-
-	# TODO REVERSE-ENGINEERING
-	class ShapeComponentPicture
-		def initialize data
-			data.unpack("V6sv4Vv vV vVvV")
-		end
-	end
-
-	class ShapeComponentContainer;end
 
 	class EQEdit
 		# TODO DOT 훈DOT 민 DOT 정 DOT 음
@@ -978,11 +1165,33 @@ module Record::Section
 		end
 	end
 
-	class Reserved;end
-	class ShapeComponentTextArt;end
-	class FormObject;end
-	class MemoShape;end
-	class MemoList;end
-	class ChartData;end
-	class ShapeComponentUnknown;end
+	class Reserved
+		def initialize data
+			raise NotImplementedError.new "Record::Section::ShapeComponentUnknown"
+		end
+	end
+
+	class FormObject
+		def initialize data
+			raise NotImplementedError.new "Record::Section::FormObject"
+		end
+	end
+
+	class MemoShape
+		def initialize data
+			raise NotImplementedError.new "Record::Section::MemoShape"
+		end
+	end
+
+	class MemoList
+		def initialize data
+			raise NotImplementedError.new "Record::Section::MemoList"
+		end
+	end
+
+	class ChartData
+		def initialize data
+			raise NotImplementedError.new "Record::Section::ChartData"
+		end
+	end
 end # Record::Section
