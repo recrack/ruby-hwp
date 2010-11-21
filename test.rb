@@ -26,4 +26,7 @@ hwp = HWP.open ARGV[0]
 parser = HWP::Parser.new hwp.bodytext.sections[0]
 while parser.has_next?
 	response = parser.pull
+	case response.class.to_s
+	when "Record::Section::ParaText"
+	end
 end

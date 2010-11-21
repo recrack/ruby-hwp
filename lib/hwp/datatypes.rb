@@ -1,31 +1,6 @@
 require 'stringio'
 
 module Datatype
-# unpack, pack
-# C     |  Unsigned char # 1 byte
-# I     |  Unsigned integer # 4 bytes
-# L     |  Unsigned long
-# S     |  Unsigned short # 2 bytes
-
-# c     |  char # 1 byte
-# i     |  integer # 4 bytes
-# l     |  long
-# s     |  short # 2 bytes
-
-# unpack, pack
-# C     |  UINT8  # 1 byte
-# I     |  UINT32 # 4 bytes
-# L     |  Unsigned long
-# S     |  UINT16 # 2 bytes
-
-# c     |  char # 1 byte
-# i     |  integer # 4 bytes
-# l     |  long
-# s     |  short # 2 bytes
-
-# typedef unsigned char  UINT8;		1 byte
-# typedef unsigned short UINT16;	2 bytes
-# typedef unsigned int   UINT32;	4 bytes
 	class Type
 		attr_reader :a_size
 		def initialize a_size
