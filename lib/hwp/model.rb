@@ -1,3 +1,5 @@
+# coding: utf-8
+
 # (주)한글과컴퓨터의 한컴오피스 hwp 문서 파일 구조 공개정책에 따라 이루어졌습니다.
 # 이렇게 말하면 ruby-hwp 개발자가 (주)한글과컴퓨터社와 어떤 관계가 있는 것처럼 오해받을 수 있지만
 # hwp 스펙 문서 11쪽 저작권 관련 내용을 보면 이렇게 표시하라고 해서 이렇게 표시했을 뿐입니다.
@@ -875,21 +877,22 @@ module Record::Section
 	class ParaText
 		def initialize data
 			s_io = StringIO.new data
-			@byte_str = ""
+
+			@bytes = []
 
 			while(ch = s_io.read(2))
 				case ch.unpack("v")[0]
 				# 2-byte control string
 				when 0,10,13,24,25,26,27,28,29,31
-					#@byte_str << ch
+					#@bytes << ch.unpack("v")[0]
 				when 30 # 0x1e record separator (RS)
-					@byte_str << " \x00"
+					@bytes << 0x20 # 임시로 스페이스로 대체
 
 				# 16-byte control string, inline
 				when 4,5,6,7,8,19,20
 					s_io.pos = s_io.pos + 14
 				when 9 # tab
-					@byte_str << "\t\x00"
+					@bytes << 9
 					s_io.pos = s_io.pos + 14
 
 				# 16-byte control string, extended
@@ -900,28 +903,28 @@ module Record::Section
 				# 유니코드 문자 교정, 한자 영역 등의 다른 영역과 겹칠지도 모른다.
 				# L filler utf-16 값 "_\x11"
 				when 0xf784 # "\x84\xf7
-					@byte_str << "_\x11"
+					@bytes << 0x115f
 				# V ㅘ		utf-16 값 "j\x11"
 				when 0xf81c # "\x1c\xf8"
-					@byte_str << "j\x11"
+					@bytes << 0x116a
 				# V ㅙ		utf-16 값 "k\x11"
 				when 0xf81d # "\x1d\xf8"
-					@byte_str << "k\x11"
+					@bytes << 0x116b
 				# V ㅝ		utf-16 값 "o\x11"
 				when 0xf834 # "\x34\xf8" "4\xf8"
-					@byte_str << "o\x11"
+					@bytes << 0x116f
 				# T ㅆ		utf-16 값 "\xBB\x11"
 				when 0xf8cd # "\xcd\xf8"
-					@byte_str << "\xBB\x11"
+					@bytes << 0x11bb
 				else
-					@byte_str << ch
+					@bytes << ch.unpack("v")[0]
 				end
 			end
 			s_io.close
 		end
 
 		def to_s
-			@byte_str.unpack("v*").pack("U*")
+			@bytes.pack("U*")
 		end
 	end # class ParaText
 
