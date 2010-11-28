@@ -1,5 +1,7 @@
 .hwp 문서 파일을 읽기 위한 루비 라이브러리
 
+실험 버전입니다.
+
 소스 다운 받기
 git clone git://github.com/cogniti/ruby-hwp.git
 
