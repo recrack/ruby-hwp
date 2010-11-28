@@ -17,8 +17,23 @@ require 'hwp/datatypes'
 
 # TODO close StringIO instances
 
-module Record;end
 module Record
+	module Header
+		def self.decode bytes
+			lsb_first = bytes.unpack("b*")[0] # 이진수, LSB first, bit 0 가 맨 앞에 온다.
+
+			if lsb_first
+				@tag_id	= lsb_first[0..9].reverse.to_i(2) # 9~0
+				@level	= lsb_first[10..19].reverse.to_i(2) # 19~10
+				@size	= lsb_first[20..31].reverse.to_i(2) # 31~20
+			end
+		end
+
+		def self.tag_id;	@tag_id;	end
+		def self.level;		@level;		end
+		def self.size;		@size;		end
+	end
+
 	class DocInfo
 		attr_reader :document_properties,
 					:id_mappings,
@@ -39,7 +54,7 @@ module Record
 					:forbidden_char
 
 		def initialize(dirent, header)
-			if header.gzipped?
+			if header.compress?
 				z = Zlib::Inflate.new(-Zlib::MAX_WBITS)
 				@doc_info = StringIO.new(z.inflate dirent.read)
 				z.finish; z.close
@@ -106,9 +121,74 @@ module Record
 				else
 					raise "UNKNOWN RECORD"
 				end
+			end # while
+		end # initialize
+	end # DocInfo
+
+	class BodyText
+		attr_accessor :sections
+		def initialize(dirent, header)
+			@dirent = dirent
+			@sections = []
+
+			if header.compress?
+				@dirent.each_child do |section|
+					z = Zlib::Inflate.new(-Zlib::MAX_WBITS)
+					@sections << StringIO.new(z.inflate section.read)
+					z.finish
+					z.close
+				end
+			else
+				@dirent.each_child do |section|
+					@sections << StringIO.new(section)
+				end
 			end
 		end
+	end # of (class BodyText)
+
+	class ViewText
+		def initialize dirent
+			raise NotImplementedError.new("ViewText is not supported")
+		end
 	end
+
+	class SummaryInformation
+	end
+
+	class BinData
+		def initialize(dirent, header);end
+	end
+
+	class PrvText
+		def initialize(dirent)
+			@dirent = dirent
+		end
+
+		def parse
+			puts Iconv.iconv('utf-8', 'utf-16', @dirent.read)
+		end
+	end
+
+	class PrvImage
+		def initialize(dirent)
+			@dirent = dirent
+		end
+
+		def parse
+			@dirent.read
+		end
+	end
+
+	class DocOptions;end
+	class Scripts;end
+	class XMLTemplate;end
+
+	class DocHistory
+		def initialize(dirent, header);end
+	end
+end # of (module Record)
+
+module Record
 #     V    | Fixnum  | treat four characters as an unsigned
 #          |         | long in little-endian byte order
 #   -------+---------+-----------------------------------------
@@ -126,9 +206,11 @@ module Record
 					# caret pos
 					:caret_pos_list_id,
 					:caret_pos_para_id,
-					:caret_pos_char_pos
+					:caret_pos_char_pos,
+					:level
 
-		def initialize data
+		def initialize data, level
+			@level = level
 			@section_count,
 			# begin num
 			@page_start_num,
@@ -162,9 +244,11 @@ module Record
 					:bullet_count,
 					:para_shape_count,
 					:style_count,
-					:memo_shape_count
+					:memo_shape_count,
+					:level
 
-		def initialize data
+		def initialize data, level
+			@level = level
 			@bin_data_count,
 			# font count
 			@korean_font_count,
@@ -193,9 +277,11 @@ module Record
 					:id,
 					:format,
 					:compress_policy,	# deprecated method
-					:status			# deprecated method
+					:status,			# deprecated method
+					:level
 
-		def initialize data
+		def initialize data, level
+			@level = level
 			s_io = StringIO.new data
 			flag = s_io.read(2).unpack("v")[0]
 			# bit 0 ~ 3
@@ -240,7 +326,8 @@ module Record
 					:subst_font_type, # done
 					:subst_font_name, # done
 					:rep_font_name, # done
-					:font_type_info
+					:font_type_info,
+					:level
 
 		class TypeInfo
 			# PANOSE v1.0
@@ -415,7 +502,8 @@ module Record
 			end
 		end # class TypeInfo
 
-		def initialize data
+		def initialize data, level
+			@level = level
 			s_io = StringIO.new data
 			@flag, len = s_io.read(3).unpack("Cv")
 			@font_name = s_io.read(len*2).unpack("v*").pack("U*")
@@ -456,7 +544,7 @@ module Record
 		end
 	end # class DocInfo::FaceName
 
-	# TODO REVERSE-ENGINEERING
+	# TODO TEST
 	class DocInfo::BorderFill
 		attr_reader :slash,
 					:backslash,
@@ -469,7 +557,8 @@ module Record
 					:size,
 					:window_brush,
 					:gradation,
-					:image_brush
+					:image_brush,
+					:level
 
 		class Border
 			attr_reader :type, :width, :color
@@ -578,7 +667,8 @@ module Record
 			end
 		end
 
-		def initialize data
+		def initialize data, level
+			@level = level
 			s_io = StringIO.new data
 
 			@bit = s_io.read(1).unpack("b8")
@@ -629,12 +719,10 @@ module Record
 		end
 	end
 
+	# TODO REVERSE-ENGINEERING
+	# SIZE DISMATCH
 	class DocInfo::CharShape
 		attr_reader :lang,
-					:ratio,
-					:char_spacing,
-					:rel_size,
-					:char_offset,
 					:size,
 					:prop,
 					:space_between_shadows1,
@@ -642,7 +730,8 @@ module Record
 					:color_letter,
 					:color_underline,
 					:color_shade,
-					:color_shadow
+					:color_shadow,
+					:level
 
 		class Lang
 			attr_accessor	:font_id,
@@ -652,7 +741,8 @@ module Record
 							:char_offset
 		end
 
-		def initialize data
+		def initialize data, level
+			@level = level
 			@lang = {
 				:korean		=> Lang.new,
 				:english	=> Lang.new,
@@ -716,7 +806,7 @@ module Record
 
 	# TODO TEST
 	class DocInfo::TabDef
-		attr_reader :count, :tab_items
+		attr_reader :count, :tab_items, :level
 
 		class TabItem
 			attr_reader :pos, :type, :leader
@@ -725,7 +815,8 @@ module Record
 			end
 		end
 
-		def initialize data
+		def initialize data, level
+			@level = level
 			@tab_items = []
 			s_io = StringIO.new data
 			@bit, @count = s_io.read(6).unpack("b32v")
@@ -748,22 +839,26 @@ module Record
 	end
 
 	class DocInfo::Numbering
-		def initialize data
+		attr_reader :level
+		def initialize data, level
+			@level = level
 			raise NotImplementedError.new "DocInfo::Numbering"
 		end
 	end
 
 	class DocInfo::Bullet
-		def initialize data
+		attr_reader :level
+		def initialize data, level
+			@level = level
 			raise NotImplementedError.new "DocInfo::Bullet"
 		end
 	end
 
 	# TODO REVERSE-ENGINEERING
 	class DocInfo::ParaShape
-		def initialize data
-			#raise NotImplementedError.new "DocInfo::ParaShape"
-			#p data.bytesize
+		attr_reader :level
+		def initialize data, level
+			@level = level
 			s_io = StringIO.new data
 			s_io.read(4).unpack("b32") # property
 			# PARA MARGIN
@@ -791,7 +886,10 @@ module Record
 	end
 
 	class DocInfo::Style
-		def initialize data
+		attr_reader :level
+
+		def initialize data, level
+			@level = level
 			s_io = StringIO.new data
 			len = s_io.read(2).unpack('v')[0]
 			name = s_io.read(len*2).unpack('v*').pack("U*")
@@ -807,7 +905,10 @@ module Record
 
 	# TODO REVERSE-ENGINEERING
 	class DocInfo::DocData
-		def initialize data
+		attr_reader :level
+
+		def initialize data, level
+			@level = level
 			#p data.bytesize # => 72
 			s_io = StringIO.new data
 			param_set_id = s_io.read(2).unpack("v")#.pack("U")
@@ -819,31 +920,46 @@ module Record
 	end
 
 	class DocInfo::DistributeDocData
-		def initialize data
+		attr_reader :level
+
+		def initialize data, level
+			@level = level
 			raise NotImplementedError.new "DocInfo::DistributeDocData"
 		end
 	end
 
 	class DocInfo::Reserved
-		def initialize data
+		attr_reader :level
+
+		def initialize data, level
+			@level = level
 			raise NotImplementedError.new "DocInfo::Reserved"
 		end
 	end
 
 	class DocInfo::CompatibleDocument
-		def initialize data
+		attr_reader :level
+
+		def initialize data, level
+			@level = level
 			raise NotImplementedError.new "DocInfo::CompatibleDocument"
 		end
 	end
 
 	class DocInfo::LayoutCompatibility
-		def initialize data
+		attr_reader :level
+
+		def initialize data, level
+			@level = level
 			raise NotImplementedError.new "DocInfo::LayoutCompatibility"
 		end
 	end
 
 	class DocInfo::ForbiddenChar
-		def initialize data
+		attr_reader :level
+
+		def initialize data, level
+			@level = level
 			raise NotImplementedError.new "DocInfo::ForbiddenChar"
 		end
 	end
@@ -859,9 +975,11 @@ module Record::Section
 					:num_char_shape,
 					:num_range_tag,
 					:num_align,
-					:para_instance_id
+					:para_instance_id,
+					:level
 
-		def initialize data
+		def initialize data, level
+			@level = level
 			@chars,
 			@control_mask,
 			@para_shape_id,
@@ -875,7 +993,10 @@ module Record::Section
 	end
 
 	class ParaText
-		def initialize data
+		attr_reader :level
+
+		def initialize data, level
+			@level = level
 			s_io = StringIO.new data
 
 			@bytes = []
@@ -929,13 +1050,14 @@ module Record::Section
 	end # class ParaText
 
 	class ParaCharShape
-		attr_accessor :m_pos, :m_id
-
-		def initialize data
+		attr_accessor :m_pos, :m_id, :level
+		# TODO m_pos, m_id 가 좀 더 편리하게 바뀔 필요가 있다.
+		def initialize data, level
+			@level = level
 			@m_pos = []
 			@m_id = []
 			n = data.bytesize / 4
-			array = data.unpack("I" * n)
+			array = data.unpack("V" * n)
 			array.each_with_index do |element, i|
 				@m_pos << element if (i % 2) == 0
 				@m_id  << element if (i % 2) == 1
@@ -945,13 +1067,17 @@ module Record::Section
 
 	# TODO REVERSE-ENGINEERING
 	class ParaLineSeg
-		def initialize data
+		attr_reader :level
+
+		def initialize data, level
+			@level = level
 		end
 	end
 
 	class ParaRangeTag
-		attr_accessor :start, :end, :tag
-		def initialize data
+		attr_accessor :start, :end, :tag, :level
+		def initialize data, level
+			@level = level
 			raise NotImplementedError.new "Record::Section::ParaRangeTag"
 			#@start, @end, @tag = data.unpack("VVb*")
 		end
@@ -959,8 +1085,9 @@ module Record::Section
 
 	# TODO REVERSE-ENGINEERING
 	class CtrlHeader
-		attr_accessor :ctrl_id
-		def initialize data
+		attr_accessor :ctrl_id, :level
+		def initialize data, level
+			@level = level
 			s_io = StringIO.new data
 			ctrl_id = s_io.read(4).unpack("C4").pack("U*").reverse
 			#p s_io.read.unpack("v*")
@@ -970,8 +1097,9 @@ module Record::Section
 
 	# TODO REVERSE-ENGINEERING
 	class ListHeader
-		attr_accessor :num_para, :property
-		def initialize data
+		attr_accessor :num_para, :property, :level
+		def initialize data, level
+			@level = level
 			s_io = StringIO.new data
 			s_io.read(2).unpack("v")
 			#p data.bytesize
@@ -981,15 +1109,18 @@ module Record::Section
 	end
 
 	class CtrlData
-		attr_accessor :var
-		def initialize data
+		attr_accessor :var, :level
+		def initialize data, level
+			@level = level
 			raise NotImplementedError.new "Record::Section::CtrlData"
 		end
 	end
 
 	# TODO REVERSE-ENGINEERING
 	class Table
-		def initialize data
+		attr_reader :level
+		def initialize data, level
+			@level = level
 			s_io = StringIO.new data
 			prop = s_io.read(4).unpack("V")
 			row_count = s_io.read(2).unpack("v")[0]
@@ -1008,10 +1139,11 @@ module Record::Section
 	end
 
 	class ShapeComponent
-		attr_reader :scale_matrices, :rotate_matrices
+		attr_reader :scale_matrices, :rotate_matrices, :level
 		FLIP_TYPE = ['horz flip', 'vert flip']
 
-		def initialize data
+		def initialize data, level
+			@level = level
 			@scale_matrices, @rotate_matrices = [], []
 			s_io = StringIO.new data
 			# NOTE ctrl_id 가 두 번 반복됨을 주의하자
@@ -1045,74 +1177,98 @@ module Record::Section
 	end
 
 	class ShapeComponentLine
-		def initialize data
+		attr_reader :level
+		def initialize data, level
+			@level = level
 			raise NotImplementedError.new "Record::Section::ShapeComponentLine"
 		end
 	end
 
 	class ShapeComponentRectangle
-		def initialize data
+		attr_reader :level
+		def initialize data, level
+			@level = level
 			raise NotImplementedError.new "Record::Section::ShapeComponentRectangle"
 		end
 	end
 
 	class ShapeComponentEllipse
-		def initialize data
+		attr_reader :level
+		def initialize data, level
+			@level = level
 			raise NotImplementedError.new "Record::Section::ShapeComponentEllipse"
 		end
 	end
 	
 	class ShapeComponentArc
-		def initialize data
+		attr_reader :level
+		def initialize data, level
+			@level = level
 			raise NotImplementedError.new "Record::Section::ShapeComponentArc"
 		end
 	end
 
 	class ShapeComponentPolygon
-		def initialize data
+		attr_reader :level
+		def initialize data, level
+			@level = level
 			raise NotImplementedError.new "Record::Section::ShapeComponentPolygon"
 		end
 	end
 	
 	class ShapeComponentCurve
-		def initialize data
+		attr_reader :level
+		def initialize data, level
+			@level = level
 			raise NotImplementedError.new "Record::Section::ShapeComponentCurve"
 		end
 	end
 	
 	class ShapeComponentOLE
-		def initialize data
+		attr_reader :level
+		def initialize data, level
+			@level = level
 			raise NotImplementedError.new "Record::Section::ShapeComponentOLE"
 		end
 	end
 
 	# TODO REVERSE-ENGINEERING
 	class ShapeComponentPicture
-		def initialize data
-			p data.unpack("V6sv4Vv vV vVvV")
+		attr_reader :level
+		def initialize data, level
+			@level = level
+			data.unpack("V6sv4Vv vV vVvV")
 		end
 	end
 
 	class ShapeComponentContainer
-		def initialize data
+		attr_reader :level
+		def initialize data, level
+			@level = level
 			raise NotImplementedError.new "Record::Section::ShapeComponentContainer"
 		end
 	end
 
 	class ShapeComponentTextArt
-		def initialize data
+		attr_reader :level
+		def initialize data, level
+			@level = level
 			raise NotImplementedError.new "Record::Section::ShapeComponentTextArt"
 		end
 	end
 
 	class ShapeComponentUnknown
-		def initialize data
+		attr_reader :level
+		def initialize data, level
+			@level = level
 			raise NotImplementedError.new "Record::Section::ShapeComponentUnknown"
 		end
 	end
 
 	class PageDef
-		def initialize data
+		attr_reader :level
+		def initialize data, level
+			@level = level
 			width,	height,
 			left_margin,	right_margin,
 			top_margin,		bottom_margin,
@@ -1123,7 +1279,9 @@ module Record::Section
 
 	# TODO REVERSE-ENGINEERING
 	class FootnoteShape
-		def initialize data
+		attr_reader :level
+		def initialize data, level
+			@level = level
 			s_io = StringIO.new data
 			s_io.read(4)
 			s_io.read(2)
@@ -1143,15 +1301,19 @@ module Record::Section
 	end
 
 	class PageBorderFill
-		def initialize data
+		attr_reader :level
+		def initialize data, level
+			@level = level
 			# 스펙 문서 58쪽 크기 불일치 12 != 14
 			#p data.unpack("ISSSSS") # 마지막 2바이트 S, 총 14바이트
 		end
 	end
 
-	class EQEdit
+	class EqEdit
 		# TODO DOT 훈DOT 민 DOT 정 DOT 음
-		def initialize data
+		attr_reader :level
+		def initialize data, level
+			@level = level
 			io = StringIO.new(data)
 			property = io.read(4).unpack("I")	# INT32
 			len = io.read(2).unpack("s")[0]	# WORD
@@ -1169,31 +1331,41 @@ module Record::Section
 	end
 
 	class Reserved
-		def initialize data
+		attr_reader :level
+		def initialize data, level
+			@level = level
 			raise NotImplementedError.new "Record::Section::ShapeComponentUnknown"
 		end
 	end
 
 	class FormObject
-		def initialize data
+		attr_reader :level
+		def initialize data, level
+			@level = level
 			raise NotImplementedError.new "Record::Section::FormObject"
 		end
 	end
 
 	class MemoShape
-		def initialize data
+		attr_reader :level
+		def initialize data, level
+			@level = level
 			raise NotImplementedError.new "Record::Section::MemoShape"
 		end
 	end
 
 	class MemoList
-		def initialize data
+		attr_reader :level
+		def initialize data, level
+			@level = level
 			raise NotImplementedError.new "Record::Section::MemoList"
 		end
 	end
 
 	class ChartData
-		def initialize data
+		attr_reader :level
+		def initialize data, level
+			@level = level
 			raise NotImplementedError.new "Record::Section::ChartData"
 		end
 	end
