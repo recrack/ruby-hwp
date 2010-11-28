@@ -50,7 +50,7 @@ builder.html do
 							builder.text! parser.pop.to_s
 						end
 					end
-				when "Record::Section::EQEdit"
+				when "Record::Section::EqEdit"
 					builder.p response.to_s
 				else
 				end

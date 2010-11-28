@@ -33,7 +33,7 @@ hwp.bodytext.sections.each do |section|
 		case response.class.to_s
 		when "Record::Section::ParaText"
 			puts response.to_s
-		when "Record::Section::EQEdit"
+		when "Record::Section::EqEdit"
 			puts response.to_s
 		else
 		end
