@@ -17,52 +17,9 @@ require 'stringio'
 require 'hwp/model.rb'
 require 'hwp/tags.rb'
 ##
-require 'hwp/datatypes.rb'
 require 'hwp/parser.rb'
 
 module HWP
-# unpack, pack
-# C     |  Unsigned char # 1 byte
-# I     |  Unsigned integer # 4 bytes
-# L     |  Unsigned long
-# S     |  Unsigned short # 2 bytes
-
-# c     |  char # 1 byte
-# i     |  integer # 4 bytes
-# l     |  long
-# s     |  short # 2 bytes
-
-# unpack, pack
-# C     |  UINT8  # 1 byte
-# I     |  UINT32 # 4 bytes
-# L     |  Unsigned long
-# S     |  UINT16 # 2 bytes
-
-# c     |  char # 1 byte
-# i     |  integer # 4 bytes
-# l     |  long
-# s     |  short # 2 bytes
-
-# typedef unsigned char  UINT8;		1 byte
-# typedef unsigned short UINT16;	2 bytes
-# typedef unsigned int   UINT32;	4 bytes
-
-	BYTE = 1
-	WORD = 2
-	DWORD = 4
-	WCHAR = 2
-	HWPUNIT = 4
-	SHWPUNIT = 4
-	UINT8 = 1
-	UINT16 = 2
-	UINT32 = 4
-	UINT = UINT32
-	INT8 = 1
-	INT16 = 2
-	INT32 = 4
-	HWPUNIT16 = 2
-	COLORREF = 4
-
 	def self.open file
 		Document.new file
 	end
@@ -123,138 +80,25 @@ module HWP
 			@doc_history.to_s	if defined? @doc_history
 		end
 	end
-
-	class CommonCtrl
-#	표		tbl
-#	선		lin
-#	사각형	rec
-#	타원		ell
-#	호		arc
-#	다각형	pol
-#	곡선		cur
-#	한글97수식	eqed
-#	그림			pic
-#	ole			ole
-#	묶음개체		con
-	end
-
-	class CommonProperty
-#		@common_property # 36 bytes
-		def initialize data
-			str_io = StringIO.new data
-			@ctrl_id = str_io.read(4)
-			@property = str_io.read(4).unpack("b*")[0]
-			@hoz_offset = str_io.read(4)
-			@ver_offset = str_io.read(4)
-			@width = str_io.read(4)
-			@height = str_io.read(4)
-			@z_order = str_io.read(2)
-			@margins = str_io.read(2*4)
-			@instance_id = str_io.read(4)
-			@len = str_io.read(2)
-			@chars = str_io.read(2*@len) # 끝까지 읽는다
-		end
-#		@caption_list # if any
-	end
 end
 
 class FileHeader
-	attr_accessor :signature, :version, :property, :reversed
+	attr_accessor :signature, :version, :reversed
 	def initialize dirent
 		data = dirent.read
 		@signature	= data[0..31]
 		@version	= data[32..35].reverse.unpack("C*").join(".")
-		@property	= data[36..39].unpack("b*")[0]
+		@bit		= data[36..39].unpack("b*")[0]
 		@reversed	= data[40..255]
 	end
 
-	method_names = ['gzipped?', 'encrypted?', 'distribute?', 'script?',
+	method_names = ['compress?', 'encrypt?', 'distribute?', 'script?',
 					'drm?', 'xmltemplate?', 'history?', 'sign?',
 					'certificate_encrypt?', 'sign_spare?', 'certificate_drm?', 'ccl?']
 
 	method_names.each_with_index do |method_name, i|
 		define_method(method_name) do
-			@property[i] == '1' ? true : false
+			@bit[i] == '1' ? true : false
 		end
 	end
 end
-
-module Record
-	module Header
-		def self.decode bytes
-			lsb_first = bytes.unpack("b*")[0] # 이진수, LSB first, bit 0 가 맨 앞에 온다.
-
-			if lsb_first
-				@tag_id	= lsb_first[0..9].reverse.to_i(2) # 9~0
-				@level	= lsb_first[10..19].reverse.to_i(2) # 19~10
-				@size	= lsb_first[20..31].reverse.to_i(2) # 31~20
-			end
-		end
-
-		def self.tag_id;	@tag_id;	end
-		def self.level;		@level;		end
-		def self.size;		@size;		end
-	end
-
-	class BodyText
-		attr_accessor :sections
-		def initialize(dirent, header)
-			@dirent = dirent
-			@sections = []
-
-			if header.gzipped?
-				@dirent.each_child do |section|
-					z = Zlib::Inflate.new(-Zlib::MAX_WBITS)
-					@sections << StringIO.new(z.inflate section.read)
-					z.finish
-					z.close
-				end
-			else
-				@dirent.each_child do |section|
-					@sections << StringIO.new(section)
-				end
-			end
-		end
-	end # of (class BodyText)
-
-	class ViewText
-		def initialize dirent
-			raise NotImplementedError.new("ViewText is not supported")
-		end
-	end
-
-	class SummaryInformation
-	end
-
-	class BinData
-		def initialize(dirent, header);end
-	end
-
-	class PrvText
-		def initialize(dirent)
-			@dirent = dirent
-		end
-
-		def parse
-			puts Iconv.iconv('utf-8', 'utf-16', @dirent.read)
-		end
-	end
-
-	class PrvImage
-		def initialize(dirent)
-			@dirent = dirent
-		end
-
-		def parse
-			@dirent.read
-		end
-	end
-
-	class DocOptions;end
-	class Scripts;end
-	class XMLTemplate;end
-
-	class DocHistory
-		def initialize(dirent, header);end
-	end
-end # of (module Record)
