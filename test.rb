@@ -5,10 +5,16 @@ $LOAD_PATH << '/home/cogniti/ruby-hwp/lib'
 require 'hwp'
 hwp = HWP.open ARGV[0]
 
-# hwp.header.gzipped?
+# hwp.header.compress?
 # hwp.doc_info
 # hwp.doc_info.char_shapes.length
 # hwp.doc_info.char_shapes.each { |shape| p shape }
+#p hwp.doc_info.char_shapes[0].lang[:korean].font_id
+#p hwp.doc_info.char_shapes[0].lang[:korean].ratio
+#p hwp.doc_info.char_shapes[0].lang[:korean].char_spacing
+#p hwp.doc_info.char_shapes[0].lang[:korean].rel_size
+#p hwp.doc_info.char_shapes[0].lang[:korean].char_offset
+
 # hwp.doc_info.document_properties
 # hwp.doc_info.id_mappings
 # p hwp.doc_info.bin_data
