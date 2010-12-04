@@ -69,7 +69,7 @@ module HWP
 			when :HWPTAG_LAYOUT_COMPATIBILITY
 				Record::DocInfo::LayoutCompatibility.new(data, level)
 			when :HWPTAG_FORBIDDEN_CHAR
-				Record::Data::ForbiddenChar.new(data, level)
+				Record::DocInfo::ForbiddenChar.new(data, level)
 			# body text
 			when :HWPTAG_PARA_HEADER		then	Record::Section::ParaHeader.new(data, level)
 			when :HWPTAG_PARA_TEXT			then	Record::Section::ParaText.new(data, level)

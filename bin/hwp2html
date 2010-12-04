@@ -35,24 +35,12 @@ builder.html do
 	end
 
 	builder.body do
-		hwp.bodytext.sections.each do |section|
-			parser = HWP::Parser.new section
-			while parser.has_next?
-				response = parser.pull
-				case response.class.to_s
-				when "Record::Section::ParaText"
-					parser.push response
-				when "Record::Section::ParaCharShape"
-					# FIXME m_pos 적용해야 한다.
-					size = hwp.doc_info.char_shapes[response.m_id[0]].size / 100
-					builder.p do
-						builder.div('style'=> "font-size: #{size}px") do
-							builder.text! parser.pop.to_s
-						end
-					end
-				when "Record::Section::EqEdit"
-					builder.p response.to_s
-				else
+		hwp.bodytext.para_headers.each do |para_header|
+			# FIXME m_pos 적용해야 한다.
+			size = hwp.doc_info.char_shapes[para_header.para_char_shape.m_id[0]].size / 100
+			builder.p do
+				builder.div('style'=> "font-size: #{size}px") do
+					builder.text! para_header.para_text.to_s
 				end
 			end
 		end

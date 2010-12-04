@@ -1,5 +1,6 @@
 #!/usr/bin/ruby1.9.1
 # coding: utf-8
+# $LOAD_PATH 를 자신의 적절한 디렉토리로 바꾸어 주세요.
 $LOAD_PATH << '/home/cogniti/ruby-hwp/lib'
 
 require 'hwp'
@@ -28,11 +29,4 @@ hwp = HWP.open ARGV[0]
 # p hwp.doc_info.face_names[0].font_type_info.family
 
 #p hwp.bodytext
-#p hwp.bodytext.sections
-parser = HWP::Parser.new hwp.bodytext.sections[0]
-while parser.has_next?
-	response = parser.pull
-	case response.class.to_s
-	when "Record::Section::ParaText"
-	end
-end
+#p hwp.bodytext.para_headers

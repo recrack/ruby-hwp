@@ -26,17 +26,7 @@ if files.empty?
 end
 
 hwp = HWP.open(ARGV[0])
-hwp.bodytext.sections.each do |section|
-	parser = HWP::Parser.new section
-	while parser.has_next?
-		response = parser.pull
-		case response.class.to_s
-		when "Record::Section::ParaText"
-			puts response.to_s
-		when "Record::Section::EqEdit"
-			puts response.to_s
-		else
-		end
-	end
+hwp.bodytext.para_headers.each do |para_header|
+	puts para_header.para_text
 end
 hwp.close

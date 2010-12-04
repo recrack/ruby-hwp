@@ -83,40 +83,40 @@ module Record
 			parser = HWP::Parser.new @doc_info
 			while parser.has_next?
 				response = parser.pull
-				case response.class.to_s
-				when "Record::DocInfo::DocumentProperties"
+				case response
+				when Record::DocInfo::DocumentProperties
 					@document_properties << response
-				when "Record::DocInfo::IDMappings"
+				when Record::DocInfo::IDMappings
 					@id_mappings << response
-				when "Record::DocInfo::BinData"
+				when Record::DocInfo::BinData
 					@bin_data << response
-				when "Record::DocInfo::FaceName"
+				when Record::DocInfo::FaceName
 					@face_names << response
-				when "Record::DocInfo::BorderFill"
+				when Record::DocInfo::BorderFill
 					@border_fill << response
-				when "Record::DocInfo::CharShape"
+				when Record::DocInfo::CharShape
 					@char_shapes << response
-				when "Record::DocInfo::TabDef"
+				when Record::DocInfo::TabDef
 					@tab_def << response
-				when "Record::DocInfo::Numbering"
+				when Record::DocInfo::Numbering
 					@numbering << response
-				when "Record::DocInfo::Bullet"
+				when Record::DocInfo::Bullet
 					@bullet << response
-				when "Record::DocInfo::ParaShape"
+				when Record::DocInfo::ParaShape
 					@para_shape << response
-				when "Record::DocInfo::Style"
+				when Record::DocInfo::Style
 					@style << response
-				when "Record::DocInfo::DocData"
+				when Record::DocInfo::DocData
 					@doc_data << response
-				when "Record::DocInfo::DistributeDocData"
+				when Record::DocInfo::DistributeDocData
 					@distribute_doc_data << response
-				when "Record::DocInfo::Reserved"
+				when Record::DocInfo::Reserved
 					@reserved << response
-				when "Record::DocInfo::CompatibleDocument"
+				when Record::DocInfo::CompatibleDocument
 					@compatible_document << response
-				when "Record::DocInfo::LayoutCompatibility"
+				when Record::DocInfo::LayoutCompatibility
 					@layout_compatibility << response
-				when "Record::DocInfo::ForbiddenChar"
+				when Record::DocInfo::ForbiddenChar
 					@forbidden_char << response
 				else
 					raise "UNKNOWN RECORD"
@@ -126,25 +126,176 @@ module Record
 	end # DocInfo
 
 	class BodyText
-		attr_accessor :sections
+		attr_accessor :para_headers
+
 		def initialize(dirent, header)
 			@dirent = dirent
-			@sections = []
+			@para_headers = []
 
 			if header.compress?
 				@dirent.each_child do |section|
 					z = Zlib::Inflate.new(-Zlib::MAX_WBITS)
-					@sections << StringIO.new(z.inflate section.read)
+					parser = HWP::Parser.new StringIO.new(z.inflate section.read)
 					z.finish
 					z.close
-				end
+					# TODO table 구조
+					stack = [parser.pull]
+					@para_headers << stack[-1]
+					while parser.has_next?
+						current = parser.pull
+						case current.level - stack[-1].level
+						# 깊이 1 증가
+						when 1
+							parent = stack[-1]
+							stack.push current
+							case parent
+							when Record::Section::ParaHeader
+								case current
+								when Record::Section::ParaText
+									parent.para_text = current
+								when Record::Section::ParaCharShape
+							 		parent.para_char_shape = current
+								else
+									raise NotImplementedError.new current.class.name
+								end
+							when Record::Section::CtrlHeader
+								case current
+								when Record::Section::PageDef
+									parent.page_defs << current
+								when Record::Section::ListHeader
+									parent.list_headers << current
+								when Record::Section::Table
+									parent.tables << current
+								else
+									raise NotImplementedError.new current.class.name
+								end
+							else
+								raise NotImplementedError.new parent.class.name
+							end
+						# 같은 깊이
+						when 0
+							stack.pop
+							parent = stack[-1]
+							stack.push current
+							case parent
+							when Record::Section::ParaHeader
+								case current
+								when Record::Section::ParaCharShape
+									parent.para_char_shape = current
+								when Record::Section::ParaLineSeg
+									parent.para_line_seg = current
+								when Record::Section::CtrlHeader
+									parent.ctrl_headers << current
+								else
+									raise NotImplementedError.new current.class.name
+								end
+							when Record::Section::CtrlHeader
+								case current
+								when Record::Section::FootnoteShape
+									parent.footnote_shapes << current
+								when Record::Section::PageBorderFill
+									parent.page_border_fills << current
+								when Record::Section::ParaHeader
+									parent.para_headers << current
+								when Record::Section::ListHeader
+									parent.list_headers << current
+								else
+									raise NotImplementedError.new current.class.name
+								end
+							else
+								raise NotImplementedError.new parent.class.name
+							end
+						# 깊이 1 이상 감소
+						# level 은 10-bit 이므로 -1023 이 최소값
+						when -1023..-1
+							stack.pop((current.level - stack[-1].level).abs)
+							stack.pop
+							parent = stack[-1]
+							stack.push current
+							case parent
+							when Record::Section::ParaHeader
+								case current
+								when Record::Section::CtrlHeader
+									parent.ctrl_headers << current
+								else
+									raise NotImplementedError.new current.class.name
+								end
+							when Record::Section::CtrlHeader
+								case current
+								when Record::Section::ListHeader
+									parent.list_headers << current
+								when Record::Section::ParaHeader
+									parent.para_headers << current
+								else
+									raise NotImplementedError.new current.class.name
+								end
+							# level 0 의 ParaHeader가 교체될 경우 nil 값이 나온다.
+							when nil
+								case current
+								when Record::Section::ParaHeader
+									@para_headers << current
+								else
+									raise NotImplementedError.new current.class.name
+								end
+							else
+								raise NotImplementedError.new parent.class.name
+							end
+						else # 깊이가 1이상 증가하는 경우, 에러 발생
+							p(current.level - stack[-1].level)
+							raise NotImplementedError.new current.class.name
+						end
+					end # while
+				end # @dirent.each_child
 			else
 				@dirent.each_child do |section|
-					@sections << StringIO.new(section)
+				# TODO
 				end
-			end
-		end
-	end # of (class BodyText)
+			end # if
+
+			# debugging code
+#			@para_headers.each do |para_header|
+#				para_header.debug
+#				para_header.para_text.debug
+
+#				para_header.para_char_shape.debug
+
+#				para_header.para_line_seg.debug
+
+#				para_header.ctrl_headers.each do |ctrl_header|
+#					ctrl_header.debug
+#					ctrl_header.page_defs.each do |page_def|
+#						page_def.debug
+#					end
+
+#					ctrl_header.footnote_shapes.each do |footnote_shape|
+#						footnote_shape.debug
+#					end
+
+#					ctrl_header.page_border_fills.each do |page_border_fill|
+#						page_border_fill.debug
+#					end
+
+#					ctrl_header.list_headers.each do |list_header|
+#						list_header.debug
+#					end
+
+#					ctrl_header.para_headers.each do |para_header|
+#						para_header.debug
+#						# 재귀적 용법의 필요성을 느낀다.
+#						para_header.para_text.debug
+
+#						para_header.para_char_shape.debug
+
+#						para_header.para_line_seg.debug
+
+#						para_header.ctrl_headers.each do |ctrl_header|
+#							ctrl_header.debug
+#						end
+#					end # ctrl_header.para_headers.each
+#				end # para_header.ctrl_headers.each
+#			end # @para_headers.each
+		end # initialize
+	end # BodyText
 
 	class ViewText
 		def initialize dirent
@@ -690,21 +841,22 @@ module Record
 
 			@diagonal = Diagonal.new(diagonal_type, diagonal_width, diagonal_color)
 			@type = BORDER_LINE_TYPE[type]
-			@size = BORDER_LINE_TYPE[size]
+			#bignum too big to convert into `long' (RangeError)
+			#@size = BORDER_LINE_TYPE[size]
 			@gradation = FillBrush::Gradation.new
 
 			if data.bytesize > 40
 				@window_brush = FillBrush::WindowBrush.new s_io.read(12)
-				@gradation.type,
-				@gradation.angle,
-				@gradation.center_x,
-				@gradation.center_y,
-				@gradation.step,
-				gradation_color_num = s_io.read(12).unpack("vvvvvv")
-				@gradation.colors = s_io.read(4*gradation_color_num).unpack("V*")
-				@image_brush = FillBrush::ImageBrush.new s_io.read(6)
-				additional_gradation,
-				additional_gradation_center = s_io.read(5).unpack "VC"
+#				@gradation.type,
+#				@gradation.angle,
+#				@gradation.center_x,
+#				@gradation.center_y,
+#				@gradation.step,
+#				gradation_color_num = s_io.read(12).unpack("vvvvvv")
+#				@gradation.colors = s_io.read(4*gradation_color_num).unpack("V*")
+#				@image_brush = FillBrush::ImageBrush.new s_io.read(6)
+#				additional_gradation,
+#				additional_gradation_center = s_io.read(5).unpack "VC"
 			end
 			@gradation.step_center = s_io.read(1).unpack("C")[0]
 			s_io.close
@@ -839,10 +991,24 @@ module Record
 	end
 
 	class DocInfo::Numbering
-		attr_reader :level
+		attr_reader :level, :numbering, :start_num
 		def initialize data, level
 			@level = level
-			raise NotImplementedError.new "DocInfo::Numbering"
+			@numbering = []
+			s_io = StringIO.new data
+			# 7단계이어서 7번 반복하지만, numbering 개수가 나오는 헤더가 있는지 확인해야 한다.
+			7.times do
+				# TODO 속성
+				s_io.read 12
+				len = s_io.read(2).unpack("v").pop
+				@numbering << s_io.read(2*len).unpack("v*").pack("U*")
+			end
+			@start_num = s_io.read(2).unpack("v").pop
+		end
+
+		def debug
+			print "\t"*@level + "Numbering:"
+			puts @numbering.to_s + " " + @start_num.to_s
 		end
 	end
 
@@ -977,6 +1143,10 @@ module Record::Section
 					:num_align,
 					:para_instance_id,
 					:level
+		attr_accessor :para_text,
+					  :para_char_shape,
+					  :para_line_seg,
+					  :ctrl_headers
 
 		def initialize data, level
 			@level = level
@@ -989,6 +1159,15 @@ module Record::Section
 			@num_range_tag,
 			@num_align,
 			@para_instance_id = data.unpack("VVvCCvvvV")
+			# para_text, para_char_shape 가 1개 밖에 안 오는 것 같으나 확실하지 않으니
+			# 배열로 처리한다. 추후 ParaText, ParaCharShape 클래스를 ParaHeader 이나
+			# 이와 유사한 자료구조(예를 들면, Paragraph)에 내포하는 것을 고려한다.
+			# para_header 에는 para_text 가 1개만 오는 것 같다.
+			@ctrl_headers = []
+		end
+
+		def debug
+			puts "\t"*@level + "ParaHeader:"
 		end
 	end
 
@@ -1047,6 +1226,10 @@ module Record::Section
 		def to_s
 			@bytes.pack("U*")
 		end
+
+		def debug
+			puts "\t"*@level +"ParaText:" + to_s
+		end
 	end # class ParaText
 
 	class ParaCharShape
@@ -1063,14 +1246,24 @@ module Record::Section
 				@m_id  << element if (i % 2) == 1
 			end
 		end
+
+		def debug
+			puts "\t"*@level +"ParaCharShape:" + @m_pos.to_s + @m_id.to_s
+		end
 	end
 
 	# TODO REVERSE-ENGINEERING
+	# 스펙 문서에는 생략한다고 나와 있다. hwp3.0 또는 hwpml 스펙에 관련 정보가 있는지 확인해야 한다.
 	class ParaLineSeg
 		attr_reader :level
 
 		def initialize data, level
 			@level = level
+			@data = data
+		end
+
+		def debug
+			puts "\t"*@level +"ParaLineSeg:"
 		end
 	end
 
@@ -1085,26 +1278,41 @@ module Record::Section
 
 	# TODO REVERSE-ENGINEERING
 	class CtrlHeader
-		attr_accessor :ctrl_id, :level
+		attr_reader :ctrl_id, :level
+		attr_accessor :page_defs, :footnote_shapes, :page_border_fills,
+					  :list_headers, :para_headers, :tables
 		def initialize data, level
 			@level = level
 			s_io = StringIO.new data
-			ctrl_id = s_io.read(4).unpack("C4").pack("U*").reverse
-			#p s_io.read.unpack("v*")
+			@ctrl_id = s_io.read(4).unpack("C4").pack("U*").reverse
+			@bytes = s_io.read
 			s_io.close
+			@page_defs, @footnote_shapes, @page_border_fills = [], [], []
+			@list_headers, @para_headers, @tables = [], [], []
+		end
+
+		def debug
+			puts "\t"*@level +"CtrlHeader:" + @ctrl_id # + ":" + @bytes.inspect
 		end
 	end
 
 	# TODO REVERSE-ENGINEERING
+	# 리스트 헤더: 셀 리스트
 	class ListHeader
-		attr_accessor :num_para, :property, :level
+		attr_reader :level, :num_para
 		def initialize data, level
 			@level = level
 			s_io = StringIO.new data
-			s_io.read(2).unpack("v")
+			@num_para = s_io.read(2).unpack("v").pop
+			s_io.pos = 8
+			s_io.read.unpack("v4 V2 v4 v")
 			#p data.bytesize
 			# 바이트가 남는다
 			s_io.close
+		end
+
+		def debug
+			puts "\t"*@level +"ListHeader:"
 		end
 	end
 
@@ -1135,6 +1343,10 @@ module Record::Section
 			#valid_zone_info_size = s_io.read(2).unpack("v")[0]
 			#zone_prop = s_io.read(10*valid_zone_info_size).unpack("v*")
 			s_io.close
+		end
+
+		def debug
+			puts "\t"*@level +"Table:"
 		end
 	end
 
@@ -1199,7 +1411,7 @@ module Record::Section
 			raise NotImplementedError.new "Record::Section::ShapeComponentEllipse"
 		end
 	end
-	
+
 	class ShapeComponentArc
 		attr_reader :level
 		def initialize data, level
@@ -1215,7 +1427,7 @@ module Record::Section
 			raise NotImplementedError.new "Record::Section::ShapeComponentPolygon"
 		end
 	end
-	
+
 	class ShapeComponentCurve
 		attr_reader :level
 		def initialize data, level
@@ -1223,7 +1435,7 @@ module Record::Section
 			raise NotImplementedError.new "Record::Section::ShapeComponentCurve"
 		end
 	end
-	
+
 	class ShapeComponentOLE
 		attr_reader :level
 		def initialize data, level
@@ -1269,11 +1481,16 @@ module Record::Section
 		attr_reader :level
 		def initialize data, level
 			@level = level
+			@data = data
 			width,	height,
 			left_margin,	right_margin,
 			top_margin,		bottom_margin,
 			header_margin,	footer_margin,
-			gutter_margin,	property = data.unpack("V*")
+			gutter_margin,	property = @data.unpack("V*")
+		end
+
+		def debug
+			puts "\t"*@level +"PageDef:"# + @data.unpack("V*").to_s
 		end
 	end
 
@@ -1282,6 +1499,7 @@ module Record::Section
 		attr_reader :level
 		def initialize data, level
 			@level = level
+			@data = data
 			s_io = StringIO.new data
 			s_io.read(4)
 			s_io.read(2)
@@ -1298,6 +1516,10 @@ module Record::Section
 			# 바이트가 남는다
 			s_io.close
 		end
+
+		def debug
+			puts "\t"*@level +"FootnoteShape:"# + @data.inspect
+		end
 	end
 
 	class PageBorderFill
@@ -1306,6 +1528,10 @@ module Record::Section
 			@level = level
 			# 스펙 문서 58쪽 크기 불일치 12 != 14
 			#p data.unpack("ISSSSS") # 마지막 2바이트 S, 총 14바이트
+		end
+
+		def debug
+			puts "\t"*@level +"PageBorderFill:"
 		end
 	end
 
