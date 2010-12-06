@@ -76,7 +76,7 @@ module HWP
 			when :HWPTAG_PARA_CHAR_SHAPE	then	Record::Section::ParaCharShape.new(data, level)
 			when :HWPTAG_PARA_LINE_SEG		then	Record::Section::ParaLineSeg.new(data, level)
 			when :HWPTAG_PARA_RANGE_TAG		then	Record::Section::ParaRangeTag.new(data, level)
-			when :HWPTAG_CTRL_HEADER		then	Record::Section::CtrlHeader.new(data, level)
+			when :HWPTAG_CTRL_HEADER		then	Record::Section::Modeller.new(data, level)
 			when :HWPTAG_LIST_HEADER		then	Record::Section::ListHeader.new(data, level)
 			when :HWPTAG_PAGE_DEF			then	Record::Section::PageDef.new(data, level)
 			when :HWPTAG_FOOTNOTE_SHAPE		then	Record::Section::FootnoteShape.new(data, level)
