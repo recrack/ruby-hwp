@@ -43,7 +43,23 @@ builder.html do
 					builder.text! para_header.para_text.to_s
 				end
 			end
+
+			if para_header.table
+				builder.table('border'=>'1') do
+					para_header.table.rows.each_with_index do |row, row_index|
+						builder.tr do
+							row.cells.each_with_index do |cell, cell_index|
+								builder.td('colspan'=>cell.col_span, 'rowspan'=>cell.row_span) do
+									cell.para_headers.each do |para_header|
+										builder.p para_header.para_text.to_s
+									end # cell.para_headers.each
+								end # builder.td
+							end # row.cells.each_with_index
+						end # builder.tr
+					end # para_header.table.rows.each_with_index
+				end # builder.table
+			end # if
 		end
-		hwp.close
 	end
 end
+hwp.close
