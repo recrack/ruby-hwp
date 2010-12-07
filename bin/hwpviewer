@@ -68,6 +68,24 @@ hwp.bodytext.para_headers.each do |para_header|
 			end
 		end # if
 	end # if
+
+	if para_header.table
+		gtk_table = Gtk::Table.new(para_header.table.rows.length, para_header.table.rows[0].cells.length)
+		para_header.table.rows.each_with_index do |row, row_index|
+			row.cells.each_with_index do |cell, cell_index|
+				table_textview = Gtk::TextView.new
+				table_textview.set_border_window_size(Gtk::TextView::WINDOW_LEFT || Gtk::TextView::WINDOW_RIGHT,3)
+				cell.para_headers.each do |para_header|
+					table_textview.buffer.text += para_header.para_text.to_s+"\n"
+				end
+				gtk_table.attach_defaults(table_textview, cell_index, cell_index+cell.col_span, row_index, row_index+cell.row_span)
+			end
+		end
+		gtk_table.show
+		anchor = textview.buffer.create_child_anchor(iter)
+		textview.add_child_at_anchor(gtk_table, anchor)
+		textview.buffer.insert(iter, "\n")
+	end
 end
 
 hwp.close

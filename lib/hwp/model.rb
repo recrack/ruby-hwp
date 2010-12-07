@@ -1377,6 +1377,8 @@ module Record::Section
 				col_span = list_header.col_span
 				row_span = list_header.row_span
 				@text_table.rows[@row_addr].cells[@col_addr] = Text::Table::Cell.new
+				@text_table.rows[@row_addr].cells[@col_addr].row_span = row_span
+				@text_table.rows[@row_addr].cells[@col_addr].col_span = col_span
 				if col_span > 1
 					for i in @col_addr...(@col_addr+col_span)
 						@text_table.rows[@row_addr].cells[i].covered = true
@@ -1750,10 +1752,12 @@ module Text
 		end
 
 		class Cell
-			attr_accessor :para_headers, :covered
+			attr_accessor :para_headers, :row_span, :col_span, :covered
 			def initialize
 				@para_headers = []
 				@covered = false
+				@row_span = 1
+				@col_span = 1
 			end
 		end
 	end
