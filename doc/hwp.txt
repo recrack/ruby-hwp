@@ -1,0 +1,9181 @@
+ParaHeader:
+	ParaText:문교부 고시 제88-2 호(1988. 1. 19.)
+	ParaCharShape:[0][9]
+	ParaLineSeg:
+	CtrlHeader:secd
+		PageDef:
+		FootnoteShape:
+		FootnoteShape:
+		PageBorderFill:
+		PageBorderFill:
+		PageBorderFill:
+	CtrlHeader:cold
+	CtrlHeader:nwno
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:표준어 규정
+	ParaCharShape:[0, 6][11, 12]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][12]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제１부  표준어 사정 원칙
+	ParaCharShape:[0, 14][13, 12]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][12]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제１장  총칙	68
+	ParaCharShape:[0, 3, 7][14, 15, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제２장  발음 변화에 따른 표준어 규정	68
+	ParaCharShape:[0, 3, 21][14, 15, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제１절  자음	68
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제２절  모음	72
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제３절  준말	78
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제４절  단수 표준어	81
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제５절  복수 표준어	84
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제３장  어휘 선택의 변화에 따른 표준어 규정	85
+	ParaCharShape:[0, 3, 25][14, 15, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제１절  고어	85
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제２절  한자어	85
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제３절  방언	88
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제４절  단수 표준어	89
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제５절  복수 표준어	93
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제２부  표준 발음법
+	ParaCharShape:[0, 11][13, 12]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][12]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제１장  총칙	100
+	ParaCharShape:[0, 3, 7][14, 15, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제２장  자음과 모음	100
+	ParaCharShape:[0, 3, 11][14, 15, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제３장  음의 길이	101
+	ParaCharShape:[0, 3, 10][14, 15, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제４장  받침의 발음	103
+	ParaCharShape:[0, 3, 11][14, 15, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제５장  음의 동화	107
+	ParaCharShape:[0, 3, 10][14, 15, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제６장  경음화	110
+	ParaCharShape:[0, 3, 8][14, 15, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제７장  음의 첨가	112
+	ParaCharShape:[0, 3, 10][14, 15, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제1부  표준어 사정 원칙
+	ParaCharShape:[0, 14][16, 17]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][17]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제1장  총    칙
+	ParaCharShape:[0][17]
+	ParaLineSeg:
+	CtrlHeader:head
+		ListHeader:
+		ParaHeader:
+			ParaText:  한국 어문 규정집
+			ParaCharShape:[0, 8][18, 19]
+			ParaLineSeg:
+			CtrlHeader:atno
+	CtrlHeader:head
+		ListHeader:
+		ParaHeader:
+			ParaText:표준어 규정(제1부 표준어 사정 원칙)  
+			ParaCharShape:[0, 23][19, 18]
+			ParaLineSeg:
+			CtrlHeader:atno
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제1항  표준어는 교양 있는 사람들이 두루 쓰는 현대 서울말로 정함을 원칙으로 한다.
+	ParaCharShape:[0, 3][20, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제2장  외래어는 따로 사정한다.
+	ParaCharShape:[0, 3][20, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제2장  발음 변화에 따른 표준어 규정
+	ParaCharShape:[0, 21][17, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제1절  자    음
+	ParaCharShape:[0, 11][21, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제3항  다음 단어들은 거센소리를 가진 형태를 표준어로 삼는다.(ㄱ을 표준어로 삼고, ㄴ을 버림.)
+	ParaCharShape:[0, 3, 35, 55][20, 10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄱ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄴ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:비        고
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:끄나풀
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:나팔-꽃
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:녘
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:부엌
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:살-쾡이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:칸
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:털어-먹다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:끄나불
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:나발-꽃
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:녁
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:부억
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:삵-괭이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:간
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:떨어-먹다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:동~, 들~, 새벽~, 동 틀 ~.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:1. ~막이, 빈~, 방 한~.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:2. ‘초가 삼간, 윗간’의 경우에는 ‘간’임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:재물을 다 없애다.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaText:제4항  다음 단어들은 거센소리로 나지 않는 형태를 표준어로 삼는다.(ㄱ을 표준어로 삼고, ㄴ을 버림.)
+	ParaCharShape:[0, 3, 38, 58][20, 10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄱ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄴ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:비        고
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:가을-갈이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:거시기
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:분침
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:가을-카리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:거시키
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:푼침
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제5항  어원에서 멀어진 형태로 굳어져서 널리 쓰이는 것은, 그것을 표준어로 삼는다.(ㄱ을 표준어로 삼고, ㄴ을 버림.)
+	ParaCharShape:[0, 3, 47, 67][20, 10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄱ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄴ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:비        고
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:강낭-콩
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:고삿
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:사글-세
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:울력-성당
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:강남-콩
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:고샅
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:삭월-세
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:위력-성당
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:겉~, 속~.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘월세’는 표준어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:떼를 지어서 으르고 협박하는 일.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:다만, 어원적으로 원형에 더 가까운 형태가 아직 쓰이고 있는 경우에는, 그것을 표준어로 삼는다.(ㄱ을 표준어로 삼고, ㄴ을 버림.)
+	ParaCharShape:[0, 53, 73][10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄱ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄴ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:비        고
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:갈비
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:갓모
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:가리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:갈모
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:~구이, ~찜, 갈빗-대.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:1. 사기 만드는 물레 밑고리.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:2. ‘갈모’는 갓 위에 쓰는, 유지로 만든 우비.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:굴-젓
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:말-곁
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:물-수란
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:밀-뜨리다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:적-이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:휴지
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:구-젓
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:말-겻
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:물-수랄
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:미-뜨리다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:저으기
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:수지
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:적이-나, 적이나-하면.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][20]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제6항  다음 단어들은 의미를 구별함이 없이, 한 가지 형태만을 표준어로 삼는다.(ㄱ을 표준어로 삼고, ㄴ을 버림.)
+	ParaCharShape:[0, 3, 45, 65][20, 10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄱ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄴ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:비        고
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:돌
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:둘-째
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:셋-째
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:넷-째
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:빌리다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:돐
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:두-째
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:세-째
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:네-째
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:빌다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:생일, 주기.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘제2, 두 개째’의 뜻.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘제3, 세 개째’의 뜻.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘제4, 네 개째’의 뜻.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:1. 빌려 주다, 빌려 오다.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:2. ‘용서를 빌다’는 ‘빌다’임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:다만, ‘둘째’는 십 단위 이상의 서수사에 쓰일 때에 ‘두째’로 한다.
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄱ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄴ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:비        고
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:열두-째
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:스물두-째
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:열두 개째의 뜻은 ‘열둘째’로.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:스물두 개째의 뜻은 ‘스물둘째’로.
+			ParaCharShape:[0][23]
+			ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][20]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제7항  수컷을 이르는 접두사는 ‘수-’로 통일한다.(ㄱ을 표준어로 삼고, ㄴ을 버림.)
+	ParaCharShape:[0, 3, 30, 50][20, 10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄱ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄴ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:비        고
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:수-꿩
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:수-나사
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:수-놈
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:수-사돈
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:수-소
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:수-은행나무
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:수-퀑/숫-꿩
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:숫-나사
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:숫-놈
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:숫-사돈
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:숫-소
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:숫-은행나무
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:‘장끼’도 표준어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘황소’도 표준어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:다만 1. 다음 단어에서는 접두사 다음에서 나는 거센소리를 인정한다. 접두사 ‘암-’이 결합되는 경우에도 이에 준한다.(ㄱ을 표준어로 삼고, ㄴ을 버림.)
+	ParaCharShape:[0, 67, 87][10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄱ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄴ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:비        고
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:수-캉아지
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:수-캐
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:수-컷
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:수-키와
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:수-탉
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:수-탕나귀
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:수-톨쩌귀
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:수-퇘지
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:수-평아리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:숫-강아지
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:숫-개
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:숫-것
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:숫-기와
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:숫-닭
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:숫-당나귀
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:숫-돌쩌귀
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:숫-돼지
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:숫-병아리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:다만 2. 다음 단어의 접두사는 ‘숫-’으로 한다.(ㄱ을 표준어로 삼고, ㄴ을 버림.)
+	ParaCharShape:[0, 29, 49][10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄱ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄴ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:비        고
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:숫-양
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:숫-염소
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:숫-쥐
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:수-양
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:수-염소
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:수-쥐
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제2절  모    음
+	ParaCharShape:[0, 11][21, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제8항  양성 모음이 음성 모음으로 바뀌어 굳어진 다음 단어는 음성 모음 형태를 표준어로 삼는다.(ㄱ을 표준어로 삼고, ㄴ을 버림.)
+	ParaCharShape:[0, 3, 54, 74][20, 10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄱ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄴ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:비        고
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:깡충-깡충
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:-둥이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:발가-숭이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:보퉁이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:봉죽
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:뻗정-다리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:아서, 아서라
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:오뚝-이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:주추
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:깡총-깡총
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:-동이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:발가-송이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:보통이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:봉족
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:뻗장-다리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:앗아, 앗아라
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:오똑-이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:주초
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:큰말은 ‘껑충껑충’임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:←童-이. 귀-, 막-, 선-, 쌍-, 검-, 바람-, 흰-.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:센말은 ‘빨가숭이’, 큰말은 ‘벌거숭이, 뻘거숭이’임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:←奉足. ~꾼, ~ 들다.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:하지 말라고 금지하는 말.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:부사도 ‘오뚝-이’임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:←柱礎. 주춧-돌.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:다만, 어원 의식이 강하게 작용하는 다음 단어에서는 양성 모음 형태를 그대로 표준어로 삼는다.(ㄱ을 표준어로 삼고, ㄴ을 버림.)
+	ParaCharShape:[0, 52, 72][10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄱ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄴ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:비        고
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:부조(扶助)
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:사돈(査頓)
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:삼촌(三寸)
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:부주
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:사둔
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:삼춘
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:~금, 부좃-술.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:밭~, 안~.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:시~, 외~, 처~.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][20]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제9항  ‘ㅣ’ 역행 동화 현상에 의한 발음은 원칙적으로 표준 발음으로 인정하지 아니하되, 다만 다음 단어들은 그러한 동화가 적용된 형태를 표준어로 삼는다.(ㄱ을 표준어로 삼고, ㄴ을 버림.)
+	ParaCharShape:[0, 3, 87, 107][20, 10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄱ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄴ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:비        고
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:-내기
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:냄비
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:동댕이-치다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:-나기
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:남비
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:동당이-치다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:서울-, 시골-, 신출-, 풋-.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:[붙임 1]  다음 단어는 ‘ㅣ’ 역행 동화가 일어나지 아니한 형태를 표준어로 삼는다.(ㄱ을 표준어로 삼고, ㄴ을 버림.)
+	ParaCharShape:[0, 48, 68][10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄱ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄴ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:비        고
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:아지랑이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:아지랭이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:[붙임 2]  기술자에게는 ‘-장이’, 그 외에는 ‘-쟁이’가 붙는 형태를 표준어로 삼는다.(ㄱ을 표준어로 삼고, ㄴ을 버림.)
+	ParaCharShape:[0, 53, 73][10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0, 8][0, 10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄱ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄴ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:비        고
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:미장이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:미쟁이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:유기장이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:멋쟁이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:소금쟁이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:담쟁이-덩굴
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:골목쟁이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:발목쟁이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:유기쟁이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:멋장이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:소금장이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:담장이-덩굴
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:골목장이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:발목장이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][20]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제10항  다음 단어는 모음이 단순화한 형태를 표준어로 삼는다.(ㄱ을 표준어로 삼고, ㄴ을 버림.)
+	ParaCharShape:[0, 4, 35, 55][20, 10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄱ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄴ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:비        고
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:괴팍-하다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:-구먼
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:미루-나무
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:미륵
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:여느
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:온-달
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:으레
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:케케-묵다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:허우대
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:허우적-허우적
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:괴퍅-하다/괴팩-하다
+			ParaCharShape:[0, 15][24, 9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:-구면
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:미류-나무
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:미력
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:여늬
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:왼-달
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:으례
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:켸켸-묵다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:허위대
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:허위적-허위적
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:←美柳~.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:←彌勒. ~ 보살, ~불, 돌~.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:만 한 달.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:허우적-거리다.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][20]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제11항  다음 단어에서는 모음의 발음 변화를 인정하여, 발음이 바뀌어 굳어진 형태를 표준어로 삼는다.(ㄱ을 표준어로 삼고, ㄴ을 버림.)
+	ParaCharShape:[0, 4, 57, 77][20, 10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0, 8][0, 10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄱ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄴ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:비        고
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:-구려
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:-구료
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:깍쟁이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:나무라다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:미수
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:바라다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:상추
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:시러베-아들
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:주책
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:지루-하다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:튀기
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:허드레
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:호루라기
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:깍정이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:나무래다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:미시
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:바래다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:상치
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:실업의-아들
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:주착
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:지리-하다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:트기
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:허드래
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:호루루기
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:1. 서울 ~, 알~, 찰~.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:2. 도토리, 상수리 등의 받침은 ‘깍정이’임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:미숫-가루.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘바램[所望]’은 비표준어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:~쌈.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:←主着. ~망나니, ~없다.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:←支離.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:허드렛-물, 허드렛-일.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][20]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제12항  ‘웃-’ 및 ‘윗-’은 명사 ‘위’에 맞추어 ‘윗-’으로 통일한다.(ㄱ을 표준어로 삼고, ㄴ을 버림.)
+	ParaCharShape:[0, 4, 46, 66][20, 10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0, 8][0, 10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄱ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄴ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:비        고
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:윗-넓이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:윗-눈썹
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:윗-니
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:윗-당줄
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:윗-덧줄
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:윗-도리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:윗-동아리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:윗-막이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:윗-머리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:윗-목
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:웃-넓이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:웃-눈썹
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:웃-니
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:웃-당줄
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:웃-덧줄
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:웃-도리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:웃-동아리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:웃-막이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:웃-머리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:웃-목
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:준말은 ‘윗동’임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:윗-몸
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:윗-바람
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:윗-배
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:윗-벌
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:윗-변
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:윗-사랑
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:윗-세장
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:윗-수염
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:윗-입술
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:윗-잇몸
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:윗-자리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:윗-중방
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:웃-몸
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:웃-바람
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:웃-배
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:웃-벌
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:웃-변
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:웃-사랑
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:웃-세장
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:웃-수염
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:웃-입술
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:웃-잇몸
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:웃-자리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:웃-중방
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:~ 운동.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:수학 용어.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:다만 1. 된소리나 거센소리 앞에서는 ‘위-’로 한다.(ㄱ을 표준어로 삼고, ㄴ을 버림.)
+	ParaCharShape:[0, 31, 51][10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄱ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄴ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:비        고
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:위-짝
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:위-쪽
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:위-채
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:위-층
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:위-치마
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:위-턱
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:위-팔
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:웃-짝
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:웃-쪽
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:웃-채
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:웃-층
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:웃-치마
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:웃-턱
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:웃-팔
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:~ 구름[上層雲].
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:다만 2. ‘아래, 위’의 대립이 없는 단어는 ‘웃-’으로 발음되는 형태를 표준어로 삼는다.(ㄱ을 표준어로 삼고, ㄴ을 버림.)
+	ParaCharShape:[0, 53, 73][10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄱ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄴ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:비        고
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:웃-국
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:웃-기
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:웃-돈
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:웃-비
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:웃-어른
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:웃-옷
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:윗-국
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:윗-기
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:윗-돈
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:윗-비
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:윗-어른
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:윗-옷
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:~ 걷다.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][20]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제13항  한자 ‘구(句)’가 붙어서 이루어진 단어는 ‘귀’로 읽는 것을 인정하지 아니하고, ‘구’로 통일한다.(ㄱ을 표준어로 삼고, ㄴ을 버림.)
+	ParaCharShape:[0, 4, 62, 82][20, 10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0, 8, 16][10, 0, 10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄱ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄴ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:비        고
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:구법(句法)
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:구절(句節)
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:구점(句點)
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:결구(結句)
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:경구(警句)
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:경인구(警人句)
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:난구(難句)
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:단구(短句)
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:단명구(短命句)
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:대구(對句)
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:문구(文句)
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:성구(成句)
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:시구(詩句)
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:어구(語句)
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:연구(聯句)
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:귀법
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:귀절
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:귀점
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:결귀
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:경귀
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:경인귀
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:난귀
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:단귀
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:단명귀
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:대귀
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:문귀
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:성귀
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:시귀
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:어귀
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:연귀
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:~법(對句法).
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:~어(成句語).
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:인용구(引用句)
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:절구(絶句)
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:인용귀
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:절귀
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:다만, 다음 단어는 ‘귀’로 발음되는 형태를 표준어로 삼는다.(ㄱ을 표준어로 삼고, ㄴ을 버림.)
+	ParaCharShape:[0, 34, 54][10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄱ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄴ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:비        고
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:귀-글
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:글-귀
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:구-글
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:글-구
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제3절  준    말
+	ParaCharShape:[0, 11][21, 13]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제14항  준말이 널리 쓰이고 본말이 잘 쓰이지 않는 경우에는, 준말만을 표준어로 삼는다.(ㄱ을 표준어로 삼고, ㄴ을 버림.)
+	ParaCharShape:[0, 4, 50, 70][20, 10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄱ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄴ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:비        고
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:귀찮다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:김
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:똬리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:무
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:미다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:뱀
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:뱀-장어
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:귀치 않다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:기음
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:또아리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:무우
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:무이다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:배암
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:배암-장어
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:~ 매다.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:~강즙, ~말랭이, ~생채,
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:가랑~, 갓~, 왜~, 총각~.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:1. 털이 빠져 살이 드러나다.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:2. 찢어지다.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0, 8][0, 20]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:빔
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:샘
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:생-쥐
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:솔개
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:온-갖
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:장사-치
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:비음
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:새암
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:새앙-쥐
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:소리개
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:온-가지
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:장사-아치
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:설~, 생일~.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:~바르다, ~바리.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][20]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제15항  준말이 쓰이고 있더라도, 본말이 널리 쓰이고 있으면 본말을 표준어로 삼는다.(ㄱ을 표준어로 삼고, ㄴ을 버림.)
+	ParaCharShape:[0, 4, 48, 68][20, 10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄱ
+			ParaCharShape:[0][10]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄴ
+			ParaCharShape:[0][10]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:비        고
+			ParaCharShape:[0][10]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:경황-없다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:궁상-떨다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:귀이-개
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:낌새
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:낙인-찍다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:내왕-꾼
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:돗-자리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:뒤웅-박
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:뒷물-대야
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:마구-잡이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:맵자-하다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:모이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:벽-돌
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:부스럼
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:살얼음-판
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:경-없다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:궁-떨다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:귀-개
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:낌
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:낙-하다/낙-치다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:냉-꾼
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:돗
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:뒝-박
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:뒷-대야
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:막-잡이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:맵자다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:모
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:벽
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:부럼
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:살-판
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:모양이 제격에 어울리다.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:정월 보름에 쓰는 ‘부럼’은 표준어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:수두룩-하다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:암-죽
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:어음
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:일구다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:죽-살이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:퇴박-맞다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:한통-치다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:수둑-하다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:암
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:엄
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:일다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:죽-살
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:퇴-맞다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:통-치다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:[붙임]  다음과 같이 명사에 조사가 붙은 경우에도 이 원칙을 적용한다.(ㄱ을 표준어로 삼고, ㄴ을 버림.)
+	ParaCharShape:[0, 40, 60][10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄱ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄴ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:비        고
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:아래-로
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:알-로
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][10]
+			ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][20]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제16항  준말과 본말이 다 같이 널리 쓰이면서 준말의 효용이 뚜렷이 인정되는 것은, 두 가지를 다 표준어로 삼는다.(ㄱ은 본말이며, ㄴ은 준말임.)
+	ParaCharShape:[0, 4, 65, 83][20, 10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄱ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄴ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:비        고
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:거짓-부리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:노을
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:막대기
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:망태기
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:머무르다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:서두르다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:서투르다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:거짓-불
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:놀
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:막대
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:망태
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:머물다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:서둘다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:서툴다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:작은말은 ‘가짓부리, 가짓불’임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:저녁~.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:┐
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:│
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:┘
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:모음 어미가 연결될 때에는 준말의 활용형을 인정하지 않음.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0, 8][0, 10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:석새-삼베
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:시-누이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:오-누이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:외우다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:이기죽-거리다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:찌꺼기
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:석새-베
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:시-뉘/시-누
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:오-뉘/오-누
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:외다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:이죽-거리다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:찌끼
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:외우며, 외워:외며, 외어.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘찌꺽지’는 비표준어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][13]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][13]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제4절  단수 표준어
+	ParaCharShape:[0, 11][21, 13]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제17항  비슷한 발음의 몇 형태가 쓰일 경우, 그 의미에 아무런 차이가 없고, 그 중 하나가 더 널리 쓰이면, 그 한 형태만을 표준어로 삼는다.(ㄱ을 표준어로 삼고, ㄴ을 버림.)
+	ParaCharShape:[0, 4, 81, 101][20, 10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄱ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄴ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:비        고
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:거든-그리다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:구어-박다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:귀-고리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:귀-띔
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:귀-지
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:까딱-하면
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:꼭두-각시
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:내색
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:내숭-스럽다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:냠냠-거리다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:냠냠-이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:너[四]
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:거둥-그리다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:구워-박다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:귀엣-고리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:귀-틤
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:귀에­지
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:까땍-하면
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:꼭둑-각시
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:나색
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:내흉-스럽다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:얌냠-거리다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:얌냠-이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:네
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:1. 거든하게 거두어 싸다.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:2. 작은말은 ‘가든-그리다’임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:사람이 한 군데에서만 지내다.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:감정이 나타나는 얼굴빛.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:냠냠-하다.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:~ 돈, ~ 말, ~ 발, ~ 푼.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0, 8, 16][10, 0, 10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:넉[四]
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:다다르다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:댑-싸리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:더부룩-하다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:-던
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:-던가
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:-던걸
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:-던고
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:-던데
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:-던지
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:-(으)려고
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:-(으)려야
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:망가-뜨리다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:멸치
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:반빗-아치
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:보습
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:본새
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:봉숭아
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:뺨-따귀
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:뻐개다[斫]
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:뻐기다[誇]
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:너/네
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:다닫다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:대-싸리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:더뿌룩-하다/듬뿌룩-하다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:-든
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:-든가
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:-든걸
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:-든고
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:-든데
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:-든지
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:-(으)ㄹ려고/-(으)ㄹ라고
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:-(으)ㄹ려야/-(으)ㄹ래야
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:망그-뜨리다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:며루치/메리치
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:반비-아치
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:보십/보섭
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:뽄새
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:봉숭화
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:뺌-따귀/뺨-따구니
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:뻐기다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:뻐개다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:~ 냥, ~ 되, ~ 섬, ~ 자.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:선택, 무관의 뜻을 나타내는 어미는 ‘-든’임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:가-든(지) 말-든(지), 보-든(가) 말-든(가).
+			ParaCharShape:[0, 23][23, 9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘반빗’ 노릇을 하는 사람. 찬비(饌婢).
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘반비’는 밥짓는 일을 맡은 계집종.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘봉선화’도 표준어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘뺨’의 비속어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:두 조각으로 가르다.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:뽐내다.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:사자-탈
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:상-판대기1)
+			ParaCharShape:[0, 7][9, 25]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:서[三]
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:석[三]
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:설령(設令)
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:-습니다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:시름-시름
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:씀벅-씀벅
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:아궁이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:아내
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:어-중간
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:오금-팽이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:오래-오래
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:-올시다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:옹골-차다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:우두커니
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:잠-투정
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:재봉-틀
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:짓-무르다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:짚-북데기
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:쪽
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:천장(天障)
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:코-맹맹이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:흉-업다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:사지-탈
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:쌍-판대기
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:세/석
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:세
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:서령
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:-읍니다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:시늠-시늠
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:썸벅-썸벅
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:아궁지
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:안해
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:어지-중간
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:오금-탱이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:도래-도래
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:-올습니다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:공골-차다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:우두머니
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:잠-투세/잠-주정
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:자봉-틀
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:짓-물다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:짚-북세기
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:짝
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:천정
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:코-맹녕이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:흉-헙다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:~ 돈, ~ 말, ~ 발, ~ 푼.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:~ 냥, ~ 되, ~ 섬, ~ 자.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:먹습니다, 갔습니다, 없습니다, 있습니다, 좋습니다.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:모음 뒤에는 ‘-ㅂ니다’임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:돼지 부르는 소리.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:작은말은 ‘오도카니’임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:발~, 손~.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘짚북더기’도 비표준어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:편(便). 이~, 그~, 저~.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:다만, ‘아무-짝’은 ‘짝’임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘천정부지(天井不知)’는 ‘천정’임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0, 8][26, 10]
+	ParaLineSeg:
+	CtrlHeader:fn  
+		ListHeader:
+		ParaHeader:
+			ParaText: 이 예를 ‘상판때기’로 적고, ‘상판­때기’로 분석한다고 생각할 수도 있으나, 고시본대로 둔다.
+			ParaCharShape:[0][27]
+			ParaLineSeg:
+			CtrlHeader:atno
+ParaHeader:
+	ParaText:제5절  복수 표준어
+	ParaCharShape:[0, 11][21, 13]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제18항  다음 단어는 ㄱ을 원칙으로 하고, ㄴ도 허용한다.
+	ParaCharShape:[0, 4][20, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄱ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄴ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:비        고
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:네
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:쇠-
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:괴다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:꾀다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:쐬다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:죄다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:쬐다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:예
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:소-
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:고이다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:꼬이다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:쏘이다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:조이다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:쪼이다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:-가죽, -고기, -기름, -머리, -뼈.
+			ParaCharShape:[0, 26][23, 9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:물이 ~, 밑을 ~.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:어린애를 ~, 벌레가 ~.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:바람을 ~.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:나사를 ~.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:볕을 ~.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][20]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제19항  어감의 차이를 나타내는 단어 또는 발음이 비슷한 단어들이 다 같이 널리 쓰이는 경우에는, 그 모두를 표준어로 삼는다.(ㄱ, ㄴ을 모두 표준어로 삼음.)
+	ParaCharShape:[0, 4, 71, 90][20, 10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄱ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄴ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:비        고
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:거슴츠레-하다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:고까
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:고린-내
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:교기(驕氣)
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:구린-내
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:꺼림-하다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:나부랭이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:게슴츠레-하다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:꼬까
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:코린-내
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:갸기
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:쿠린-내
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:께름-하다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:너부렁이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:~신, ~옷.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:교만한 태도.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제3장  어휘 선택의 변화에 따른 표준어 규정
+	ParaCharShape:[0, 25][17, 28]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제1절  고    어
+	ParaCharShape:[0][13]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제20항  사어(死語)가 되어 쓰이지 않게 된 단어는 고어로 처리하고, 현재 널리 사용되는 단어를 표준어로 삼는다.(ㄱ을 표준어로 삼고, ㄴ을 버림.)
+	ParaCharShape:[0, 4, 64, 84][20, 10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄱ
+			ParaCharShape:[0][10]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄴ
+			ParaCharShape:[0][10]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:비        고
+			ParaCharShape:[0][10]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:난봉
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:낭떠러지
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:설거지-하다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:애달프다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:오동-나무
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:자두
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:봉
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:낭
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:설겆다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:애닯다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:머귀-나무
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:오얏
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제2절  한자어
+	ParaCharShape:[0][13]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제21항  고유어 계열의 단어가 널리 쓰이고 그에 대응되는 한자어 계열의 단어가 용도를 잃게 된 것은, 고유어 계열의 단어만을 표준어로 삼는다.(ㄱ을 표준어로 삼고, ㄴ을 버림.)
+	ParaCharShape:[0, 4, 80, 100][20, 10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄱ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄴ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:비        고
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:가루-약
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:구들-장
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:말-약
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:방-돌
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:길품-삯
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:까막-눈
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:꼭지-미역
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:나뭇-갓
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:늙-다리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:두껍-닫이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:떡-암죽
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:마른-갈이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:마른-빨래
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:메-찰떡
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:박달-나무
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:밥-소라
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:사래-논
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:사래-밭
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:삯-말
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:성냥
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:솟을-무늬
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:외-지다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:움-파
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:잎-담배
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:잔-돈
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:조-당수
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:죽데기
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:지겟-다리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:짐-꾼
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:푼-돈
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:흰-말
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:흰-죽
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:보행-삯
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:맹-눈
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:총각-미역
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:시장-갓
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:노닥다리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:두껍-창
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:병-암죽
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:건-갈이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:건-빨래
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:반-찰떡
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:배달-나무
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:식-소라
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:사래-답
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:사래-전
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:삯-마
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:화곽
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:솟을-문(～紋)
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:벽-지다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:동-파
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:잎-초
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:잔-전
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:조-당죽
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:피-죽
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:목-발
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:부지-군(負持- )
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:분-전/푼-전
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:백-말/부루-말
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:백-죽
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:큰 놋그릇.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:묘지기나 마름이 부쳐 먹는 땅.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘죽더기’도 비표준어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:지게 동발의 양쪽 다리.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘백마’는 표준어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaText:제22항  고유어 계열의 단어가 생명력을 잃고 그에 대응되는 한자어 계열의 단어가 널리 쓰이면, 한자어 계열의 단어를 표준어로 삼는다.(ㄱ을 표준어로 삼고, ㄴ을 버림.)
+	ParaCharShape:[0, 4, 75, 95][20, 10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄱ
+			ParaCharShape:[0][29]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄴ
+			ParaCharShape:[0][29]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:비        고
+			ParaCharShape:[0][29]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:개다리-소반
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:겸-상
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:고봉-밥
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:단-벌
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:마방-집
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:민망-스럽다/면구-스럽다
+			ParaCharShape:[0, 8, 9][9, 30, 9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:방-고래
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:부항-단지
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:산-누에
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:산-줄기
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:수-삼
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:심-돋우개
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:양-파
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:어질-병
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:윤-달
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:장력- 세다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:제석
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:총각-무
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:칫-솔
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:포수
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:개다리-밥상
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:맞-상
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:높은-밥
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:홑-벌
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:마바리-집
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:민주-스럽다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:구들-고래
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:뜸-단지
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:멧-누에
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:멧-줄기/멧-발
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:무-삼
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:불-돋우개
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:둥근-파
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:어질-머리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:군-달
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:장성-세다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:젯-돗
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:알-무/알타리-무
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:잇-솔
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:총-댕이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:馬房～.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제3절  방    언
+	ParaCharShape:[0][13]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제23항  방언이던 단어가 표준어보다 더 널리 쓰이게 된 것은, 그것을 표준어로 삼는다. 이 경우, 원래의 표준어는 그대로 표준어로 남겨 두는 것을 원칙으로 한다.(ㄱ을 표준어로 삼고, ㄴ도 표준어로 남겨 둠.)
+	ParaCharShape:[0, 4, 91, 118][20, 10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄱ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄴ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:비        고
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:멍게
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:물-방개
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:애-순
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:우렁쉥이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:선두리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:어린-순
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][20]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제24항  방언이던 단어가 널리 쓰이게 됨에 따라 표준어이던 단어가 안 쓰이게 된 것은, 방언이던 단어를 표준어로 삼는다.(ㄱ을 표준어로 삼고, ㄴ을 버림.)
+	ParaCharShape:[0, 4, 68, 88][20, 10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄱ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄴ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:비        고
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:귀밑-머리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:까-뭉개다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:막상
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:빈대-떡
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:생인-손
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:역-겹다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:코-주부
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:귓-머리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:까-무느다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:마기
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:빈자-떡
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:생안-손
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:역-스럽다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:코-보
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:준말은 ‘생-손’임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][13]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][13]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][13]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제4절  단수 표준어
+	ParaCharShape:[0][13]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제25항  의미가 똑같은 형태가 몇 가지 있을 경우, 그 중 어느 하나가 압도적으로 널리 쓰이면, 그 단어만을 표준어로 삼는다.(ㄱ을 표준어로 삼고, ㄴ을 버림.)
+	ParaCharShape:[0, 4, 71, 91][20, 10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄱ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:ㄴ
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:비        고
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:-게끔
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:겸사-겸사
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:고구마
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:고치다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:골목-쟁이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:광주리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:괴통
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:국-물
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:군-표
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:길-잡이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:까다롭다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:까치-발
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:꼬창-모
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:나룻-배
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:납-도리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:농-지거리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:다사-스럽다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:다오
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:-게시리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:겸지-겸지/겸두-겸두
+			ParaCharShape:[0, 15][24, 9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:참-감자
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:낫우다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:골목-자기
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:광우리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:호구
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:멀-국/말-국
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:군용-어음
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:길-앞잡이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:까닭-스럽다/까탈-스럽다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:까치-다리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:말뚝-모
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:나루
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:민-도리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:기롱-지거리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:다사-하다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:다구
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:병을 ~.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:자루를 박는 부분.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘길라잡이’도 표준어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:선반 따위를 받치는 물건.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:꼬창이로 구멍을 뚫으면서 심는 모.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘나루[津]’는 표준어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:다른 의미의 ‘기롱지거리’는 표준어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:간섭을 잘 하다.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:이리 ~.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:담배-꽁초
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:담배-설대
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:대장-일
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:뒤져-내다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:뒤통수-치다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:등-나무
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:등-때기
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:등잔-걸이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:떡-보
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:똑딱-단추
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:매-만지다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:먼-발치
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:며느리-발톱
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:명주-붙이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:목-메다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:밀짚-모자
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:바가지
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:바람-꼭지
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:반-나절
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:반두
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:버젓-이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:본-받다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:부각
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:부끄러워-하다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:부스러기
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:부지깽이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:담배-꼬투리/담배-꽁치/담배-꽁추
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:대-설대
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:성냥- 일
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:뒤어-내다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:뒤꼭지-치다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:등-칡
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:등-떠리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:등경-걸이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:떡-충이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:딸꼭-단추
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:우미다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:먼-발치기
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:뒷-발톱
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:주- 사니
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:목-맺히다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:보릿짚-모자
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:열-바가지/열-박
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:바람-고다리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:나절-가웃
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:독대
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:뉘연-히
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:법-받다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:다시마-자반
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:부끄리다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:부스럭지
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:부지팽이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘등’의 낮은 말.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:튜브의 바람을 넣는 구멍에 붙은, 쇠로 만든 꼭지.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:그물의 한 가지.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:부항-단지
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:붉으락-푸르락
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:비켜-덩이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:빙충-이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:빠-뜨리다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:뻣뻣-하다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:뽐-내다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:사로-잠그다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:살-풀이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:상투-쟁이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:새앙-손이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:샛-별
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:선-머슴
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:섭섭-하다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:속-말
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:손목-시계
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:손-수레
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:쇠-고랑
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:수도-꼭지
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:숙성-하다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:순대
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:술-고래
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:식은-땀
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:부항-항아리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:푸르락-붉으락
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:옆-사리미
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:빙충-맞이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:빠-치다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:왜긋다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:느물다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:사로-채우다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:살-막이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:상투-꼬부랑이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:생강-손이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:새벽-별
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:풋-머슴
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:애운-하다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:속-소리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:팔목-계/팔뚝-시계
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:손-구루마
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:고랑-쇠
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:수도-고동
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:숙-지다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:골집
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:술-꾸러기/술-부대/술-보/술-푸대
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:찬-땀
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:부스럼에서 피고름을 빨아 내기 위하여 부항을 붙이는 데 쓰는, 자그마한 단지.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:김맬 때에 흙덩이를 옆으로 빼내는 일, 또는 그 흙덩이.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:작은말은 ‘뱅충이’.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘빠트리다’도 표준어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:자물쇠나 빗장 따위를 반 정도만 걸어 놓다.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:상투 튼 이를 놀리는 말.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:국악 용어 ‘속소리’는 표준어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘구루마’는 일본어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:신기-롭다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:쌍동-밤
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:쏜살-같이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:아주
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:안-걸이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:안다미-씌우다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:안쓰럽다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:안절부절-못하다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:앉은뱅이-저울
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:알-사탕
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:암-내
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:앞-지르다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:애-벌레
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:얕은-꾀
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:언뜻
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:언제나
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:얼룩-말
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:-에는
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:열심-히
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:입-담
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:자배기
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:전봇-대
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:주책-없다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:쥐락-펴락
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:-지만
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:짓고-땡
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:짧은-작
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:찹-쌀
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:신기-스럽다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:쪽-밤
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:쏜살-로
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:영판
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:안-낚시
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:안다미-시키다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:안-슬프다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:안절부절-하다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:앉은-저울
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:구슬-사탕
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:곁땀-내
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:따라-먹다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:어린-벌레
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:물탄-꾀
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:펀뜻
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:노다지
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:워라-말
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:-엘랑
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:열심-로
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:말-담
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:너벅지
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:전선-대
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:주책-이다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:펴락-쥐락
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:-지만서도
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:지어-땡/짓고-땡이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:짜른-작
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:이-찹쌀
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:‘신기하다’도 표준어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:씨름 용어.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:제가 담당할 책임을 남에게 넘기다.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘주착→주책’은 제11항 참조.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:← -지마는.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:청대-콩
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:칡-범
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:푸른-콩
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:갈-범
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제5절  복수 표준어
+	ParaCharShape:[0][13]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제26항  한 가지 의미를 나타내는 형태 몇 가지가 널리 쓰이며 표준어 규정에 맞으면, 그 모두를 표준어로 삼는다.
+	ParaCharShape:[0, 4][20, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:복  수    표  준  어
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:비          고
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:가는-허리/잔-허리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:가락-엿/가래-엿
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:가뭄/가물
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:가엾다/가엽다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:감감-무소식/감감-소식
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:개수-통/설거지-통
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:개숫-물/설거지-물
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:갱-엿/검은-엿
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:-거리다/-대다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:거위-배/횟-배
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:것/해
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:게을러-빠지다/게을러-터지다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:고깃-간/푸줏-간
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:곰곰/곰곰-이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:관계-없다/상관-없다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:교정-보다/준 -보다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:가엾어/가여워, 가엾은/가여운.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘설겆다’는 ‘설거지­하다’로.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:가물­, 출렁­.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:내 ~, 네 ~, 뉘 ~.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘고깃-관, 푸줏-관, 다림-방’은 비표준어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:구들-재/구재
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:귀퉁-머리/귀퉁-배기
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:극성-떨다/극성-부리다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:기세-부리다/기세-피우다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:기승-떨다/기승-부리다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:깃-저고리/배내-옷/배냇-저고리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:꼬까/때때/고까
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:꼬리-별/살-별
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:꽃-도미/붉-돔
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:나귀/당-나귀
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:날-걸/세-뿔
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:내리-글씨/세로-글씨
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:넝쿨/덩굴
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:녘/쪽
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:눈-대중/눈-어림/눈-짐작
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:느리-광이/느림-보/늘-보
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:늦-모/마냥-모
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:다기-지다/다기-차다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:다달-이/매-달
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:-다마다/-고말고
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:다박-나룻/다박-수염
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:닭의-장/닭-장
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:댓-돌/툇-돌
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:덧-창/겉-창
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:독장-치다/독판-치다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:동자-기둥/쪼구미
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:돼지-감자/뚱딴지
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:되우/된통/되게
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘귀퉁이’의 비어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:~신, ~옷.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:윷판의 쨀밭 다음의 셋째 밭.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘덩쿨’은 비표준어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:동~, 서~.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:←만이앙-모.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:두동-무니/두동-사니
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:뒷-갈망/뒷-감당
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:뒷-말/뒷-소리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:들락-거리다/들랑-거리다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:들락-날락/들랑-날랑
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:딴-전/딴-청
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:땅-콩/호-콩
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:땔-감/땔-거리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:-뜨리다/-트리다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:뜬-것/뜬-귀신
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:마룻-줄/용총-줄
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:마-파람/앞-바람
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:만장-판/만장-중(滿場中)
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:만큼/만치
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:말-동무/말-벗
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:매-갈이/매-조미
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:매-통/목-매
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:먹-새/먹음-새
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:멀찌감치/멀찌가니/멀찍이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:멱통/산-멱/산-멱통
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:면-치레/외면-치레
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:모-내다/모-심다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:모쪼록/아무쪼록
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:목판-되/모-되
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:목화-씨/면화-씨
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:무심-결/무심-중
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:물-봉숭아/물-봉선화
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:윷놀이에서, 두 동이 한데 어울려 가는 말.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:깨-, 떨어-, 쏟-.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:돛대에 매어 놓은 줄. 
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘이어줄’은 비표준어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘먹음-먹이’는 비표준어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:모-내기, 모-심기.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:물-부리/빨-부리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:물-심부름/물-시중
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:물추리-나무/물추리-막대
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:물-타작/진-타작
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:민둥-산/벌거숭이-산
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:밑-층/아래-층
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:바깥-벽/밭-벽
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:바른/오른[右]
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:발-모가지/발-목쟁이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:버들-강아지/버들-개지
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:벌레/버러지
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:변덕-스럽다/변덕-맞다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:보-조개/볼-우물
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:보통-내기/여간-내기/예사-내기
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:볼-따구니/볼-퉁이/볼-때기
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:부침개-질/부침-질/지짐-질
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:불똥-앉다/등화-지다/등화-앉다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:불-사르다/사르다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:비발/비용(費用)
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:뾰두라지/뾰루지
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:살-쾡이/삵
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:삽살-개/삽사리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:상두-꾼/상여-꾼
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:상-씨름/소-걸이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:생/새앙/생강
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:생-뿔/새앙-뿔/생강-뿔
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:생-철/양-철
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:~손, ~쪽, ~편.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘발목’의 비속어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘벌거지, 벌러지’는 비표준어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘행-내기’는 비표준어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘볼’의 비속어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘부치개-질’은 비표준어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:삵-피.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘상도-꾼, 향도-꾼’은 비표준어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘쇠뿔’의 형용.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:1. ‘서양철’은 비표준어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:2. ‘生鐵’은 ‘무쇠’임. 
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:서럽다/섧다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:서방-질/화냥-질
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:성글다/성기다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:-(으)세요/-(으)셔요
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:송이/송이-버섯
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:수수-깡/수숫-대
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:술-안주/안주
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:-스레하다/-스름하다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:시늉-말/흉내-말
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:시새/세사(細沙)
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:신/신발
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:신주-보/독보(櫝褓)
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:심술-꾸러기/심술-쟁이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:씁쓰레-하다/씁쓰름-하다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:아귀-세다/아귀-차다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:아래-위/위-아래
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:아무튼/어떻든/어쨌든/하여튼/여하튼
+			ParaCharShape:[0, 19][31, 9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:앉음-새/앉음-앉음
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:알은-척/알은-체
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:애-갈이/애벌-갈이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:애꾸눈-이/외눈-박이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:양념-감/양념-거리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:어금버금-하다/어금지금-하다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:어기여차/어여차
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:어림-잡다/어림-치다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:어이-없다/어처구니-없다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:어저께/어제
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:언덕-바지/언덕-배기
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaText:‘설다’는 비표준어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:거무-, 발그-.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘외대-박이, 외눈-퉁이’는 비표준어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:얼렁-뚱땅/엄벙-뗑
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:여왕-벌/장수-벌
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:여쭈다/여쭙다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:여태/입때
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:여태-껏/이제-껏/입때-껏
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:역성-들다/역성-하다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:연-달다/잇-달다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:엿-가락/엿-가래
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:엿-기름/엿-길금
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:엿-반대기/엿-자박
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:오사리-잡놈/오색-잡놈
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:옥수수/강냉이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:왕골-기직/왕골-자리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:외겹-실/외올-실/홑-실
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:외손-잡이/한손-잡이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:욕심-꾸러기/욕심-쟁이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:우레/천둥
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:우지/울-보
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:을러-대다/을러-메다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:의심-스럽다/의심-쩍다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:-이에요/-이어요
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:이틀-거리/당-고금
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:일일-이/하나-하나
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:일찌감치/일찌거니
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:입찬-말/입찬-소리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:자리-옷/잠-옷
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:자물-쇠/자물-통
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:장가-가다/장가-들다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘여직’은 비표준어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘여직-껏’은 비표준어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘편역-들다’는 비표준어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘오합-잡놈’은 비표준어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:~떡, ~묵, ~밥, ~튀김.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘홑겹-실, 올-실’은 비표준어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:우렛-소리, 천둥-소리.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:학질의 일종임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘서방-가다’는 비표준어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaText:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+	CtrlHeader:tbl 
+		Table:
+		ListHeader:
+		ParaHeader:
+			ParaText:재롱-떨다/재롱-부리다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:제-가끔/제-각기
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:좀-처럼/좀-체
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:줄-꾼/줄-잡이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:중신/중매
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:짚-단/짚-뭇
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:쪽/편
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:차차/차츰
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:책-씻이/책-거리
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:척/체
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:천연덕-스럽다/천연-스럽다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:철-따구니/철-딱서니/철-딱지
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:추어-올리다/추어-주다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:축-가다/축-나다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:침-놓다/침-주다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:통-꼭지/통-젖
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:파자-쟁이/해자-쟁이
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:편지-투/편지-틀
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:한턱-내다/한턱-하다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:해웃-값/해웃-돈
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:혼자-되다/홀로-되다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:흠-가다/흠-나다/흠-지다
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ListHeader:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘좀-체로, 좀-해선, 좀-해’는 비표준어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:오른~, 왼~.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:모르는 ~, 잘난 ~.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘철-때기’는 비표준어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘추켜-올리다’는 비표준어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:통에 붙은 손잡이.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:점치는 이.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+		ParaHeader:
+			ParaText:‘해우-차’는 비표준어임.
+			ParaCharShape:[0][9]
+			ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][32]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제2부  표준 발음법
+	ParaCharShape:[0, 11][16, 17]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][17]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제1장  총    칙
+	ParaCharShape:[0][17]
+	ParaLineSeg:
+	CtrlHeader:head
+		ListHeader:
+		ParaHeader:
+			ParaText:    한국 어문 규정집
+			ParaCharShape:[0, 8, 21][18, 19, 0]
+			ParaLineSeg:
+			CtrlHeader:atno
+	CtrlHeader:head
+		ListHeader:
+		ParaHeader:
+			ParaText:표준어 규정(제2부 표준 발음법)  
+			ParaCharShape:[0, 18, 20][33, 34, 35]
+			ParaLineSeg:
+			CtrlHeader:atno
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제1항  표준 발음법은 표준어의 실제 발음을 따르되, 국어의 전통성과 합리성을 고려하여 정함을 원칙으로 한다.
+	ParaCharShape:[0, 3][20, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제2장  자음과 모음
+	ParaCharShape:[0, 11][17, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제2항  표준어의 자음은 다음 19개로 한다.
+	ParaCharShape:[0, 3][20, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:ㄱ	ㄲ	ㄴ	ㄷ	ㄸ	ㄹ	ㅁ	ㅂ	ㅃ	ㅅ	ㅆ	ㅇ	ㅈ	ㅉ	ㅊ	ㅋ	ㅌ	ㅍ	ㅎ
+	ParaCharShape:[0, 163][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제3항  표준어의 모음은 다음 21개로 한다.
+	ParaCharShape:[0, 3][20, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:ㅏ	ㅐ	ㅑ	ㅒ	ㅓ	ㅔ	ㅕ	ㅖ	ㅗ	ㅘ	ㅙ	ㅚ	ㅛ	ㅜ	ㅝ	ㅞ	ㅟ	ㅠ	ㅡ	ㅢ	ㅣ
+	ParaCharShape:[0, 181][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제4항  ‘ㅏ ㅐ ㅓ ㅔ ㅗ ㅚ ㅜ ㅟ ㅡ ㅣ’는 단모음(單母音)으로 발음한다. 
+	ParaCharShape:[0, 3][20, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:[붙임]  ‘ㅚ, ㅟ’는 이중 모음으로 발음할 수 있다.
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제5항  ‘ㅑ ㅒ ㅕ ㅖ ㅘ ㅙ ㅛ ㅝ ㅞ ㅠ ㅢ’는 이중 모음으로 발음한다.
+	ParaCharShape:[0, 3][20, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:다만 1. 용언의 활용형에 나타나는 ‘져, 쪄, 쳐’는 [저, 쩌, 처]로 발음한다.
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:가지어→가져[가저]     찌어→쪄[쩌]     다치어→다쳐[다처]
+	ParaCharShape:[0, 43][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:다만 2. ‘예, 례’ 이외의 ‘ㅖ’는 [ㅔ]로도 발음한다.
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:계집[계ː집/게ː집] 	계시다[계ː시다/게ː시다]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:시계[시계/시게](時計)	연계[연계/연게](連繫)
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:몌별[몌별/메별](袂別) 	개폐[개폐/개페](開閉)
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:혜택[혜ː택/헤ː택](惠澤) 	지혜[지혜/지헤](智慧)
+	ParaCharShape:[0, 41][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:다만 3. 자음을 첫소리로 가지고 있는 음절의 ‘ㅢ’는 [ㅣ]로 발음한다.
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:늴리리	닁큼	무늬	띄어쓰기	씌어  
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:틔어	희어	희떱다	희망	유희
+	ParaCharShape:[0, 43][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:다만 4. 단어의 첫음절 이외의 ‘의’는 [ㅣ]로, 조사 ‘의’는 [ㅔ]로 발음함도 허용한다.
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:주의[주의/주이]	협의[혀븨/혀비]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:우리의[우리의/우리에]        
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:강의의[강ː의의/강ː이에]
+	ParaCharShape:[0, 18][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제3장  음의 길이
+	ParaCharShape:[0, 10][17, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제6항  모음의 장단을 구별하여 발음하되, 단어의 첫음절에서만 긴소리가 나타나는 것을 원칙으로 한다.
+	ParaCharShape:[0, 3][20, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:(1) 	눈보라[눈ː보라]	말씨[말ː씨]	밤나무[밤ː나무]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:	많다[만ː타]	멀리[멀ː리]	벌리다[벌ː리다]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:(2)	첫눈[천눈]	참말[참말]	쌍동밤[쌍동밤]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:	수많이[수ː마니]	눈멀다[눈멀다]	떠벌리다[떠벌리다]
+	ParaCharShape:[0, 53][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:다만, 합성어의 경우에는 둘째 음절 이하에서도 분명한 긴소리를 인정한다.
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:반신반의[반ː신 바ː늬/반ː신 바ː니]      재삼재사[재ː삼 재ː사]
+	ParaCharShape:[0, 52][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:[붙임]  용언의 단음절 어간에 어미 ‘-아/-어’가 결합되어 한 음절로 축약되는 경우에도 긴소리로 발음한다.
+	ParaCharShape:[0, 4, 6][10, 20, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:보아 → 봐[봐ː]     기어 → 겨[겨ː]     되어 → 돼[돼ː]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:두어 → 둬[둬ː]     하여 → 해[해ː]
+	ParaCharShape:[0, 29][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:다만, ‘오아 → 와, 지어 → 져, 찌어 → 쪄, 치어 → 쳐’ 등은  긴소리로 발음하지 않는다.
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제7항  긴소리를 가진 음절이라도, 다음과 같은 경우에는 짧게 발음한다.
+	ParaCharShape:[0, 3][20, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:1. 단음절인 용언 어간에 모음으로 시작된 어미가 결합되는 경우
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:감다[감ː따] ― 감으니[가므니]	밟다[밥ː따] ― 밟으면[발브면]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:신다[신ː따] ― 신어[시너]  		알다[알ː다] ― 알아[아라]
+	ParaCharShape:[0, 54][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:다만, 다음과 같은 경우에는 예외적이다.
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:끌다[끌ː다] ― 끌어[끄ː러]		떫다[떨ː따] ― 떫은[떨ː븐]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:벌다[벌ː다] ― 벌어[버ː러]		썰다[썰ː다] ― 썰어[써ː러]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:없다[업ː따] ― 없으니[업ː쓰니]
+	ParaCharShape:[0, 23][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:2. 용언 어간에 피동, 사동의 접미사가 결합되는 경우
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:감다[감ː따] ― 감기다[감기다]     꼬다[꼬ː다] ― 꼬이다[꼬이다]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:밟다[밥ː따] ― 밟히다[발피다]
+	ParaCharShape:[0, 20][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:다만, 다음과 같은 경우에는 예외적이다.
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:끌리다[끌ː리다]     벌리다[벌ː리다]     없애다[업ː쌔다]
+	ParaCharShape:[0, 43][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText: 
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:[붙임]  다음과 같은 복합어에서는 본디의 길이에 관계없이 짧게 발음한다.
+	ParaCharShape:[0, 16, 24][10, 36, 10]
+	ParaLineSeg:
+	CtrlHeader:fn  
+		ListHeader:
+		ParaHeader:
+			ParaText: 학교 문법 용어에 따른다면 이 ‘복합어’는 ‘합성어’가 된다.
+			ParaCharShape:[0][37]
+			ParaLineSeg:
+			CtrlHeader:atno
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:밀-물     썰-물     쏜-살-같이     작은-아버지
+	ParaCharShape:[0, 30, 38, 51][22, 38, 22, 10]
+	ParaLineSeg:
+	CtrlHeader:fn  
+		ListHeader:
+		ParaHeader:
+			ParaText: 이를 ‘쏜살같-이’로 분석한다고 생각할 수 있으나, 고시본대로 둔다.
+			ParaCharShape:[0][37]
+			ParaLineSeg:
+			CtrlHeader:atno
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제4장  받침의 발음
+	ParaCharShape:[0, 11][17, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제8항  받침소리로는 ‘ㄱ, ㄴ, ㄷ, ㄹ, ㅁ, ㅂ, ㅇ’의 7 개 자음만 발음한다.
+	ParaCharShape:[0, 3, 5, 48][20, 10, 39, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제9항  받침 ‘ㄲ, ㅋ’, ‘ㅅ, ㅆ, ㅈ, ㅊ, ㅌ’, ‘ㅍ’은 어말 또는 자음 앞에서 각각 대표음 [ㄱ, ㄷ, ㅂ]으로 발음한다.
+	ParaCharShape:[0, 3][20, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:닦다[닥따]	키읔[키윽]	키읔과[키윽꽈]	옷[옫]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:웃다[욷ː따]	있다[읻따]	젖[젇]	빚다[빋따]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:꽃[꼳]	쫓다[쫃따]	솥[솓]	뱉다[밷ː따])
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:앞[압]	덮다[덥따]
+	ParaCharShape:[0, 18][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제10항  겹받침 ‘ㄳ’, ‘ㄵ’, ‘ㄼ, ㄽ, ㄾ’, ‘ㅄ’은 어말 또는 자음 앞에서 각각 [ㄱ, ㄴ, ㄹ, ㅂ]으로 발음한다.
+	ParaCharShape:[0, 4][20, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:넋[넉]         넋과[넉꽈]     앉다[안따]         여덟[여덜]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:넓다[널따]     외곬[외골]     핥다[할따]         값[갑]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:없다[업ː따]
+	ParaCharShape:[0, 9][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:다만, ‘밟-’은 자음 앞에서 [밥]으로 발음하고, ‘넓-’은 다음과 같은 경우에 [넙]으로 발음한다.
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:(1) 밟다[밥ː따]   		밟소[밥ː쏘]   	밟지[밥ː찌]   
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:밟는[밥ː는→밤ː는]	밟게[밥ː께]   	밟고[밥ː꼬]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:(2) 넓-죽하다[넙쭈카다]     	넓-둥글다[넙뚱글다]
+	ParaCharShape:[0, 43][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제11항  겹받침 ‘ㄺ, ㄻ, ㄿ’은 어말 또는 자음 앞에서 각각 [ㄱ, ㅁ, ㅂ]으로 발음한다.
+	ParaCharShape:[0, 4][20, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:닭[닥]	흙과[흑꽈]	맑다[막따]	늙지[늑찌]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:삶[삼ː]	젊다[점ː따]	읊고[읍꼬]	읊다[읍따]
+	ParaCharShape:[0, 52][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:다만, 용언의 어간 말음 ‘ㄺ’은 ‘ㄱ’ 앞에서 [ㄹ]로 발음한다.
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:맑게[말께]     묽고[물꼬]     얽거나[얼꺼나]
+	ParaCharShape:[0, 30][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제12항  받침 ‘ㅎ’의 발음은 다음과 같다.
+	ParaCharShape:[0, 4][20, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:1. ‘ㅎ(ㄶ, ㅀ)’ 뒤에 ‘ㄱ, ㄷ, ㅈ’이 결합되는 경우에는, 뒤 음절 첫소리와 합쳐서 [ㅋ, ㅌ, ㅊ]으로 발음한다.
+	ParaCharShape:[0, 5, 10][10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:놓고[노코]     좋던[조ː턴]     쌓지[싸치]     많고[만ː코]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:않던[안턴]     닳지[달치]
+	ParaCharShape:[0, 17][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:[붙임 1]  받침 ‘ㄱ(ㄺ), ㄷ, ㅂ(ㄼ), ㅈ(ㄵ)’이 뒤 음절 첫소리 ‘ㅎ’과 결합되는 경우에도, 역시 두 음을 합쳐서 [ㅋ, ㅌ, ㅍ, ㅊ]으로 발음한다.
+	ParaCharShape:[0, 13, 16, 22, 25, 28, 30][10, 22, 10, 22, 10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:각하[가카]	먹히다[머키다]	밝히다[발키다]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:맏형[마텽]	좁히다[조피다]	넓히다[널피다]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:꽂히다[꼬치다]   	앉히다[안치다]
+	ParaCharShape:[0, 27][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:[붙임 2]  규정에 따라 ‘ㄷ’으로 발음되는 ‘ㅅ, ㅈ, ㅊ, ㅌ’의 경우에도 이에 준한다.
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:옷 한 벌[오탄벌]     낮 한때[나탄때]     꽃 한 송이[꼬탄송이]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:숱하다[수타다]
+	ParaCharShape:[0, 8][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:2. ‘ㅎ(ㄶ, ㅀ)’ 뒤에 ‘ㅅ’이 결합되는 경우에는, ‘ㅅ’을 [ㅆ]으로 발음한다.
+	ParaCharShape:[0, 6, 10][10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:닿소[다쏘]           많소[만ː쏘]         싫소[실쏘]
+	ParaCharShape:[0, 41][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:    
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:3. ‘ㅎ’ 뒤에 ‘ㄴ’이 결합되는 경우에는, [ㄴ]으로 발음한다.
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText: 
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:놓는[논는]           쌓네[싼네]
+	ParaCharShape:[0, 23][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:[붙임]  ‘ㄶ, ㅀ’ 뒤에 ‘ㄴ’이 결합되는 경우에는, ‘ㅎ’을 발음하지 않는다.
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:않네[안네]   않는[안는]    뚫네[뚤네→뚤레]    뚫는[뚤는→뚤른]
+	ParaCharShape:[0, 45][22, 9]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][9]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:* ‘뚫네[뚤네→뚤레], 뚫는[뚤는→뚤른]’에 대해서는 제20항 참조.
+	ParaCharShape:[0, 1, 43][40, 9, 22]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:4. ‘ㅎ(ㄶ, ㅀ)’ 뒤에 모음으로 시작된 어미나 접미사가 결합되는 경우에는, ‘ㅎ’을 발음하지 않는다.
+	ParaCharShape:[0, 6, 10][10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:낳은[나은]	놓아[노아]	쌓이다[싸이다]	많아[마ː나]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:않은[아는]	닳아[다라]	싫어도[시러도]
+	ParaCharShape:[0, 36][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제13항  홑받침이나 쌍받침이 모음으로 시작된 조사나 어미, 접미사와 결합되는 경우에는, 제 음가대로 뒤 음절 첫소리로 옮겨 발음한다.
+	ParaCharShape:[0, 4][20, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:깎아[까까]	옷이[오시]	있어[이써]	낮이[나지]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:꽂아[꼬자]	꽃을[꼬츨]	쫓아[쪼차]	밭에[바테]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:앞으로[아프로]	덮이다[더피다]
+	ParaCharShape:[0, 24][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제14항  겹받침이 모음으로 시작된 조사나 어미, 접미사와 결합되는 경우에는, 뒤엣것만을 뒤 음절 첫소리로 옮겨 발음한다.(이 경우, ‘ㅅ’은 된소리로 발음함.)
+	ParaCharShape:[0, 5, 68, 90][20, 10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:넋이[넉씨]	앉아[안자]	닭을[달글]	젊어[절머]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:곬이[골씨]	핥아[할타]	읊어[을퍼]	값을[갑쓸]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:없어[업ː써]
+	ParaCharShape:[0, 7][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제15항  받침 뒤에 모음 ‘ㅏ, ㅓ, ㅗ, ㅜ, ㅟ’들로 시작되는 실질 형태소가 연결되는 경우에는, 대표음으로 바꾸어서 뒤 음절 첫소리로 옮겨 발음한다.
+	ParaCharShape:[0, 4][20, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:밭 아래[바다래]	늪 앞[느밥]	젖어미[저더미]    
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:맛없다[마덥따]	겉옷[거돋]	헛웃음[허두슴]  
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:꽃 위[꼬뒤]
+	ParaCharShape:[0, 7][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:다만, ‘맛있다, 멋있다’는 [마싣따], [머싣따]로도 발음할 수 있다.
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:[붙임]  겹받침의 경우에는, 그 중 하나만을 옮겨 발음한다.
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:넋없다[너겁따]     닭 앞에[다가페]     값어치[가버치]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:값있는[가빈는]
+	ParaCharShape:[0, 8][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제16항  한글 자모의 이름은 그 받침소리를 연음하되, ‘ㄷ, ㅈ, ㅊ, ㅋ, ㅌ, ㅍ, ㅎ’의 경우에는 특별히 다음과 같이 발음한다.
+	ParaCharShape:[0, 4][20, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:디귿이[디그시]       디귿을[디그슬]       디귿에[디그세]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:지읒이[지으시]       지읒을[지으슬]       지읒에[지으세]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:치읓이[치으시]       치읓을[치으슬]       치읓에[치으세]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:키읔이[키으기]       키읔을[키으글]       키읔에[키으게]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:티읕이[티으시]       티읕을[티으슬]       티읕에[티으세]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:피읖이[피으비]       피읖을[피으블]       피읖에[피으베]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:히읗이[히으시]       히읗을[히으슬]       히읗에[히으세]
+	ParaCharShape:[0, 38][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제5장  음의 동화
+	ParaCharShape:[0, 10][17, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제17항  받침 ‘ㄷ, ㅌ(ㄾ)’이 조사나 접미사의 모음 ‘ㅣ’와 결합되는 경우에는, [ㅈ, ㅊ]으로 바꾸어서 뒤 음절 첫소리로 옮겨 발음한다.
+	ParaCharShape:[0, 4, 15, 16][20, 10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:곧이듣다[고지듣따]        굳이[구지]          미닫이[미다지]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:땀받이[땀바지]            밭이[바치]          벼훑이[벼훌치]
+	ParaCharShape:[0, 44][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:[붙임]  ‘ㄷ’ 뒤에 접미사 ‘히’가 결합되어 ‘티’를 이루는 것은 [치]로 발음한다.
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:굳히다[구치다]            닫히다[다치다]      묻히다[무치다]
+	ParaCharShape:[0, 42][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제18항  받침 ‘ㄱ(ㄲ, ㅋ, ㄳ, ㄺ), ㄷ(ㅅ, ㅆ, ㅈ, ㅊ, ㅌ, ㅎ), ㅂ(ㅍ, ㄼ, ㄿ, ㅄ)’은 ‘ㄴ, ㅁ’ 앞에서 [ㅇ, ㄴ, ㅁ]으로 발음한다.
+	ParaCharShape:[0, 4, 11, 23, 26, 44, 47, 58][20, 10, 22, 10, 22, 10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:먹는[멍는]	국물[궁물]	깎는[깡는]	키읔만[키응만]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:몫몫이[몽목씨]	긁는[긍는]	흙만[흥만]	닫는[단는]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:짓는[진ː는]	옷맵시[온맵씨]	있는[인는]	맞는[만는]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:젖멍울[전멍울]	쫓는[쫀는]	꽃망울[꼰망울]	붙는[분는]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:놓는[논는]	잡는[잠는]	밥물[밤물]	앞마당[암마당]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:밟는[밤ː는]	읊는[음는]	없는[엄ː는]	값매다[감매다]
+	ParaCharShape:[0, 56][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:[붙임]  두 단어를 이어서 한 마디로 발음하는 경우에도 이와 같다.
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:      
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:책 넣는다[챙넌는다]   흙 말리다[흥말리다]   옷 맞추다[온마추다]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:밥 먹는다[밤멍는다]   값 매기다[감매기다]
+	ParaCharShape:[0, 25][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제19항  받침 ‘ㅁ, ㅇ’ 뒤에 연결되는 ‘ㄹ’은 [ㄴ]으로 발음한다.
+	ParaCharShape:[0, 4][20, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:담력[담ː녁]	침략[침냑]	강릉[강능]	항로[항ː노]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:대통령[대ː통녕]
+	ParaCharShape:[0, 11][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:[붙임]  받침 ‘ㄱ, ㅂ’ 뒤에 연결되는 ‘ㄹ’도 [ㄴ]으로 발음한다.
+	ParaCharShape:[0, 40][10, 36]
+	ParaLineSeg:
+	CtrlHeader:fn  
+		ListHeader:
+		ParaHeader:
+			ParaText: 예시어 중 ‘백리’, ‘십리’를 ‘백 리’, ‘십 리’처럼 띄어 쓸 수 있겠으나, 현용 사전에서 이들을 하나의 단어로 처리한 것도 있으므로, 고시본대로 두기로 한다.
+			ParaCharShape:[0][37]
+			ParaLineSeg:
+			CtrlHeader:atno
+ParaHeader:
+	ParaText:막론[막논→망논]     백리[백니→뱅니]     협력[협녁→혐녁]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:십리[십니→심니]
+	ParaCharShape:[0, 11][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제20항  ‘ㄴ’은 ‘ㄹ’의 앞이나 뒤에서 [ㄹ]로 발음한다.
+	ParaCharShape:[0, 4][20, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:(1) 난로[날ː로]     신라[실라]     천리[철리]     광한루[광ː할루]  
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:대관령[대ː괄령]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:(2) 칼날[칼랄]   물난리[물랄리]   줄넘기[줄럼끼]   할는지[할른지]
+	ParaCharShape:[0, 43][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:[붙임]  첫소리 ‘ㄴ’이 ‘ㅀ’, ‘ㄾ’ 뒤에 연결되는 경우에도 이에 준한다.
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:닳는[달른]         뚫는[뚤른]          핥네[할레]
+	ParaCharShape:[0, 37][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:다만, 다음과 같은 단어들은 ‘ㄹ’을 [ㄴ]으로 발음한다.
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:    
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:의견란[의ː견난]    임진란[임ː진난]     생산량[생산냥]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:결단력[결딴녁]     공권력[공꿘녁]      동원령[동ː원녕]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:상견례[상견녜]     횡단로[횡단노]      이원론[이ː원논]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:입원료[이붠뇨]     구근류[구근뉴]
+	ParaCharShape:[0, 21][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제21항  위에서 지적한 이외의 자음 동화는 인정하지 않는다.
+	ParaCharShape:[0, 4][20, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:감기[감ː기](×[강ː기])         옷감[옫깜](×[옥깜])
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:있고[읻꼬](×[익꼬])           꽃길[꼳낄](×[꼭낄])
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:젖먹이[전머기](×[점머기])     문법[문뻡](×[뭄뻡])
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:꽃밭[꼳빧](×[꼽빧])
+	ParaCharShape:[0, 13][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제22항  다음과 같은 용언의 어미는 [어]로 발음함을 원칙으로 하되, [여]로 발음함도 허용한다.
+	ParaCharShape:[0, 4][20, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:되어[되어/되여]    	피어[피어/피여]
+	ParaCharShape:[0, 30][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:[붙임]  ‘이오, 아니오’도 이에 준하여 [이요, 아니요]로 발음함을 허용한다.
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제6장  경음화
+	ParaCharShape:[0, 8][17, 28]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제23항  받침 ‘ㄱ(ㄲ, ㅋ, ㄳ, ㄺ), ㄷ(ㅅ, ㅆ, ㅈ, ㅊ, ㅌ), ㅂ(ㅍ, ㄼ, ㄿ,ㅄ)’ 뒤에 연결되는 ‘ㄱ, ㄷ, ㅂ, ㅅ, ㅈ’은 된소리로 발음한다.
+	ParaCharShape:[0, 4, 11, 23, 26, 41, 44, 54][20, 10, 22, 10, 22, 10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:국밥[국빱]     깎다[깍따]     넋받이[넉빠지]    삯돈[삭똔]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:닭장[닥짱]     칡범[칙뻠]     뻗대다[뻗때다]    옷고름[옫꼬름]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:있던[읻떤]     꽂고[꼳꼬]     꽃다발[꼳따발]    낯설다[낟썰다]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:밭갈이[받까리] 솥전[솓쩐]     곱돌[곱똘]        덮개[덥깨]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:옆집[엽찝]     넓죽하다[넙쭈카다]     읊조리다[읍쪼리다]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:값지다[갑찌다]
+	ParaCharShape:[0, 8][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제24항  어간 받침 ‘ㄴ(ㄵ), ㅁ(ㄻ)’ 뒤에 결합되는 어미의 첫소리 ‘ㄱ, ㄷ, ㅅ, ㅈ’은 된소리로 발음한다.
+	ParaCharShape:[0, 4, 15, 16, 21, 22][20, 10, 22, 10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:신고[신ː꼬]     껴안다[껴안따]     앉고[안꼬]      얹다[언따]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:삼고[삼ː꼬]     더듬지[더듬찌]     닮고[담ː꼬]     젊지[점ː찌]
+	ParaCharShape:[0, 50][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:다만, 피동, 사동의 접미사 ‘-기-’는 된소리로 발음하지 않는다.
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:안기다	감기다	굶기다	옮기다
+	ParaCharShape:[0, 36][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제25항  어간 받침 ‘ㄼ, ㄾ’ 뒤에 결합되는 어미의 첫소리 ‘ㄱ, ㄷ, ㅅ, ㅈ’은 된소리로 발음한다.
+	ParaCharShape:[0, 4][20, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:넓게[널께]	핥다[할따]	훑소[훌쏘]	떫지[떨ː찌]
+	ParaCharShape:[0, 51][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제26항  한자어에서, ‘ㄹ’ 받침 뒤에 연결되는 ‘ㄷ, ㅅ, ㅈ’은 된소리로 발음한다.
+	ParaCharShape:[0, 4][20, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:갈등[갈뜽]	발동[발똥]	절도[절또]	말살[말쌀]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:불소[불쏘](弗素)	일시[일씨]	갈증[갈쯩]	물질[물찔]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:발전[발쩐]	몰상식[몰쌍식]	불세출[불쎄출]
+	ParaCharShape:[0, 38][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:다만, 같은 한자가 겹쳐진 단어의 경우에는 된소리로 발음하지 않는다.
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:허허실실[허허실실](虛虛實實)     절절-하다[절절하다](切切- )
+	ParaCharShape:[0, 42][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제27항  관형사형 ‘-(으)ㄹ’ 뒤에 연결되는 ‘ㄱ, ㄷ, ㅂ, ㅅ, ㅈ’은 된소리로 발음한다.
+	ParaCharShape:[0, 4][20, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:할 것을[할꺼슬]     갈 데가[갈떼가]     할 바를[할빠를]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:할 수는[할쑤는]     할 적에[할쩌게]     갈 곳[갈꼳]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:할 도리[할또리]     만날 사람[만날싸람]
+	ParaCharShape:[0, 25][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:다만, 끊어서 말할 적에는 예사소리로 발음한다.
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:[붙임]  ‘-(으)ㄹ’로 시작되는 어미의 경우에도 이에 준한다.
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:할걸[할껄]          할밖에[할빠께]      할세라[할쎄라]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:할수록[할쑤록]      할지라도[할찌라도]  할지언정[할찌언정]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:할진대[할찐대]
+	ParaCharShape:[0, 8][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제28항  표기상으로는 사이시옷이 없더라도, 관형격 기능을 지니는 사이시옷이 있어야 할(휴지가 성립되는) 합성어의 경우에는, 뒤 단어의 첫소리 ‘ㄱ, ㄷ, ㅂ, ㅅ, ㅈ’을 된소리로 발음한다.
+	ParaCharShape:[0, 4, 48, 58][20, 10, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:문-고리[문꼬리]     눈-동자[눈똥자]     신-바람[신빠람]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:산-새[산쌔]         손-재주[손째주]     길-가[길까]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:물-동이[물똥이]     발-바닥[발빠닥]     굴-속[굴ː쏙]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:술-잔[술짠]         바람-결[바람껼]     그믐-달[그믐딸]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:아침-밥[아침빱]     잠-자리[잠짜리]     강-가[강까]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:초승-달[초승딸]     등-불[등뿔]         창-살[창쌀]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:강-줄기[강쭐기]
+	ParaCharShape:[0, 11][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제7장  음의 첨가
+	ParaCharShape:[0, 10][17, 28]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제29항  합성어 및 파생어에서, 앞 단어나 접두사의 끝이 자음이고 뒤 단어나 접미사의 첫음절이 ‘이, 야, 여, 요, 유’인 경우에는, ‘ㄴ’ 음을 첨가하여 [니, 냐, 녀, 뇨, 뉴]로 발음한다.
+	ParaCharShape:[0, 4][20, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:솜-이불[솜ː니불]	홑-이불[혼니불]	막-일[망닐]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:삯-일[상닐]	맨-입[맨닙]	꽃-잎[꼰닙]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:내복-약[내ː봉냑]	한-여름[한녀름]	남존-여비[남존녀비]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:신-여성[신녀성]	색-연필[생년필] 	직행-열차[지캥녈차]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:늑막-염[능망념] 	콩-엿[콩녇] 	담-요[담ː뇨]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:눈-요기[눈뇨기]	영업-용[영엄뇽] 	식용-유[시굥뉴]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:국민-윤리[궁민뉼리]	밤-윷[밤ː뉻]
+	ParaCharShape:[0, 33][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:다만, 다음과 같은 말들은 ‘ㄴ’ 음을 첨가하여 발음하되, 표기대로  발음할 수 있다.
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:이죽-이죽[이중니죽/이주기죽]    야금-야금[야금냐금/야그먀금]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:검열[검ː녈/거ː멸]               욜랑-욜랑[욜랑뇰랑/욜랑욜랑]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:금융[금늉/그뮹]
+	ParaCharShape:[0, 9][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:[붙임 1]  ‘ㄹ’ 받침 뒤에 첨가되는 ‘ㄴ’ 음은 [ㄹ]로 발음한다.
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:    
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:들-일[들ː릴]	솔-잎[솔립]	설-익다[설릭따]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:물-약[물략]	불-여우[불려우]	서울-역[서울력]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:물-엿[물렫]	휘발-유[휘발류]	유들-유들[유들류들]
+	ParaCharShape:[0, 49][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:[붙임 2]  두 단어를 이어서 한 마디로 발음하는 경우에도 이에 준한다.
+	ParaCharShape:[0, 41][10, 36]
+	ParaLineSeg:
+	CtrlHeader:fn  
+		ListHeader:
+		ParaHeader:
+			ParaText: 예시어 중 ‘서른여섯[서른녀섣]’, ‘스물여섯[스물려섣]’을 한 단어로 보느냐 두 단어로 보느냐에 대하여 논란의 여지가 있으나, 여기에서는 고시본에서 제시한 대로 두기로 한다.
+			ParaCharShape:[0][37]
+			ParaLineSeg:
+			CtrlHeader:atno
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:한 일[한닐]	옷 입다[온닙따]	서른여섯[서른녀섣]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:3 연대[삼년대]	먹은 엿[머근녇]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:할 일[할릴]	잘 입다[잘립따]	스물여섯[스물려섣]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:1 연대[일련대]	먹을 엿[머글렫]
+	ParaCharShape:[0, 26][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:다만, 다음과 같은 단어에서는 ‘ㄴ(ㄹ)’ 음을 첨가하여 발음하지 않는다.
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:6․25[유기오]	3․1절[사밀쩔]	송별-연[송ː벼련]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:등-용문[등용문]
+	ParaCharShape:[0, 11][22, 36]
+	ParaLineSeg:
+	CtrlHeader:fn  
+		ListHeader:
+		ParaHeader:
+			ParaText: 고시본에서 ‘등용-문[등용문]’으로 보인 것을 위와 같이 바로잡았다. 
+			ParaCharShape:[0][37]
+			ParaLineSeg:
+			CtrlHeader:atno
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:제30항  사이시옷이 붙은 단어는 다음과 같이 발음한다.
+	ParaCharShape:[0, 4][20, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:1. ‘ㄱ, ㄷ, ㅂ, ㅅ, ㅈ’으로 시작하는 단어 앞에 사이시옷이 올 때는 이들 자음만을 된소리로 발음하는 것을 원칙으로 하되, 사이시옷을 [ㄷ]으로 발음하는 것도 허용한다.
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:냇가[내ː까/낻ː까]	샛길[새ː낄/샏ː낄]	빨랫돌[빨래똘/빨랟똘]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:콧등[코뜽/콛뜽]	깃발[기빨/긷빨]	대팻밥[대ː패빱/대ː팯빱]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:햇살[해쌀/핻쌀]	뱃속[배쏙/밷쏙]	뱃전[배쩐/밷쩐]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:고갯짓[고개찓/고갣찓]
+	ParaCharShape:[0, 12][22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:2. 사이시옷 뒤에 ‘ㄴ, ㅁ’이 결합되는 경우에는 [ㄴ]으로 발음한다.
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:콧날[콛날→콘날]                아랫니[아랟니→아랜니]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:툇마루[퇻ː마루→퇸ː마루]        뱃머리[밷머리→밴머리]
+	ParaCharShape:[0, 4, 6, 11, 13, 38][22, 41, 22, 41, 22, 10]
+	ParaLineSeg:
+ParaHeader:
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:3. 사이시옷 뒤에 ‘이’ 음이 결합되는 경우에는 [ㄴㄴ]으로 발음한다.
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:            
+	ParaCharShape:[0][10]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:베갯잇[베갣닏→베갠닏]          깻잎[깯닙→깬닙]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:나뭇잎[나묻닙→나문닙]          도리깻열[도리깯녈→도리깬녈]
+	ParaCharShape:[0][22]
+	ParaLineSeg:
+ParaHeader:
+	ParaText:뒷윷[뒫ː뉻→뒨ː뉻]
+	ParaCharShape:[0, 3, 5, 9, 11, 13][22, 41, 22, 41, 22, 10]
+	ParaLineSeg:
