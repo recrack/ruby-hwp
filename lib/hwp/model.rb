@@ -11,11 +11,13 @@
 # ruby-hwp 및 ruby-hwp 관련 문서 내용을 사용하여 발생된 모든 결과에 대하여 책임지지 않습니다.
 # NO WARRANTY
 
-require 'iconv'
 require 'stringio'
-require 'hwp/datatypes'
 
 # TODO close StringIO instances
+# TODO hwp2html, hwpview 등을 실행하면 parser.rb, model.rb 를 통하여 최종적으로
+# 2번 정도 루프문을 도는데 1번만 돌도록 하여 성능을 향상시켜야 한다.
+# .each, yield 를 parser.rb, model.rb 와 연관시키는 것을 고려한다.
+# TODO BodyText, Modeller 를 알기 쉽게 개량해야 한다.
 
 module Record
 	module Header
@@ -338,8 +340,8 @@ module Record
 			@dirent = dirent
 		end
 
-		def parse
-			puts Iconv.iconv('utf-8', 'utf-16', @dirent.read)
+		def to_s
+			@dirent.read.unpack("v*").pack("U*")
 		end
 	end
 
@@ -1666,7 +1668,7 @@ module Record::Section
 			property = io.read(4).unpack("I")	# INT32
 			len = io.read(2).unpack("s")[0]	# WORD
 			#io.read(len * 2).unpack("S*").pack("U*")		# WCHAR
-			@script = Iconv.iconv("utf-8", "utf-16", io.read(len * 2))[0].chomp		# WCHAR
+			@script = io.read(len * 2).unpack("v*").pack("U*")	# WCHAR
 			#p unknown = io.read(2).unpack("S")	# 스펙 50쪽과 다름
 			#p size = io.read(4).unpack("I")		# HWPUNIT
 			#p color = io.read(4).unpack("I")	# COLORREF
