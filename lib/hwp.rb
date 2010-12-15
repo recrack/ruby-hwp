@@ -10,7 +10,6 @@
 # ruby-hwp 및 ruby-hwp 관련 문서 내용을 사용하여 발생된 모든 결과에 대하여 책임지지 않습니다.
 # NO WARRANTY
 
-require 'iconv'
 require 'ole/storage'
 require 'zlib'
 require 'stringio'
