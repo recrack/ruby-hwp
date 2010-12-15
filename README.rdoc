@@ -1,0 +1,44 @@
+hwp 문서 파일을 읽기 위한 루비 라이브러리입니다.
+실험 버전입니다.
+
+== 필요한 소프트웨어
+
+데비안 <tt>squeeze</tt> 기준으로 설명합니다.
+
+<tt>ruby 1.9.1</tt> 이상,  <tt>ruby-ole</tt>, <tt>builder</tt>, <tt>gtk2</tt>
+<tt>bin/hwp2html</tt> 에서 <tt>builder</tt> 을 사용합니다.
+<tt>bin/hwpviewer</tt> 에서 <tt>gtk2</tt> 를 사용합니다.
+
+=== <tt>ruby 1.9.x</tt>
+
+  $ sudo apt-get install ruby1.9.1-full
+
+=== <tt>gtk2</tt>
+
+현재 <tt>libgtk2-ruby1.9.1</tt> 패키지가 데비안 공식 저장소에 없으므로 아래처럼 <tt>gem1.9.1</tt> 로 <tt>gtk2</tt> gem을 설치합니다.
+
+  $ sudo apt-get install libgtk2.0-dev
+  $ sudo gem1.9.1 install gtk2
+
+== ruby-hwp 소스 다운 받기
+
+  git clone git://github.com/cogniti/ruby-hwp.git
+
+== ruby-hwp 설치
+
+  $ cd ruby-hwp
+  $ rake
+  # gem1.9.1 install build/ruby-hwp-x.x.x.gem
+
+ruby-hwp 소스를 수정해보면서 테스트하고 싶은 경우 <tt>ruby-hwp-x.x.x.gem</tt> 을 설치하지 마시고 다음처럼 실행하세요.
+
+  $ cd ruby-hwp
+  $ ruby1.9.1 -Ilib bin/hwpviewer.rb samples/kreg2.hwp
+
+=== 버그 및 개선 사항 보고
+
+ https://github.com/cogniti/ruby-hwp/issues
+
+=== 위키
+
+ https://github.com/cogniti/ruby-hwp/wiki
