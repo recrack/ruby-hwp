@@ -15,10 +15,10 @@ Gem::Specification.new do |spec|
 	spec.add_dependency('ruby-ole', '>= 1.2.9')
 	spec.add_dependency('builder', '>= 2.1.2')
 
-	spec.files  = ['README', 'TODO', 'Rakefile', 'ruby-hwp.gemspec'] +
+	spec.files  = ['README.rdoc', 'Rakefile', 'ruby-hwp.gemspec'] +
 	spec.files += Dir.glob('lib/**/*.rb')
 	spec.files += Dir.glob('bin/*')
-	spec.executables = ['hwp2txt', 'hwp2html']
+	spec.executables = ['hwp2txt', 'hwp2html', 'hwpviewer']
 
 	spec.has_rdoc = false
 
