@@ -5,100 +5,135 @@ require 'optparse'
 require 'hwp'
 require 'gtk2'
 
-opts = {}
+def process filename
+	hwp = HWP.open filename
+
+	hwp.doc_info.char_shapes.each_with_index do |char_shape, i|
+		# FIXME tag name
+		@textview.buffer.create_tag(i.to_s,
+			'size' => char_shape.size/100 * Pango::SCALE)
+	end
+
+	iter = @textview.buffer.start_iter
+
+	hwp.bodytext.para_headers.each do |para_header|
+		# m_pos, m_id 적용시키는 코드이다. 개선할 필요가 있다.
+		# text == nil 인 경우가 있는데, 확인이 필요하다. para break??
+		if para_header.para_char_shape.m_pos.length == 1
+			@textview.buffer.insert(iter, para_header.para_text.to_s+"\n", para_header.para_char_shape.m_id[0].to_s)
+		elsif para_header.para_char_shape.m_pos.length > 1
+			prev_pos = para_header.para_char_shape.m_pos[0]
+
+			texts = []
+			para_header.para_char_shape.m_pos.each_with_index do |pos, i|
+				if i > 0
+					texts << para_header.para_text.to_s[prev_pos...pos]
+				end
+				prev_pos = pos
+			end
+
+			if prev_pos < para_header.para_text.to_s.length
+				texts << para_header.para_text.to_s[prev_pos..-1]
+			end
+
+			texts.each_with_index do |text, i|
+				if i == texts.length - 1
+					@textview.buffer.insert(iter, text+"\n", para_header.para_char_shape.m_id[i].to_s) if text
+				else
+					@textview.buffer.insert(iter, text, para_header.para_char_shape.m_id[i].to_s) if text
+				end
+			end # if
+		end # if
+
+		if para_header.table
+			gtk_table = Gtk::Table.new(para_header.table.rows.length, para_header.table.rows[0].cells.length)
+			para_header.table.rows.each_with_index do |row, row_index|
+				row.cells.each_with_index do |cell, cell_index|
+					table_textview = Gtk::TextView.new
+					table_textview.set_border_window_size(Gtk::TextView::WINDOW_LEFT || Gtk::TextView::WINDOW_RIGHT,3)
+					cell.para_headers.each do |para_header|
+						table_textview.buffer.text += para_header.para_text.to_s+"\n"
+					end
+					gtk_table.attach_defaults(table_textview, cell_index, cell_index+cell.col_span, row_index, row_index+cell.row_span)
+				end
+			end
+			gtk_table.show
+			anchor = @textview.buffer.create_child_anchor(iter)
+			@textview.add_child_at_anchor(gtk_table, anchor)
+			@textview.buffer.insert(iter, "\n")
+		end
+	end
+
+	hwp.close
+end
+
+def create_gui
+	@textview = Gtk::TextView.new
+	@textview.wrap_mode = Gtk::TextTag::WRAP_WORD
+	@textview.editable = false
+
+	scrolled_w = Gtk::ScrolledWindow.new
+	scrolled_w.add(@textview)
+	scrolled_w.set_policy(Gtk::POLICY_NEVER, Gtk::POLICY_AUTOMATIC)
+
+	file_menu = Gtk::Menu.new
+
+	file_item = Gtk::MenuItem.new 'File'
+	file_item.set_submenu file_menu
+
+	open_item = Gtk::MenuItem.new 'Open'
+	quit_item = Gtk::MenuItem.new 'Quit'
+
+	file_menu.append open_item
+	file_menu.append quit_item
+
+	menu_bar = Gtk::MenuBar.new
+	menu_bar.append file_item
+
+	quit_item.signal_connect('activate') { Gtk.main_quit }
+
+	w = Gtk::Window.new
+	w.title = "HWP Viewer"
+	w.set_size_request(640,400)
+	w.signal_connect('delete-event') { Gtk.main_quit }
+
+	open_item.signal_connect('activate') do
+		dialog = Gtk::FileChooserDialog.new("Open File", w,
+			Gtk::FileChooser::ACTION_OPEN,
+			nil,
+			[Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_CANCEL],
+			[Gtk::Stock::OPEN, Gtk::Dialog::RESPONSE_ACCEPT])
+
+		if dialog.run == Gtk::Dialog::RESPONSE_ACCEPT
+			Thread.new { process(dialog.filename) }
+		end
+		dialog.destroy
+	end
+
+	vbox = Gtk::VBox.new false, 0
+	
+	vbox.pack_start menu_bar, false, false, 0
+	vbox.add scrolled_w
+	w.add vbox
+	w.show_all
+end
+
 op = OptionParser.new do |op|
 	#op.banner = "Usage: hwpviewer [OPTION] [FILE]"
 	op.banner = "Usage: hwpviewer [OPTION] [FILE]"
-	op.separator ' '
+	#op.separator ' '
 	#op.separator "Output control:"
 	#op.separator ''
 	op.on_tail('-h', '--help', 'Show this message') { puts op; exit }
 end
 
-files = op.parse ARGV
+opts = op.parse ARGV
 
-if files.empty?
-	puts 'Must specify 1 .hwp file.'
-	puts op
-	exit 1
+if opts.empty?
+	create_gui
+else
+	create_gui
+	process opts[0]
 end
 
-textview = Gtk::TextView.new
-textview.wrap_mode = Gtk::TextTag::WRAP_WORD
-textview.editable = false
-
-iter = textview.buffer.start_iter
-
-hwp = HWP.open(ARGV[0])
-
-hwp.doc_info.char_shapes.each_with_index do |char_shape, i|
-	# FIXME tag name
-	textview.buffer.create_tag(i.to_s,
-		'size' => char_shape.size/100 * Pango::SCALE)
-end
-
-start_iter = nil
-end_iter = nil
-
-hwp.bodytext.para_headers.each do |para_header|
-	# m_pos, m_id 적용시키는 코드이다. 개선할 필요가 있다.
-	# text == nil 인 경우가 있는데, 확인이 필요하다. para break??
-	if para_header.para_char_shape.m_pos.length == 1
-		textview.buffer.insert(iter, para_header.para_text.to_s+"\n", para_header.para_char_shape.m_id[0].to_s)
-	elsif para_header.para_char_shape.m_pos.length > 1
-		prev_pos = para_header.para_char_shape.m_pos[0]
-
-		texts = []
-		para_header.para_char_shape.m_pos.each_with_index do |pos, i|
-			if i > 0
-				texts << para_header.para_text.to_s[prev_pos...pos]
-			end
-			prev_pos = pos
-		end
-
-		if prev_pos < para_header.para_text.to_s.length
-			texts << para_header.para_text.to_s[prev_pos..-1]
-		end
-
-		texts.each_with_index do |text, i|
-			if i == texts.length - 1
-				textview.buffer.insert(iter, text+"\n", para_header.para_char_shape.m_id[i].to_s) if text
-			else
-				textview.buffer.insert(iter, text, para_header.para_char_shape.m_id[i].to_s) if text
-			end
-		end # if
-	end # if
-
-	if para_header.table
-		gtk_table = Gtk::Table.new(para_header.table.rows.length, para_header.table.rows[0].cells.length)
-		para_header.table.rows.each_with_index do |row, row_index|
-			row.cells.each_with_index do |cell, cell_index|
-				table_textview = Gtk::TextView.new
-				table_textview.set_border_window_size(Gtk::TextView::WINDOW_LEFT || Gtk::TextView::WINDOW_RIGHT,3)
-				cell.para_headers.each do |para_header|
-					table_textview.buffer.text += para_header.para_text.to_s+"\n"
-				end
-				gtk_table.attach_defaults(table_textview, cell_index, cell_index+cell.col_span, row_index, row_index+cell.row_span)
-			end
-		end
-		gtk_table.show
-		anchor = textview.buffer.create_child_anchor(iter)
-		textview.add_child_at_anchor(gtk_table, anchor)
-		textview.buffer.insert(iter, "\n")
-	end
-end
-
-hwp.close
-
-scrolled_w = Gtk::ScrolledWindow.new
-scrolled_w.add(textview)
-scrolled_w.set_policy(Gtk::POLICY_NEVER, Gtk::POLICY_AUTOMATIC)
-
-w = Gtk::Window.new
-w.title = "HWP Viewer"
-w.set_size_request(640,400)
-w.signal_connect('delete-event') { Gtk.main_quit }
-w.add scrolled_w
-
-w.show_all
 Gtk.main
