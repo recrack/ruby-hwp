@@ -40,7 +40,14 @@ hwp 문서 파일을 읽기 위한 루비 라이브러리입니다.
 ruby-hwp 소스를 수정해보면서 테스트하고 싶은 경우 <tt>ruby-hwp-x.x.x.gem</tt> 을 설치하지 말고 다음처럼 실행하세요.
 
   $ cd ruby-hwp
+
+hwp 파일 이름을 직접 입력하거나
+
   $ ruby1.9.1 -Ilib bin/hwpviewer samples/kreg2.hwp
+
+파일 선택 대화창에서 선택할 수 있습니다.
+
+  $ ruby1.9.1 -Ilib bin/hwpviewer
 
 === 버그 및 개선 사항 보고
 
