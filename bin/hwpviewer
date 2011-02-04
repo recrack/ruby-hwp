@@ -5,8 +5,12 @@ require 'optparse'
 require 'hwp'
 require 'gtk2'
 
+# TODO TextView 로 처리하지 말고 GDK 로 처리해야 한다.
+
 def process filename
 	hwp = HWP.open filename
+	@textview.buffer.text = ''
+	# TODO 기존의 태그 삭제
 
 	hwp.doc_info.char_shapes.each_with_index do |char_shape, i|
 		# FIXME tag name
@@ -105,7 +109,8 @@ def create_gui
 			[Gtk::Stock::OPEN, Gtk::Dialog::RESPONSE_ACCEPT])
 
 		if dialog.run == Gtk::Dialog::RESPONSE_ACCEPT
-			Thread.new { process(dialog.filename) }
+			#Thread.new { process(dialog.filename) }
+			process dialog.filename
 		end
 		dialog.destroy
 	end
