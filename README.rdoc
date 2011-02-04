@@ -14,12 +14,13 @@ hwp 문서 파일을 읽기 위한 루비 라이브러리입니다.
 
 === <tt>ruby-ole, builder 설치</tt>
 
-<tt>bin/hwp2html</tt> 에서 <tt>builder</tt> 을 사용합니다.  
-<tt>bin/hwpviewer</tt> 에서 <tt>gtk2</tt> 를 사용합니다.
+<tt>bin/hwp2html</tt> 에서 <tt>builder</tt> 을 사용합니다.
 
   $ sudo gem1.9.1 install ruby-ole builder
 
 === <tt>gtk2 설치</tt>
+
+<tt>bin/hwpviewer</tt> 에서 <tt>gtk2</tt> 를 사용합니다.
 
 현재 <tt>libgtk2-ruby1.9.1</tt> 패키지가 데비안 공식 저장소에 없으므로 아래처럼 <tt>gem1.9.1</tt> 로 <tt>gtk2</tt> gem을 설치합니다.
 
