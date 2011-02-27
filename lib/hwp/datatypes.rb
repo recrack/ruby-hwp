@@ -1,42 +1,75 @@
-require 'stringio'
+module DataType
+# 사용예
+#	class Model
+#		include DataType
+#		byte :bytes, 30
+#		word :title, 40
 
-module Datatype
-	class Type
-		attr_reader :a_size
-		def initialize a_size
-			@a_size = a_size
+#		def get_bytes
+#			@bytes.pack("C*")
+#		end
+#	end
+
+#	model = Model.new stream
+#	model.bytes
+#	model.get_bytes
+#	model.title
+
+#    C         | Integer | 8-bit unsigned integer (unsigned char)
+#    c         | Integer | 8-bit signed integer (char)
+
+#    v         | Integer | 16-bit unsigned integer, VAX (little-endian) byte order
+#    s         | Integer | 16-bit signed integer, native endian (int16_t)
+
+#    V         | Integer | 32-bit unsigned integer, VAX (little-endian) byte order
+#    l         | Integer | 32-bit signed integer, native endian (int32_t)
+
+# TODO 몇몇의 자료형은 unpack 할 필요가 없다.
+	TYPES = {
+		:byte		=> {:size => 1, :pack => "C"},
+		:sbyte		=> {:size => 1, :pack => "c"},
+		:word		=> {:size => 2, :pack => "v"},
+		:sword		=> {:size => 2, :pack => "s"},
+		:dword		=> {:size => 4, :pack => "V"},
+		:sdword		=> {:size => 4, :pack => "l"},
+		:hchar		=> {:size => 2, :pack => "v"},
+		:echar		=> {:size => 1, :pack => "C"},
+		:kchar		=> {:size => 1, :pack => "C"},
+		:hunit		=> {:size => 2, :pack => "v"},
+		:shunit		=> {:size => 2, :pack => "v"},
+		:hunit32	=> {:size => 4, :pack => "V"},
+		:shunit32	=> {:size => 4, :pack => "V"}
+	}
+
+	def self.included(base)
+		base.class_eval do
+			def initialize stream
+				@stream = stream
+				# FIXME 몇몇의 자료형은 unpack 할 필요가 없다.
+				self.class.instance_variable_get(:@fields).each do |type, var, array|
+					if array == 1
+						instance_variable_set(var,
+							@stream.read(array * TYPES[type][:size]).unpack(TYPES[type][:pack]).pop)
+					else
+						instance_variable_set(var,
+							@stream.read(array * TYPES[type][:size]).unpack(TYPES[type][:pack] * array))
+					end
+				end
+			end
 		end
-	end
 
-	class OneByte < Type;	SIZE_OF = 1;end
-	class Int8 < OneByte;	PACK = "c";	end
-	class UInt8 < OneByte;	PACK = "C";	end
+		# class method
+		class << base
+			TYPES.keys.each do |type|
+				define_method type do |var, array=1|
+					@fields ||= []
+					@fields << [type, "@#{var.to_s}".to_sym, array]
 
-	class TwoBytes < Type;	SIZE_OF = 2;end
-	class UInt16 < TwoBytes;PACK = "v";	end
-	class Word < TwoBytes;	PACK = "v";	end
-
-	class FourBytes < Type;		SIZE_OF = 4;end
-	class Int32 < FourBytes;	PACK = "i";	end
-	class UInt32 < FourBytes;	PACK = "V";	end
-	class ColorRef < FourBytes;	PACK = "V";	end
-
-	def int8 a_size=1;		return Int8.new a_size;		end
-	def int32 a_size=1;		return Int32.new a_size;	end
-	def uint8 a_size=1;		return UInt8.new a_size;	end
-	def uint16 a_size=1;	return UInt16.new a_size;	end
-	def uint32 a_size=1;	return UInt32.new a_size;	end
-	def word a_size=1;		return Word.new a_size;		end
-	def colorref a_size=1;	return ColorRef.new a_size;	end
-
-	def decode data, fields
-		@io = StringIO.new data
-		fields.each_pair do |type, var|
-			name = "@"+var.to_s
-			raw = @io.read(type.class::SIZE_OF*type.a_size)
-			val = raw.unpack(type.class::PACK*type.a_size)
-			instance_variable_set(name, val)
+					define_method var do
+						instance_variable_get("@#{var.to_s}".to_sym)
+					end
+				end
+			end
 		end
-		@io.close
 	end
 end
