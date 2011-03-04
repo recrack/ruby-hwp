@@ -1,5 +1,6 @@
 #!/usr/bin/ruby1.9.1
 # coding: utf-8
+# 한글과컴퓨터의 글 문서 파일(.hwp) 공개 문서를 참고하여 개발하였습니다.
 # $LOAD_PATH 를 자신의 적절한 디렉토리로 바꾸어 주세요.
 $LOAD_PATH << '/home/cogniti/ruby-hwp/lib'
 
