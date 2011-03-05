@@ -2,6 +2,7 @@
 # 한글과컴퓨터의 글 문서 파일(.hwp) 공개 문서를 참고하여 개발하였습니다.
 
 require 'stringio'
+require 'hwp/datatype'
 
 # TODO close StringIO instances
 # TODO hwp2html, hwpview 등을 실행하면 parser.rb, model.rb 를 통하여 최종적으로

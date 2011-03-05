@@ -28,20 +28,34 @@ module DataType
 #    l         | Integer | 32-bit signed integer, native endian (int32_t)
 
 # TODO 몇몇의 자료형은 unpack 할 필요가 없다.
-	TYPES = {
+	TYPE = {
+		# common
 		:byte		=> {:size => 1, :pack => "C"},
-		:sbyte		=> {:size => 1, :pack => "c"},
 		:word		=> {:size => 2, :pack => "v"},
-		:sword		=> {:size => 2, :pack => "s"},
 		:dword		=> {:size => 4, :pack => "V"},
-		:sdword		=> {:size => 4, :pack => "l"},
+		# hwp 5.0
+		:wchar		=> {:size => 2, :pack => "v"},
+		:hwpunit	=> {:size => 4, :pack => "V"},
+		:shwpunit	=> {:size => 4, :pack => "l"}, # signed
+		:uint8		=> {:size => 1, :pack => "C"},
+		:uint16		=> {:size => 2, :pack => "v"},
+		:uint32		=> {:size => 4, :pack => "V"},
+		:int8		=> {:size => 1, :pack => "c"}, # signed
+		:int16		=> {:size => 2, :pack => "s"}, # signed
+		:int32		=> {:size => 4, :pack => "l"}, # signed
+		:hwpunit16	=> {:size => 2, :pack => "s"}, # signed
+		:colorref	=> {:size => 4, :pack => "V"}, # 0x00bbggrr
+		# hwp 3.0
+		:sbyte		=> {:size => 1, :pack => "c"}, # signed
+		:sword		=> {:size => 2, :pack => "s"}, # signed
+		:sdword		=> {:size => 4, :pack => "l"}, # signed
 		:hchar		=> {:size => 2, :pack => "v"},
 		:echar		=> {:size => 1, :pack => "C"},
 		:kchar		=> {:size => 1, :pack => "C"},
 		:hunit		=> {:size => 2, :pack => "v"},
-		:shunit		=> {:size => 2, :pack => "v"},
+		:shunit		=> {:size => 2, :pack => "s"}, # signed
 		:hunit32	=> {:size => 4, :pack => "V"},
-		:shunit32	=> {:size => 4, :pack => "V"}
+		:shunit32	=> {:size => 4, :pack => "l"}  # signed
 	}
 
 	def self.included(base)
@@ -52,10 +66,10 @@ module DataType
 				self.class.instance_variable_get(:@fields).each do |type, var, array|
 					if array == 1
 						instance_variable_set(var,
-							@stream.read(array * TYPES[type][:size]).unpack(TYPES[type][:pack]).pop)
+							@stream.read(array * TYPE[type][:size]).unpack(TYPE[type][:pack]).pop)
 					else
 						instance_variable_set(var,
-							@stream.read(array * TYPES[type][:size]).unpack(TYPES[type][:pack] * array))
+							@stream.read(array * TYPE[type][:size]).unpack(TYPE[type][:pack] * array))
 					end
 				end
 			end
@@ -63,7 +77,7 @@ module DataType
 
 		# class method
 		class << base
-			TYPES.keys.each do |type|
+			TYPE.keys.each do |type|
 				define_method type do |var, array=1|
 					@fields ||= []
 					@fields << [type, "@#{var.to_s}".to_sym, array]
