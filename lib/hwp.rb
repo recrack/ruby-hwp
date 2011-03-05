@@ -33,17 +33,22 @@ module HWP
 			@entries = _ROOT_ELEMENTS - (_ROOT_ELEMENTS - _entries)
 
 			@entries.each do |entry|
-				dirent = @ole.dirent_from_path entry
+				if @ole.file.file? entry
+					file = @ole.file.open entry
+				else
+					dirent = @ole.dirent_from_path entry
+				end
+
 				case entry
-				when "FileHeader"	then @header = FileHeader.new dirent
-				when "DocInfo"		then @doc_info = Record::DocInfo.new(dirent, @header)
+				when "FileHeader"	then @header = FileHeader.new file
+				when "DocInfo"		then @doc_info = Record::DocInfo.new(file, @header)
 				when "BodyText"		then @bodytext = Record::BodyText.new(dirent, @header)
 				when "ViewText"		then @view_text = Record::ViewText.new dirent
 				when "\005HwpSummaryInformation"
-					@summary_info = Record::SummaryInformation.new dirent
+					@summary_info = Record::SummaryInformation.new file
 				when "BinData"		then @bin_data = Record::BinData.new(dirent, @header)
-				when "PrvText"		then @prv_text = Record::PrvText.new dirent
-				when "PrvImage"		then @prv_image = Record::PrvImage.new dirent
+				when "PrvText"		then @prv_text = Record::PrvText.new file
+				when "PrvImage"		then @prv_image = Record::PrvImage.new file
 				when "DocOptions"	then @doc_options = Record::DocOptions.new dirent
 				when "Scripts"		then @scripts = Record::Scripts.new dirent
 				when "XMLTemplate"	then @xml_template = Record::XMLTemplate.new dirent
@@ -60,18 +65,17 @@ module HWP
 end
 
 class FileHeader
-	attr_accessor :signature, :version, :reversed
-	def initialize dirent
-		data = dirent.read
-		@signature	= data[0..31]
-		@version	= data[32..35].reverse.unpack("C*").join(".")
-		@bit		= data[36..39].unpack("b*")[0]
-		@reversed	= data[40..255]
+	attr_reader :signature, :version
+	def initialize file
+		@signature	= file.read 32
+		@version	= file.read(4).reverse.unpack("C*").join(".")
+		@bit		= file.read(4).unpack("b*").pop
+		@reversed	= file.read 216
 	end
 
-	method_names = ['compress?', 'encrypt?', 'distribute?', 'script?',
-					'drm?', 'xmltemplate?', 'history?', 'sign?',
-					'certificate_encrypt?', 'sign_spare?', 'certificate_drm?', 'ccl?']
+	method_names = ['compress?', 'encrypt?', 'distribute?', 'script?', 'drm?',
+					'xml_template?', 'history?', 'sign?','certificate_encrypt?',
+					'sign_spare?', 'certificate_drm?', 'ccl?']
 
 	method_names.each_with_index do |method_name, i|
 		define_method(method_name) do

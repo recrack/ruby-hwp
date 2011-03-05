@@ -65,9 +65,11 @@ module DataType
 				# FIXME 몇몇의 자료형은 unpack 할 필요가 없다.
 				self.class.instance_variable_get(:@fields).each do |type, var, array|
 					if array == 1
+						p [type, var, array]
 						instance_variable_set(var,
 							@stream.read(array * TYPE[type][:size]).unpack(TYPE[type][:pack]).pop)
 					else
+						p [type, var, array]
 						instance_variable_set(var,
 							@stream.read(array * TYPE[type][:size]).unpack(TYPE[type][:pack] * array))
 					end

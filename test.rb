@@ -6,8 +6,22 @@ $LOAD_PATH << '/home/cogniti/ruby-hwp/lib'
 
 require 'hwp'
 hwp = HWP.open ARGV[0]
+#p hwp.header
+#p hwp.header.signature
+#p hwp.header.version
+#p hwp.header.compress?
+#p hwp.header.encrypt?
+#p hwp.header.distribute?
+#p hwp.header.script?
+#p hwp.header.drm?
+#p hwp.header.xml_template?
+#p hwp.header.history?
+#p hwp.header.sign?
+#p hwp.header.certificate_encrypt?
+#p hwp.header.sign_spare?
+#p hwp.header.certificate_drm?
+#p hwp.header.ccl?
 
-# hwp.header.compress?
 # hwp.doc_info
 # hwp.doc_info.char_shapes.length
 # hwp.doc_info.char_shapes.each { |shape| p shape }
