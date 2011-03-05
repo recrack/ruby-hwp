@@ -62,24 +62,27 @@ module HWP
 			@ole.close
 		end
 	end
-end
 
-class FileHeader
-	attr_reader :signature, :version
-	def initialize file
-		@signature	= file.read 32
-		@version	= file.read(4).reverse.unpack("C*").join(".")
-		@bit		= file.read(4).unpack("b*").pop
-		@reversed	= file.read 216
-	end
-
-	method_names = ['compress?', 'encrypt?', 'distribute?', 'script?', 'drm?',
-					'xml_template?', 'history?', 'sign?','certificate_encrypt?',
-					'sign_spare?', 'certificate_drm?', 'ccl?']
-
-	method_names.each_with_index do |method_name, i|
-		define_method(method_name) do
-			@bit[i] == '1' ? true : false
+	class FileHeader
+		attr_reader :signature, :version
+		def initialize file
+			@signature	= file.read 32
+			@version	= file.read(4).reverse.unpack("C*").join(".")
+			@property	= file.read(4).unpack("V").pop
+			@reversed	= file.read 216
 		end
+
+		def compress?;				(@property & (1 <<  0)).zero? ? false : true;	end
+		def encrypt?;				(@property & (1 <<  1)).zero? ? false : true;	end
+		def distribute?;			(@property & (1 <<  2)).zero? ? false : true;	end
+		def script?;				(@property & (1 <<  3)).zero? ? false : true;	end
+		def drm?;					(@property & (1 <<  4)).zero? ? false : true;	end
+		def xml_template?;			(@property & (1 <<  5)).zero? ? false : true;	end
+		def history?;				(@property & (1 <<  6)).zero? ? false : true;	end
+		def sign?;					(@property & (1 <<  7)).zero? ? false : true;	end
+		def certificate_encrypt?;	(@property & (1 <<  8)).zero? ? false : true;	end
+		def sign_spare?;			(@property & (1 <<  9)).zero? ? false : true;	end
+		def certificate_drm?;		(@property & (1 << 10)).zero? ? false : true;	end
+		def ccl?;					(@property & (1 << 11)).zero? ? false : true;	end
 	end
 end
