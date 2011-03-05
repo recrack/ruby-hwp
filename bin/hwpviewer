@@ -82,18 +82,25 @@ def create_gui
 	scrolled_w.set_policy(Gtk::POLICY_NEVER, Gtk::POLICY_AUTOMATIC)
 
 	file_menu = Gtk::Menu.new
+	help_menu = Gtk::Menu.new
 
 	file_item = Gtk::MenuItem.new 'File'
+	help_item = Gtk::MenuItem.new 'Help'
+
 	file_item.set_submenu file_menu
+	help_item.set_submenu help_menu
 
 	open_item = Gtk::MenuItem.new 'Open'
 	quit_item = Gtk::MenuItem.new 'Quit'
+	about_item = Gtk::MenuItem.new 'About'
 
 	file_menu.append open_item
 	file_menu.append quit_item
+	help_menu.append about_item
 
 	menu_bar = Gtk::MenuBar.new
 	menu_bar.append file_item
+	menu_bar.append help_item
 
 	quit_item.signal_connect('activate') { Gtk.main_quit }
 
@@ -114,6 +121,14 @@ def create_gui
 			process dialog.filename
 		end
 		dialog.destroy
+	end
+
+	about_item.signal_connect('activate') do
+		about = Gtk::AboutDialog.new
+		about.program_name = "HWP Viewer"
+		about.comments = "한글과컴퓨터의 글 문서 파일(.hwp) 공개 문서를 참고하여 개발하였습니다."
+		about.run
+		about.destroy
 	end
 
 	vbox = Gtk::VBox.new false, 0
