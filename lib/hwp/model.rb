@@ -149,7 +149,7 @@ module Record
 								when Record::Section::ParaCharShape
 							 		parent.para_char_shape = current
 								else
-									raise NotImplementedError.new current.class.name
+									STDERR.puts "#{current.class.name}: not implemented"
 								end
 							when Record::Section::Modeller
 								case current
@@ -160,10 +160,10 @@ module Record
 								when Record::Section::Table
 									parent.append_table current
 								else
-									raise NotImplementedError.new current.class.name
+									STDERR.puts "#{current.class.name}: not implemented"
 								end
 							else
-								raise NotImplementedError.new parent.class.name
+								STDERR.puts "#{parent.class.name}: not implemented"
 							end
 						# 같은 깊이
 						when 0
@@ -186,7 +186,7 @@ module Record
 										parent.ctrl_headers << current
 									end
 								else
-									raise NotImplementedError.new current.class.name
+									STDERR.puts "#{current.class.name}: not implemented"
 								end
 							when Record::Section::Modeller
 								case current
@@ -199,10 +199,10 @@ module Record
 								when Record::Section::ListHeader
 									parent.append_list_header current
 								else
-									raise NotImplementedError.new current.class.name
+									STDERR.puts "#{current.class.name}: not implemented"
 								end
 							else
-								raise NotImplementedError.new parent.class.name
+								STDERR.puts "#{parent.class.name}: not implemented"
 							end
 						# 깊이 1 이상 감소
 						# level 은 10-bit 이므로 -1023 이 최소값
@@ -223,7 +223,7 @@ module Record
 										parent.ctrl_headers << current
 									end
 								else
-									raise NotImplementedError.new current.class.name
+									STDERR.puts "#{current.class.name}: not implemented"
 								end
 							when Record::Section::Modeller
 								case current
@@ -232,7 +232,7 @@ module Record
 								when Record::Section::ParaHeader
 									parent.append_para_header current
 								else
-									raise NotImplementedError.new current.class.name
+									STDERR.puts "#{current.class.name}: not implemented"
 								end
 							# level 0 의 ParaHeader가 교체될 경우 nil 값이 나온다.
 							when nil
@@ -240,14 +240,14 @@ module Record
 								when Record::Section::ParaHeader
 									@para_headers << current
 								else
-									raise NotImplementedError.new current.class.name
+									STDERR.puts "#{current.class.name}: not implemented"
 								end
 							else
-								raise NotImplementedError.new parent.class.name
+								STDERR.puts "#{parent.class.name}: not implemented"
 							end
 						else # 깊이가 1이상 증가하는 경우, 에러 발생
 							p(current.level - stack[-1].level)
-							raise NotImplementedError.new current.class.name
+							STDERR.puts "#{current.class.name}: not implemented"
 						end
 					end # while
 				end # @dirent.each_child
@@ -1307,18 +1307,22 @@ module Record::Section
 			common = ['tbl ','$lin','$rec','$ell','$arc','$pol',
 					  '$cur','eqed','$pic','$ole','$con']
 
-			if common.include? @ctrl_id
-				bit = s_io.read(4).unpack("b32")
-				v_offset = s_io.read(4).unpack("V")
-				h_offset = s_io.read(4).unpack("V")
-				width = s_io.read(4).unpack("V")
-				height = s_io.read(4).unpack("V")
-				z = s_io.read(4).unpack("i")
-				margins = s_io.read(2*4).unpack("v*")
-				id = s_io.read(4).unpack("V")[0]
-				len = s_io.read(2).unpack("v")[0]
-				# 바이트가 남는다.
-				s_io.close
+			begin
+				if common.include? @ctrl_id
+					bit = s_io.read(4).unpack("b32")
+					v_offset = s_io.read(4).unpack("V")
+					h_offset = s_io.read(4).unpack("V")
+					width = s_io.read(4).unpack("V")
+					height = s_io.read(4).unpack("V")
+					z = s_io.read(4).unpack("i")
+					margins = s_io.read(2*4).unpack("v*")
+					id = s_io.read(4).unpack("V")[0]
+					len = s_io.read(2).unpack("v")[0]
+					# 바이트가 남는다.
+					s_io.close
+				end
+			rescue => e
+				STDERR.puts e.message
 			end
 			# accessor
 			@page_defs, @footnote_shapes, @page_border_fills = [], [], []
@@ -1328,27 +1332,27 @@ module Record::Section
 			when 'tbl '
 				# TODO
 				@text_table = Text::Table.new # 배열로 만들어야 할지도 모르겠다.
-				#raise NotImplementedError.new @ctrl_id
+				#STDERR.puts "#{@ctrl_id}: not implemented"
 			when '$lin'
-				raise NotImplementedError.new @ctrl_id
+				STDERR.puts "#{@ctrl_id}: not implemented"
 			when '$rec'
-				raise NotImplementedError.new @ctrl_id
+				STDERR.puts "#{@ctrl_id}: not implemented"
 			when '$ell'
-				raise NotImplementedError.new @ctrl_id
+				STDERR.puts "#{@ctrl_id}: not implemented"
 			when '$arc'
-				raise NotImplementedError.new @ctrl_id
+				STDERR.puts "#{@ctrl_id}: not implemented"
 			when '$pol'
-				raise NotImplementedError.new @ctrl_id
+				STDERR.puts "#{@ctrl_id}: not implemented"
 			when '$cur'
-				raise NotImplementedError.new @ctrl_id
+				STDERR.puts "#{@ctrl_id}: not implemented"
 			when 'eqed'
-				raise NotImplementedError.new @ctrl_id
+				STDERR.puts "#{@ctrl_id}: not implemented"
 			when '$pic'
-				raise NotImplementedError.new @ctrl_id
+				STDERR.puts "#{@ctrl_id}: not implemented"
 			when '$ole'
-				raise NotImplementedError.new @ctrl_id
+				STDERR.puts "#{@ctrl_id}: not implemented"
 			when '$con'
-				raise NotImplementedError.new @ctrl_id
+				STDERR.puts "#{@ctrl_id}: not implemented"
 			end
 		end
 
@@ -1437,7 +1441,7 @@ module Record::Section
 		attr_accessor :var, :level
 		def initialize data, level
 			@level = level
-			raise NotImplementedError.new "Record::Section::CtrlData"
+			STDERR.puts "{#self.class.name}: not implemented"
 		end
 	end
 
@@ -1506,7 +1510,7 @@ module Record::Section
 		attr_reader :level
 		def initialize data, level
 			@level = level
-			raise NotImplementedError.new "Record::Section::ShapeComponentLine"
+			STDERR.puts "{#self.class.name}: not implemented"
 		end
 	end
 
@@ -1514,7 +1518,7 @@ module Record::Section
 		attr_reader :level
 		def initialize data, level
 			@level = level
-			raise NotImplementedError.new "Record::Section::ShapeComponentRectangle"
+			STDERR.puts "{#self.class.name}: not implemented"
 		end
 	end
 
@@ -1522,7 +1526,7 @@ module Record::Section
 		attr_reader :level
 		def initialize data, level
 			@level = level
-			raise NotImplementedError.new "Record::Section::ShapeComponentEllipse"
+			STDERR.puts "{#self.class.name}: not implemented"
 		end
 	end
 
@@ -1530,7 +1534,7 @@ module Record::Section
 		attr_reader :level
 		def initialize data, level
 			@level = level
-			raise NotImplementedError.new "Record::Section::ShapeComponentArc"
+			STDERR.puts "{#self.class.name}: not implemented"
 		end
 	end
 
@@ -1538,7 +1542,7 @@ module Record::Section
 		attr_reader :level
 		def initialize data, level
 			@level = level
-			raise NotImplementedError.new "Record::Section::ShapeComponentPolygon"
+			STDERR.puts "{#self.class.name}: not implemented"
 		end
 	end
 
@@ -1546,7 +1550,7 @@ module Record::Section
 		attr_reader :level
 		def initialize data, level
 			@level = level
-			raise NotImplementedError.new "Record::Section::ShapeComponentCurve"
+			STDERR.puts "{#self.class.name}: not implemented"
 		end
 	end
 
@@ -1554,7 +1558,7 @@ module Record::Section
 		attr_reader :level
 		def initialize data, level
 			@level = level
-			raise NotImplementedError.new "Record::Section::ShapeComponentOLE"
+			STDERR.puts "{#self.class.name}: not implemented"
 		end
 	end
 
@@ -1571,7 +1575,7 @@ module Record::Section
 		attr_reader :level
 		def initialize data, level
 			@level = level
-			raise NotImplementedError.new "Record::Section::ShapeComponentContainer"
+			STDERR.puts "{#self.class.name}: not implemented"
 		end
 	end
 
@@ -1579,7 +1583,7 @@ module Record::Section
 		attr_reader :level
 		def initialize data, level
 			@level = level
-			raise NotImplementedError.new "Record::Section::ShapeComponentTextArt"
+			STDERR.puts "{#self.class.name}: not implemented"
 		end
 	end
 
@@ -1587,7 +1591,7 @@ module Record::Section
 		attr_reader :level
 		def initialize data, level
 			@level = level
-			raise NotImplementedError.new "Record::Section::ShapeComponentUnknown"
+			STDERR.puts "{#self.class.name}: not implemented"
 		end
 	end
 
@@ -1674,7 +1678,7 @@ module Record::Section
 		attr_reader :level
 		def initialize data, level
 			@level = level
-			raise NotImplementedError.new "Record::Section::ShapeComponentUnknown"
+			STDERR.puts "{#self.class.name}: not implemented"
 		end
 	end
 
@@ -1682,7 +1686,7 @@ module Record::Section
 		attr_reader :level
 		def initialize data, level
 			@level = level
-			raise NotImplementedError.new "Record::Section::FormObject"
+			STDERR.puts "{#self.class.name}: not implemented"
 		end
 	end
 
@@ -1690,7 +1694,7 @@ module Record::Section
 		attr_reader :level
 		def initialize data, level
 			@level = level
-			raise NotImplementedError.new "Record::Section::MemoShape"
+			STDERR.puts "{#self.class.name}: not implemented"
 		end
 	end
 
@@ -1698,7 +1702,7 @@ module Record::Section
 		attr_reader :level
 		def initialize data, level
 			@level = level
-			raise NotImplementedError.new "Record::Section::MemoList"
+			STDERR.puts "{#self.class.name}: not implemented"
 		end
 	end
 
@@ -1706,7 +1710,7 @@ module Record::Section
 		attr_reader :level
 		def initialize data, level
 			@level = level
-			raise NotImplementedError.new "Record::Section::ChartData"
+			STDERR.puts "{#self.class.name}: not implemented"
 		end
 	end
 end # Record::Section
