@@ -9,6 +9,10 @@ require 'gtk2'
 # TODO TextView 로 처리하지 말고 GDK 로 처리해야 한다.
 
 def process filename
+	@textview = Gtk::TextView.new
+	@textview.wrap_mode = Gtk::TextTag::WRAP_WORD
+	@textview.editable = false
+
 	hwp = HWP.open filename
 	@textview.buffer.text = ''
 	# TODO 기존의 태그 삭제
@@ -62,25 +66,18 @@ def process filename
 					gtk_table.attach_defaults(table_textview, cell_index, cell_index+cell.col_span, row_index, row_index+cell.row_span)
 				end
 			end
-			gtk_table.show
 			anchor = @textview.buffer.create_child_anchor(iter)
 			@textview.add_child_at_anchor(gtk_table, anchor)
 			@textview.buffer.insert(iter, "\n")
 		end
 	end
 
+	@scrolled_w.add(@textview)
+	@scrolled_w.show_all
 	hwp.close
 end
 
 def create_gui
-	@textview = Gtk::TextView.new
-	@textview.wrap_mode = Gtk::TextTag::WRAP_WORD
-	@textview.editable = false
-
-	scrolled_w = Gtk::ScrolledWindow.new
-	scrolled_w.add(@textview)
-	scrolled_w.set_policy(Gtk::POLICY_NEVER, Gtk::POLICY_AUTOMATIC)
-
 	file_menu = Gtk::Menu.new
 	help_menu = Gtk::Menu.new
 
@@ -104,13 +101,13 @@ def create_gui
 
 	quit_item.signal_connect('activate') { Gtk.main_quit }
 
-	w = Gtk::Window.new
-	w.title = "HWP Viewer"
-	w.set_size_request(640,400)
-	w.signal_connect('delete-event') { Gtk.main_quit }
+	@w = Gtk::Window.new
+	@w.title = "HWP Viewer"
+	@w.set_size_request(640,400)
+	@w.signal_connect('delete-event') { Gtk.main_quit }
 
 	open_item.signal_connect('activate') do
-		dialog = Gtk::FileChooserDialog.new("Open File", w,
+		dialog = Gtk::FileChooserDialog.new("Open File", @w,
 			Gtk::FileChooser::ACTION_OPEN,
 			nil,
 			[Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_CANCEL],
@@ -131,12 +128,15 @@ def create_gui
 		about.destroy
 	end
 
-	vbox = Gtk::VBox.new false, 0
-	
-	vbox.pack_start menu_bar, false, false, 0
-	vbox.add scrolled_w
-	w.add vbox
-	w.show_all
+	@scrolled_w = Gtk::ScrolledWindow.new
+	@scrolled_w.set_policy(Gtk::POLICY_NEVER, Gtk::POLICY_AUTOMATIC)
+
+	@vbox = Gtk::VBox.new false, 0
+	@vbox.pack_start menu_bar, false, false, 0
+	@vbox.add @scrolled_w
+
+	@w.add @vbox
+	@w.show_all
 end
 
 op = OptionParser.new do |op|
