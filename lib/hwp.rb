@@ -56,21 +56,6 @@ module HWP
 		def close
 			@ole.close
 		end
-
-		def to_s
-			@header.to_s		if defined? @header
-			@doc_info.to_s		if defined? @doc_info
-			@bodytext.to_s		if defined? @bodytext
-			@view_text.to_s		if defined? @view_text
-			@summary_info.to_s	if defined? @summary_info
-			@bin_data.to_s		if defined? @bin_data
-			@prv_text.to_s		if defined? @prv_text
-			@prv_image.to_s		if defined? @prv_image
-			@doc_options.to_s	if defined? @doc_options
-			@scripts.to_s		if defined? @scripts
-			@xml_template.to_s	if defined? @xml_template
-			@doc_history.to_s	if defined? @doc_history
-		end
 	end
 end
 
