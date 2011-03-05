@@ -6,8 +6,6 @@ require 'optparse'
 require 'hwp'
 require 'gtk2'
 
-# TODO TextView 로 처리하지 말고 GDK 로 처리해야 한다.
-
 def process filename
 	@textview = Gtk::TextView.new
 	@textview.wrap_mode = Gtk::TextTag::WRAP_WORD
@@ -71,9 +69,20 @@ def process filename
 			@textview.buffer.insert(iter, "\n")
 		end
 	end
-
+	@scrolled_w = Gtk::ScrolledWindow.new
+	@scrolled_w.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC)
 	@scrolled_w.add(@textview)
 	@scrolled_w.show_all
+	button = Gtk::Button.new "Close"
+	button.signal_connect("clicked") do
+		@notebook.remove_page @notebook.page
+	end
+	hbox = Gtk::VBox.new(false, 2)
+	hbox.pack_end(button, false, false, 0)
+	hbox.add @scrolled_w
+	@notebook.append_page hbox
+	#@notebook.next_page
+	@notebook.show_all
 	hwp.close
 end
 
@@ -128,12 +137,10 @@ def create_gui
 		about.destroy
 	end
 
-	@scrolled_w = Gtk::ScrolledWindow.new
-	@scrolled_w.set_policy(Gtk::POLICY_NEVER, Gtk::POLICY_AUTOMATIC)
-
 	@vbox = Gtk::VBox.new false, 0
 	@vbox.pack_start menu_bar, false, false, 0
-	@vbox.add @scrolled_w
+	@notebook = Gtk::Notebook.new
+	@vbox.add @notebook
 
 	@w.add @vbox
 	@w.show_all
