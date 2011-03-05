@@ -5,8 +5,7 @@ require 'stringio'
 require 'hwp/datatype'
 
 # TODO close StringIO instances
-# TODO hwp2html, hwpview 등을 실행하면 parser.rb, model.rb 를 통하여 최종적으로
-# 2번 정도 루프문을 도는데 1번만 돌도록 하여 성능을 향상시켜야 한다.
+# TODO 루프 반복 줄이기
 # .each, yield 를 parser.rb, model.rb 와 연관시키는 것을 고려한다.
 # TODO BodyText, Modeller 를 알기 쉽게 개량해야 한다.
 
