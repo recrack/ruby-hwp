@@ -112,7 +112,7 @@ def create_gui
 
 	@w = Gtk::Window.new
 	@w.title = "HWP Viewer"
-	@w.set_size_request(640,400)
+	@w.set_size_request(640,480)
 	@w.signal_connect('delete-event') { Gtk.main_quit }
 
 	open_item.signal_connect('activate') do
@@ -123,10 +123,10 @@ def create_gui
 			[Gtk::Stock::OPEN, Gtk::Dialog::RESPONSE_ACCEPT])
 
 		if dialog.run == Gtk::Dialog::RESPONSE_ACCEPT
-			#Thread.new { process(dialog.filename) }
-			process dialog.filename
+			t = Thread.new { process(dialog.filename) }
 		end
 		dialog.destroy
+		t.join
 	end
 
 	about_item.signal_connect('activate') do
