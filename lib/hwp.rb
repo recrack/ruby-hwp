@@ -43,7 +43,7 @@ module HWP
 				when "FileHeader"	then @header = FileHeader.new file
 				when "DocInfo"		then @doc_info = Record::DocInfo.new(file, @header)
 				when "BodyText"		then @bodytext = Record::BodyText.new(dirent, @header)
-				when "ViewText"		then @view_text = Record::ViewText.new dirent
+				when "ViewText"		then @view_text = Record::ViewText.new(dirent, @header)
 				when "\005HwpSummaryInformation"
 					@summary_info = Record::SummaryInformation.new file
 				when "BinData"		then @bin_data = Record::BinData.new(dirent, @header)
@@ -72,17 +72,17 @@ module HWP
 			@reversed	= file.read 216
 		end
 
-		def compress?;				(@property & (1 <<  0)).zero? ? false : true;	end
-		def encrypt?;				(@property & (1 <<  1)).zero? ? false : true;	end
-		def distribute?;			(@property & (1 <<  2)).zero? ? false : true;	end
-		def script?;				(@property & (1 <<  3)).zero? ? false : true;	end
-		def drm?;					(@property & (1 <<  4)).zero? ? false : true;	end
-		def xml_template?;			(@property & (1 <<  5)).zero? ? false : true;	end
-		def history?;				(@property & (1 <<  6)).zero? ? false : true;	end
-		def sign?;					(@property & (1 <<  7)).zero? ? false : true;	end
-		def certificate_encrypt?;	(@property & (1 <<  8)).zero? ? false : true;	end
-		def sign_spare?;			(@property & (1 <<  9)).zero? ? false : true;	end
-		def certificate_drm?;		(@property & (1 << 10)).zero? ? false : true;	end
-		def ccl?;					(@property & (1 << 11)).zero? ? false : true;	end
+		def compress?;			  (@property & (1 <<  0)).zero? ? false : true; end
+		def encrypt?;			  (@property & (1 <<  1)).zero? ? false : true; end
+		def distribute?;		  (@property & (1 <<  2)).zero? ? false : true; end
+		def script?;			  (@property & (1 <<  3)).zero? ? false : true; end
+		def drm?;				  (@property & (1 <<  4)).zero? ? false : true; end
+		def xml_template?;		  (@property & (1 <<  5)).zero? ? false : true; end
+		def history?;			  (@property & (1 <<  6)).zero? ? false : true; end
+		def sign?;				  (@property & (1 <<  7)).zero? ? false : true; end
+		def certificate_encrypt?; (@property & (1 <<  8)).zero? ? false : true; end
+		def sign_spare?;		  (@property & (1 <<  9)).zero? ? false : true; end
+		def certificate_drm?;	  (@property & (1 << 10)).zero? ? false : true; end
+		def ccl?;				  (@property & (1 << 11)).zero? ? false : true; end
 	end
 end

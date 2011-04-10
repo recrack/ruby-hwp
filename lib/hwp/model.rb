@@ -313,7 +313,7 @@ module Record
 	end # BodyText
 
 	class ViewText
-		def initialize dirent
+		def initialize dirent, header
 			raise NotImplementedError.new("ViewText is not supported")
 		end
 	end
