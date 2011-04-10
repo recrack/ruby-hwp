@@ -147,8 +147,8 @@ def create_gui
 end
 
 op = OptionParser.new do |op|
-	#op.banner = "Usage: hwpviewer [OPTION] [FILE]"
-	op.banner = "Usage: hwpviewer [OPTION] [FILE]"
+	#op.banner = "Usage: hv [OPTION] [FILE]"
+	op.banner = "Usage: hv [OPTION] [FILE]"
 	#op.separator ' '
 	#op.separator "Output control:"
 	#op.separator ''

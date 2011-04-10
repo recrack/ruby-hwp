@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
 	spec.files  = ['README.rdoc', 'Rakefile', 'ruby-hwp.gemspec'] +
 	spec.files += Dir.glob('lib/**/*.rb')
 	spec.files += Dir.glob('bin/*')
-	spec.executables = ['hwp2txt', 'hwp2html', 'hwpviewer']
+	spec.executables = ['hwp2txt', 'hwp2html', 'hv']
 
 	spec.has_rdoc = false
 
