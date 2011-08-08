@@ -124,10 +124,10 @@ def create_gui
 
 		if dialog.run == Gtk::Dialog::RESPONSE_ACCEPT
 			filename = dialog.filename
-			t = Thread.new { process(filename) }
+			dialog.destroy
 		end
-		dialog.destroy
-		t.join
+
+		process(filename)
 	end
 
 	about_item.signal_connect('activate') do
