@@ -123,7 +123,8 @@ def create_gui
 			[Gtk::Stock::OPEN, Gtk::Dialog::RESPONSE_ACCEPT])
 
 		if dialog.run == Gtk::Dialog::RESPONSE_ACCEPT
-			t = Thread.new { process(dialog.filename) }
+			filename = dialog.filename
+			t = Thread.new { process(filename) }
 		end
 		dialog.destroy
 		t.join
