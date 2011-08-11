@@ -4,8 +4,13 @@
 # 한글과컴퓨터의 글 문서 파일(.hwp) 공개 문서를 참고하여 개발하였습니다.
 
 require 'optparse'
-require 'hwp'
-require 'hwp/parser'
+
+begin
+    require 'hwp'
+rescue Exception
+    $LOAD_PATH << File.expand_path(File.dirname(__FILE__)) + '/../lib'
+    require 'hwp'
+end
 
 opts = {}
 op = OptionParser.new do |op|
@@ -27,7 +32,7 @@ if files.empty?
 end
 
 hwp = HWP.open(ARGV[0])
-hwp.bodytext.para_headers.each do |para_header|
+hwp.body_text.para_headers.each do |para_header|
 	puts para_header.para_text
 end
 hwp.close

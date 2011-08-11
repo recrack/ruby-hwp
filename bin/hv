@@ -3,7 +3,14 @@
 # 한글과컴퓨터의 글 문서 파일(.hwp) 공개 문서를 참고하여 개발하였습니다.
 
 require 'optparse'
-require 'hwp'
+
+begin
+    require 'hwp'
+rescue Exception
+    $LOAD_PATH << File.expand_path(File.dirname(__FILE__)) + '/../lib'
+    require 'hwp'
+end
+
 require 'gtk2'
 
 def process filename
@@ -23,7 +30,7 @@ def process filename
 
 	iter = @textview.buffer.start_iter
 
-	hwp.bodytext.para_headers.each do |para_header|
+	hwp.body_text.para_headers.each do |para_header|
 		# m_pos, m_id 적용시키는 코드이다. 개선할 필요가 있다.
 		# text == nil 인 경우가 있는데, 확인이 필요하다. para break??
 		if para_header.para_char_shape.m_pos.length == 1

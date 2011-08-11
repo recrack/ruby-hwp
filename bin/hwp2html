@@ -3,9 +3,25 @@
 # 한글과컴퓨터의 글 문서 파일(.hwp) 공개 문서를 참고하여 개발하였습니다.
 
 require 'optparse'
-require 'hwp'
-require 'hwp/parser'
-require 'builder'
+
+begin
+    require 'hwp'
+rescue Exception
+    $LOAD_PATH << File.expand_path(File.dirname(__FILE__)) + '/../lib'
+    require 'hwp'
+end
+
+begin
+    require 'builder'
+rescue LoadError
+    puts "If you are a debian user, " +
+         "apt-get install libbuilder-ruby1.9.1 or gem install builder"
+    exit
+rescue Exception => e
+    puts e.message
+    puts e.backtrace
+    exit
+end
 
 opts = {}
 op = OptionParser.new do |op|
@@ -36,7 +52,7 @@ builder.html do
 	end
 
 	builder.body do
-		hwp.bodytext.para_headers.each do |para_header|
+		hwp.body_text.para_headers.each do |para_header|
 			# FIXME m_pos 적용해야 한다.
 			size = hwp.doc_info.char_shapes[para_header.para_char_shape.m_id[0]].size / 100
 			builder.p do

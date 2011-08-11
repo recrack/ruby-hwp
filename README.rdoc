@@ -45,11 +45,11 @@ ruby-hwp 소스를 수정해보면서 테스트하고 싶은 경우 <tt>ruby-hwp
 
 hwp 파일 이름을 직접 입력하거나
 
-  $ ruby1.9.1 -Ilib bin/hv samples/kreg2.hwp
+  $ ruby1.9.1 bin/hv samples/kreg2.hwp
 
 파일 선택 대화창에서 선택할 수 있습니다.
 
-  $ ruby1.9.1 -Ilib bin/hv
+  $ ruby1.9.1 bin/hv
 
 === 버그 및 개선 사항 보고
 
