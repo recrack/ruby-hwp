@@ -6,138 +6,136 @@ module Record
 			@dirent = dirent
 			@para_headers = []
 
-			if header.compress?
-				@dirent.each_child do |section|
-					z = Zlib::Inflate.new(-Zlib::MAX_WBITS)
-					parser = HWP::Parser.new StringIO.new(z.inflate section.read)
-					z.finish
-					z.close
-					# TODO table 구조
-					stack = [parser.pull]
-					@para_headers << stack[-1]
-					while parser.has_next?
-						current = parser.pull
-						case current.level - stack[-1].level
-						# 깊이 1 증가
-						when 1
-							parent = stack[-1]
-							stack.push current
-							case parent
-							when Record::Section::ParaHeader
-								case current
-								when Record::Section::ParaText
-									#p stack[-3]
-									parent.para_text = current
-								when Record::Section::ParaCharShape
-							 		parent.para_char_shape = current
-								else
-									STDERR.puts "#{current.class.name}: not implemented"
-								end
-							when Record::Section::Modeller
-								case current
-								when Record::Section::PageDef
-									parent.page_defs << current
-								when Record::Section::ListHeader
-									parent.append_list_header current
-								when Record::Section::Table
-									parent.append_table current
-								else
-									STDERR.puts "#{current.class.name}: not implemented"
-								end
-							else
-								STDERR.puts "#{parent.class.name}: not implemented"
-							end
-						# 같은 깊이
-						when 0
-							stack.pop
-							parent = stack[-1]
-							stack.push current
-							case parent
-							when Record::Section::ParaHeader
-								case current
-								when Record::Section::ParaCharShape
-									parent.para_char_shape = current
-								when Record::Section::ParaLineSeg
-									parent.para_line_seg = current
-								when Record::Section::Modeller
-									case current.ctrl_id
-									when 'tbl '
-										parent.table = current.text_table
-										parent.ctrl_headers << current
-									else
-										parent.ctrl_headers << current
-									end
-								else
-									STDERR.puts "#{current.class.name}: not implemented"
-								end
-							when Record::Section::Modeller
-								case current
-								when Record::Section::FootnoteShape
-									parent.footnote_shapes << current
-								when Record::Section::PageBorderFill
-									parent.page_border_fills << current
-								when Record::Section::ParaHeader
-									parent.append_para_header current
-								when Record::Section::ListHeader
-									parent.append_list_header current
-								else
-									STDERR.puts "#{current.class.name}: not implemented"
-								end
-							else
-								STDERR.puts "#{parent.class.name}: not implemented"
-							end
-						# 깊이 1 이상 감소
-						# level 은 10-bit 이므로 -1023 이 최소값
-						when -1023..-1
-							stack.pop((current.level - stack[-1].level).abs)
-							stack.pop
-							parent = stack[-1]
-							stack.push current
-							case parent
-							when Record::Section::ParaHeader
-								case current
-								when Record::Section::Modeller
-									case current.ctrl_id
-									when 'tbl '
-										parent.table = current.text_table
-										parent.ctrl_headers << current
-									else
-										parent.ctrl_headers << current
-									end
-								else
-									STDERR.puts "#{current.class.name}: not implemented"
-								end
-							when Record::Section::Modeller
-								case current
-								when Record::Section::ListHeader
-									parent.append_list_header current
-								when Record::Section::ParaHeader
-									parent.append_para_header current
-								else
-									STDERR.puts "#{current.class.name}: not implemented"
-								end
-							# level 0 의 ParaHeader가 교체될 경우 nil 값이 나온다.
-							when nil
-								case current
-								when Record::Section::ParaHeader
-									@para_headers << current
-								else
-									STDERR.puts "#{current.class.name}: not implemented"
-								end
-							else
-								STDERR.puts "#{parent.class.name}: not implemented"
-							end
-						else # 깊이가 1이상 증가하는 경우, 에러 발생
-							p(current.level - stack[-1].level)
-							STDERR.puts "#{current.class.name}: not implemented"
-						end
-					end # while
-				end # @dirent.each_child
-			else
-				@dirent.each_child do |section|
-				# TODO
-				end
-			end # if
+            @dirent.each_child do |section|
+                if header.compress?
+                    z = Zlib::Inflate.new(-Zlib::MAX_WBITS)
+                    parser = HWP::Parser.new StringIO.new(z.inflate section.read)
+                    z.finish
+                    z.close
+                else
+                    parser = HWP::Parser.new StringIO.new(section.read)
+                end
+                # TODO table 구조
+                stack = [parser.pull]
+                @para_headers << stack[-1]
+                while parser.has_next?
+                    current = parser.pull
+                    case current.level - stack[-1].level
+                    # 깊이 1 증가
+                    when 1
+                        parent = stack[-1]
+                        stack.push current
+                        case parent
+                        when Record::Section::ParaHeader
+                            case current
+                            when Record::Section::ParaText
+                                #p stack[-3]
+                                parent.para_text = current
+                            when Record::Section::ParaCharShape
+                                parent.para_char_shape = current
+                            else
+                                STDERR.puts "#{current.class.name}: not implemented"
+                            end
+                        when Record::Section::Modeller
+                            case current
+                            when Record::Section::PageDef
+                                parent.page_defs << current
+                            when Record::Section::ListHeader
+                                parent.append_list_header current
+                            when Record::Section::Table
+                                parent.append_table current
+                            else
+                                STDERR.puts "#{current.class.name}: not implemented"
+                            end
+                        else
+                            STDERR.puts "#{parent.class.name}: not implemented"
+                        end
+                    # 같은 깊이
+                    when 0
+                        stack.pop
+                        parent = stack[-1]
+                        stack.push current
+                        case parent
+                        when Record::Section::ParaHeader
+                            case current
+                            when Record::Section::ParaCharShape
+                                parent.para_char_shape = current
+                            when Record::Section::ParaLineSeg
+                                parent.para_line_seg = current
+                            when Record::Section::Modeller
+                                case current.ctrl_id
+                                when 'tbl '
+                                    parent.table = current.text_table
+                                    parent.ctrl_headers << current
+                                else
+                                    parent.ctrl_headers << current
+                                end
+                            else
+                                STDERR.puts "#{current.class.name}: not implemented"
+                            end
+                        when Record::Section::Modeller
+                            case current
+                            when Record::Section::FootnoteShape
+                                parent.footnote_shapes << current
+                            when Record::Section::PageBorderFill
+                                parent.page_border_fills << current
+                            when Record::Section::ParaHeader
+                                parent.append_para_header current
+                            when Record::Section::ListHeader
+                                parent.append_list_header current
+                            else
+                                STDERR.puts "#{current.class.name}: not implemented"
+                            end
+                        else
+                            STDERR.puts "#{parent.class.name}: not implemented"
+                        end
+                    # 깊이 1 이상 감소
+                    # level 은 10-bit 이므로 -1023 이 최소값
+                    when -1023..-1
+                        stack.pop((current.level - stack[-1].level).abs)
+                        stack.pop
+                        parent = stack[-1]
+                        stack.push current
+                        case parent
+                        when Record::Section::ParaHeader
+                            case current
+                            when Record::Section::Modeller
+                                case current.ctrl_id
+                                when 'tbl '
+                                    parent.table = current.text_table
+                                    parent.ctrl_headers << current
+                                else
+                                    parent.ctrl_headers << current
+                                end
+                            else
+                                STDERR.puts "#{current.class.name}: not implemented"
+                            end
+                        when Record::Section::Modeller
+                            case current
+                            when Record::Section::ListHeader
+                                parent.append_list_header current
+                            when Record::Section::ParaHeader
+                                parent.append_para_header current
+                            else
+                                STDERR.puts "#{current.class.name}: not implemented"
+                            end
+                        # level 0 의 ParaHeader가 교체될 경우 nil 값이 나온다.
+                        when nil
+                            case current
+                            when Record::Section::ParaHeader
+                                @para_headers << current
+                            else
+                                STDERR.puts "#{current.class.name}: not implemented"
+                            end
+                        else
+                            STDERR.puts "#{parent.class.name}: not implemented"
+                        end
+                    else # 깊이가 1이상 증가하는 경우, 에러 발생
+                        p(current.level - stack[-1].level)
+                        STDERR.puts "#{current.class.name}: not implemented"
+                    end
+                end # while
+            end # @dirent.each_child
 
 			# debugging code
 			@para_headers.each do |para_header|
@@ -192,7 +190,10 @@ module Record
 				end # para_header.ctrl_headers.each
 			end # @para_headers.each
 		end # initialize
-	end # BodyText
+
+        def parse(parser)
+        end
+    end # BodyText
 end
 
 
