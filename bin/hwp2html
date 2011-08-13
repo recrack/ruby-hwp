@@ -42,7 +42,7 @@ if files.empty?
 	exit 1
 end
 
-hwp = HWP.open(ARGV[0])
+hwp = HWP.open files[0]
 
 builder = Builder::XmlMarkup.new(:target=>STDOUT, :indent=>2)
 builder.html do

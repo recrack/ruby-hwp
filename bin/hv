@@ -170,13 +170,13 @@ op = OptionParser.new do |op|
 	op.on_tail('-h', '--help', 'Show this message') { puts op; exit }
 end
 
-opts = op.parse ARGV
+files = op.parse ARGV
 
-if opts.empty?
+if files.empty?
 	create_gui
 else
 	create_gui
-	process opts[0]
+	process files[0]
 end
 
 Gtk.main

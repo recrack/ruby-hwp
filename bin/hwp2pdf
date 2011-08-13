@@ -12,12 +12,16 @@ rescue Exception
     require 'hwp'
 end
 
+require 'pango'
+require 'cairo'
+
 opts = {}
 op = OptionParser.new do |op|
-	op.banner = "Usage: hwp2txt [OPTION] [FILE]"
+	#op.banner = "Usage: hwp2txt [OPTION] [FILE]"
+	op.banner = "Usage: hwp2pdf [OPTION] [FILE]"
 	op.separator ' '
 	#op.separator "Output control:"
-	#op.on('-o', '--output=FILE', 'output file') { opts[:action] = :output }
+	op.on('-o', '--output=FILE', 'output file') { opts[:action] = :output }
 	#op.separator ''
 	op.on_tail('-h', '--help', 'Show this message') { puts op; exit }
 end
@@ -31,7 +35,30 @@ if files.empty?
 end
 
 hwp = HWP.open files[0]
-hwp.body_text.para_headers.each do |para_header|
-	puts para_header.para_texts
-end
 hwp.close
+
+
+__END__
+
+require 'gtk2'
+require 'cairo'
+require 'hwp'
+
+page = Hwp::Page.new
+
+def on_expose(surface)
+    cr = Cairo::Context.new(surface)
+    Hwp.page_render(page, cr)
+    cr.destroy
+end
+
+doc = Hwp::Document.new file
+page = doc.get_page(0)
+n_pages = doc.get_n_pages(doc)
+
+win = Gtk::Window.new
+win.signal_connect("destroy") { Gtk.main_quit }
+win.signal_connect("expose")  { on_expose }
+win.show_all
+
+Gtk.main
