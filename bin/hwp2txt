@@ -33,6 +33,6 @@ end
 
 hwp = HWP.open(ARGV[0])
 hwp.body_text.para_headers.each do |para_header|
-	puts para_header.para_text
+	puts para_header.para_texts
 end
 hwp.close

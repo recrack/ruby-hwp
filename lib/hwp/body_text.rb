@@ -1,10 +1,10 @@
 module Record
     class BodyText
-		attr_accessor :para_headers
+        attr_accessor :para_headers
 
-		def initialize(dirent, header)
-			@dirent = dirent
-			@para_headers = []
+        def initialize(dirent, header)
+            @dirent = dirent
+            @para_headers = []
 
             @dirent.each_child do |section|
                 if header.compress?
@@ -15,229 +15,250 @@ module Record
                 else
                     parser = HWP::Parser.new StringIO.new(section.read)
                 end
-                # TODO table 구조
-                stack = [parser.pull]
-                @para_headers << stack[-1]
-                while parser.has_next?
-                    current = parser.pull
-                    case current.level - stack[-1].level
-                    # 깊이 1 증가
-                    when 1
-                        parent = stack[-1]
-                        stack.push current
-                        case parent
-                        when Record::Section::ParaHeader
-                            case current
-                            when Record::Section::ParaText
-                                #p stack[-3]
-                                parent.para_text = current
-                            when Record::Section::ParaCharShape
-                                parent.para_char_shape = current
-                            else
-                                STDERR.puts "#{current.class.name}: not implemented"
-                            end
-                        when Record::Section::Modeller
-                            case current
-                            when Record::Section::PageDef
-                                parent.page_defs << current
-                            when Record::Section::ListHeader
-                                parent.append_list_header current
-                            when Record::Section::Table
-                                parent.append_table current
-                            else
-                                STDERR.puts "#{current.class.name}: not implemented"
-                            end
-                        else
-                            STDERR.puts "#{parent.class.name}: not implemented"
-                        end
-                    # 같은 깊이
-                    when 0
-                        stack.pop
-                        parent = stack[-1]
-                        stack.push current
-                        case parent
-                        when Record::Section::ParaHeader
-                            case current
-                            when Record::Section::ParaCharShape
-                                parent.para_char_shape = current
-                            when Record::Section::ParaLineSeg
-                                parent.para_line_seg = current
-                            when Record::Section::Modeller
-                                case current.ctrl_id
-                                when 'tbl '
-                                    parent.table = current.text_table
-                                    parent.ctrl_headers << current
-                                else
-                                    parent.ctrl_headers << current
-                                end
-                            else
-                                STDERR.puts "#{current.class.name}: not implemented"
-                            end
-                        when Record::Section::Modeller
-                            case current
-                            when Record::Section::FootnoteShape
-                                parent.footnote_shapes << current
-                            when Record::Section::PageBorderFill
-                                parent.page_border_fills << current
-                            when Record::Section::ParaHeader
-                                parent.append_para_header current
-                            when Record::Section::ListHeader
-                                parent.append_list_header current
-                            else
-                                STDERR.puts "#{current.class.name}: not implemented"
-                            end
-                        else
-                            STDERR.puts "#{parent.class.name}: not implemented"
-                        end
-                    # 깊이 1 이상 감소
-                    # level 은 10-bit 이므로 -1023 이 최소값
-                    when -1023..-1
-                        stack.pop((current.level - stack[-1].level).abs)
-                        stack.pop
-                        parent = stack[-1]
-                        stack.push current
-                        case parent
-                        when Record::Section::ParaHeader
-                            case current
-                            when Record::Section::Modeller
-                                case current.ctrl_id
-                                when 'tbl '
-                                    parent.table = current.text_table
-                                    parent.ctrl_headers << current
-                                else
-                                    parent.ctrl_headers << current
-                                end
-                            else
-                                STDERR.puts "#{current.class.name}: not implemented"
-                            end
-                        when Record::Section::Modeller
-                            case current
-                            when Record::Section::ListHeader
-                                parent.append_list_header current
-                            when Record::Section::ParaHeader
-                                parent.append_para_header current
-                            else
-                                STDERR.puts "#{current.class.name}: not implemented"
-                            end
-                        # level 0 의 ParaHeader가 교체될 경우 nil 값이 나온다.
-                        when nil
-                            case current
-                            when Record::Section::ParaHeader
-                                @para_headers << current
-                            else
-                                STDERR.puts "#{current.class.name}: not implemented"
-                            end
-                        else
-                            STDERR.puts "#{parent.class.name}: not implemented"
-                        end
-                    else # 깊이가 1이상 증가하는 경우, 에러 발생
-                        p(current.level - stack[-1].level)
-                        STDERR.puts "#{current.class.name}: not implemented"
-                    end
-                end # while
+                
+                parse(parser)
+                print_para_headers(self)
             end # @dirent.each_child
+        end # initialize
 
-			# debugging code
-			@para_headers.each do |para_header|
-				para_header.debug
-				para_header.para_text.debug if para_header.para_text
-
-				para_header.para_char_shape.debug
-
-				para_header.para_line_seg.debug
-
-				if para_header.table
-					para_header.table.rows.each do |row|
-						row.cells.each do |cell|
-							cell.para_headers.each do |para_header|
-								p para_header.para_text
-							end
-						end
-					end
-				end
-
-				para_header.ctrl_headers.each do |ctrl_header|
-					ctrl_header.debug
-					ctrl_header.page_defs.each do |page_def|
-						page_def.debug
-					end
-
-					ctrl_header.footnote_shapes.each do |footnote_shape|
-						footnote_shape.debug
-					end
-
-					ctrl_header.page_border_fills.each do |page_border_fill|
-						page_border_fill.debug
-					end
-
-					ctrl_header.list_headers.each do |list_header|
-						list_header.debug
-					end
-
-					ctrl_header.para_headers.each do |para_header|
-						para_header.debug
-						# 재귀적 용법의 필요성을 느낀다.
-						para_header.para_text.debug if para_header.para_text
-
-						para_header.para_char_shape.debug
-
-						para_header.para_line_seg.debug
-
-						para_header.ctrl_headers.each do |ctrl_header|
-							ctrl_header.debug
-						end
-					end # ctrl_header.para_headers.each
-				end # para_header.ctrl_headers.each
-			end # @para_headers.each
-		end # initialize
-
+        # <BodyText> ::= <Section>+
+        # <Section> ::= <ParaHeader>+
+        # 여기서는 <BodyText> ::= <ParaHeader>+ 로 간주함.
         def parse(parser)
+            while parser.has_next?
+                # stack 이 차 있으면 이전의 para header 이 끝난 후
+                # stack 에 차 있는 para header 이 새롭게 시작됨.
+                if parser.stack.empty?
+                    parser.pull
+                else
+                    raise if parser.stack.pop != :HWPTAG_PARA_HEADER
+                end
+
+                # level == 0 인 파라헤더만 취한다. 그 밖의 것은 raise
+                case parser.tag_id
+                when :HWPTAG_PARA_HEADER
+                    if parser.level == 0
+                        para_header = Record::Section::ParaHeader.
+                            new(parser.data, parser.level)
+                        para_header.parse(parser)
+                        @para_headers << para_header
+                    else
+                        raise "file corrupted?"
+                    end
+                else
+                    # raise 발생하면 level == 0 인 뭔가가 있는 것임.
+                    # v5.0 스펙에는 level == 0 인 것은 오로지 PARA_HEADER 임.
+                    raise "unknown spec: #{parser.tag_id}"
+                end
+            end
+        end
+
+        def print_para_headers(obj)
+            obj.para_headers.each do |para_header|
+                puts " " * para_header.level + para_header.to_tag
+
+                para_header.para_texts.each do |para_text|
+                    puts " " * para_text.level + para_text.to_tag
+                end
+
+                para_header.para_char_shapes.each do |para_char_shape|
+                    puts " " * para_char_shape.level + para_char_shape.to_tag
+                end
+
+                para_header.para_line_segs.each do |para_line_seg|
+                    puts " " * para_line_seg.level + para_line_seg.to_tag
+                end
+
+                para_header.ctrl_headers.each do |ctrl_header|
+                    puts " " * ctrl_header.level + ctrl_header.to_tag
+
+                    ctrl_header.page_defs.each do |page_def|
+                        puts " " * page_def.level + page_def.to_tag
+                    end
+
+                    ctrl_header.footnote_shapes.each do |footnote_shape|
+                        puts " " * footnote_shape.level + footnote_shape.to_tag
+                    end
+
+                    ctrl_header.page_border_fills.each do |page_border_fill|
+                        puts " " * page_border_fill.level + page_border_fill.to_tag
+                    end
+
+                    ctrl_header.list_headers.each do |list_header|
+                        puts " " * list_header.level + list_header.to_tag
+                    end
+
+                    ctrl_header.eq_edits.each do |eq_edit|
+                        puts " " * eq_edit.level + eq_edit.to_tag
+                    end
+
+                    # 재귀
+                    print_para_headers(ctrl_header)
+                end
+            end
+        end
+
+        def debug(para_headers)
+            # debugging code
+            para_headers.each do |para_header|
+                para_header.debug
+                para_header.para_text.debug if para_header.para_text
+
+                para_header.para_char_shape.debug
+
+                para_header.para_line_seg.debug
+
+                if para_header.table
+                    para_header.table.rows.each do |row|
+                        row.cells.each do |cell|
+                            cell.para_headers.each do |para_header|
+                                p para_header.para_text
+                            end
+                        end
+                    end
+                end
+
+                para_header.ctrl_headers.each do |ctrl_header|
+                    ctrl_header.debug
+                    ctrl_header.page_defs.each do |page_def|
+                        page_def.debug
+                    end
+
+                    ctrl_header.footnote_shapes.each do |footnote_shape|
+                        footnote_shape.debug
+                    end
+
+                    ctrl_header.page_border_fills.each do |page_border_fill|
+                        page_border_fill.debug
+                    end
+
+                    ctrl_header.list_headers.each do |list_header|
+                        list_header.debug
+                    end
+
+                    ctrl_header.para_headers.each do |para_header|
+                        para_header.debug
+                        # 재귀적 용법의 필요성을 느낀다.
+                        para_header.para_text.debug if para_header.para_text
+
+                        para_header.para_char_shape.debug
+
+                        para_header.para_line_seg.debug
+
+                        para_header.ctrl_headers.each do |ctrl_header|
+                            ctrl_header.debug
+                        end
+                    end # ctrl_header.para_headers.each
+                end # para_header.ctrl_headers.each
+            end # para_headers.each
         end
     end # BodyText
 end
 
 
 module Record::Section
-	class ParaHeader
-		attr_reader :chars,
-					:control_mask,
-					:ref_para_shape_id,
-					:ref_para_style_id,
-					:column_type,
-					:num_char_shape,
-					:num_range_tag,
-					:num_align,
-					:para_instance_id,
-					:level
-		attr_accessor :para_text,
-					  :para_char_shape,
-					  :para_line_seg,
-					  :ctrl_headers,
-					  :table # para_header 에 ctrl_header 가 1개만 오는 것으로 추정한다.
+    class ParaHeader
+        attr_reader :chars,
+                    :control_mask,
+                    :ref_para_shape_id,
+                    :ref_para_style_id,
+                    :column_type,
+                    :num_char_shape,
+                    :num_range_tag,
+                    :num_align,
+                    :para_instance_id,
+                    :level
+        attr_accessor :para_texts,
+                      :para_char_shapes,
+                      :para_line_segs,
+                      :ctrl_headers,
+                      :table # para_header 에 ctrl_header 가 1개만 오는 것으로 추정한다.
 
-		def initialize data, level
-			@level = level
-			@chars,
-			@control_mask,
-			@para_shape_id,
-			@para_style_id,
-			@column_type,
-			@num_char_shape,
-			@num_range_tag,
-			@num_align,
-			@para_instance_id = data.unpack("vVvvvvvvV")
+        def initialize data, level
+            @level = level
+            @chars,
+            @control_mask,
+            @para_shape_id,
+            @para_style_id,
+            @column_type,
+            @num_char_shape,
+            @num_range_tag,
+            @num_align,
+            @para_instance_id = data.unpack("vVvvvvvvV")
 
-			# para_text, para_char_shape 가 1개 밖에 안 오는 것 같으나 확실하지 않으니
-			# 배열로 처리한다. 추후 ParaText, ParaCharShape 클래스를 ParaHeader 이나
-			# 이와 유사한 자료구조(예를 들면, Paragraph)에 내포하는 것을 고려한다.
-			# para_header 에는 para_text 가 1개만 오는 것 같다.
-			@ctrl_headers = []
-		end
+            # para_text, para_char_shape 가 1개 밖에 안 오는 것 같으나 확실하지 않으니
+            # 배열로 처리한다. 추후 ParaText, ParaCharShape 클래스를 ParaHeader 이나
+            # 이와 유사한 자료구조(예를 들면, Paragraph)에 내포하는 것을 고려한다.
+            # para_header 에는 para_text 가 1개만 오는 것 같다.
+            @para_texts = []
+            @para_char_shapes = []
+            @para_line_segs = []
+            @ctrl_headers = []
+        end
 
-		def debug
-			puts "\t"*@level + "ParaHeader:"
-		end
-	end
+        def hierarchy_check(level1, level2, line_num)
+            if level1 != level2 - 1
+                p [level1, level2, line_num]
+                raise "hierarchy error at line #{line_num}"
+            end
+        end
+
+        private :hierarchy_check
+
+        def parse(parser)
+            while parser.has_next?
+                if parser.stack.empty?
+                    parser.pull
+                else
+                    parser.stack.pop
+                end
+
+                case parser.tag_id
+                when :HWPTAG_PARA_HEADER
+                    if parser.level <= @level
+                        # para header 가 끝이 나고 새롭게 시작됨을 알린다.
+                        parser.stack << parser.tag_id
+                        break
+                    else
+                        puts [@level, parser.level]
+                        raise "unhandled " + parser.tag_id.to_s
+                    end
+                when :HWPTAG_PARA_TEXT
+                    hierarchy_check(@level, parser.level, __LINE__)
+                    para_text = ParaText.new(parser.data, parser.level)
+                    @para_texts << para_text
+                when :HWPTAG_PARA_CHAR_SHAPE
+                    hierarchy_check(@level, parser.level, __LINE__)
+                    para_char_shape = ParaCharShape.new(parser.data, parser.level)
+                    @para_char_shapes << para_char_shape
+                when :HWPTAG_PARA_LINE_SEG
+                    hierarchy_check(@level, parser.level, __LINE__)
+                    para_line_seg = ParaLineSeg.new(parser.data, parser.level)
+                    @para_line_segs << para_line_seg
+                when :HWPTAG_CTRL_HEADER
+                    if parser.level <= @level
+                        parser.stack << parser.tag_id
+                        break
+                    else
+                        hierarchy_check(@level, parser.level, __LINE__)
+                        ctrl_header = CtrlHeader.new(parser.data, parser.level)
+                        ctrl_header.parse(parser)
+                        @ctrl_headers << ctrl_header
+                    end
+                else
+                    raise "unhandled " + parser.tag_id.to_s
+                end
+            end
+        end
+
+        def to_tag
+            "HWPTAG_PARA_HEADER"
+        end
+
+        def debug
+            puts "\t"*@level + "ParaHeader:"
+        end
+    end
 
 	class ParaText
 		attr_reader :level
@@ -297,6 +318,10 @@ module Record::Section
 			@bytes.pack("U*")
 		end
 
+        def to_tag
+            "HWPTAG_PARA_TEXT"
+        end
+
 		def debug
 			puts "\t"*@level +"ParaText:" + to_s
 		end
@@ -317,6 +342,10 @@ module Record::Section
 			end
 		end
 
+        def to_tag
+            "HWPTAG_PARA_CHAR_SHAPE"
+        end
+
 		def debug
 			puts "\t"*@level +"ParaCharShape:" + @m_pos.to_s + @m_id.to_s
 		end
@@ -332,6 +361,10 @@ module Record::Section
 			@data = data
 		end
 
+        def to_tag
+            "HWPTAG_PARA_LINE_SEG"
+        end
+
 		def debug
 			puts "\t"*@level +"ParaLineSeg:"
 		end
@@ -346,38 +379,39 @@ module Record::Section
 		end
 	end
 
-	# TODO REVERSE-ENGINEERING
-	class Modeller
-		attr_reader :ctrl_id, :level
-		attr_accessor :page_defs, :footnote_shapes, :page_border_fills,
-					  :list_headers, :para_headers, :tables, :text_table
-		def initialize data, level
-			@level = level
-			s_io = StringIO.new data
-			@ctrl_id = s_io.read(4).unpack("C4").pack("U*").reverse
-			common = ['tbl ','$lin','$rec','$ell','$arc','$pol',
-					  '$cur','eqed','$pic','$ole','$con']
+    # TODO REVERSE-ENGINEERING
+    class CtrlHeader
+        attr_reader :ctrl_id, :level
+        attr_accessor :page_defs, :footnote_shapes, :page_border_fills,
+                      :list_headers, :para_headers, :tables, :text_table,
+                      :eq_edits
+        def initialize data, level
+            @level = level
+            s_io = StringIO.new data
+            @ctrl_id = s_io.read(4).unpack("C4").pack("U*").reverse
+            common = ['tbl ','$lin','$rec','$ell','$arc','$pol',
+                      '$cur','eqed','$pic','$ole','$con']
 
-			begin
-				if common.include? @ctrl_id
-					bit = s_io.read(4).unpack("b32")
-					v_offset = s_io.read(4).unpack("V")
-					h_offset = s_io.read(4).unpack("V")
-					width = s_io.read(4).unpack("V")
-					height = s_io.read(4).unpack("V")
-					z = s_io.read(4).unpack("i")
-					margins = s_io.read(2*4).unpack("v*")
-					id = s_io.read(4).unpack("V")[0]
-					len = s_io.read(2).unpack("v")[0]
-					# 바이트가 남는다.
-					s_io.close
-				end
-			rescue => e
-				STDERR.puts e.message
-			end
-			# accessor
-			@page_defs, @footnote_shapes, @page_border_fills = [], [], []
-			@list_headers, @para_headers, @tables = [], [], []
+            begin
+                if common.include? @ctrl_id
+                    bit = s_io.read(4).unpack("b32")
+                    v_offset = s_io.read(4).unpack("V")
+                    h_offset = s_io.read(4).unpack("V")
+                    width = s_io.read(4).unpack("V")
+                    height = s_io.read(4).unpack("V")
+                    z = s_io.read(4).unpack("i")
+                    margins = s_io.read(2*4).unpack("v*")
+                    id = s_io.read(4).unpack("V")[0]
+                    len = s_io.read(2).unpack("v")[0]
+                    # 바이트가 남는다.
+                    s_io.close
+                end
+            rescue => e
+                STDERR.puts e.message
+            end
+            # accessor
+            @page_defs, @footnote_shapes, @page_border_fills = [], [], []
+            @list_headers, @para_headers, @tables, @eq_edits = [], [], [], []
 
 			@result = case @ctrl_id
 			when 'tbl '
@@ -452,6 +486,65 @@ module Record::Section
 			end
 		end
 
+        def hierarchy_check(level1, level2, line_num)
+            if level1 != level2 - 1
+                p [level1, level2]
+                raise "hierarchy error at line #{line_num}"
+            end
+        end
+
+        def parse(parser)
+            while parser.has_next?
+                if parser.stack.empty?
+                    parser.pull
+                else
+                    parser.stack.pop
+                end
+
+                case parser.tag_id
+                when :HWPTAG_PAGE_DEF
+                    hierarchy_check(@level, parser.level, __LINE__)
+                    @page_defs << PageDef.new(parser.data, parser.level)
+                when :HWPTAG_FOOTNOTE_SHAPE
+                    hierarchy_check(@level, parser.level, __LINE__)
+                    @footnote_shapes <<
+                        FootnoteShape.new(parser.data, parser.level)
+                when :HWPTAG_PAGE_BORDER_FILL
+                    hierarchy_check(@level, parser.level, __LINE__)
+                    @page_border_fills <<
+                        PageBorderFill.new(parser.data, parser.level)
+                when :HWPTAG_CTRL_HEADER
+                    # CTRL_HEADER 가 끝이 나고 새롭게 시작됨을 알린다.
+                    parser.stack << parser.tag_id
+                    break
+                when :HWPTAG_PARA_HEADER
+                    if parser.level <= @level
+                        parser.stack << parser.tag_id
+                        break
+                    else
+                        #p [@level, parser.level, __LINE__]
+                        hierarchy_check(@level, parser.level, __LINE__)
+                        para_header = ParaHeader.new(parser.data, parser.level)
+                        para_header.parse(parser)
+                        @para_headers << para_header
+                    end
+                when :HWPTAG_LIST_HEADER
+                    hierarchy_check(@level, parser.level, __LINE__)
+                    @list_headers <<
+                        ListHeader.new(parser.data, parser.level)
+                when :HWPTAG_EQEDIT
+                    hierarchy_check(@level, parser.level, __LINE__)
+                    @eq_edits << EqEdit.new(parser.data, parser.level)
+                else
+                    raise "unhandled " + parser.tag_id.to_s
+                end
+            end
+        end
+
+        def to_tag
+            "HWPTAG_CTRL_HEADER"
+        end
+
 		def debug
 			puts "\t"*@level +"CtrlHeader:" + @ctrl_id
 		end
@@ -482,6 +575,10 @@ module Record::Section
 			# 4바이트가 남는다
 			s_io.close
 		end
+
+        def to_tag
+            "HWPTAG_LIST_HEADER"
+        end
 
 		def debug
 			puts "\t"*@level +"ListHeader:"
@@ -658,6 +755,10 @@ module Record::Section
 			gutter_margin,	property = @data.unpack("V*")
 		end
 
+        def to_tag
+            "HWPTAG_PAGE_DEF"
+        end
+
 		def debug
 			puts "\t"*@level +"PageDef:"# + @data.unpack("V*").to_s
 		end
@@ -686,6 +787,10 @@ module Record::Section
 			s_io.close
 		end
 
+        def to_tag
+            "HWPTAG_FOOTNOTE_SHAPE"
+        end
+
 		def debug
 			puts "\t"*@level +"FootnoteShape:"# + @data.inspect
 		end
@@ -698,6 +803,10 @@ module Record::Section
 			# 스펙 문서 58쪽 크기 불일치 12 != 14
 			#p data.unpack("ISSSSS") # 마지막 2바이트 S, 총 14바이트
 		end
+
+        def to_tag
+            "HWPTAG_PAGE_BORDER_FILL"
+        end
 
 		def debug
 			puts "\t"*@level +"PageBorderFill:"
@@ -719,6 +828,10 @@ module Record::Section
 			#p color = io.read(4).unpack("I")	# COLORREF
 			#p baseline = io.read(2).unpack("s")	# INT16
 		end
+
+        def to_tag
+            "HWPTAG_EQEDIT"
+        end
 
 		def to_s
 			@script

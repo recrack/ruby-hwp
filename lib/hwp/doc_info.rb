@@ -1,96 +1,114 @@
 require 'zlib'
 
 module Record
-	class DocInfo
-		attr_reader :document_properties,
-					:id_mappings,
-					:bin_data,
-					:face_names,
-					:border_fill,
-					:char_shapes,
-					:tab_def,
-					:numbering,
-					:bullet,
-					:para_shape,
-					:style,
-					:doc_data,
-					:distribute_doc_data,
-					:reserved,
-					:compatible_document,
-					:layout_compatibility,
-					:forbidden_char
+    class DocInfo
+        attr_reader :document_properties,
+                    :id_mappings,
+                    :bin_data,
+                    :face_names,
+                    :border_fill,
+                    :char_shapes,
+                    :tab_def,
+                    :numbering,
+                    :bullet,
+                    :para_shape,
+                    :style,
+                    :doc_data,
+                    :distribute_doc_data,
+                    :reserved,
+                    :compatible_document,
+                    :layout_compatibility,
+                    :forbidden_char
 
-		def initialize(dirent, header)
-			if header.compress?
-				z = Zlib::Inflate.new(-Zlib::MAX_WBITS)
-				@doc_info = StringIO.new(z.inflate dirent.read)
-				z.finish; z.close
-			else
-				@doc_info = StringIO.new(dirent.read)
-			end
+        def initialize(dirent, header)
+            if header.compress?
+                z = Zlib::Inflate.new(-Zlib::MAX_WBITS)
+                @doc_info = StringIO.new(z.inflate dirent.read)
+                z.finish; z.close
+            else
+                @doc_info = StringIO.new(dirent.read)
+            end
 
-			@document_properties	= []
-			@id_mappings			= []
-			@bin_data				= []
-			@face_names				= []
-			@border_fill			= []
-			@char_shapes			= []
-			@tab_def				= []
-			@numbering				= []
-			@bullet					= []
-			@para_shape				= []
-			@style					= []
-			@doc_data				= []
-			@distribute_doc_data	= []
-			@reserved				= []
-			@compatible_document	= []
-			@layout_compatibility	= []
-			@forbidden_char			= []
+            @document_properties	= []
+            @id_mappings			= []
+            @bin_data				= []
+            @face_names				= []
+            @border_fill			= []
+            @char_shapes			= []
+            @tab_def				= []
+            @numbering				= []
+            @bullet					= []
+            @para_shape				= []
+            @style					= []
+            @doc_data				= []
+            @distribute_doc_data	= []
+            @reserved				= []
+            @compatible_document	= []
+            @layout_compatibility	= []
+            @forbidden_char			= []
 
-			parser = HWP::Parser.new @doc_info
-			while parser.has_next?
-				response = parser.pull
-				case response
-				when Record::DocInfo::DocumentProperties
-					@document_properties << response
-				when Record::DocInfo::IDMappings
-					@id_mappings << response
-				when Record::DocInfo::BinData
-					@bin_data << response
-				when Record::DocInfo::FaceName
-					@face_names << response
-				when Record::DocInfo::BorderFill
-					@border_fill << response
-				when Record::DocInfo::CharShape
-					@char_shapes << response
-				when Record::DocInfo::TabDef
-					@tab_def << response
-				when Record::DocInfo::Numbering
-					@numbering << response
-				when Record::DocInfo::Bullet
-					@bullet << response
-				when Record::DocInfo::ParaShape
-					@para_shape << response
-				when Record::DocInfo::Style
-					@style << response
-				when Record::DocInfo::DocData
-					@doc_data << response
-				when Record::DocInfo::DistributeDocData
-					@distribute_doc_data << response
-				when Record::DocInfo::Reserved
-					@reserved << response
-				when Record::DocInfo::CompatibleDocument
-					@compatible_document << response
-				when Record::DocInfo::LayoutCompatibility
-					@layout_compatibility << response
-				when Record::DocInfo::ForbiddenChar
-					@forbidden_char << response
-				else
-					raise "UNKNOWN RECORD"
-				end
-			end # while
-		end # initialize
-	end # DocInfo
+            parser = HWP::Parser.new @doc_info
+            while parser.has_next?
+                parser.pull
+                case parser.tag_id
+                when :HWPTAG_DOCUMENT_PROPERTIES
+                    @document_properties << Record::DocInfo::DocumentProperties.
+                        new(parser.data, parser.level)
+                when :HWPTAG_ID_MAPPINGS
+                    @id_mappings << Record::DocInfo::IDMappings.
+                        new(parser.data, parser.level)
+                when :HWPTAG_BIN_DATA
+                    @bin_data <<
+                        Record::DocInfo::BinData.new(parser.data, parser.level)
+                when :HWPTAG_FACE_NAME
+                    @face_names <<
+                        Record::DocInfo::FaceName.new(parser.data, parser.level)
+                when :HWPTAG_BORDER_FILL
+                    @border_fill << Record::DocInfo::BorderFill.
+                        new(parser.data, parser.level)
+                when :HWPTAG_CHAR_SHAPE
+                    @char_shapes << Record::DocInfo::CharShape.
+                        new(parser.data, parser.level)
+                when :HWPTAG_TAB_DEF
+                    @tab_def <<
+                        Record::DocInfo::TabDef.new(parser.data, parser.level)
+                when :HWPTAG_NUMBERING
+                    @numbering << Record::DocInfo::Numbering.
+                        new(parser.data, parser.level)
+                when :HWPTAG_BULLET
+                    @bullet <<
+                        Record::DocInfo::Bullet.new(parser.data, parser.level)
+                when :HWPTAG_PARA_SHAPE
+                    @para_shape << Record::DocInfo::ParaShape.
+                        new(parser.data, parser.level)
+                when :HWPTAG_STYLE
+                    @style <<
+                        Record::DocInfo::Style.new(parser.data, parser.level)
+                when :HWPTAG_DOC_DATA
+                    @doc_data <<
+                        Record::DocInfo::DocData.new(parser.data, parser.level)
+                when :HWPTAG_DISTRIBUTE_DOC_DATA
+                    @distribute_doc_data << Record::DocInfo::DistributeDocData.
+                        new(parser.data, parser.level)
+                when :RESERVED
+                    @reserved <<
+                        Record::DocInfo::Reserved.new(parser.data, parser.level)
+                when :HWPTAG_COMPATIBLE_DOCUMENT
+                    @compatible_document << Record::DocInfo::CompatibleDocument.
+                        new(parser.data, parser.level)
+                when :HWPTAG_LAYOUT_COMPATIBILITY
+                    @layout_compatibility <<
+                        Record::DocInfo::LayoutCompatibility.
+                            new(parser.data, parser.level)
+                when :HWPTAG_FORBIDDEN_CHAR
+                    @forbidden_char << Record::DocInfo::ForbiddenChar.
+                        new(parser.data, parser.level)
+                else
+                    raise "UNKNOWN RECORD"
+                end
+            end # while
+        end # initialize
+    end # DocInfo
 
 
 	class DocInfo::FaceName

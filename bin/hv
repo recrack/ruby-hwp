@@ -33,31 +33,38 @@ def process filename
 	hwp.body_text.para_headers.each do |para_header|
 		# m_pos, m_id 적용시키는 코드이다. 개선할 필요가 있다.
 		# text == nil 인 경우가 있는데, 확인이 필요하다. para break??
-		if para_header.para_char_shape.m_pos.length == 1
-			@textview.buffer.insert(iter, para_header.para_text.to_s+"\n", para_header.para_char_shape.m_id[0].to_s)
-		elsif para_header.para_char_shape.m_pos.length > 1
-			prev_pos = para_header.para_char_shape.m_pos[0]
 
-			texts = []
-			para_header.para_char_shape.m_pos.each_with_index do |pos, i|
-				if i > 0
-					texts << para_header.para_text.to_s[prev_pos...pos]
-				end
-				prev_pos = pos
-			end
+        para_header.para_char_shapes.each_with_index do |para_char_shape, index|
 
-			if prev_pos < para_header.para_text.to_s.length
-				texts << para_header.para_text.to_s[prev_pos..-1]
-			end
 
-			texts.each_with_index do |text, i|
-				if i == texts.length - 1
-					@textview.buffer.insert(iter, text+"\n", para_header.para_char_shape.m_id[i].to_s) if text
-				else
-					@textview.buffer.insert(iter, text, para_header.para_char_shape.m_id[i].to_s) if text
-				end
-			end # if
-		end # if
+            if para_char_shape.m_pos.length == 1
+                @textview.buffer.insert(iter, para_header.para_texts[index].to_s+"\n", para_char_shape.m_id[0].to_s)
+            elsif para_char_shape.m_pos.length > 1
+                prev_pos = para_char_shape.m_pos[0]
+
+                texts = []
+                para_char_shape.m_pos.each_with_index do |pos, i|
+                    if i > 0
+                        texts << para_header.para_texts[index].to_s[prev_pos...pos]
+                    end
+                    prev_pos = pos
+                end
+
+                if prev_pos < para_header.para_texts[index].to_s.length
+                    texts << para_header.para_texts[index].to_s[prev_pos..-1]
+                end
+
+                texts.each_with_index do |text, i|
+                    if i == texts.length - 1
+                        @textview.buffer.insert(iter, text+"\n", para_char_shape.m_id[i].to_s) if text
+                    else
+                        @textview.buffer.insert(iter, text, para_char_shape.m_id[i].to_s) if text
+                    end
+                end # if
+            end # if
+
+
+        end
 
 		if para_header.table
 			gtk_table = Gtk::Table.new(para_header.table.rows.length, para_header.table.rows[0].cells.length)
