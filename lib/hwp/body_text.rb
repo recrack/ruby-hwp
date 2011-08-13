@@ -17,7 +17,7 @@ module Record
                 end
                 
                 parse(parser)
-                print_para_headers(self)
+                #print_para_headers(self)
             end # @dirent.each_child
         end # initialize
 
