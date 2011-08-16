@@ -160,8 +160,8 @@ module Record::Section
     class ParaHeader
         attr_reader :chars,
                     :control_mask,
-                    :ref_para_shape_id,
-                    :ref_para_style_id,
+                    :para_shape_id,
+                    :para_style_id,
                     :column_type,
                     :num_char_shape,
                     :num_range_tag,
