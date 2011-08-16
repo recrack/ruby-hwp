@@ -34,49 +34,44 @@ if files.empty?
 	exit 1
 end
 
-def print_para_headers(obj)
+def print_para_headers(obj, context, layout, doc)
     obj.para_headers.each do |para_header|
         puts " " * para_header.level + para_header.to_tag
 
         ##########
-        para_shape = doc_info.para_shapes[obj.para_shape_id]
-        #p [para_shape.left, para_shape.right]
-
-        style = doc_info.styles[obj.para_style_id]
-        #p style
-
-        layout.text = [
-            obj.chars,
-            obj.control_mask,
-            obj.para_shape_id,
-            obj.para_style_id,
-            obj.column_type,
-            obj.num_char_shape,
-            obj.num_range_tag,
-            obj.num_align,
-            obj.para_instance_id,
-            obj.level
-        ].to_s
-        #puts obj.class.name
-        ##########
-
+        para_shape = doc.doc_info.para_shapes[para_header.para_shape_id]
 
         para_header.para_texts.each do |para_text|
             puts " " * para_text.level + para_text.to_tag
 
             ##########
-            layout.text = obj.to_s
-            x = para_shape.left * 72.0 / 25.4 # mm 를 cairo point 로 변환
-            y += 40
-            context.move_to x, y
-            context.show_pango_layout layout
-            if y > 800
-                context.show_page
-                y = 10
-            end
-            #puts obj.class.name
+            p para_text.to_s
+            layout.text = para_text.to_s
             ##########
         end
+
+        # 아래 문장이 없으면 para_text 가 없는 para_header 의 경우
+        # layout.text 가 이전의 para_text 가 표시된다.
+        # TODO para_text 가 문단에서 1개 이하 존재하는지 조사?
+        # hwp 워드를 구동해서 line break 하면 para_header 가
+        # 또 하나 생성되는지 확인해야 한다.
+        layout.text = '' if para_header.para_texts.empty?
+
+        # mm 를 cairo point 로 변환
+        x = 0
+        x = para_shape.left * 72.0 / 25.4 if para_shape
+
+        @y ||= 0
+        @y = @y + 40
+
+        context.move_to x, @y
+        context.show_pango_layout layout
+        if @y > 800
+            context.show_page
+            @y = 10
+        end
+        ##########
+
 
         para_header.para_char_shapes.each do |para_char_shape|
             puts " " * para_char_shape.level + para_char_shape.to_tag
@@ -110,7 +105,7 @@ def print_para_headers(obj)
             end
 
             # 재귀
-            print_para_headers(ctrl_header)
+            print_para_headers(ctrl_header, context, layout, doc)
         end
     end
 end
@@ -149,7 +144,7 @@ doc = HWP.open files[0]
 
     x, y = 10, 10
 
-    #print_para_headers(doc.body_text, )
+    print_para_headers(doc.body_text, context, layout, doc)
 
     context.show_page
     surface.finish
