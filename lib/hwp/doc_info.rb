@@ -38,7 +38,7 @@ module Record
             @tab_def				= []
             @numbering				= []
             @bullet					= []
-            @para_shape				= []
+            @para_shapes				= []
             @style					= []
             @doc_data				= []
             @distribute_doc_data	= []
@@ -79,7 +79,7 @@ module Record
                     @bullet <<
                         Record::DocInfo::Bullet.new(parser.data, parser.level)
                 when :HWPTAG_PARA_SHAPE
-                    @para_shape << Record::DocInfo::ParaShape.
+                    @para_shapes << Record::DocInfo::ParaShape.
                         new(parser.data, parser.level)
                 when :HWPTAG_STYLE
                     @style <<
