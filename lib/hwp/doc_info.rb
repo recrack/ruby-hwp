@@ -11,8 +11,8 @@ module Record
                     :tab_def,
                     :numbering,
                     :bullet,
-                    :para_shape,
-                    :style,
+                    :para_shapes,
+                    :styles,
                     :doc_data,
                     :distribute_doc_data,
                     :reserved,
@@ -38,8 +38,8 @@ module Record
             @tab_def				= []
             @numbering				= []
             @bullet					= []
-            @para_shapes				= []
-            @style					= []
+            @para_shapes            = []
+            @styles                 = []
             @doc_data				= []
             @distribute_doc_data	= []
             @reserved				= []
@@ -82,7 +82,7 @@ module Record
                     @para_shapes << Record::DocInfo::ParaShape.
                         new(parser.data, parser.level)
                 when :HWPTAG_STYLE
-                    @style <<
+                    @styles <<
                         Record::DocInfo::Style.new(parser.data, parser.level)
                 when :HWPTAG_DOC_DATA
                     @doc_data <<
