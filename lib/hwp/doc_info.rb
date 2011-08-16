@@ -788,26 +788,26 @@ module Record
 
 	# TODO REVERSE-ENGINEERING
 	class DocInfo::ParaShape
-		attr_reader :level
+		attr_reader :level, :left, :right
 		def initialize data, level
 			@level = level
 			s_io = StringIO.new data
 			s_io.read(4).unpack("b32") # property
 			# PARA MARGIN
-			left = s_io.read(4).unpack("V")
-			right = s_io.read(4).unpack("V")
-			indent = s_io.read(4).unpack("V")
-			prev = s_io.read(4).unpack("V")
-			_next = s_io.read(4).unpack("V")
-			line_spacing = s_io.read(4).unpack("V")
-			s_io.read(2).unpack("v")
-			heading = s_io.read(2).unpack("v")
+			@left = s_io.read(4).unpack("V")[0]
+			@right = s_io.read(4).unpack("V")[0]
+			indent = s_io.read(4).unpack("V")[0]
+			prev = s_io.read(4).unpack("V")[0]
+			_next = s_io.read(4).unpack("V")[0]
+			line_spacing = s_io.read(4).unpack("V")[0]
+			s_io.read(2).unpack("v")[0]
+			heading = s_io.read(2).unpack("v")[0]
 			# PARA BORDER
-			s_io.read(2).unpack("v")
-			s_io.read(2).unpack("v")
-			s_io.read(2).unpack("v")
-			s_io.read(2).unpack("v")
-			s_io.read(2).unpack("v")
+			s_io.read(2).unpack("v")[0]
+			s_io.read(2).unpack("v")[0]
+			s_io.read(2).unpack("v")[0]
+			s_io.read(2).unpack("v")[0]
+			s_io.read(2).unpack("v")[0]
 			# FIXME SIZE DISMATCH
 			#p s_io.read(4).unpack("V")
 			#p s_io.read(4).unpack("V")
