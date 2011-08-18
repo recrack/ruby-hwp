@@ -892,7 +892,9 @@ module Record
 
 		def initialize data, level
 			@level = level
-			raise NotImplementedError.new "DocInfo::ForbiddenChar"
+            # 금칙 문자는 뷰어에서 출력할 필요가 없다.
+            # TODO 금칙 문자의 데이터 형식은?
+            forbidden = data.unpack("v*").pack("U*")
 		end
 	end
 end

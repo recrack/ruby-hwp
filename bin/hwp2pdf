@@ -134,7 +134,7 @@ doc = HWP.open files[0]
     # Folio         612 * 936
     # Quarto        610 * 780
     # 10x14         720 * 1008
-    surface = Cairo::PDFSurface.new("out.pdf", 595, 842) # A4 크기
+    surface = Cairo::PDFSurface.new("/tmp/out.pdf", 595, 842) # A4 크기
     context = Cairo::Context.new(surface)
     context.move_to 10, 10
     layout = context.create_pango_layout
@@ -150,6 +150,7 @@ doc = HWP.open files[0]
     surface.finish
 doc.close
 
+`evince /tmp/out.pdf`
 
 __END__
 
