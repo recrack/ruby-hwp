@@ -30,6 +30,8 @@ module HWP
                 raise
             end
             @data = @stream.read size
+
+            #puts " " * @level + @tag_id.to_s
         end
 
         def pull
