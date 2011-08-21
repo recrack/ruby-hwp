@@ -42,3 +42,11 @@ module Record
         def initialize(dirent, header);end
     end
 end # Record
+
+# HWP Document Model
+module HWP
+    module Model
+        class Paragraph
+        end
+    end
+end
