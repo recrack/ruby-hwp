@@ -1,3 +1,5 @@
+require 'hwp/utils'
+
 module Record
     class BodyText
         attr_accessor :para_headers
@@ -158,6 +160,8 @@ end
 
 module Record::Section
     class ParaHeader
+        include HWP::Utils
+
         attr_reader :chars,
                     :control_mask,
                     :para_shape_id,
@@ -195,15 +199,6 @@ module Record::Section
             @para_line_segs = []
             @ctrl_headers = []
         end
-
-        def hierarchy_check(level1, level2, line_num)
-            if level1 != level2 - 1
-                p [level1, level2, line_num]
-                raise "hierarchy error at line #{line_num}"
-            end
-        end
-
-        private :hierarchy_check
 
         def parse(parser)
             while parser.has_next?
@@ -244,6 +239,28 @@ module Record::Section
                         ctrl_header = CtrlHeader.new(parser.data, parser.level)
                         ctrl_header.parse(parser)
                         @ctrl_headers << ctrl_header
+                    end
+                # table에서 HWPTAG_LIST_HEADER 가 온다.
+                when :HWPTAG_LIST_HEADER
+                    if parser.level <= @level
+                        parser.stack << parser.tag_id
+                        break
+                    else
+                        raise "unhandled " + parser.tag_id.to_s
+                    end
+                # HWPTAG_SHAPE_COMPONENT
+                #  HWPTAG_LIST_HEADER
+                #  HWPTAG_PARA_HEADER
+                #   HWPTAG_PARA_TEXT
+                #   HWPTAG_PARA_CHAR_SHAPE
+                #   HWPTAG_PARA_LINE_SEG
+                #  HWPTAG_SHAPE_COMPONENT_RECTANGLE
+                when :HWPTAG_SHAPE_COMPONENT_RECTANGLE
+                    if parser.level <= @level
+                        parser.stack << parser.tag_id
+                        break
+                    else
+                        raise "unhandled " + parser.tag_id.to_s
                     end
                 else
                     raise "unhandled " + parser.tag_id.to_s
@@ -288,7 +305,8 @@ module Record::Section
                 when 1,2,3,11,12,14,15,16,17,18,21,22,23
                     s_io.pos = s_io.pos + 14
                 #when 11 # 그리기 개체/표
-                # 포인터가 있다고 하는데 살펴보니 tbl의 경우 포인터가 없고 ctrl id 만 있다.
+                # 포인터가 있다고 하는데 살펴보니 tbl의 경우 포인터가 없고
+                # ctrl id 만 있다.
                 #	p s_io.read(14).unpack("v*")
                 # TODO mapping table
                 # 유니코드 문자 교정, 한자 영역 등의 다른 영역과 겹칠지도 모른다.
@@ -352,7 +370,8 @@ module Record::Section
     end
 
     # TODO REVERSE-ENGINEERING
-    # 스펙 문서에는 생략한다고 나와 있다. hwp3.0 또는 hwpml 스펙에 관련 정보가 있는지 확인해야 한다.
+    # 스펙 문서에는 생략한다고 나와 있다. hwp3.0 또는 hwpml 스펙에 관련 정보가
+    # 있는지 확인해야 한다.
     class ParaLineSeg
         attr_reader :level
 
@@ -381,15 +400,19 @@ module Record::Section
 
     # TODO REVERSE-ENGINEERING
     class CtrlHeader
-        attr_reader :ctrl_id, :level
+        include HWP::Utils
+
+        attr_reader :ctrl_id, :level, :data
         attr_accessor :page_defs, :footnote_shapes, :page_border_fills,
                       :list_headers, :para_headers, :tables, :text_table,
                       :eq_edits
 
         def initialize data, level
+            @data = data
             @level = level
             s_io = StringIO.new data
             @ctrl_id = s_io.read(4).reverse
+            #p @ctrl_id
             common = ['tbl ','$lin','$rec','$ell','$arc','$pol',
                       '$cur','eqed','$pic','$ole','$con']
 
@@ -415,88 +438,62 @@ module Record::Section
             @list_headers, @para_headers, @tables, @eq_edits = [], [], [], []
         end
 
-        # @text_table은 임시로 만든 이름이다. 더 나은 API 설계를 할 것.
-        def append_table table
-            @tables << table
-            @text_table.rows = Array.new(table.row_count).collect {Text::Table::Row.new}
-            
-            @text_table.rows.each do |row|
-                row.cells = Array.new(table.col_count).collect {Text::Table::Cell.new}
-            end
-        end
-
-        def append_list_header list_header
-            if @ctrl_id == 'tbl '
-                @col_addr = list_header.col_addr
-                @row_addr = list_header.row_addr
-                col_span = list_header.col_span
-                row_span = list_header.row_span
-                @text_table.rows[@row_addr].cells[@col_addr] = Text::Table::Cell.new
-                @text_table.rows[@row_addr].cells[@col_addr].row_span = row_span
-                @text_table.rows[@row_addr].cells[@col_addr].col_span = col_span
-                if col_span > 1
-                    for i in @col_addr...(@col_addr+col_span)
-                        @text_table.rows[@row_addr].cells[i].covered = true
-                    end
-                end
-                if row_span > 1
-                    for i in @row_addr...(@row_addr+row_span)
-                        @text_table.rows[i].cells[@col_addr].covered = true
-                    end
-                end
-            else
-                @list_headers << list_header
-            end
-        end
-
-        def append_para_header para_header
-            if @ctrl_id == 'tbl '
-                @para_headers << para_header
-                # FIXME 파라 헤더가 없는 것이 있다. 고쳐야 된다.
-                # list_header 다음에 오는 연속된 para_header 에 대하여 올바르게 처리해야 한다.
-                @text_table.rows[@row_addr].cells[@col_addr].para_headers << para_header
-            else
-                @para_headers << para_header
-            end
-        end
-
-        def hierarchy_check(level1, level2, line_num)
-            if level1 != level2 - 1
-                p [level1, level2]
-                raise "hierarchy error at line #{line_num}"
-            end
-        end
-
-        # TODO FIXME
         def parse(parser)
+            # TODO case .. when 구문이 when :HWPTAG_CTRL_HEADER 내에
+            # 위치해야 되는지 고려해야 한다.
             case @ctrl_id
             # 54쪽 표116 그외 컨트롤
-            when "secd" then raise NotImplementedError.new @ctrl_id
-            when "cold" then raise NotImplementedError.new @ctrl_id
-            when "head" then raise NotImplementedError.new @ctrl_id
-            when "foot" then raise NotImplementedError.new @ctrl_id
-            when "fn  " then raise NotImplementedError.new @ctrl_id
+            when "secd" # 구역 정의
+                secd = HWP::Model::SectionDef.new(self)
+                secd.parse(parser)
+            when "cold" # 단 정의
+                cold = HWP::Model::ColumnDef.new(self)
+                return
+            when "head" # 머리말 header
+                head = HWP::Model::Header.new(self)
+                head.parse(parser)
+            when "foot" # 꼬리말 footer
+                foot = HWP::Model::Footer.new(self)
+                foot.parse(parser)
+            when "fn  " # 각주
+                footnote = HWP::Model::Footnote.new(self)
+                footnote.parse(parser)
             when "en  " then raise NotImplementedError.new @ctrl_id
-            when "atno" then raise NotImplementedError.new @ctrl_id
-            when "nwno" then raise NotImplementedError.new @ctrl_id
-            when "pghd" then raise NotImplementedError.new @ctrl_id
+            when "atno" # 자동 번호
+                atno = HWP::Model::AutoNum.new(self)
+                return
+            when "nwno" # 새 번호 지정
+                nwno = HWP::Model::NewNum.new(self)
+                return
+            when "pghd" # 감추기 page hiding
+                pghd = HWP::Model::PageHiding.new(self)
+                return
             when "pgct" then raise NotImplementedError.new @ctrl_id
             when "pgnp" then raise NotImplementedError.new @ctrl_id
             when "idxm" then raise NotImplementedError.new @ctrl_id
             when "bokm" then raise NotImplementedError.new @ctrl_id
-            when "tcps" then raise NotImplementedError.new @ctrl_id
+            when "tcps" # 글자 겹침 text compose 170쪽
+                tcps = HWP::Model::TextCompose.new(self)
+                return
             when "tdut" then raise NotImplementedError.new @ctrl_id
             when "tcmt" then raise NotImplementedError.new @ctrl_id
             # 41쪽 표62 개체 공통 속성을 포함하는 컨트롤
-            when 'tbl ' then raise NotImplementedError.new @ctrl_id
-                #@text_table = Text::Table.new # 배열로 만들어야 할지도 모르겠다.
+            when 'tbl '
+                table = HWP::Model::Table.new(self)
+                table.parse(parser)
+            when 'gso '
+                gso = HWP::Model::ShapeComponent.new(self)
+                gso.parse(parser)
             when '$lin' then raise NotImplementedError.new @ctrl_id
             when '$rec' then raise NotImplementedError.new @ctrl_id
             when '$ell' then raise NotImplementedError.new @ctrl_id
             when '$arc' then raise NotImplementedError.new @ctrl_id
             when '$pol' then raise NotImplementedError.new @ctrl_id
             when '$cur' then raise NotImplementedError.new @ctrl_id
-            when 'eqed' then raise NotImplementedError.new @ctrl_id
+            when 'eqed'
+                eqed = HWP::Model::EqEdit.new(self)
+                # 자식은 없으나 EQEDIT 레코드를 가지고 와야 한다.
+                eqed.parse parser
             when '$pic' then raise NotImplementedError.new @ctrl_id
             when '$ole' then raise NotImplementedError.new @ctrl_id
             when '$con' then raise NotImplementedError.new @ctrl_id
@@ -546,18 +543,8 @@ module Record::Section
                 end
 
                 case parser.tag_id
-                when :HWPTAG_PAGE_DEF
-                    hierarchy_check(@level, parser.level, __LINE__)
-                    @page_defs << PageDef.new(parser.data, parser.level)
-                when :HWPTAG_FOOTNOTE_SHAPE
-                    hierarchy_check(@level, parser.level, __LINE__)
-                    @footnote_shapes <<
-                        FootnoteShape.new(parser.data, parser.level)
-                when :HWPTAG_PAGE_BORDER_FILL
-                    hierarchy_check(@level, parser.level, __LINE__)
-                    @page_border_fills <<
-                        PageBorderFill.new(parser.data, parser.level)
                 when :HWPTAG_CTRL_HEADER
+                    # FIXME
                     # CTRL_HEADER 가 끝이 나고 새롭게 시작됨을 알린다.
                     parser.stack << parser.tag_id
                     break
@@ -572,21 +559,16 @@ module Record::Section
                         para_header.parse(parser)
                         @para_headers << para_header
                     end
-                when :HWPTAG_LIST_HEADER
-                    hierarchy_check(@level, parser.level, __LINE__)
-                    @list_headers <<
-                        ListHeader.new(parser.data, parser.level)
-                when :HWPTAG_EQEDIT
-                    hierarchy_check(@level, parser.level, __LINE__)
-                    @eq_edits << EqEdit.new(parser.data, parser.level)
-                when :HWPTAG_TABLE
-                    hierarchy_check(@level, parser.level, __LINE__)
-                    raise "unhandled " + parser.tag_id.to_s
                 else
+                    begin
+                        hierarchy_check(@level, parser.level, __LINE__)
+                    rescue
+                        break # FIXME
+                    end
                     raise "unhandled " + parser.tag_id.to_s
                 end
-            end
-        end
+            end # while
+        end # parse
 
         def to_tag
             "HWPTAG_CTRL_HEADER"
@@ -595,7 +577,7 @@ module Record::Section
         def debug
             puts "\t"*@level +"CtrlHeader:" + @ctrl_id
         end
-    end
+    end # CtrlHeader
 
     # TODO REVERSE-ENGINEERING
     # 리스트 헤더: Table 다음에 올 경우 셀 속성
@@ -660,44 +642,6 @@ module Record::Section
 
         def debug
             puts "\t"*@level +"Table:"
-        end
-    end
-
-    class ShapeComponent
-        attr_reader :scale_matrices, :rotate_matrices, :level
-        FLIP_TYPE = ['horz flip', 'vert flip']
-
-        def initialize data, level
-            @level = level
-            @scale_matrices, @rotate_matrices = [], []
-            s_io = StringIO.new data
-            # NOTE ctrl_id 가 두 번 반복됨을 주의하자
-            ctrl_id = s_io.read(4).unpack("C4").pack("U*").reverse
-            ctrl_id = s_io.read(4).unpack("C4").pack("U*").reverse
-
-            x_pos = s_io.read(4).unpack("I")[0]
-            y_pos = s_io.read(4).unpack("I")[0]
-            group_level = s_io.read(2).unpack("v")[0]
-            local_file_version = s_io.read(2).unpack("v")[0]
-
-            ori_width = s_io.read(4).unpack("V")[0]
-            ori_height = s_io.read(4).unpack("V")[0]
-            cur_width = s_io.read(4).unpack("V")[0]
-            cur_height = s_io.read(4).unpack("V")[0]
-
-            flip = FLIP_TYPE[s_io.read(4).unpack("V")[0]]
-
-            angle = s_io.read(2).unpack("v")[0]
-            center_x = s_io.read(4).unpack("V")[0]
-            center_y = s_io.read(4).unpack("V")[0]
-
-            count = s_io.read(2).unpack("v")[0]
-            trans_matrix = s_io.read(48).unpack("E6")
-
-            count.times do
-                @scale_matrices  << s_io.read(48).unpack("E6")
-                @rotate_matrices << s_io.read(48).unpack("E6")
-            end
         end
     end
 
@@ -860,31 +804,6 @@ module Record::Section
         end
     end
 
-    class EqEdit
-        # TODO DOT 훈DOT 민 DOT 정 DOT 음
-        attr_reader :level
-        def initialize data, level
-            @level = level
-            io = StringIO.new(data)
-            property = io.read(4).unpack("I")	# INT32
-            len = io.read(2).unpack("s")[0]	# WORD
-            #io.read(len * 2).unpack("S*").pack("U*")		# WCHAR
-            @script = io.read(len * 2).unpack("v*").pack("U*")	# WCHAR
-            #p unknown = io.read(2).unpack("S")	# 스펙 50쪽과 다름
-            #p size = io.read(4).unpack("I")		# HWPUNIT
-            #p color = io.read(4).unpack("I")	# COLORREF
-            #p baseline = io.read(2).unpack("s")	# INT16
-        end
-
-        def to_tag
-            "HWPTAG_EQEDIT"
-        end
-
-        def to_s
-            @script
-        end
-    end
-
     class Reserved
         attr_reader :level
         def initialize data, level
@@ -925,47 +844,3 @@ module Record::Section
         end
     end
 end # Record::Section
-
-module Text
-    #table
-    #	column
-    #	column
-    #	column
-    #	row1
-    #		cell1
-    #		cell2
-    #		cell3
-    #	row2
-    #		cell1
-    #		cell2 number-rows-spanned = 2
-    #		cell3
-    #	row3
-    #		cell1
-    #		covered-table-cell
-    #		cell3
-    class Table
-        attr_accessor :columns, :rows
-
-        def initialize
-            @columns = []
-            @rows = []
-        end
-
-        class Row
-            attr_accessor :cells
-            def initialize
-                @cells = []
-            end
-        end
-
-        class Cell
-            attr_accessor :para_headers, :row_span, :col_span, :covered
-            def initialize
-                @para_headers = []
-                @covered = false
-                @row_span = 1
-                @col_span = 1
-            end
-        end
-    end
-end
