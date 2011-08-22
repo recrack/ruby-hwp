@@ -5,10 +5,9 @@ module Record
         attr_accessor :para_headers
 
         def initialize(dirent, header)
-            @dirent = dirent
             @para_headers = []
 
-            @dirent.each_child do |section|
+            dirent.each_child do |section|
                 if header.compress?
                     z = Zlib::Inflate.new(-Zlib::MAX_WBITS)
                     parser = HWP::Parser.new StringIO.new(z.inflate section.read)
@@ -20,37 +19,21 @@ module Record
                 
                 parse(parser)
                 #print_para_headers(self)
-            end # @dirent.each_child
+            end # dirent.each_child
         end # initialize
 
         # <BodyText> ::= <Section>+
         # <Section> ::= <ParaHeader>+
         # 여기서는 <BodyText> ::= <ParaHeader>+ 로 간주함.
-        def parse(parser)
-            while parser.has_next?
-                # stack 이 차 있으면 이전의 para header 이 끝난 후
-                # stack 에 차 있는 para header 이 새롭게 시작됨.
-                if parser.stack.empty?
-                    parser.pull
-                else
-                    raise if parser.stack.pop != :HWPTAG_PARA_HEADER
-                end
+        def parse(context)
+            while context.has_next?
+                # stack 이 차 있으면 자식으로부터 제어를 넘겨받은 것이다.
+                context.stack.empty? ? context.pull : context.stack.pop
 
-                # level == 0 인 파라헤더만 취한다. 그 밖의 것은 raise
-                case parser.tag_id
-                when :HWPTAG_PARA_HEADER
-                    if parser.level == 0
-                        para_header = Record::Section::ParaHeader.
-                            new(parser.data, parser.level)
-                        para_header.parse(parser)
-                        @para_headers << para_header
-                    else
-                        raise "file corrupted?"
-                    end
+                if context.tag_id == :HWPTAG_PARA_HEADER and context.level == 0
+                    @para_headers << Record::Section::ParaHeader.new(context)
                 else
-                    # raise 발생하면 level == 0 인 뭔가가 있는 것임.
-                    # v5.0 스펙에는 level == 0 인 것은 오로지 PARA_HEADER 임.
-                    raise "unknown spec: #{parser.tag_id}"
+                    raise "unhandled: #{context.tag_id}"
                 end
             end
         end
@@ -176,10 +159,10 @@ module Record::Section
                       :para_char_shapes,
                       :para_line_segs,
                       :ctrl_headers,
-                      :table # para_header 에 ctrl_header 가 1개만 오는 것으로 추정한다.
+                      :table
 
-        def initialize data, level
-            @level = level
+        def initialize context
+            @level = context.level
             @chars,
             @control_mask,
             @para_shape_id,
@@ -188,7 +171,7 @@ module Record::Section
             @num_char_shape,
             @num_range_tag,
             @num_align,
-            @para_instance_id = data.unpack("vVvvvvvvV")
+            @para_instance_id = context.data.unpack("vVvvvvvvV")
 
             # para_text, para_char_shape 가 1개 밖에 안 오는 것 같으나 확실하지 않으니
             # 배열로 처리한다. 추후 ParaText, ParaCharShape 클래스를 ParaHeader 이나
@@ -198,56 +181,37 @@ module Record::Section
             @para_char_shapes = []
             @para_line_segs = []
             @ctrl_headers = []
+            parse(context)
         end
 
-        def parse(parser)
-            while parser.has_next?
-                if parser.stack.empty?
-                    parser.pull
-                else
-                    parser.stack.pop
+        def parse(context)
+            while context.has_next?
+                context.stack.empty? ? context.pull : context.stack.pop
+
+                if  context.level <= @level
+                    context.stack << context.tag_id
+                    break
                 end
 
-                case parser.tag_id
-                when :HWPTAG_PARA_HEADER
-                    if parser.level <= @level
-                        # para header 가 끝이 나고 새롭게 시작됨을 알린다.
-                        parser.stack << parser.tag_id
-                        break
-                    else
-                        puts [@level, parser.level]
-                        raise "unhandled " + parser.tag_id.to_s
-                    end
+                case context.tag_id
                 when :HWPTAG_PARA_TEXT
-                    hierarchy_check(@level, parser.level, __LINE__)
-                    para_text = ParaText.new(parser.data, parser.level)
-                    @para_texts << para_text
+                    @para_texts << ParaText.new(context)
                 when :HWPTAG_PARA_CHAR_SHAPE
-                    hierarchy_check(@level, parser.level, __LINE__)
-                    para_char_shape = ParaCharShape.new(parser.data, parser.level)
-                    @para_char_shapes << para_char_shape
+                    @para_char_shapes << ParaCharShape.new(context)
                 when :HWPTAG_PARA_LINE_SEG
-                    hierarchy_check(@level, parser.level, __LINE__)
-                    para_line_seg = ParaLineSeg.new(parser.data, parser.level)
-                    @para_line_segs << para_line_seg
+                    @para_line_segs << ParaLineSeg.new(context)
                 when :HWPTAG_CTRL_HEADER
-                    if parser.level <= @level
-                        parser.stack << parser.tag_id
-                        break
-                    else
-                        hierarchy_check(@level, parser.level, __LINE__)
-                        ctrl_header = CtrlHeader.new(parser.data, parser.level)
-                        ctrl_header.parse(parser)
-                        @ctrl_headers << ctrl_header
-                    end
-                # table에서 HWPTAG_LIST_HEADER 가 온다.
-                when :HWPTAG_LIST_HEADER
-                    if parser.level <= @level
-                        parser.stack << parser.tag_id
-                        break
-                    else
-                        raise "unhandled " + parser.tag_id.to_s
-                    end
+                    @ctrl_headers << CtrlHeader.new(context)
+                #when :HWPTAG_MEMO_LIST
+                #    # TODO
+                # table, memo_list 에서 HWPTAG_LIST_HEADER 가 온다.
+                #when :HWPTAG_LIST_HEADER
+                #    if parser.level <= @level
+                #        parser.stack << parser.tag_id
+                #        break
+                #    else
+                #        #raise "unhandled " + parser.tag_id.to_s
+                #    end
                 # HWPTAG_SHAPE_COMPONENT
                 #  HWPTAG_LIST_HEADER
                 #  HWPTAG_PARA_HEADER
@@ -255,18 +219,19 @@ module Record::Section
                 #   HWPTAG_PARA_CHAR_SHAPE
                 #   HWPTAG_PARA_LINE_SEG
                 #  HWPTAG_SHAPE_COMPONENT_RECTANGLE
-                when :HWPTAG_SHAPE_COMPONENT_RECTANGLE
-                    if parser.level <= @level
-                        parser.stack << parser.tag_id
-                        break
-                    else
-                        raise "unhandled " + parser.tag_id.to_s
-                    end
+                #when :HWPTAG_SHAPE_COMPONENT_RECTANGLE
+                #    if parser.level <= @level
+                #        parser.stack << parser.tag_id
+                #        break
+                #    else
+                #        raise "unhandled " + parser.tag_id.to_s
+                #    end
                 else
-                    raise "unhandled " + parser.tag_id.to_s
+                    raise "unhandled " + context.tag_id.to_s
                 end
             end
         end
+        private :parse
 
         def to_tag
             "HWPTAG_PARA_HEADER"
@@ -280,9 +245,9 @@ module Record::Section
     class ParaText
         attr_reader :level
 
-        def initialize data, level
-            @level = level
-            s_io = StringIO.new data
+        def initialize context
+            @level = context.level
+            s_io = StringIO.new context.data
 
             @bytes = []
 
@@ -348,8 +313,9 @@ module Record::Section
     class ParaCharShape
         attr_accessor :m_pos, :m_id, :level
         # TODO m_pos, m_id 가 좀 더 편리하게 바뀔 필요가 있다.
-        def initialize data, level
-            @level = level
+        def initialize context
+            data = context.data
+            @level = context.level
             @m_pos = []
             @m_id = []
             n = data.bytesize / 4
@@ -375,9 +341,9 @@ module Record::Section
     class ParaLineSeg
         attr_reader :level
 
-        def initialize data, level
-            @level = level
-            @data = data
+        def initialize context
+            @level = context.level
+            @data  = context.data
         end
 
         def to_tag
@@ -407,12 +373,14 @@ module Record::Section
                       :list_headers, :para_headers, :tables, :text_table,
                       :eq_edits
 
-        def initialize data, level
-            @data = data
-            @level = level
+        def initialize context
+            @data = context.data
+            @level = context.level
             s_io = StringIO.new data
             @ctrl_id = s_io.read(4).reverse
-            #p @ctrl_id
+
+            puts(" " * level + "\"#{@ctrl_id}\"")
+
             common = ['tbl ','$lin','$rec','$ell','$arc','$pol',
                       '$cur','eqed','$pic','$ole','$con']
 
@@ -436,6 +404,8 @@ module Record::Section
             # accessor
             @page_defs, @footnote_shapes, @page_border_fills = [], [], []
             @list_headers, @para_headers, @tables, @eq_edits = [], [], [], []
+
+            parse(context)
         end
 
         def parse(parser)
@@ -484,6 +454,9 @@ module Record::Section
             when 'gso '
                 gso = HWP::Model::ShapeComponent.new(self)
                 gso.parse(parser)
+            when 'form'
+                form = HWP::Model::FormObject.new(self)
+                form.parse parser
             when '$lin' then raise NotImplementedError.new @ctrl_id
             when '$rec' then raise NotImplementedError.new @ctrl_id
             when '$ell' then raise NotImplementedError.new @ctrl_id
@@ -498,7 +471,8 @@ module Record::Section
             when '$ole' then raise NotImplementedError.new @ctrl_id
             when '$con' then raise NotImplementedError.new @ctrl_id
             # 54쪽 표116 필드 시작 컨트롤
-            when "%unk" then raise NotImplementedError.new @ctrl_id
+            when "%unk" # FIELD_UNKNOWN
+                # TODO
             when "%dte" then raise NotImplementedError.new @ctrl_id
             when "%ddt" then raise NotImplementedError.new @ctrl_id
             when "%pat" then raise NotImplementedError.new @ctrl_id
@@ -506,7 +480,10 @@ module Record::Section
             when "%mmg" then raise NotImplementedError.new @ctrl_id
             when "%xrf" then raise NotImplementedError.new @ctrl_id
             when "%fmu" then raise NotImplementedError.new @ctrl_id
-            when "%clk" then raise NotImplementedError.new @ctrl_id
+            when "%clk" # FIELD_CLICKHERE
+                clk = HWP::Model::ClickHere.new(self)
+                # 자식은 없으나 EQEDIT 레코드를 가지고 와야 한다.
+                #eqed.parse parser
             when "%smr" then raise NotImplementedError.new @ctrl_id
             when "%usr" then raise NotImplementedError.new @ctrl_id
             when "%hlk" then raise NotImplementedError.new @ctrl_id
@@ -548,6 +525,8 @@ module Record::Section
                     # CTRL_HEADER 가 끝이 나고 새롭게 시작됨을 알린다.
                     parser.stack << parser.tag_id
                     break
+                when :HWPTAG_CTRL_DATA
+                    # TODO
                 when :HWPTAG_PARA_HEADER
                     if parser.level <= @level
                         parser.stack << parser.tag_id
@@ -563,12 +542,15 @@ module Record::Section
                     begin
                         hierarchy_check(@level, parser.level, __LINE__)
                     rescue
-                        break # FIXME
+                        parser.stack << parser.tag_id
+                        break
                     end
                     raise "unhandled " + parser.tag_id.to_s
                 end
             end # while
         end # parse
+
+        private :parse
 
         def to_tag
             "HWPTAG_CTRL_HEADER"
@@ -805,14 +787,6 @@ module Record::Section
     end
 
     class Reserved
-        attr_reader :level
-        def initialize data, level
-            @level = level
-            STDERR.puts "{#self.class.name}: not implemented"
-        end
-    end
-
-    class FormObject
         attr_reader :level
         def initialize data, level
             @level = level
