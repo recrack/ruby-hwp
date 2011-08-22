@@ -23,6 +23,7 @@ module HWP
 
             if lsb_first
                 k = lsb_first[0..9].reverse.to_i(2)   # 9~0
+                #p k
                 @tag_id = HWPTAGS[k]
                 @level  = lsb_first[10..19].reverse.to_i(2) # 19~10
                 size    = lsb_first[20..31].reverse.to_i(2) # 31~20
@@ -31,7 +32,7 @@ module HWP
             end
             @data = @stream.read size
 
-            #puts " " * @level + @tag_id.to_s
+            puts " " * @level + @tag_id.to_s
         end
 
         def pull
