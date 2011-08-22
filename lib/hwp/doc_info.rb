@@ -100,6 +100,10 @@ module Record
                     @layout_compatibility <<
                         Record::DocInfo::LayoutCompatibility.
                             new(parser.data, parser.level)
+                when :HWPTAG_MEMO_SHAPE
+                    # TODO
+                when :HWPTAG_DOC_INFO_16 # 레이아웃 관련 태그로 추정됨.
+                    # TODO
                 when :HWPTAG_FORBIDDEN_CHAR
                     @forbidden_char << Record::DocInfo::ForbiddenChar.
                         new(parser.data, parser.level)
@@ -624,7 +628,7 @@ module Record
 #				additional_gradation,
 #				additional_gradation_center = s_io.read(5).unpack "VC"
 			end
-			@gradation.step_center = s_io.read(1).unpack("C")[0]
+			#@gradation.step_center = s_io.read(1).unpack("C")[0]
 			s_io.close
 		end
 
@@ -874,7 +878,7 @@ module Record
 
 		def initialize data, level
 			@level = level
-			raise NotImplementedError.new "DocInfo::CompatibleDocument"
+			#raise NotImplementedError.new "DocInfo::CompatibleDocument"
 		end
 	end
 
@@ -883,7 +887,7 @@ module Record
 
 		def initialize data, level
 			@level = level
-			raise NotImplementedError.new "DocInfo::LayoutCompatibility"
+			#raise NotImplementedError.new "DocInfo::LayoutCompatibility"
 		end
 	end
 
