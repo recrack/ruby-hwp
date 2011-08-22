@@ -90,6 +90,12 @@ module HWP
                         # CTRL_HEADER 가 끝이 나고 새롭게 시작됨을 알린다.
                         parser.stack << parser.tag_id
                         break
+                    when :HWPTAG_LIST_HEADER
+                        hierarchy_check(@level, parser.level, __LINE__)
+                        @ctrl_header.list_headers << Record::Section::
+                            ListHeader.new(parser.data, parser.level)
+                    when :HWPTAG_CTRL_DATA
+                        # TODO
                     when :HWPTAG_PARA_HEADER
                         if parser.level <= @level
                             parser.stack << parser.tag_id
@@ -97,9 +103,9 @@ module HWP
                         else
                             #p [@level, parser.level, __LINE__]
                             hierarchy_check(@level, parser.level, __LINE__)
-                            para_header = ParaHeader.new(parser.data, parser.level)
+                            para_header = Record::Section::ParaHeader.new(parser.data, parser.level)
                             para_header.parse(parser)
-                            @para_headers << para_header
+                            @ctrl_header.para_headers << para_header
                         end
                     else
                         raise "unhandled " + parser.tag_id.to_s
@@ -129,7 +135,7 @@ module HWP
             end
         end # AutoNum
 
-        class Header
+        class Header # 머리글
             include HWP::Utils
             def initialize(ctrl_header)
                 @level = ctrl_header.level
@@ -157,8 +163,7 @@ module HWP
                             #p [@level, parser.level, __LINE__]
                             hierarchy_check(@level, parser.level, __LINE__)
                             para_header = Record::Section::
-                                ParaHeader.new(parser.data, parser.level)
-                            para_header.parse(parser)
+                                ParaHeader.new(parser)
                             @ctrl_header.para_headers << para_header
                         end
                     when :HWPTAG_LIST_HEADER
@@ -399,8 +404,7 @@ module HWP
                             #p [@level, parser.level, __LINE__]
                             hierarchy_check(@level, parser.level, __LINE__)
                             para_header = Record::Section::
-                                ParaHeader.new(parser.data, parser.level)
-                            para_header.parse(parser)
+                                ParaHeader.new(parser)
                             @ctrl_header.para_headers << para_header # FIXME
                         end
                     when :HWPTAG_LIST_HEADER
@@ -413,6 +417,48 @@ module HWP
                 end # while
             end # parse
         end # Footnote
+
+        class FormObject
+            include HWP::Utils
+            attr_reader :level
+            def initialize ctrl_header
+                @data  = ctrl_header.data
+                @level = ctrl_header.level
+            end
+
+            def parse parser
+                while parser.has_next?
+                    if parser.stack.empty?
+                        parser.pull
+                    else
+                        parser.stack.pop
+                    end
+
+                    case parser.tag_id
+                    when :HWPTAG_CTRL_HEADER
+                        # CTRL_HEADER 가 끝이 나고 새롭게 시작됨을 알린다.
+                        parser.stack << parser.tag_id
+                        break
+                    when :HWPTAG_PARA_HEADER
+                        if parser.level <= @level
+                            parser.stack << parser.tag_id
+                            break
+                        else
+                            #p [@level, parser.level, __LINE__]
+                            hierarchy_check(@level, parser.level, __LINE__)
+                            para_header = ParaHeader.new(parser.data, parser.level)
+                            para_header.parse(parser)
+                            @para_headers << para_header
+                        end
+                    when :HWPTAG_FORM_OBJECT
+                        hierarchy_check(@level, parser.level, __LINE__)
+                    else
+                        raise "unhandled " + parser.tag_id.to_s
+                    end
+                end # while
+            end # parse
+        end # FormObject
+
 
         class EqEdit
             include HWP::Utils
@@ -533,25 +579,47 @@ module HWP
                             break
                         else
                             #p [@level, parser.level, __LINE__]
-                            hierarchy_check(@level, parser.level, __LINE__)
+                            # FIXME
+                            #hierarchy_check(@level, parser.level, __LINE__)
                             para_header = Record::Section::
                                 ParaHeader.new(parser.data, parser.level)
                             para_header.parse(parser)
                             @ctrl_header.para_headers << para_header # FIXME
                         end
                     when :HWPTAG_LIST_HEADER
-                        hierarchy_check(@level, parser.level, __LINE__)
+                        # FIXME
+                        #hierarchy_check(@level, parser.level, __LINE__)
                     when :HWPTAG_SHAPE_COMPONENT
-                        hierarchy_check(@level, parser.level, __LINE__)
-                        @level += 1
+                        # FIXME
+                        #hierarchy_check(@level, parser.level, __LINE__)
+                        #@level += 1
                     when :HWPTAG_SHAPE_COMPONENT_PICTURE
-                        hierarchy_check(@level, parser.level, __LINE__)
+                        # FIXME
+                        #hierarchy_check(@level, parser.level, __LINE__)
                     when :HWPTAG_SHAPE_COMPONENT_RECTANGLE
-                        hierarchy_check(@level, parser.level, __LINE__)                    else
+                        # FIXME
+                        #hierarchy_check(@level, parser.level, __LINE__)
+                    when :HWPTAG_SHAPE_COMPONENT_LINE
+                        # FIXME
+                        #hierarchy_check(@level, parser.level, __LINE__)
+                    when :HWPTAG_SHAPE_COMPONENT_POLYGON
+                        # FIXME
+                        #hierarchy_check(@level, parser.level, __LINE__)
+                    when :HWPTAG_SHAPE_COMPONENT_ELLIPSE
+                        # FIXME
+                        #hierarchy_check(@level, parser.level, __LINE__)
+                    else
                         raise "unhandled " + parser.tag_id.to_s
                     end
                 end # while
             end # parse
         end # ShapeComponent
+
+        class ClickHere
+            def initialize(ctrl_header)
+                @level = ctrl_header.level
+                @ctrl_header = ctrl_header
+            end
+        end # ClickHere
     end # Model
 end # HWP
