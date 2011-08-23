@@ -10,14 +10,14 @@ module Record
             dirent.each_child do |section|
                 if header.compress?
                     z = Zlib::Inflate.new(-Zlib::MAX_WBITS)
-                    parser = HWP::Parser.new StringIO.new(z.inflate section.read)
+                    context = HWP::Context.new StringIO.new(z.inflate section.read)
                     z.finish
                     z.close
                 else
-                    parser = HWP::Parser.new StringIO.new(section.read)
+                    context = HWP::Context.new StringIO.new(section.read)
                 end
                 
-                parse(parser)
+                parse(context)
                 #print_para_headers(self)
             end # dirent.each_child
         end # initialize
@@ -206,11 +206,11 @@ module Record::Section
                 #    # TODO
                 # table, memo_list 에서 HWPTAG_LIST_HEADER 가 온다.
                 #when :HWPTAG_LIST_HEADER
-                #    if parser.level <= @level
-                #        parser.stack << parser.tag_id
+                #    if context.level <= @level
+                #        context.stack << context.tag_id
                 #        break
                 #    else
-                #        #raise "unhandled " + parser.tag_id.to_s
+                #        #raise "unhandled " + context.tag_id.to_s
                 #    end
                 # HWPTAG_SHAPE_COMPONENT
                 #  HWPTAG_LIST_HEADER
@@ -220,11 +220,11 @@ module Record::Section
                 #   HWPTAG_PARA_LINE_SEG
                 #  HWPTAG_SHAPE_COMPONENT_RECTANGLE
                 #when :HWPTAG_SHAPE_COMPONENT_RECTANGLE
-                #    if parser.level <= @level
-                #        parser.stack << parser.tag_id
+                #    if context.level <= @level
+                #        context.stack << context.tag_id
                 #        break
                 #    else
-                #        raise "unhandled " + parser.tag_id.to_s
+                #        raise "unhandled " + context.tag_id.to_s
                 #    end
                 else
                     raise "unhandled " + context.tag_id.to_s
@@ -369,9 +369,8 @@ module Record::Section
         include HWP::Utils
 
         attr_reader :ctrl_id, :level, :data
-        attr_accessor :page_defs, :footnote_shapes, :page_border_fills,
-                      :list_headers, :para_headers, :tables, :text_table,
-                      :eq_edits
+        attr_accessor :section_defs, :list_headers, :para_headers, :tables,
+                      :text_table,   :eq_edits
 
         def initialize context
             @data = context.data
@@ -401,33 +400,32 @@ module Record::Section
             rescue => e
                 STDERR.puts e.message
             end
-            # accessor
-            @page_defs, @footnote_shapes, @page_border_fills = [], [], []
-            @list_headers, @para_headers, @tables, @eq_edits = [], [], [], []
+
+            @section_defs, @list_headers, @para_headers = [], [], []
+            @tables, @eq_edits = [], []
 
             parse(context)
         end
 
-        def parse(parser)
-            # TODO case .. when 구문이 when :HWPTAG_CTRL_HEADER 내에
-            # 위치해야 되는지 고려해야 한다.
+        def parse(context)
+            # ctrl id 에 따른 모델링과 그외 처리
             case @ctrl_id
             # 54쪽 표116 그외 컨트롤
             when "secd" # 구역 정의
                 secd = HWP::Model::SectionDef.new(self)
-                secd.parse(parser)
+                secd.parse(context)
+                @section_defs << secd
             when "cold" # 단 정의
                 cold = HWP::Model::ColumnDef.new(self)
-                return
             when "head" # 머리말 header
                 head = HWP::Model::Header.new(self)
-                head.parse(parser)
+                head.parse(context)
             when "foot" # 꼬리말 footer
                 foot = HWP::Model::Footer.new(self)
-                foot.parse(parser)
+                foot.parse(context)
             when "fn  " # 각주
                 footnote = HWP::Model::Footnote.new(self)
-                footnote.parse(parser)
+                footnote.parse(context)
             when "en  " then raise NotImplementedError.new @ctrl_id
             when "atno" # 자동 번호
                 atno = HWP::Model::AutoNum.new(self)
@@ -450,13 +448,13 @@ module Record::Section
             # 41쪽 표62 개체 공통 속성을 포함하는 컨트롤
             when 'tbl '
                 table = HWP::Model::Table.new(self)
-                table.parse(parser)
+                table.parse(context)
             when 'gso '
                 gso = HWP::Model::ShapeComponent.new(self)
-                gso.parse(parser)
+                gso.parse(context)
             when 'form'
                 form = HWP::Model::FormObject.new(self)
-                form.parse parser
+                form.parse context
             when '$lin' then raise NotImplementedError.new @ctrl_id
             when '$rec' then raise NotImplementedError.new @ctrl_id
             when '$ell' then raise NotImplementedError.new @ctrl_id
@@ -466,7 +464,7 @@ module Record::Section
             when 'eqed'
                 eqed = HWP::Model::EqEdit.new(self)
                 # 자식은 없으나 EQEDIT 레코드를 가지고 와야 한다.
-                eqed.parse parser
+                eqed.parse context
             when '$pic' then raise NotImplementedError.new @ctrl_id
             when '$ole' then raise NotImplementedError.new @ctrl_id
             when '$con' then raise NotImplementedError.new @ctrl_id
@@ -483,7 +481,7 @@ module Record::Section
             when "%clk" # FIELD_CLICKHERE
                 clk = HWP::Model::ClickHere.new(self)
                 # 자식은 없으나 EQEDIT 레코드를 가지고 와야 한다.
-                #eqed.parse parser
+                #eqed.parse context
             when "%smr" then raise NotImplementedError.new @ctrl_id
             when "%usr" then raise NotImplementedError.new @ctrl_id
             when "%hlk" then raise NotImplementedError.new @ctrl_id
@@ -512,40 +510,19 @@ module Record::Section
                 raise "unhandled #{@ctrl_id}"
             end
 
-            while parser.has_next?
-                if parser.stack.empty?
-                    parser.pull
-                else
-                    parser.stack.pop
+            # 다음 레코드 처리
+            while context.has_next?
+                context.stack.empty? ? context.pull : context.stack.pop
+
+                if  context.level <= @level
+                    context.stack << context.tag_id
+                    break
                 end
 
-                case parser.tag_id
-                when :HWPTAG_CTRL_HEADER
-                    # FIXME
-                    # CTRL_HEADER 가 끝이 나고 새롭게 시작됨을 알린다.
-                    parser.stack << parser.tag_id
-                    break
-                when :HWPTAG_CTRL_DATA
-                    # TODO
-                when :HWPTAG_PARA_HEADER
-                    if parser.level <= @level
-                        parser.stack << parser.tag_id
-                        break
-                    else
-                        #p [@level, parser.level, __LINE__]
-                        hierarchy_check(@level, parser.level, __LINE__)
-                        para_header = ParaHeader.new(parser.data, parser.level)
-                        para_header.parse(parser)
-                        @para_headers << para_header
-                    end
+                case context.tag_id
+                when :TODO
                 else
-                    begin
-                        hierarchy_check(@level, parser.level, __LINE__)
-                    rescue
-                        parser.stack << parser.tag_id
-                        break
-                    end
-                    raise "unhandled " + parser.tag_id.to_s
+                    raise "unhandled " + context.tag_id.to_s
                 end
             end # while
         end # parse
@@ -717,15 +694,17 @@ module Record::Section
     end
 
     class PageDef
-        attr_reader :level
+        attr_reader :level, :width, :height, :left_margin, :right_margin,
+                    :top_margin, :bottom_margin, :header_margin,
+                    :footer_margin, :gutter_margin
         def initialize data, level
             @level = level
-            @data = data
-            width,	height,
-            left_margin,	right_margin,
-            top_margin,		bottom_margin,
-            header_margin,	footer_margin,
-            gutter_margin,	property = @data.unpack("V*")
+
+            @width,         @height,
+            @left_margin,   @right_margin,
+            @top_margin,    @bottom_margin,
+            @header_margin, @footer_margin,
+            @gutter_margin, @property = data.unpack("V*")
         end
 
         def to_tag

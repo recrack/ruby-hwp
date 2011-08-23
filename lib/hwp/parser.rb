@@ -4,7 +4,7 @@
 require 'hwp/tags.rb'
 
 module HWP
-    class Parser
+    class Context
         attr_reader   :tag_id, :level, :data
         attr_accessor :stack
 
@@ -38,5 +38,5 @@ module HWP
         def pull
             record_header_decode
         end
-    end # Parser
+    end # Context
 end

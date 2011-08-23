@@ -47,66 +47,66 @@ module Record
             @layout_compatibility	= []
             @forbidden_char			= []
 
-            parser = HWP::Parser.new @doc_info
-            while parser.has_next?
-                parser.pull
-                case parser.tag_id
+            context = HWP::Context.new @doc_info
+            while context.has_next?
+                context.pull
+                case context.tag_id
                 when :HWPTAG_DOCUMENT_PROPERTIES
                     @document_properties << Record::DocInfo::DocumentProperties.
-                        new(parser.data, parser.level)
+                        new(context.data, context.level)
                 when :HWPTAG_ID_MAPPINGS
                     @id_mappings << Record::DocInfo::IDMappings.
-                        new(parser.data, parser.level)
+                        new(context.data, context.level)
                 when :HWPTAG_BIN_DATA
                     @bin_data <<
-                        Record::DocInfo::BinData.new(parser.data, parser.level)
+                        Record::DocInfo::BinData.new(context.data, context.level)
                 when :HWPTAG_FACE_NAME
                     @face_names <<
-                        Record::DocInfo::FaceName.new(parser.data, parser.level)
+                        Record::DocInfo::FaceName.new(context.data, context.level)
                 when :HWPTAG_BORDER_FILL
                     @border_fill << Record::DocInfo::BorderFill.
-                        new(parser.data, parser.level)
+                        new(context.data, context.level)
                 when :HWPTAG_CHAR_SHAPE
                     @char_shapes << Record::DocInfo::CharShape.
-                        new(parser.data, parser.level)
+                        new(context.data, context.level)
                 when :HWPTAG_TAB_DEF
                     @tab_def <<
-                        Record::DocInfo::TabDef.new(parser.data, parser.level)
+                        Record::DocInfo::TabDef.new(context.data, context.level)
                 when :HWPTAG_NUMBERING
                     @numbering << Record::DocInfo::Numbering.
-                        new(parser.data, parser.level)
+                        new(context.data, context.level)
                 when :HWPTAG_BULLET
                     @bullet <<
-                        Record::DocInfo::Bullet.new(parser.data, parser.level)
+                        Record::DocInfo::Bullet.new(context.data, context.level)
                 when :HWPTAG_PARA_SHAPE
                     @para_shapes << Record::DocInfo::ParaShape.
-                        new(parser.data, parser.level)
+                        new(context.data, context.level)
                 when :HWPTAG_STYLE
                     @styles <<
-                        Record::DocInfo::Style.new(parser.data, parser.level)
+                        Record::DocInfo::Style.new(context.data, context.level)
                 when :HWPTAG_DOC_DATA
                     @doc_data <<
-                        Record::DocInfo::DocData.new(parser.data, parser.level)
+                        Record::DocInfo::DocData.new(context.data, context.level)
                 when :HWPTAG_DISTRIBUTE_DOC_DATA
                     @distribute_doc_data << Record::DocInfo::DistributeDocData.
-                        new(parser.data, parser.level)
+                        new(context.data, context.level)
                 when :RESERVED
                     @reserved <<
-                        Record::DocInfo::Reserved.new(parser.data, parser.level)
+                        Record::DocInfo::Reserved.new(context.data, context.level)
                 when :HWPTAG_COMPATIBLE_DOCUMENT
                     @compatible_document << Record::DocInfo::CompatibleDocument.
-                        new(parser.data, parser.level)
+                        new(context.data, context.level)
                 when :HWPTAG_LAYOUT_COMPATIBILITY
                     @layout_compatibility <<
                         Record::DocInfo::LayoutCompatibility.
-                            new(parser.data, parser.level)
+                            new(context.data, context.level)
                 when :HWPTAG_MEMO_SHAPE
                     # TODO
                 when :HWPTAG_DOC_INFO_16 # 레이아웃 관련 태그로 추정됨.
                     # TODO
                 when :HWPTAG_FORBIDDEN_CHAR
                     @forbidden_char << Record::DocInfo::ForbiddenChar.
-                        new(parser.data, parser.level)
+                        new(context.data, context.level)
                 else
                     raise "UNKNOWN RECORD"
                 end

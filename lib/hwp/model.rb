@@ -58,57 +58,35 @@ module HWP
         end
 
         class SectionDef
-            include HWP::Utils
-            
+            attr_reader :page_defs, :footnote_shapes, :page_border_fills
+
             def initialize(ctrl_header)
                 @level = ctrl_header.level
                 @ctrl_header = ctrl_header
+                @page_defs, @footnote_shapes, @page_border_fills = [], [], []
             end
 
-            def parse(parser)
-                while parser.has_next?
-                    if parser.stack.empty?
-                        parser.pull
-                    else
-                        parser.stack.pop
+            def parse(context)
+                while context.has_next?
+                    context.stack.empty? ? context.pull : context.stack.pop
+
+                    if  context.level <= @level
+                        context.stack << context.tag_id
+                        break
                     end
 
-                    case parser.tag_id
+                    case context.tag_id
                     when :HWPTAG_PAGE_DEF
-                        hierarchy_check(@level, parser.level, __LINE__)
-                        @ctrl_header.page_defs << Record::Section::
-                            PageDef.new(parser.data, parser.level)
+                        @page_defs << Record::Section::
+                            PageDef.new(context.data, context.level)
                     when :HWPTAG_FOOTNOTE_SHAPE
-                        hierarchy_check(@level, parser.level, __LINE__)
-                        @ctrl_header.footnote_shapes << Record::Section::
-                            FootnoteShape.new(parser.data, parser.level)
+                        @footnote_shapes << Record::Section::
+                            FootnoteShape.new(context.data, context.level)
                     when :HWPTAG_PAGE_BORDER_FILL
-                        hierarchy_check(@level, parser.level, __LINE__)
-                        @ctrl_header.page_border_fills << Record::Section::
-                            PageBorderFill.new(parser.data, parser.level)
-                    when :HWPTAG_CTRL_HEADER
-                        # CTRL_HEADER 가 끝이 나고 새롭게 시작됨을 알린다.
-                        parser.stack << parser.tag_id
-                        break
-                    when :HWPTAG_LIST_HEADER
-                        hierarchy_check(@level, parser.level, __LINE__)
-                        @ctrl_header.list_headers << Record::Section::
-                            ListHeader.new(parser.data, parser.level)
-                    when :HWPTAG_CTRL_DATA
-                        # TODO
-                    when :HWPTAG_PARA_HEADER
-                        if parser.level <= @level
-                            parser.stack << parser.tag_id
-                            break
-                        else
-                            #p [@level, parser.level, __LINE__]
-                            hierarchy_check(@level, parser.level, __LINE__)
-                            para_header = Record::Section::ParaHeader.new(parser.data, parser.level)
-                            para_header.parse(parser)
-                            @ctrl_header.para_headers << para_header
-                        end
+                        @page_border_fills << Record::Section::
+                            PageBorderFill.new(context.data, context.level)
                     else
-                        raise "unhandled " + parser.tag_id.to_s
+                        raise "unhandled " + context.tag_id.to_s
                     end
                 end # while
             end # parse
@@ -142,36 +120,36 @@ module HWP
                 @ctrl_header = ctrl_header
             end
 
-            def parse parser
-                while parser.has_next?
-                    if parser.stack.empty?
-                        parser.pull
+            def parse context
+                while context.has_next?
+                    if context.stack.empty?
+                        context.pull
                     else
-                        parser.stack.pop
+                        context.stack.pop
                     end
 
-                    case parser.tag_id
+                    case context.tag_id
                     when :HWPTAG_CTRL_HEADER
                         # CTRL_HEADER 가 끝이 나고 새롭게 시작됨을 알린다.
-                        parser.stack << parser.tag_id
+                        context.stack << context.tag_id
                         break
                     when :HWPTAG_PARA_HEADER
-                        if parser.level <= @level
-                            parser.stack << parser.tag_id
+                        if context.level <= @level
+                            context.stack << context.tag_id
                             break
                         else
-                            #p [@level, parser.level, __LINE__]
-                            hierarchy_check(@level, parser.level, __LINE__)
+                            #p [@level, context.level, __LINE__]
+                            hierarchy_check(@level, context.level, __LINE__)
                             para_header = Record::Section::
-                                ParaHeader.new(parser)
+                                ParaHeader.new(context)
                             @ctrl_header.para_headers << para_header
                         end
                     when :HWPTAG_LIST_HEADER
-                        hierarchy_check(@level, parser.level, __LINE__)
+                        hierarchy_check(@level, context.level, __LINE__)
                         @ctrl_header.list_headers << Record::Section::
-                            ListHeader.new(parser.data, parser.level)
+                            ListHeader.new(context.data, context.level)
                     else
-                        raise "unhandled " + parser.tag_id.to_s
+                        raise "unhandled " + context.tag_id.to_s
                     end
                 end # while
             end # parse
@@ -184,37 +162,37 @@ module HWP
                 @ctrl_header = ctrl_header
             end
 
-            def parse parser
-                while parser.has_next?
-                    if parser.stack.empty?
-                        parser.pull
+            def parse context
+                while context.has_next?
+                    if context.stack.empty?
+                        context.pull
                     else
-                        parser.stack.pop
+                        context.stack.pop
                     end
 
-                    case parser.tag_id
+                    case context.tag_id
                     when :HWPTAG_CTRL_HEADER
                         # CTRL_HEADER 가 끝이 나고 새롭게 시작됨을 알린다.
-                        parser.stack << parser.tag_id
+                        context.stack << context.tag_id
                         break
                     when :HWPTAG_PARA_HEADER
-                        if parser.level <= @level
-                            parser.stack << parser.tag_id
+                        if context.level <= @level
+                            context.stack << context.tag_id
                             break
                         else
-                            #p [@level, parser.level, __LINE__]
-                            hierarchy_check(@level, parser.level, __LINE__)
+                            #p [@level, context.level, __LINE__]
+                            hierarchy_check(@level, context.level, __LINE__)
                             para_header = Record::Section::
-                                ParaHeader.new(parser.data, parser.level)
-                            para_header.parse(parser)
+                                ParaHeader.new(context.data, context.level)
+                            para_header.parse(context)
                             @ctrl_header.para_headers << para_header
                         end
                     when :HWPTAG_LIST_HEADER
-                        hierarchy_check(@level, parser.level, __LINE__)
+                        hierarchy_check(@level, context.level, __LINE__)
                         @ctrl_header.list_headers << Record::Section::
-                            ListHeader.new(parser.data, parser.level)
+                            ListHeader.new(context.data, context.level)
                     else
-                        raise "unhandled " + parser.tag_id.to_s
+                        raise "unhandled " + context.tag_id.to_s
                     end
                 end # while
             end # parse
@@ -266,38 +244,38 @@ module HWP
                 @rows = []
             end
 
-            def parse parser
-                while parser.has_next?
-                    if parser.stack.empty?
-                        parser.pull
+            def parse context
+                while context.has_next?
+                    if context.stack.empty?
+                        context.pull
                     else
-                        parser.stack.pop
+                        context.stack.pop
                     end
 
-                    case parser.tag_id
+                    case context.tag_id
                     when :HWPTAG_CTRL_HEADER
                         # CTRL_HEADER 가 끝이 나고 새롭게 시작됨을 알린다.
-                        parser.stack << parser.tag_id
+                        context.stack << context.tag_id
                         break
                     when :HWPTAG_LIST_HEADER
                         # TODO
-                        hierarchy_check(@level, parser.level, __LINE__)
+                        hierarchy_check(@level, context.level, __LINE__)
                     when :HWPTAG_PARA_HEADER
-                        if parser.level <= @level
-                            parser.stack << parser.tag_id
+                        if context.level <= @level
+                            context.stack << context.tag_id
                             break
                         else
-                            #p [@level, parser.level, __LINE__]
-                            hierarchy_check(@level, parser.level, __LINE__)
+                            #p [@level, context.level, __LINE__]
+                            hierarchy_check(@level, context.level, __LINE__)
                             para_header = Record::Section::
-                                ParaHeader.new(parser.data, parser.level)
-                            para_header.parse(parser)
+                                ParaHeader.new(context.data, context.level)
+                            para_header.parse(context)
                             @para_headers << para_header # FIXME
                         end
                     when :HWPTAG_TABLE
-                        #hierarchy_check(@level, parser.level, __LINE__)
+                        #hierarchy_check(@level, context.level, __LINE__)
                     else
-                        raise "unhandled " + parser.tag_id.to_s
+                        raise "unhandled " + context.tag_id.to_s
                     end
                 end # while
             end # parses
@@ -383,36 +361,36 @@ module HWP
                 @ctrl_header = ctrl_header
             end
 
-            def parse parser
-                while parser.has_next?
-                    if parser.stack.empty?
-                        parser.pull
+            def parse context
+                while context.has_next?
+                    if context.stack.empty?
+                        context.pull
                     else
-                        parser.stack.pop
+                        context.stack.pop
                     end
 
-                    case parser.tag_id
+                    case context.tag_id
                     when :HWPTAG_CTRL_HEADER
                         # CTRL_HEADER 가 끝이 나고 새롭게 시작됨을 알린다.
-                        parser.stack << parser.tag_id
+                        context.stack << context.tag_id
                         break
                     when :HWPTAG_PARA_HEADER
-                        if parser.level <= @level
-                            parser.stack << parser.tag_id
+                        if context.level <= @level
+                            context.stack << context.tag_id
                             break
                         else
-                            #p [@level, parser.level, __LINE__]
-                            hierarchy_check(@level, parser.level, __LINE__)
+                            #p [@level, context.level, __LINE__]
+                            hierarchy_check(@level, context.level, __LINE__)
                             para_header = Record::Section::
-                                ParaHeader.new(parser)
+                                ParaHeader.new(context)
                             @ctrl_header.para_headers << para_header # FIXME
                         end
                     when :HWPTAG_LIST_HEADER
-                        hierarchy_check(@level, parser.level, __LINE__)
+                        hierarchy_check(@level, context.level, __LINE__)
                         @ctrl_header.list_headers << Record::Section:: # FIXME
-                            ListHeader.new(parser.data, parser.level)
+                            ListHeader.new(context.data, context.level)
                     else
-                        raise "unhandled " + parser.tag_id.to_s
+                        raise "unhandled " + context.tag_id.to_s
                     end
                 end # while
             end # parse
@@ -426,34 +404,34 @@ module HWP
                 @level = ctrl_header.level
             end
 
-            def parse parser
-                while parser.has_next?
-                    if parser.stack.empty?
-                        parser.pull
+            def parse context
+                while context.has_next?
+                    if context.stack.empty?
+                        context.pull
                     else
-                        parser.stack.pop
+                        context.stack.pop
                     end
 
-                    case parser.tag_id
+                    case context.tag_id
                     when :HWPTAG_CTRL_HEADER
                         # CTRL_HEADER 가 끝이 나고 새롭게 시작됨을 알린다.
-                        parser.stack << parser.tag_id
+                        context.stack << context.tag_id
                         break
                     when :HWPTAG_PARA_HEADER
-                        if parser.level <= @level
-                            parser.stack << parser.tag_id
+                        if context.level <= @level
+                            context.stack << context.tag_id
                             break
                         else
-                            #p [@level, parser.level, __LINE__]
-                            hierarchy_check(@level, parser.level, __LINE__)
-                            para_header = ParaHeader.new(parser.data, parser.level)
-                            para_header.parse(parser)
+                            #p [@level, context.level, __LINE__]
+                            hierarchy_check(@level, context.level, __LINE__)
+                            para_header = ParaHeader.new(context.data, context.level)
+                            para_header.parse(context)
                             @para_headers << para_header
                         end
                     when :HWPTAG_FORM_OBJECT
-                        hierarchy_check(@level, parser.level, __LINE__)
+                        hierarchy_check(@level, context.level, __LINE__)
                     else
-                        raise "unhandled " + parser.tag_id.to_s
+                        raise "unhandled " + context.tag_id.to_s
                     end
                 end # while
             end # parse
@@ -478,35 +456,35 @@ module HWP
                 #p baseline = io.read(2).unpack("s")	# INT16
             end
 
-            def parse parser
-                while parser.has_next?
-                    if parser.stack.empty?
-                        parser.pull
+            def parse context
+                while context.has_next?
+                    if context.stack.empty?
+                        context.pull
                     else
-                        parser.stack.pop
+                        context.stack.pop
                     end
 
-                    case parser.tag_id
+                    case context.tag_id
                     when :HWPTAG_CTRL_HEADER
                         # CTRL_HEADER 가 끝이 나고 새롭게 시작됨을 알린다.
-                        parser.stack << parser.tag_id
+                        context.stack << context.tag_id
                         break
                     when :HWPTAG_PARA_HEADER
-                        if parser.level <= @level
-                            parser.stack << parser.tag_id
+                        if context.level <= @level
+                            context.stack << context.tag_id
                             break
                         else
-                            #p [@level, parser.level, __LINE__]
-                            hierarchy_check(@level, parser.level, __LINE__)
-                            para_header = ParaHeader.new(parser.data, parser.level)
-                            para_header.parse(parser)
+                            #p [@level, context.level, __LINE__]
+                            hierarchy_check(@level, context.level, __LINE__)
+                            para_header = ParaHeader.new(context.data, context.level)
+                            para_header.parse(context)
                             @para_headers << para_header
                         end
                     when :HWPTAG_EQEDIT
-                        hierarchy_check(@level, parser.level, __LINE__)
-                        #@eq_edits << EqEdit.new(parser.data, parser.level)
+                        hierarchy_check(@level, context.level, __LINE__)
+                        #@eq_edits << EqEdit.new(context.data, context.level)
                     else
-                        raise "unhandled " + parser.tag_id.to_s
+                        raise "unhandled " + context.tag_id.to_s
                     end
                 end # while
             end # parse
@@ -560,56 +538,56 @@ module HWP
                 #end
             end # initialize
 
-            def parse parser
-                while parser.has_next?
-                    if parser.stack.empty?
-                        parser.pull
+            def parse context
+                while context.has_next?
+                    if context.stack.empty?
+                        context.pull
                     else
-                        parser.stack.pop
+                        context.stack.pop
                     end
 
-                    case parser.tag_id
+                    case context.tag_id
                     when :HWPTAG_CTRL_HEADER
                         # CTRL_HEADER 가 끝이 나고 새롭게 시작됨을 알린다.
-                        parser.stack << parser.tag_id
+                        context.stack << context.tag_id
                         break
                     when :HWPTAG_PARA_HEADER
-                        if parser.level <= @level
-                            parser.stack << parser.tag_id
+                        if context.level <= @level
+                            context.stack << context.tag_id
                             break
                         else
-                            #p [@level, parser.level, __LINE__]
+                            #p [@level, context.level, __LINE__]
                             # FIXME
-                            #hierarchy_check(@level, parser.level, __LINE__)
+                            #hierarchy_check(@level, context.level, __LINE__)
                             para_header = Record::Section::
-                                ParaHeader.new(parser.data, parser.level)
-                            para_header.parse(parser)
+                                ParaHeader.new(context.data, context.level)
+                            para_header.parse(context)
                             @ctrl_header.para_headers << para_header # FIXME
                         end
                     when :HWPTAG_LIST_HEADER
                         # FIXME
-                        #hierarchy_check(@level, parser.level, __LINE__)
+                        #hierarchy_check(@level, context.level, __LINE__)
                     when :HWPTAG_SHAPE_COMPONENT
                         # FIXME
-                        #hierarchy_check(@level, parser.level, __LINE__)
+                        #hierarchy_check(@level, context.level, __LINE__)
                         #@level += 1
                     when :HWPTAG_SHAPE_COMPONENT_PICTURE
                         # FIXME
-                        #hierarchy_check(@level, parser.level, __LINE__)
+                        #hierarchy_check(@level, context.level, __LINE__)
                     when :HWPTAG_SHAPE_COMPONENT_RECTANGLE
                         # FIXME
-                        #hierarchy_check(@level, parser.level, __LINE__)
+                        #hierarchy_check(@level, context.level, __LINE__)
                     when :HWPTAG_SHAPE_COMPONENT_LINE
                         # FIXME
-                        #hierarchy_check(@level, parser.level, __LINE__)
+                        #hierarchy_check(@level, context.level, __LINE__)
                     when :HWPTAG_SHAPE_COMPONENT_POLYGON
                         # FIXME
-                        #hierarchy_check(@level, parser.level, __LINE__)
+                        #hierarchy_check(@level, context.level, __LINE__)
                     when :HWPTAG_SHAPE_COMPONENT_ELLIPSE
                         # FIXME
-                        #hierarchy_check(@level, parser.level, __LINE__)
+                        #hierarchy_check(@level, context.level, __LINE__)
                     else
-                        raise "unhandled " + parser.tag_id.to_s
+                        raise "unhandled " + context.tag_id.to_s
                     end
                 end # while
             end # parse
