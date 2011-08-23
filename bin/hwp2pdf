@@ -36,16 +36,10 @@ end
 
 def print_para_headers(obj, context, layout, doc)
     obj.para_headers.each do |para_header|
-        puts " " * para_header.level + para_header.to_tag
-
-        ##########
         para_shape = doc.doc_info.para_shapes[para_header.para_shape_id]
 
         para_header.para_texts.each do |para_text|
-            puts " " * para_text.level + para_text.to_tag
-
             ##########
-            p para_text.to_s
             layout.text = para_text.to_s
             ##########
         end
@@ -58,52 +52,21 @@ def print_para_headers(obj, context, layout, doc)
         layout.text = '' if para_header.para_texts.empty?
 
         # mm 를 cairo point 로 변환
-        x = 0
-        x = para_shape.left * 72.0 / 25.4 if para_shape
+        @x = @page_def.left_margin / 100.0
+        @x += para_shape.left * 72.0 / 25.4 if para_shape
 
-        @y ||= 0
+        @y ||= (@page_def.top_margin + @page_def.header_margin) / 100.0
         @y = @y + 40
 
-        context.move_to x, @y
+        context.move_to @x, @y
         context.show_pango_layout layout
-        if @y > 800
+        if @y > (@page_def.height - @page_def.bottom_margin - @page_def.footer_margin) / 100.0
             context.show_page
-            @y = 10
+            @y = (@page_def.top_margin + @page_def.header_margin) / 100.0
         end
         ##########
 
-
-        para_header.para_char_shapes.each do |para_char_shape|
-            puts " " * para_char_shape.level + para_char_shape.to_tag
-        end
-
-        para_header.para_line_segs.each do |para_line_seg|
-            puts " " * para_line_seg.level + para_line_seg.to_tag
-        end
-
         para_header.ctrl_headers.each do |ctrl_header|
-            puts " " * ctrl_header.level + ctrl_header.to_tag
-
-            ctrl_header.page_defs.each do |page_def|
-                puts " " * page_def.level + page_def.to_tag
-            end
-
-            ctrl_header.footnote_shapes.each do |footnote_shape|
-                puts " " * footnote_shape.level + footnote_shape.to_tag
-            end
-
-            ctrl_header.page_border_fills.each do |page_border_fill|
-                puts " " * page_border_fill.level + page_border_fill.to_tag
-            end
-
-            ctrl_header.list_headers.each do |list_header|
-                puts " " * list_header.level + list_header.to_tag
-            end
-
-            ctrl_header.eq_edits.each do |eq_edit|
-                puts " " * eq_edit.level + eq_edit.to_tag
-            end
-
             # 재귀
             print_para_headers(ctrl_header, context, layout, doc)
         end
@@ -134,15 +97,28 @@ doc = HWP.open files[0]
     # Folio         612 * 936
     # Quarto        610 * 780
     # 10x14         720 * 1008
-    surface = Cairo::PDFSurface.new("/tmp/out.pdf", 595, 842) # A4 크기
+    require 'pp'
+    section_def = doc.body_text.para_headers[0].ctrl_headers[0].section_defs[0]
+    @page_def = section_def.page_defs[0]
+
+    surface = Cairo::PDFSurface.new("/tmp/out.pdf",
+        @page_def.width  / 100.0, @page_def.height / 100.0)
+
+    p @page_def.left_margin # 10 pt = 1000 hwpuint
+    p @page_def.right_margin
+    p @page_def.top_margin
+    p @page_def.bottom_margin
+    p @page_def.header_margin
+    p @page_def.footer_margin
+
     context = Cairo::Context.new(surface)
-    context.move_to 10, 10
+    context.move_to(
+        @page_def.left_margin / 100.0,
+        (@page_def.top_margin + @page_def.header_margin) / 100.0)
     layout = context.create_pango_layout
-    layout.width = 595 * Pango::SCALE
+    layout.width = @page_def.width  / 100.0 * Pango::SCALE
     layout.wrap = Pango::WRAP_WORD_CHAR
     layout.alignment = Pango::ALIGN_LEFT
-
-    x, y = 10, 10
 
     print_para_headers(doc.body_text, context, layout, doc)
 
