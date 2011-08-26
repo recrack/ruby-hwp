@@ -35,29 +35,16 @@ if files.empty?
 end
 
 def print_para_headers(obj, context, layout, doc)
+    # mm 를 cairo point 로 변환
+    @x ||= @page_def.left_margin / 100.0
+
     obj.para_headers.each do |para_header|
         para_shape = doc.doc_info.para_shapes[para_header.para_shape_id]
 
-        para_header.para_texts.each do |para_text|
-            ##########
-            layout.text = para_text.to_s
-            ##########
-        end
-
-        # 아래 문장이 없으면 para_text 가 없는 para_header 의 경우
-        # layout.text 가 이전의 para_text 가 표시된다.
-        # TODO para_text 가 문단에서 1개 이하 존재하는지 조사?
-        # hwp 워드를 구동해서 line break 하면 para_header 가
-        # 또 하나 생성되는지 확인해야 한다.
-        layout.text = '' if para_header.para_texts.empty?
-
-        # mm 를 cairo point 로 변환
-        @x = @page_def.left_margin / 100.0
         @x += para_shape.left * 72.0 / 25.4 if para_shape
-
         @y ||= (@page_def.top_margin + @page_def.header_margin) / 100.0
-        @y = @y + 40
-
+        @y = @y + layout.pixel_size[1]
+        layout.text = para_header.para_texts[0].to_s
         context.move_to @x, @y
         context.show_pango_layout layout
         if @y > (@page_def.height - @page_def.bottom_margin - @page_def.footer_margin) / 100.0
@@ -65,6 +52,7 @@ def print_para_headers(obj, context, layout, doc)
             @y = (@page_def.top_margin + @page_def.header_margin) / 100.0
         end
         ##########
+        @x -= para_shape.left * 72.0 / 25.4 if para_shape
 
         para_header.ctrl_headers.each do |ctrl_header|
             # 재귀
@@ -116,7 +104,7 @@ doc = HWP.open files[0]
         @page_def.left_margin / 100.0,
         (@page_def.top_margin + @page_def.header_margin) / 100.0)
     layout = context.create_pango_layout
-    layout.width = @page_def.width  / 100.0 * Pango::SCALE
+    layout.width = (@page_def.width - @page_def.left_margin - @page_def.right_margin) / 100.0 * Pango::SCALE
     layout.wrap = Pango::WRAP_WORD_CHAR
     layout.alignment = Pango::ALIGN_LEFT
 
