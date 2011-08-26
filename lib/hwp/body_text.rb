@@ -412,6 +412,8 @@ module Record::Section
             case @ctrl_id
             # 54쪽 표116 그외 컨트롤
             when "secd" # 구역 정의
+                # TODO SectionDef 위치: 현재는 ctrl_header 에 위치하는데
+                # 적절한 곳에 위치시킬 필요가 있다.
                 secd = HWP::Model::SectionDef.new(self)
                 secd.parse(context)
                 @section_defs << secd
