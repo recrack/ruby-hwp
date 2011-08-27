@@ -357,8 +357,8 @@ module Record::Section
 
     class ParaRangeTag
         attr_accessor :start, :end, :tag, :level
-        def initialize data, level
-            @level = level
+        def initialize context
+            @level = context.level
             raise NotImplementedError.new "Record::Section::ParaRangeTag"
             #@start, @end, @tag = data.unpack("VVb*")
         end
@@ -547,8 +547,8 @@ module Record::Section
                     # table cell
                     :col_addr, :row_addr, :col_span, :row_span,
                     :width, :height, :margins
-        def initialize data, level
-            @level = level
+        def initialize context
+            @level = context.level
             s_io = StringIO.new data
             @num_para = s_io.read(2).unpack("v").pop
             bit = s_io.read(4).unpack("b32").pop
@@ -577,8 +577,8 @@ module Record::Section
 
     class CtrlData
         attr_accessor :var, :level
-        def initialize data, level
-            @level = level
+        def initialize context
+            @level = context.level
             STDERR.puts "{#self.class.name}: not implemented"
         end
     end
@@ -586,8 +586,8 @@ module Record::Section
     # TODO REVERSE-ENGINEERING
     class Table
         attr_reader :level, :prop, :row_count, :col_count, :cell_spacing, :margins, :row_size, :border_fill_id
-        def initialize data, level
-            @level = level
+        def initialize context
+            @level = context.level
             s_io = StringIO.new data
             @prop = s_io.read(4).unpack("V")
             @row_count = s_io.read(2).unpack("v")[0]
@@ -608,56 +608,56 @@ module Record::Section
 
     class ShapeComponentLine
         attr_reader :level
-        def initialize data, level
-            @level = level
+        def initialize context
+            @level = context.level
             STDERR.puts "{#self.class.name}: not implemented"
         end
     end
 
     class ShapeComponentRectangle
         attr_reader :level
-        def initialize data, level
-            @level = level
+        def initialize context
+            @level = context.level
             STDERR.puts "{#self.class.name}: not implemented"
         end
     end
 
     class ShapeComponentEllipse
         attr_reader :level
-        def initialize data, level
-            @level = level
+        def initialize context
+            @level = context.level
             STDERR.puts "{#self.class.name}: not implemented"
         end
     end
 
     class ShapeComponentArc
         attr_reader :level
-        def initialize data, level
-            @level = level
+        def initialize context
+            @level = context.level
             STDERR.puts "{#self.class.name}: not implemented"
         end
     end
 
     class ShapeComponentPolygon
         attr_reader :level
-        def initialize data, level
-            @level = level
+        def initialize context
+            @level = context.level
             STDERR.puts "{#self.class.name}: not implemented"
         end
     end
 
     class ShapeComponentCurve
         attr_reader :level
-        def initialize data, level
-            @level = level
+        def initialize context
+            @level = context.level
             STDERR.puts "{#self.class.name}: not implemented"
         end
     end
 
     class ShapeComponentOLE
         attr_reader :level
-        def initialize data, level
-            @level = level
+        def initialize context
+            @level = context.level
             STDERR.puts "{#self.class.name}: not implemented"
         end
     end
@@ -665,32 +665,32 @@ module Record::Section
     # TODO REVERSE-ENGINEERING
     class ShapeComponentPicture
         attr_reader :level
-        def initialize data, level
-            @level = level
+        def initialize context
+            @level = context.level
             data.unpack("V6sv4Vv vV vVvV")
         end
     end
 
     class ShapeComponentContainer
         attr_reader :level
-        def initialize data, level
-            @level = level
+        def initialize context
+            @level = context.level
             STDERR.puts "{#self.class.name}: not implemented"
         end
     end
 
     class ShapeComponentTextArt
         attr_reader :level
-        def initialize data, level
-            @level = level
+        def initialize context
+            @level = context.level
             STDERR.puts "{#self.class.name}: not implemented"
         end
     end
 
     class ShapeComponentUnknown
         attr_reader :level
-        def initialize data, level
-            @level = level
+        def initialize context
+            @level = context.level
             STDERR.puts "{#self.class.name}: not implemented"
         end
     end
@@ -699,14 +699,14 @@ module Record::Section
         attr_reader :level, :width, :height, :left_margin, :right_margin,
                     :top_margin, :bottom_margin, :header_margin,
                     :footer_margin, :gutter_margin
-        def initialize data, level
-            @level = level
+        def initialize context
+            @level = context.level
 
             @width,         @height,
             @left_margin,   @right_margin,
             @top_margin,    @bottom_margin,
             @header_margin, @footer_margin,
-            @gutter_margin, @property = data.unpack("V*")
+            @gutter_margin, @property = context.data.unpack("V*")
         end
 
         def to_tag
@@ -721,10 +721,10 @@ module Record::Section
     # TODO REVERSE-ENGINEERING
     class FootnoteShape
         attr_reader :level
-        def initialize data, level
-            @level = level
-            @data = data
-            s_io = StringIO.new data
+        def initialize context
+            @level = context.level
+            @data = context.data
+            s_io = StringIO.new context.data
             s_io.read(4)
             s_io.read(2)
             s_io.read(2).unpack("CC").pack("U*")
@@ -752,8 +752,8 @@ module Record::Section
 
     class PageBorderFill
         attr_reader :level
-        def initialize data, level
-            @level = level
+        def initialize context
+            @level = context.level
             # 스펙 문서 58쪽 크기 불일치 12 != 14
             #p data.unpack("ISSSSS") # 마지막 2바이트 S, 총 14바이트
         end
@@ -769,32 +769,32 @@ module Record::Section
 
     class Reserved
         attr_reader :level
-        def initialize data, level
-            @level = level
+        def initialize context
+            @level = context.level
             STDERR.puts "{#self.class.name}: not implemented"
         end
     end
 
     class MemoShape
         attr_reader :level
-        def initialize data, level
-            @level = level
+        def initialize context
+            @level = context.level
             STDERR.puts "{#self.class.name}: not implemented"
         end
     end
 
     class MemoList
         attr_reader :level
-        def initialize data, level
-            @level = level
+        def initialize context
+            @level = context.level
             STDERR.puts "{#self.class.name}: not implemented"
         end
     end
 
     class ChartData
         attr_reader :level
-        def initialize data, level
-            @level = level
+        def initialize context
+            @level = context.level
             STDERR.puts "{#self.class.name}: not implemented"
         end
     end

@@ -78,13 +78,13 @@ module HWP
                     case context.tag_id
                     when :HWPTAG_PAGE_DEF
                         @page_defs << Record::Section::
-                            PageDef.new(context.data, context.level)
+                            PageDef.new(context)
                     when :HWPTAG_FOOTNOTE_SHAPE
                         @footnote_shapes << Record::Section::
-                            FootnoteShape.new(context.data, context.level)
+                            FootnoteShape.new(context)
                     when :HWPTAG_PAGE_BORDER_FILL
                         @page_border_fills << Record::Section::
-                            PageBorderFill.new(context.data, context.level)
+                            PageBorderFill.new(context)
                     else
                         raise "unhandled " + context.tag_id.to_s
                     end
@@ -147,7 +147,7 @@ module HWP
                     when :HWPTAG_LIST_HEADER
                         hierarchy_check(@level, context.level, __LINE__)
                         @ctrl_header.list_headers << Record::Section::
-                            ListHeader.new(context.data, context.level)
+                            ListHeader.new(context)
                     else
                         raise "unhandled " + context.tag_id.to_s
                     end
@@ -183,14 +183,14 @@ module HWP
                             #p [@level, context.level, __LINE__]
                             hierarchy_check(@level, context.level, __LINE__)
                             para_header = Record::Section::
-                                ParaHeader.new(context.data, context.level)
+                                ParaHeader.new(context)
                             para_header.parse(context)
                             @ctrl_header.para_headers << para_header
                         end
                     when :HWPTAG_LIST_HEADER
                         hierarchy_check(@level, context.level, __LINE__)
                         @ctrl_header.list_headers << Record::Section::
-                            ListHeader.new(context.data, context.level)
+                            ListHeader.new(context)
                     else
                         raise "unhandled " + context.tag_id.to_s
                     end
@@ -268,8 +268,7 @@ module HWP
                             #p [@level, context.level, __LINE__]
                             hierarchy_check(@level, context.level, __LINE__)
                             para_header = Record::Section::
-                                ParaHeader.new(context.data, context.level)
-                            para_header.parse(context)
+                                ParaHeader.new(context)
                             @para_headers << para_header # FIXME
                         end
                     when :HWPTAG_TABLE
@@ -388,7 +387,7 @@ module HWP
                     when :HWPTAG_LIST_HEADER
                         hierarchy_check(@level, context.level, __LINE__)
                         @ctrl_header.list_headers << Record::Section:: # FIXME
-                            ListHeader.new(context.data, context.level)
+                            ListHeader.new(context)
                     else
                         raise "unhandled " + context.tag_id.to_s
                     end
@@ -424,7 +423,7 @@ module HWP
                         else
                             #p [@level, context.level, __LINE__]
                             hierarchy_check(@level, context.level, __LINE__)
-                            para_header = ParaHeader.new(context.data, context.level)
+                            para_header = ParaHeader.new(context)
                             para_header.parse(context)
                             @para_headers << para_header
                         end
@@ -476,13 +475,13 @@ module HWP
                         else
                             #p [@level, context.level, __LINE__]
                             hierarchy_check(@level, context.level, __LINE__)
-                            para_header = ParaHeader.new(context.data, context.level)
+                            para_header = ParaHeader.new(context)
                             para_header.parse(context)
                             @para_headers << para_header
                         end
                     when :HWPTAG_EQEDIT
                         hierarchy_check(@level, context.level, __LINE__)
-                        #@eq_edits << EqEdit.new(context.data, context.level)
+                        #@eq_edits << EqEdit.new(context)
                     else
                         raise "unhandled " + context.tag_id.to_s
                     end
@@ -560,7 +559,7 @@ module HWP
                             # FIXME
                             #hierarchy_check(@level, context.level, __LINE__)
                             para_header = Record::Section::
-                                ParaHeader.new(context.data, context.level)
+                                ParaHeader.new(context)
                             para_header.parse(context)
                             @ctrl_header.para_headers << para_header # FIXME
                         end
