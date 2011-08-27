@@ -2,23 +2,8 @@ require 'zlib'
 
 module Record
     class DocInfo
-        attr_reader :document_properties,
-                    :id_mappings,
-                    :bin_data,
-                    :face_names,
-                    :border_fill,
-                    :char_shapes,
-                    :tab_def,
-                    :numbering,
-                    :bullet,
-                    :para_shapes,
-                    :styles,
-                    :doc_data,
-                    :distribute_doc_data,
-                    :reserved,
-                    :compatible_document,
-                    :layout_compatibility,
-                    :forbidden_char
+        attr_reader :document_properties, :id_mappings, :doc_data,
+                    :distribute_doc_data, :reserved, :compatible_document
 
         def initialize(dirent, header)
             if header.compress?
@@ -29,91 +14,130 @@ module Record
                 @doc_info = StringIO.new(dirent.read)
             end
 
-            @document_properties	= []
-            @id_mappings			= []
-            @bin_data				= []
-            @face_names				= []
-            @border_fill			= []
-            @char_shapes			= []
-            @tab_def				= []
-            @numbering				= []
-            @bullet					= []
-            @para_shapes            = []
-            @styles                 = []
-            @doc_data				= []
-            @distribute_doc_data	= []
-            @reserved				= []
-            @compatible_document	= []
-            @layout_compatibility	= []
-            @forbidden_char			= []
+            @doc_data, @distribute_doc_data, @reserved, @compatible_document =
+                Array.new(4, [])
 
             context = HWP::Context.new @doc_info
+
             while context.has_next?
-                context.pull
+                context.stack.empty? ? context.pull : context.stack.pop
+
                 case context.tag_id
                 when :HWPTAG_DOCUMENT_PROPERTIES
-                    @document_properties << Record::DocInfo::DocumentProperties.
-                        new(context.data, context.level)
+                    @document_properties =
+                        Record::DocInfo::DocumentProperties.new(context)
                 when :HWPTAG_ID_MAPPINGS
-                    @id_mappings << Record::DocInfo::IDMappings.
-                        new(context.data, context.level)
-                when :HWPTAG_BIN_DATA
-                    @bin_data <<
-                        Record::DocInfo::BinData.new(context.data, context.level)
-                when :HWPTAG_FACE_NAME
-                    @face_names <<
-                        Record::DocInfo::FaceName.new(context.data, context.level)
-                when :HWPTAG_BORDER_FILL
-                    @border_fill << Record::DocInfo::BorderFill.
-                        new(context.data, context.level)
-                when :HWPTAG_CHAR_SHAPE
-                    @char_shapes << Record::DocInfo::CharShape.
-                        new(context.data, context.level)
-                when :HWPTAG_TAB_DEF
-                    @tab_def <<
-                        Record::DocInfo::TabDef.new(context.data, context.level)
-                when :HWPTAG_NUMBERING
-                    @numbering << Record::DocInfo::Numbering.
-                        new(context.data, context.level)
-                when :HWPTAG_BULLET
-                    @bullet <<
-                        Record::DocInfo::Bullet.new(context.data, context.level)
-                when :HWPTAG_PARA_SHAPE
-                    @para_shapes << Record::DocInfo::ParaShape.
-                        new(context.data, context.level)
-                when :HWPTAG_STYLE
-                    @styles <<
-                        Record::DocInfo::Style.new(context.data, context.level)
+                    @id_mappings = Record::DocInfo::IDMappings.new(context)
                 when :HWPTAG_DOC_DATA
-                    @doc_data <<
-                        Record::DocInfo::DocData.new(context.data, context.level)
+                    @doc_data << Record::DocInfo::DocData.new(context)
                 when :HWPTAG_DISTRIBUTE_DOC_DATA
-                    @distribute_doc_data << Record::DocInfo::DistributeDocData.
-                        new(context.data, context.level)
+                    @distribute_doc_data <<
+                        Record::DocInfo::DistributeDocData.new(context)
                 when :RESERVED
-                    @reserved <<
-                        Record::DocInfo::Reserved.new(context.data, context.level)
+                    @reserved << Record::DocInfo::Reserved.new(context)
                 when :HWPTAG_COMPATIBLE_DOCUMENT
-                    @compatible_document << Record::DocInfo::CompatibleDocument.
-                        new(context.data, context.level)
-                when :HWPTAG_LAYOUT_COMPATIBILITY
-                    @layout_compatibility <<
-                        Record::DocInfo::LayoutCompatibility.
-                            new(context.data, context.level)
-                when :HWPTAG_MEMO_SHAPE
-                    # TODO
-                when :HWPTAG_DOC_INFO_16 # 레이아웃 관련 태그로 추정됨.
-                    # TODO
-                when :HWPTAG_FORBIDDEN_CHAR
-                    @forbidden_char << Record::DocInfo::ForbiddenChar.
-                        new(context.data, context.level)
+                    @compatible_document <<
+                        Record::DocInfo::CompatibleDocument.new(context)
                 else
-                    raise "UNKNOWN RECORD"
+                    raise "unhandled " + context.tag_id.to_s
                 end
             end # while
         end # initialize
     end # DocInfo
 
+    class DocInfo::IDMappings # count
+        attr_reader :bin_data_count,
+                    # font count
+                    :korean_font_count,
+                    :english_font_count,
+                    :hanja_font_count,
+                    :japanese_font_count,
+                    :others_font_count,
+                    :symbol_font_count,
+                    :user_font_count,
+
+                    :border_fill_count,
+                    :char_shape_count,
+                    :tab_def_count,
+                    :para_numbering_count,
+                    :bullet_count,
+                    :para_shape_count,
+                    :style_count,
+                    :memo_shape_count,
+                    :level,
+                    :bin_data, :face_names, :border_fill, :char_shapes,
+                    :tab_defs, :numbering, :para_shapes, :styles, :memo_shapes,
+                    :forbidden_char
+
+        def initialize context
+            @level = context.level
+            @bin_data_count,
+            # font count
+            @korean_font_count,
+            @english_font_count,
+            @hanja_font_count,
+            @japanese_font_count,
+            @others_font_count,
+            @symbol_font_count,
+            @user_font_count,
+
+            @border_fill_count,
+            @char_shape_count,
+            @tab_def_count,
+            @para_numbering_count,
+            @bullet_count,
+            @para_shape_count,
+            @style_count,
+            @memo_shape_count = context.data.unpack("V*")
+
+            @bin_data, @face_names, @border_fill, @char_shapes, @tab_defs,
+            @numbering, @para_shapes, @styles, @memo_shapes, @forbidden_char =
+                Array.new(10, [])
+            parse context
+        end # initialize
+
+        def parse(context)
+            while context.has_next?
+                context.stack.empty? ? context.pull : context.stack.pop
+
+                if  context.level <= @level
+                    context.stack << context.tag_id
+                    break
+                end
+
+                case context.tag_id
+                when :HWPTAG_BIN_DATA
+                    @bin_data << Record::DocInfo::BinData.new(context)
+                when :HWPTAG_FACE_NAME
+                    @face_names << Record::DocInfo::FaceName.new(context)
+                when :HWPTAG_BORDER_FILL
+                    @border_fill << Record::DocInfo::BorderFill.new(context)
+                when :HWPTAG_CHAR_SHAPE
+                    @char_shapes << Record::DocInfo::CharShape.new(context)
+                when :HWPTAG_TAB_DEF
+                    @tab_defs << Record::DocInfo::TabDef.new(context)
+                when :HWPTAG_NUMBERING
+                    @numbering << Record::DocInfo::Numbering.new(context)
+                when :HWPTAG_BULLET
+                    @bullet << Record::DocInfo::Bullet.new(context)
+                when :HWPTAG_PARA_SHAPE
+                    @para_shapes << Record::DocInfo::ParaShape.new(context)
+                when :HWPTAG_STYLE
+                    @styles << Record::DocInfo::Style.new(context)
+                when :HWPTAG_MEMO_SHAPE
+                    # TODO
+                when :HWPTAG_FORBIDDEN_CHAR
+                    @forbidden_char <<
+                        Record::DocInfo::ForbiddenChar.new(context)
+                else
+                    raise "unhandled " + context.tag_id.to_s
+                end
+            end
+        end
+
+    private :parse
+
+    end
 
 	class DocInfo::FaceName
 		attr_reader :font_name, # done
@@ -296,9 +320,9 @@ module Record
 			end
 		end # class TypeInfo
 
-		def initialize data, level
-			@level = level
-			s_io = StringIO.new data
+		def initialize context
+			@level = context.level
+			s_io = StringIO.new context.data
 			@flag, len = s_io.read(3).unpack("Cv")
 			@font_name = s_io.read(len*2).unpack("v*").pack("U*")
 
@@ -338,81 +362,37 @@ module Record
 		end
 	end # class DocInfo::FaceName
 
-	class DocInfo::DocumentProperties
-		attr_reader :section_count,
-					# begin num
-					:page_start_num,
-					:footnote_start_num,
-					:endnote_start_num,
-					:picture_start_num,
-					:table_start_num,
-					:equation_start_num,
-					# caret pos
-					:caret_pos_list_id,
-					:caret_pos_para_id,
-					:caret_pos_char_pos,
-					:level
+    class DocInfo::DocumentProperties
+        attr_reader :section_count,
+                    # begin num
+                    :page_start_num,
+                    :footnote_start_num,
+                    :endnote_start_num,
+                    :picture_start_num,
+                    :table_start_num,
+                    :equation_start_num,
+                    # caret pos
+                    :caret_pos_list_id,
+                    :caret_pos_para_id,
+                    :caret_pos_char_pos,
+                    :level
 
-		def initialize data, level
-			@level = level
-			@section_count,
-			# begin num
-			@page_start_num,
-			@footnote_start_num,
-			@endnote_start_num,
-			@picture_start_num,
-			@table_start_num,
-			@equation_start_num,
-			# caret pos
-			@caret_pos_list_id,
-			@caret_pos_para_id,
-			@caret_pos_char_pos = data.unpack("v7V*")
-		end
-	end
-
-	class DocInfo::IDMappings # count
-		attr_reader :bin_data_count,
-					# font count
-					:korean_font_count,
-					:english_font_count,
-					:hanja_font_count,
-					:japanese_font_count,
-					:others_font_count,
-					:symbol_font_count,
-					:user_font_count,
-
-					:border_fill_count,
-					:char_shape_count,
-					:tab_def_count,
-					:para_numbering_count,
-					:bullet_count,
-					:para_shape_count,
-					:style_count,
-					:memo_shape_count,
-					:level
-
-		def initialize data, level
-			@level = level
-			@bin_data_count,
-			# font count
-			@korean_font_count,
-			@english_font_count,
-			@hanja_font_count,
-			@japanese_font_count,
-			@others_font_count,
-			@symbol_font_count,
-			@user_font_count,
-
-			@border_fill_count,
-			@char_shape_count,
-			@tab_def_count,
-			@para_numbering_count,
-			@bullet_count,
-			@para_shape_count,
-			@style_count,
-			@memo_shape_count = data.unpack("V*")
-		end
-	end
+        def initialize context
+            @level = context.level
+            @section_count,
+            # begin num
+            @page_start_num,
+            @footnote_start_num,
+            @endnote_start_num,
+            @picture_start_num,
+            @table_start_num,
+            @equation_start_num,
+            # caret pos
+            @caret_pos_list_id,
+            @caret_pos_para_id,
+            @caret_pos_char_pos = context.data.unpack("v7V*")
+        end
+    end
 
 	class DocInfo::BinData
 		attr_reader :type,
@@ -424,9 +404,9 @@ module Record
 					:status,			# deprecated method
 					:level
 
-		def initialize data, level
-			@level = level
-			s_io = StringIO.new data
+		def initialize context
+			@level = context.level
+			s_io = StringIO.new context.data
 			flag = s_io.read(2).unpack("v")[0]
 			# bit 0 ~ 3
 			case flag & 0b0011
@@ -462,7 +442,7 @@ module Record
 			when 0b1000_0000 then @status = 'access fail and error'
 			when 0b1100_0000 then @status = 'access fail and ignore'
 			end
-		end
+        end # initialize
 	end
 
 	# TODO TEST
@@ -554,43 +534,43 @@ module Record
 			'crooked slash'
 		]
 
-		module FillBrush
-			class WindowBrush
-				attr_reader :face_color,
-							:hatch_color,
-							:hatch_style
-				def initialize data
-					@face_color, @hatch_color, @hatch_style = data.unpack("VVV")
-				end
-			end
+        module FillBrush
+            class WindowBrush
+                attr_reader :face_color,
+                            :hatch_color,
+                            :hatch_style
+                def initialize data
+                    @face_color, @hatch_color, @hatch_style = data.unpack("VVV")
+                end
+            end
 
-			class Gradation
-				attr_accessor :type,
-							  :angle,
-							  :center_x,
-							  :center_y,
-							  :step,
-							  :step_center,
-							  :colors
-			end
+            class Gradation
+                attr_accessor :type,
+                              :angle,
+                              :center_x,
+                              :center_y,
+                              :step,
+                              :step_center,
+                              :colors
+            end
 
-			class ImageBrush
-				attr_reader :mode,
-							:bright,
-							:contrast,
+            class ImageBrush
+                attr_reader :mode,
+                            :bright,
+                            :contrast,
 							:effect,
 							:bin_item
-				def initialize data
+				def initialize context
 					@mode,
 					@bright,
-					@contrast, @effect, @bin_item = data.unpack("")
+					@contrast, @effect, @bin_item = context.data.unpack("")
 				end
 			end
 		end
 
-		def initialize data, level
-			@level = level
-			s_io = StringIO.new data
+		def initialize context
+			@level = context.level
+			s_io = StringIO.new context.data
 
 			@bit = s_io.read(1).unpack("b8")
 
@@ -615,7 +595,7 @@ module Record
 			#@size = BORDER_LINE_TYPE[size]
 			@gradation = FillBrush::Gradation.new
 
-			if data.bytesize > 40
+			if context.data.bytesize > 40
 				@window_brush = FillBrush::WindowBrush.new s_io.read(12)
 #				@gradation.type,
 #				@gradation.angle,
@@ -663,8 +643,8 @@ module Record
 							:char_offset
 		end
 
-		def initialize data, level
-			@level = level
+		def initialize context
+			@level = context.level
 			@lang = {
 				:korean		=> Lang.new,
 				:english	=> Lang.new,
@@ -722,7 +702,7 @@ module Record
 			@color_underline,
 			@color_shade,
 			@color_shadow =
-				data.unpack("v7 C7 c7 C7 c7 V V c c VVVV")
+				context.data.unpack("v7 C7 c7 C7 c7 V V c c VVVV")
 		end
 	end
 
@@ -737,10 +717,10 @@ module Record
 			end
 		end
 
-		def initialize data, level
-			@level = level
+		def initialize context
+			@level = context.level
 			@tab_items = []
-			s_io = StringIO.new data
+			s_io = StringIO.new context.data
 			@bit, @count = s_io.read(6).unpack("b32v")
 			s_io.pos += 2 # dummy
 
@@ -762,10 +742,10 @@ module Record
 
 	class DocInfo::Numbering
 		attr_reader :level, :numbering, :start_num
-		def initialize data, level
-			@level = level
+		def initialize context
+			@level = context.level
 			@numbering = []
-			s_io = StringIO.new data
+			s_io = StringIO.new context.data
 			# 7단계이어서 7번 반복하지만, numbering 개수가 나오는 헤더가 있는지 확인해야 한다.
 			7.times do
 				# TODO 속성
@@ -784,8 +764,8 @@ module Record
 
 	class DocInfo::Bullet
 		attr_reader :level
-		def initialize data, level
-			@level = level
+		def initialize context
+			@level = context.level
 			raise NotImplementedError.new "DocInfo::Bullet"
 		end
 	end
@@ -793,9 +773,9 @@ module Record
 	# TODO REVERSE-ENGINEERING
 	class DocInfo::ParaShape
 		attr_reader :level, :left, :right
-		def initialize data, level
-			@level = level
-			s_io = StringIO.new data
+		def initialize context
+			@level = context.level
+			s_io = StringIO.new context.data
 			s_io.read(4).unpack("b32") # property
 			# PARA MARGIN
 			@left = s_io.read(4).unpack("V")[0]
@@ -824,9 +804,9 @@ module Record
 	class DocInfo::Style
 		attr_reader :level
 
-		def initialize data, level
-			@level = level
-			s_io = StringIO.new data
+		def initialize context
+			@level = context.level
+			s_io = StringIO.new context.data
 			len = s_io.read(2).unpack('v')[0]
 			name = s_io.read(len*2).unpack('v*').pack("U*")
 			len = s_io.read(2).unpack('v')[0]
@@ -839,66 +819,90 @@ module Record
 		end
 	end
 
-	# TODO REVERSE-ENGINEERING
-	class DocInfo::DocData
-		attr_reader :level
+    # TODO REVERSE-ENGINEERING
+    class DocInfo::DocData
+        attr_reader :level
 
-		def initialize data, level
-			@level = level
-			#p data.bytesize # => 72
-			s_io = StringIO.new data
-			param_set_id = s_io.read(2).unpack("v")#.pack("U")
-			count = s_io.read(2).unpack("v")[0]
-			param_item_id = s_io.read(2).unpack("v")[0]
-			#bit = s_io.read(2).unpack("b16")[0]
-			s_io.close
-		end
-	end
+        def initialize context
+            @level = context.level
+            #p data.bytesize # => 72
+            s_io = StringIO.new context.data
+            param_set_id = s_io.read(2).unpack("v")#.pack("U")
+            count = s_io.read(2).unpack("v")[0]
+            param_item_id = s_io.read(2).unpack("v")[0]
+            #bit = s_io.read(2).unpack("b16")[0]
+            s_io.close
+        end
+    end
 
-	class DocInfo::DistributeDocData
-		attr_reader :level
+    class DocInfo::DistributeDocData
+        attr_reader :level
 
-		def initialize data, level
-			@level = level
-			raise NotImplementedError.new "DocInfo::DistributeDocData"
-		end
-	end
+        def initialize context
+            @level = context.level
+            raise NotImplementedError.new "DocInfo::DistributeDocData"
+        end
+    end
 
-	class DocInfo::Reserved
-		attr_reader :level
+    class DocInfo::Reserved
+        attr_reader :level
 
-		def initialize data, level
-			@level = level
-			raise NotImplementedError.new "DocInfo::Reserved"
-		end
-	end
+        def initialize context
+            @level = context.level
+            raise NotImplementedError.new "DocInfo::Reserved"
+        end
+    end
 
-	class DocInfo::CompatibleDocument
-		attr_reader :level
+    class DocInfo::CompatibleDocument
+        attr_reader :level, :layout_compatibility
 
-		def initialize data, level
-			@level = level
-			#raise NotImplementedError.new "DocInfo::CompatibleDocument"
-		end
-	end
+        def initialize context
+            @level = context.level
+            @layout_compatibility = []
+            parse context
+        end
 
-	class DocInfo::LayoutCompatibility
-		attr_reader :level
+        def parse context
+            while context.has_next?
+                context.stack.empty? ? context.pull : context.stack.pop
 
-		def initialize data, level
-			@level = level
-			#raise NotImplementedError.new "DocInfo::LayoutCompatibility"
-		end
-	end
+                if  context.level <= @level
+                    context.stack << context.tag_id
+                    break
+                end
 
-	class DocInfo::ForbiddenChar
-		attr_reader :level
+                case context.tag_id
+                when :HWPTAG_LAYOUT_COMPATIBILITY
+                    @layout_compatibility <<
+                        Record::DocInfo::LayoutCompatibility.new(context)
+                when :HWPTAG_DOC_INFO_16 # 레이아웃 관련 태그로 추정됨.
+                    # TODO
+                else
+                    raise "unhandled " + context.tag_id.to_s
+                end
+            end # while
+        end # parse
 
-		def initialize data, level
-			@level = level
+        private :parse
+    end
+
+    class DocInfo::LayoutCompatibility
+        attr_reader :level
+
+        def initialize context
+            @level = context.level
+            #raise NotImplementedError.new "DocInfo::LayoutCompatibility"
+        end
+    end
+
+    class DocInfo::ForbiddenChar
+        attr_reader :level
+
+        def initialize context
+            @level = context.level
             # 금칙 문자는 뷰어에서 출력할 필요가 없다.
             # TODO 금칙 문자의 데이터 형식은?
-            forbidden = data.unpack("v*").pack("U*")
-		end
-	end
+            forbidden = context.data.unpack("v*").pack("U*")
+        end
+    end
 end
