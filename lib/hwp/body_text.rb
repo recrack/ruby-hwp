@@ -375,7 +375,7 @@ module Record::Section
         def initialize context
             @data = context.data
             @level = context.level
-            s_io = StringIO.new data
+            s_io = StringIO.new context.data
             @ctrl_id = s_io.read(4).reverse
 
             puts(" " * level + "\"#{@ctrl_id}\"")
@@ -549,7 +549,7 @@ module Record::Section
                     :width, :height, :margins
         def initialize context
             @level = context.level
-            s_io = StringIO.new data
+            s_io = StringIO.new context.data
             @num_para = s_io.read(2).unpack("v").pop
             bit = s_io.read(4).unpack("b32").pop
             # TODO 테이블 셀이 아닌 경우에 대한 처리가 필요하다. 또는 테이블 셀 감지
@@ -588,7 +588,7 @@ module Record::Section
         attr_reader :level, :prop, :row_count, :col_count, :cell_spacing, :margins, :row_size, :border_fill_id
         def initialize context
             @level = context.level
-            s_io = StringIO.new data
+            s_io = StringIO.new context.data
             @prop = s_io.read(4).unpack("V")
             @row_count = s_io.read(2).unpack("v")[0]
             @col_count = s_io.read(2).unpack("v")[0]
