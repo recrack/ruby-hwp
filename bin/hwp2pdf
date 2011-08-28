@@ -39,8 +39,7 @@ def print_para_headers(obj, context, layout, doc)
     @x ||= @page_def.left_margin / 100.0
 
     obj.para_headers.each do |para_header|
-        para_shape = doc.doc_info.para_shapes[para_header.para_shape_id]
-
+        para_shape = doc.doc_info.id_mappings.para_shapes[para_header.para_shape_id]
         @x += para_shape.left * 72.0 / 25.4 if para_shape
         @y ||= (@page_def.top_margin + @page_def.header_margin) / 100.0
         @y = @y + layout.pixel_size[1]
@@ -85,7 +84,6 @@ doc = HWP.open files[0]
     # Folio         612 * 936
     # Quarto        610 * 780
     # 10x14         720 * 1008
-    require 'pp'
     section_def = doc.body_text.para_headers[0].ctrl_headers[0].section_defs[0]
     @page_def = section_def.page_defs[0]
 

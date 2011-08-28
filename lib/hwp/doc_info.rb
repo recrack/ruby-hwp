@@ -8,16 +8,16 @@ module Record
         def initialize(dirent, header)
             if header.compress?
                 z = Zlib::Inflate.new(-Zlib::MAX_WBITS)
-                @doc_info = StringIO.new(z.inflate dirent.read)
+                s_io = StringIO.new(z.inflate dirent.read)
                 z.finish; z.close
             else
-                @doc_info = StringIO.new(dirent.read)
+                s_io = StringIO.new(dirent.read)
             end
 
             @doc_data, @distribute_doc_data, @reserved, @compatible_document =
-                Array.new(4, [])
+                [], [], [], []
 
-            context = HWP::Context.new @doc_info
+            context = HWP::Context.new s_io
 
             while context.has_next?
                 context.stack.empty? ? context.pull : context.stack.pop
@@ -92,7 +92,7 @@ module Record
 
             @bin_data, @face_names, @border_fill, @char_shapes, @tab_defs,
             @numbering, @para_shapes, @styles, @memo_shapes, @forbidden_char =
-                Array.new(10, [])
+                [], [], [], [], [], [], [], [], [], []
             parse context
         end # initialize
 
