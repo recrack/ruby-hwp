@@ -22,7 +22,7 @@ def process filename
 	@textview.buffer.text = ''
 	# TODO 기존의 태그 삭제
 
-	hwp.doc_info.char_shapes.each_with_index do |char_shape, i|
+	hwp.doc_info.id_mappings.char_shapes.each_with_index do |char_shape, i|
 		# FIXME tag name
 		@textview.buffer.create_tag(i.to_s,
 			'size' => char_shape.size/100 * Pango::SCALE)

@@ -66,8 +66,7 @@ module Record
                     :memo_shape_count,
                     :level,
                     :bin_data, :face_names, :border_fill, :char_shapes,
-                    :tab_defs, :numbering, :para_shapes, :styles, :memo_shapes,
-                    :forbidden_char
+                    :tab_defs, :numbering, :para_shapes, :styles, :memo_shapes
 
         def initialize context
             @level = context.level
@@ -91,8 +90,8 @@ module Record
             @memo_shape_count = context.data.unpack("V*")
 
             @bin_data, @face_names, @border_fill, @char_shapes, @tab_defs,
-            @numbering, @para_shapes, @styles, @memo_shapes, @forbidden_char =
-                [], [], [], [], [], [], [], [], [], []
+            @numbering, @para_shapes, @styles, @memo_shapes =
+                [], [], [], [], [], [], [], [], []
             parse context
         end # initialize
 
@@ -126,16 +125,13 @@ module Record
                     @styles << Record::DocInfo::Style.new(context)
                 when :HWPTAG_MEMO_SHAPE
                     # TODO
-                when :HWPTAG_FORBIDDEN_CHAR
-                    @forbidden_char <<
-                        Record::DocInfo::ForbiddenChar.new(context)
                 else
                     raise "unhandled " + context.tag_id.to_s
                 end
             end
         end
 
-    private :parse
+        private :parse
 
     end
 
@@ -824,6 +820,7 @@ module Record
         attr_reader :level
 
         def initialize context
+            @forbidden_char = []
             @level = context.level
             #p data.bytesize # => 72
             s_io = StringIO.new context.data
@@ -832,7 +829,29 @@ module Record
             param_item_id = s_io.read(2).unpack("v")[0]
             #bit = s_io.read(2).unpack("b16")[0]
             s_io.close
+            parse(context)
         end
+
+        def parse(context)
+            while context.has_next?
+                context.stack.empty? ? context.pull : context.stack.pop
+
+                if  context.level <= @level
+                    context.stack << context.tag_id
+                    break
+                end
+
+                case context.tag_id
+                when :HWPTAG_FORBIDDEN_CHAR
+                    @forbidden_char <<
+                        Record::DocInfo::ForbiddenChar.new(context)
+                else
+                    raise "unhandled " + context.tag_id.to_s
+                end
+            end
+        end
+
+        private :parse
     end
 
     class DocInfo::DistributeDocData
