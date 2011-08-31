@@ -184,7 +184,6 @@ module HWP
                             hierarchy_check(@level, context.level, __LINE__)
                             para_header = Record::Section::
                                 ParaHeader.new(context)
-                            para_header.parse(context)
                             @ctrl_header.para_headers << para_header
                         end
                     when :HWPTAG_LIST_HEADER

@@ -1,3 +1,5 @@
+# coding: utf-8
+
 require 'hwp/utils'
 
 module Record
@@ -38,104 +40,13 @@ module Record
             end
         end
 
-        def print_para_headers(obj)
-            obj.para_headers.each do |para_header|
-                puts " " * para_header.level + para_header.to_tag
-
-                para_header.para_texts.each do |para_text|
-                    puts " " * para_text.level + para_text.to_tag
-                end
-
-                para_header.para_char_shapes.each do |para_char_shape|
-                    puts " " * para_char_shape.level + para_char_shape.to_tag
-                end
-
-                para_header.para_line_segs.each do |para_line_seg|
-                    puts " " * para_line_seg.level + para_line_seg.to_tag
-                end
-
-                para_header.ctrl_headers.each do |ctrl_header|
-                    puts " " * ctrl_header.level + ctrl_header.to_tag
-
-                    ctrl_header.page_defs.each do |page_def|
-                        puts " " * page_def.level + page_def.to_tag
-                    end
-
-                    ctrl_header.footnote_shapes.each do |footnote_shape|
-                        puts " " * footnote_shape.level + footnote_shape.to_tag
-                    end
-
-                    ctrl_header.page_border_fills.each do |page_border_fill|
-                        puts " " * page_border_fill.level + page_border_fill.to_tag
-                    end
-
-                    ctrl_header.list_headers.each do |list_header|
-                        puts " " * list_header.level + list_header.to_tag
-                    end
-
-                    ctrl_header.eq_edits.each do |eq_edit|
-                        puts " " * eq_edit.level + eq_edit.to_tag
-                    end
-
-                    # 재귀
-                    print_para_headers(ctrl_header)
-                end
+        def to_text
+            # FIXME yield 로 속도 저하 줄일 것.
+            text = ""
+            @para_headers.each do |para_header|
+                text << para_header.to_text + "\n"
             end
-        end
-
-        def debug(para_headers)
-            # debugging code
-            para_headers.each do |para_header|
-                para_header.debug
-                para_header.para_text.debug if para_header.para_text
-
-                para_header.para_char_shape.debug
-
-                para_header.para_line_seg.debug
-
-                if para_header.table
-                    para_header.table.rows.each do |row|
-                        row.cells.each do |cell|
-                            cell.para_headers.each do |para_header|
-                                p para_header.para_text
-                            end
-                        end
-                    end
-                end
-
-                para_header.ctrl_headers.each do |ctrl_header|
-                    ctrl_header.debug
-                    ctrl_header.page_defs.each do |page_def|
-                        page_def.debug
-                    end
-
-                    ctrl_header.footnote_shapes.each do |footnote_shape|
-                        footnote_shape.debug
-                    end
-
-                    ctrl_header.page_border_fills.each do |page_border_fill|
-                        page_border_fill.debug
-                    end
-
-                    ctrl_header.list_headers.each do |list_header|
-                        list_header.debug
-                    end
-
-                    ctrl_header.para_headers.each do |para_header|
-                        para_header.debug
-                        # 재귀적 용법의 필요성을 느낀다.
-                        para_header.para_text.debug if para_header.para_text
-
-                        para_header.para_char_shape.debug
-
-                        para_header.para_line_seg.debug
-
-                        para_header.ctrl_headers.each do |ctrl_header|
-                            ctrl_header.debug
-                        end
-                    end # ctrl_header.para_headers.each
-                end # para_header.ctrl_headers.each
-            end # para_headers.each
+            text
         end
     end # BodyText
 end
@@ -143,8 +54,6 @@ end
 
 module Record::Section
     class ParaHeader
-        include HWP::Utils
-
         attr_reader :chars,
                     :control_mask,
                     :para_shape_id,
@@ -233,6 +142,22 @@ module Record::Section
         end
         private :parse
 
+        def to_text
+            para_texts[0].to_s
+        end
+
+        def to_layout cr, doc
+            section_def = doc.body_text.para_headers[0].ctrl_headers[0].section_defs[0]
+            page_def = section_def.page_defs[0]
+            layout = cr.create_pango_layout
+            layout.width = (page_def.width - page_def.left_margin - page_def.
+                right_margin) / 100.0 * Pango::SCALE
+            layout.wrap = Pango::WRAP_WORD_CHAR
+            layout.alignment = Pango::ALIGN_LEFT
+            layout.text = @para_texts[0].to_s
+            layout
+        end
+
         def to_tag
             "HWPTAG_PARA_HEADER"
         end
@@ -268,11 +193,12 @@ module Record::Section
 
                 # 16-byte control string, extended
                 when 1,2,3,11,12,14,15,16,17,18,21,22,23
-                    s_io.pos = s_io.pos + 14
-                #when 11 # 그리기 개체/표
-                # 포인터가 있다고 하는데 살펴보니 tbl의 경우 포인터가 없고
-                # ctrl id 만 있다.
-                #	p s_io.read(14).unpack("v*")
+                    ctrl_id = s_io.read(4).reverse
+                    s_io.pos += 10
+                    index = @bytes.size # FIXME
+                    #raise if ctrl_index != [0,0]
+                    #ctrl_ch = s_io.read(2).unpack("v")[0]
+                    #p [ctrl_id, ctrl_index, ctrl_ch]
                 # TODO mapping table
                 # 유니코드 문자 교정, 한자 영역 등의 다른 영역과 겹칠지도 모른다.
                 # L filler utf-16 값 "_\x11"
@@ -314,13 +240,10 @@ module Record::Section
         attr_accessor :m_pos, :m_id, :level
         # TODO m_pos, m_id 가 좀 더 편리하게 바뀔 필요가 있다.
         def initialize context
-            data = context.data
             @level = context.level
-            @m_pos = []
-            @m_id = []
-            n = data.bytesize / 4
-            array = data.unpack("V" * n)
-            array.each_with_index do |element, i|
+            @m_pos, @m_id = [], []
+            n = context.data.bytesize / 4
+            context.data.unpack("V" * n).each_with_index do |element, i|
                 @m_pos << element if (i % 2) == 0
                 @m_id  << element if (i % 2) == 1
             end
