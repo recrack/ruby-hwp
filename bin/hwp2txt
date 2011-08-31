@@ -30,8 +30,6 @@ if files.empty?
 	exit 1
 end
 
-hwp = HWP.open files[0]
-hwp.body_text.para_headers.each do |para_header|
-	puts para_header.para_texts
-end
-hwp.close
+doc = HWP.open files[0]
+puts doc.body_text.to_text
+doc.close
