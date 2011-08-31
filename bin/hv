@@ -62,8 +62,6 @@ def process filename
                     end
                 end # if
             end # if
-
-
         end
 
 		if para_header.table
