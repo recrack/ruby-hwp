@@ -149,6 +149,8 @@ module Record::Section
         def to_layout cr, doc
             section_def = doc.body_text.para_headers[0].ctrl_headers[0].section_defs[0]
             page_def = section_def.page_defs[0]
+            #pango_context = Pango::Context.new
+            #layout = Pango::Layout.new pango_context
             layout = cr.create_pango_layout
             layout.width = (page_def.width - page_def.left_margin - page_def.
                 right_margin) / 100.0 * Pango::SCALE
