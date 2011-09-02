@@ -125,6 +125,9 @@ module Record
                     @styles << Record::DocInfo::Style.new(context)
                 when :HWPTAG_MEMO_SHAPE
                     # TODO
+                when :HWPTAG_FORBIDDEN_CHAR
+                    # TODO DOC_DATA뿐만 아니라 IDMappings 에서도 나온다.
+                    # 혹시 모르니 DOC_DATA에 FORBIDDEN_CHAR이 나오는지 재확인
                 else
                     raise "unhandled " + context.tag_id.to_s
                 end
