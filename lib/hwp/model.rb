@@ -55,6 +55,7 @@ require 'hwp/utils.rb'
 module HWP
     module Model
         class Paragraph
+            attr_accessor :text
         end
 
         class SectionDef
@@ -76,6 +77,8 @@ module HWP
                     end
 
                     case context.tag_id
+                    when :HWPTAG_CTRL_DATA
+                        # TODO
                     when :HWPTAG_PAGE_DEF
                         @page_defs << Record::Section::
                             PageDef.new(context)

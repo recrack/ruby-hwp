@@ -18,7 +18,7 @@ module Record
                 else
                     context = HWP::Context.new StringIO.new(section.read)
                 end
-                
+
                 parse(context)
                 #print_para_headers(self)
             end # dirent.each_child
@@ -501,7 +501,7 @@ module Record::Section
     end
 
     class CtrlData
-        attr_accessor :var, :level
+        attr_accessor :level
         def initialize context
             @level = context.level
             STDERR.puts "{#self.class.name}: not implemented"
