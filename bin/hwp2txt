@@ -1,35 +1,79 @@
-#!/usr/bin/ruby1.9.1
 # coding: utf-8
-# apt-get install libole-ruby or gem install ruby-ole
-# 한글과컴퓨터의 글 문서 파일(.hwp) 공개 문서를 참고하여 개발하였습니다.
+# apt-get install libole-ruby
+# or gem install ruby-ole
+# (주)한글과컴퓨터의 한컴오피스 글 문서 파일 구조(.hwp) 참고하여 만들었습니다.
 
-require 'optparse'
+require 'iconv'
+require 'ole/storage'
+require 'zlib'
+require 'stringio'
 
-begin
-    require 'hwp'
-rescue Exception
-    $LOAD_PATH << File.expand_path(File.dirname(__FILE__)) + '/../lib'
-    require 'hwp'
+if ARGV.length == 0
+    puts "Usage: $ ruby hwp.rb filename.hwp"
+    exit
 end
 
-opts = {}
-op = OptionParser.new do |op|
-	op.banner = "Usage: hwp2txt [OPTION] [FILE]"
-	op.separator ' '
-	#op.separator "Output control:"
-	#op.on('-o', '--output=FILE', 'output file') { opts[:action] = :output }
-	#op.separator ''
-	op.on_tail('-h', '--help', 'Show this message') { puts op; exit }
+ole = Ole::Storage.open(ARGV[0], 'r')
+file = ole.file.open('FileHeader')
+file.pos = 36
+property = file.read(4).unpack("V")[0]
+
+if (property & 1) == 1
+    compressed = true
+else
+    compressed = false
 end
 
-files = op.parse ARGV
+ole.dir.entries('BodyText').each do |f|
+    if f.start_with? "Section"
+        section = ole.file.read("BodyText/#{f}")
 
-if files.empty?
-	puts 'Must specify 1 .hwp file.'
-	puts op
-	exit 1
+        if compressed
+            z = Zlib::Inflate.new(-15)
+            buf = StringIO.new(z.inflate section)
+            z.finish
+            z.close
+        else
+            buf = StringIO.new(section)
+        end
+
+        while(bytes = buf.read(4)) # 레코드 헤더를 읽는다
+            i = bytes.unpack("V")[0]
+            record_id = i & 0x3ff
+            record_size = (i >> 20) & 0xfff
+
+            if record_id == 67
+                data = buf.read(record_size)
+
+                s_io = StringIO.new data
+                result = ''
+                while(ch = s_io.read(2))
+                    case ch.unpack("v")[0]
+                    # 2-byte control string
+                    when 0,10,13,24,25,26,27,28,29,31
+                    when 30 # 0x1e record separator (RS)
+                        result << " " # 임시로 스페이스로 대체
+                    # 16-byte control string, inline
+                    when 4,5,6,7,8,19,20
+                        s_io.pos += 14
+                    when 9 # tab
+                        result << 9
+                        s_io.pos += 14
+                    # 16-byte control string, extended
+                    when 1,2,3,11,12,14,15,16,17,18,21,22,23
+                        s_io.pos += 14
+                    else
+                        result << ch
+                    end
+                end
+                puts result.unpack("v*").pack("U*")
+                s_io.close
+            else
+                buf.pos += record_size
+            end
+        end
+        buf.close
+    end
 end
 
-doc = HWP.open files[0]
-puts doc.body_text.to_text
-doc.close
+ole.close
