@@ -18,16 +18,13 @@ module HWP
         end
 
         def record_header_decode
-            # 이진수, LSB first, bit 0 가 맨 앞에 온다.
             l = (@stream.read 4).unpack("V")[0]
-
             @tag_id = HWPTAGS[l & 0x3ff]
             raise "unknown tag_id = #{l & 0x3ff}" if @tag_id.nil?
             @level  = (l >> 10) & 0x3ff
             size    = (l >> 20) & 0xfff
 
             @data = @stream.read size
-
             puts " " * @level + @tag_id.to_s
         end
 
