@@ -35,8 +35,11 @@ module Record
                 if context.tag_id == :HWPTAG_PARA_HEADER and context.level == 0
                     @para_headers << Record::Section::ParaHeader.new(context)
                 else
+                    # FIXME UNKNOWN_TAG 때문에...
+                    @para_headers << Record::Section::ParaHeader.new(context)
                     # FIXME 최상위 태그가 :HWPTAG_PARA_HEADER 가 아닐 수도 있다.
                     puts "최상위 태그가 HWPTAG_PARA_HEADER 이 아닌 것 같음"
+                    # FIXME UNKNOWN_TAG 때문에.......
                     #raise "unhandled: #{context.tag_id}"
                 end
             end
@@ -138,6 +141,19 @@ module Record::Section
                 #        raise "unhandled " + context.tag_id.to_s
                 #    end
                 when :UNKNOWN_TAG_0
+                when :UNKNOWN_TAG_4
+                when :UNKNOWN_TAG_172
+                when :UNKNOWN_TAG_190
+                when :UNKNOWN_TAG_199
+                when :UNKNOWN_TAG_257
+                when :UNKNOWN_TAG_288
+                when :UNKNOWN_TAG_512
+                when :UNKNOWN_TAG_520
+                when :UNKNOWN_TAG_560
+                when :UNKNOWN_TAG_652
+                when :UNKNOWN_TAG_710
+                when :UNKNOWN_TAG_888
+                when :HWPTAG_DOC_INFO_16
                 else
                     raise "unhandled " + context.tag_id.to_s
                 end
@@ -178,9 +194,7 @@ module Record::Section
         def initialize context
             @level = context.level
             s_io = StringIO.new context.data
-
-            @bytes = []
-
+            @bytes = ''
             while(ch = s_io.read(2))
                 case ch.unpack("v")[0]
                 # 2-byte control string
@@ -222,14 +236,14 @@ module Record::Section
                 when 0xf8cd # "\xcd\xf8"
                     @bytes << 0x11bb
                 else
-                    @bytes << ch.unpack("v")[0]
+                    @bytes << ch
                 end
             end
             s_io.close
         end
 
         def to_s
-            @bytes.pack("U*")
+            @bytes.unpack("v*").pack("U*")
         end
 
         def to_tag
