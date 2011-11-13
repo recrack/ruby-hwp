@@ -4,7 +4,24 @@
 HWPTAG_BEGIN = 0x010 # 16
 
 HWPTAGS = {
-	# docinfo
+    0              => :UNKNOWN_TAG_0,
+    1              => :UNKNOWN_TAG_1,
+    3              => :UNKNOWN_TAG_3,
+    4              => :UNKNOWN_TAG_4,
+    58             => :UNKNOWN_TAG_58,
+    172            => :UNKNOWN_TAG_172,
+    190            => :UNKNOWN_TAG_190,
+    199            => :UNKNOWN_TAG_199,
+    256            => :UNKNOWN_TAG_256,
+    257            => :UNKNOWN_TAG_257,
+    288            => :UNKNOWN_TAG_288,
+    512            => :UNKNOWN_TAG_512,
+    520            => :UNKNOWN_TAG_520,
+    560            => :UNKNOWN_TAG_560,
+    652            => :UNKNOWN_TAG_652,
+    710            => :UNKNOWN_TAG_710,
+    888            => :UNKNOWN_TAG_888,
+    # docinfo
 	HWPTAG_BEGIN   => :HWPTAG_DOCUMENT_PROPERTIES,
 	HWPTAG_BEGIN+1 => :HWPTAG_ID_MAPPINGS,
 	HWPTAG_BEGIN+2 => :HWPTAG_BIN_DATA,
@@ -57,7 +74,7 @@ HWPTAGS = {
 
 	HWPTAG_BEGIN+79 => :HWPTAG_CHART_DATA,
 
-	HWPTAG_BEGIN+99 => :HWPTAG_SHAPE_COMPONENT_UNKNOWN	# 115
+	HWPTAG_BEGIN+99 => :HWPTAG_SHAPE_COMPONENT_UNKNOWN,	# 115
 }
 
 HISTORY_TAGS = {
