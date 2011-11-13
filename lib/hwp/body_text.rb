@@ -411,7 +411,7 @@ module Record::Section
                 #eqed.parse context
             when "%smr" then raise NotImplementedError.new @ctrl_id
             when "%usr" then raise NotImplementedError.new @ctrl_id
-            when "%hlk" then raise NotImplementedError.new @ctrl_id
+            when "%hlk" # FIELD_HYPERLINK
             when "%sig" then raise NotImplementedError.new @ctrl_id
             when "%%*d" then raise NotImplementedError.new @ctrl_id
             when "%%*a" then raise NotImplementedError.new @ctrl_id

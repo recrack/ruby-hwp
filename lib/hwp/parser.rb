@@ -19,14 +19,12 @@ module HWP
 
         def record_header_decode
             # 이진수, LSB first, bit 0 가 맨 앞에 온다.
-            lsb_first = (@stream.read 4).unpack("b*")[0]
+            l = (@stream.read 4).unpack("V")[0]
 
-            if lsb_first
-                k = lsb_first[0..9].reverse.to_i(2)   # 9~0
-                #p k
-                @tag_id = HWPTAGS[k]
-                @level  = lsb_first[10..19].reverse.to_i(2) # 19~10
-                size    = lsb_first[20..31].reverse.to_i(2) # 31~20
+            if l
+                @tag_id = HWPTAGS[l & 0x3ff]
+                @level  = (l >> 10) & 0x3ff
+                size    = (l >> 20) & 0x3ff
             else
                 raise
             end
