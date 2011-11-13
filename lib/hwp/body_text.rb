@@ -35,7 +35,8 @@ module Record
                 if context.tag_id == :HWPTAG_PARA_HEADER and context.level == 0
                     @para_headers << Record::Section::ParaHeader.new(context)
                 else
-                    raise "unhandled: #{context.tag_id}"
+                
+                    #raise "unhandled: #{context.tag_id}"
                 end
             end
         end
@@ -135,6 +136,7 @@ module Record::Section
                 #    else
                 #        raise "unhandled " + context.tag_id.to_s
                 #    end
+                when :UNKNOWN_TAG_0
                 else
                     raise "unhandled " + context.tag_id.to_s
                 end
