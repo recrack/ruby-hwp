@@ -35,7 +35,8 @@ module Record
                 if context.tag_id == :HWPTAG_PARA_HEADER and context.level == 0
                     @para_headers << Record::Section::ParaHeader.new(context)
                 else
-                
+                    # FIXME 최상위 태그가 :HWPTAG_PARA_HEADER 가 아닐 수도 있다.
+                    puts "최상위 태그가 HWPTAG_PARA_HEADER 이 아닌 것 같음"
                     #raise "unhandled: #{context.tag_id}"
                 end
             end
