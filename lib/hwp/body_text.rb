@@ -194,7 +194,7 @@ module Record::Section
         def initialize context
             @level = context.level
             s_io = StringIO.new context.data
-            @bytes = ''
+            @bytes = []
             while(ch = s_io.read(2))
                 case ch.unpack("v")[0]
                 # 2-byte control string
@@ -236,14 +236,14 @@ module Record::Section
                 when 0xf8cd # "\xcd\xf8"
                     @bytes << 0x11bb
                 else
-                    @bytes << ch
+                    @bytes << ch.unpack("v")[0]
                 end
             end
             s_io.close
         end
 
         def to_s
-            @bytes.unpack("v*").pack("U*")
+            @bytes.pack("U*")
         end
 
         def to_tag
