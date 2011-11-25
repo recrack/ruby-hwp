@@ -90,7 +90,7 @@ module HWP
                 when "ViewText"
                     @view_text = Record::ViewText.new(dirent, @header)
                 when "\005HwpSummaryInformation"
-                    @summary_info = Record::SummaryInformation.new file
+                    @summary_info = Record::SummaryInformation.new
                 when "BinData"
                     @bin_data = Record::BinData.new(dirent, @header)
                 when "PrvText"
