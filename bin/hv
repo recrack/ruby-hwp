@@ -128,7 +128,7 @@ class HwpViewer
         cr.rectangle(0, 0, @width, @height)
         cr.fill()
         cr.set_source_rgb(0, 0, 0)
-        #@current_page.render(cr)
+        #@current_page.make_page
 		x = @page_def.left_margin / 100.0
 		y = (@page_def.top_margin + @page_def.header_margin) / 100.0
 		layouts = @current_page
@@ -145,7 +145,7 @@ class HwpViewer
         @document = HWP.open filename
         section_def = @document.body_text.para_headers[0].ctrl_headers[0].section_defs[0]
 		@page_def = section_def.page_defs[0]
-        @document.render
+        @document.make_page
         @n_pages = @document.n_pages()
 
         @current_page = @document.get_pages(0)

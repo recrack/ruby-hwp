@@ -12,6 +12,7 @@ rescue Exception
     require 'hwp'
 end
 
+require 'gtk2'
 require 'pango'
 require 'cairo'
 
@@ -67,7 +68,7 @@ surface = Cairo::PDFSurface.new("/tmp/out.pdf",
     page_def.width / 100.0, page_def.height / 100.0)
 
 cr = Cairo::Context.new(surface)
-doc.render cr
+doc.make_page
 
 # page render
 (doc.n_pages+1).times do |n|

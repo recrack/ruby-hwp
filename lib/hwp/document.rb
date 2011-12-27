@@ -124,10 +124,10 @@ module HWP
             @n_pages
         end
 
-        def render cr
+        def make_page
             layouts = []
             @body_text.para_headers.each do |para|
-                layouts << para.to_layout(cr, self)
+                layouts << para.to_layout(self)
             end
 
             @page_layouts = []
