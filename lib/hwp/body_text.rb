@@ -165,12 +165,14 @@ module Record::Section
             para_texts[0].to_s
         end
 
-        def to_layout cr, doc
+        def to_layout doc
             section_def = doc.body_text.para_headers[0].ctrl_headers[0].section_defs[0]
             page_def = section_def.page_defs[0]
-            #pango_context = Pango::Context.new
-            #layout = Pango::Layout.new pango_context
-            layout = cr.create_pango_layout
+            pango_context = Gdk::Pango.context
+            desc = Pango::FontDescription.new("Sans 10")
+            pango_context.load_font(desc)
+
+            layout = Pango::Layout.new pango_context
             layout.width = (page_def.width - page_def.left_margin - page_def.
                 right_margin) / 100.0 * Pango::SCALE
             layout.wrap = Pango::WRAP_WORD_CHAR
