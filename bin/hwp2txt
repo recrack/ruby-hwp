@@ -1,3 +1,4 @@
+#!/usr/bin/ruby
 # coding: utf-8
 # apt-get install libole-ruby
 # or gem install ruby-ole
