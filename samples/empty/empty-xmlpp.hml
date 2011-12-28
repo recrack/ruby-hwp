@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+
+<HWPML Version='2.8' SubVersion='8.0.0.0' Style='embed'>
+  <HEAD SecCnt='1'>
+    <DOCSUMMARY>
+      <AUTHOR>cogniti</AUTHOR>
+      <DATE>2011년 12월 28일 수요일 오후 11:29:17</DATE>
+    </DOCSUMMARY>
+    <DOCSETTING>
+      <BEGINNUMBER Table='1' Equation='1' Footnote='1' Picture='1' Endnote='1' Page='1' />
+      <CARETPOS List='0' Para='0' Pos='16' />
+    </DOCSETTING>
+    <MAPPINGTABLE>
+      <FACENAMELIST>
+        <FONTFACE Count='2' Lang='Hangul'>
+          <FONT Type='ttf' Id='0' Name='함초롬돋움'>
+            <TYPEINFO Proportion='4' FamilyType='2' Contrast='0' ArmStyle='1' Letterform='1' StrokeVariation='1' Weight='5' XHeight='1' Midline='1' />
+          </FONT>
+          <FONT Id='1' Type='ttf' Name='함초롬바탕'>
+            <TYPEINFO Proportion='4' FamilyType='2' Contrast='0' ArmStyle='1' Letterform='1' StrokeVariation='1' Weight='5' XHeight='1' Midline='1' />
+          </FONT>
+        </FONTFACE>
+        <FONTFACE Lang='Latin' Count='2'>
+          <FONT Id='0' Type='ttf' Name='함초롬돋움'>
+            <TYPEINFO Proportion='4' FamilyType='2' Contrast='0' ArmStyle='1' Letterform='1' StrokeVariation='1' Weight='5' XHeight='1' Midline='1' />
+          </FONT>
+          <FONT Id='1' Type='ttf' Name='함초롬바탕'>
+            <TYPEINFO Proportion='4' FamilyType='2' Contrast='0' ArmStyle='1' Letterform='1' StrokeVariation='1' Weight='5' XHeight='1' Midline='1' />
+          </FONT>
+        </FONTFACE>
+        <FONTFACE Lang='Hanja' Count='2'>
+          <FONT Id='0' Type='ttf' Name='함초롬돋움'>
+            <TYPEINFO Proportion='4' FamilyType='2' Contrast='0' ArmStyle='1' Letterform='1' StrokeVariation='1' Weight='5' XHeight='1' Midline='1' />
+          </FONT>
+          <FONT Id='1' Type='ttf' Name='함초롬바탕'>
+            <TYPEINFO Proportion='4' FamilyType='2' Contrast='0' ArmStyle='1' Letterform='1' StrokeVariation='1' Weight='5' XHeight='1' Midline='1' />
+          </FONT>
+        </FONTFACE>
+        <FONTFACE Lang='Japanese' Count='2'>
+          <FONT Id='0' Type='ttf' Name='함초롬돋움'>
+            <TYPEINFO Proportion='4' FamilyType='2' Contrast='0' ArmStyle='1' Letterform='1' StrokeVariation='1' Weight='5' XHeight='1' Midline='1' />
+          </FONT>
+          <FONT Id='1' Type='ttf' Name='함초롬바탕'>
+            <TYPEINFO Proportion='4' FamilyType='2' Contrast='0' ArmStyle='1' Letterform='1' StrokeVariation='1' Weight='5' XHeight='1' Midline='1' />
+          </FONT>
+        </FONTFACE>
+        <FONTFACE Lang='Other' Count='2'>
+          <FONT Id='0' Type='ttf' Name='함초롬돋움'>
+            <TYPEINFO Proportion='4' FamilyType='2' Contrast='0' ArmStyle='1' Letterform='1' StrokeVariation='1' Weight='5' XHeight='1' Midline='1' />
+          </FONT>
+          <FONT Id='1' Type='ttf' Name='함초롬바탕'>
+            <TYPEINFO Proportion='4' FamilyType='2' Contrast='0' ArmStyle='1' Letterform='1' StrokeVariation='1' Weight='5' XHeight='1' Midline='1' />
+          </FONT>
+        </FONTFACE>
+        <FONTFACE Lang='Symbol' Count='2'>
+          <FONT Id='0' Type='ttf' Name='함초롬돋움'>
+            <TYPEINFO Proportion='4' FamilyType='2' Contrast='0' ArmStyle='1' Letterform='1' StrokeVariation='1' Weight='5' XHeight='1' Midline='1' />
+          </FONT>
+          <FONT Id='1' Type='ttf' Name='함초롬바탕'>
+            <TYPEINFO Proportion='4' FamilyType='2' Contrast='0' ArmStyle='1' Letterform='1' StrokeVariation='1' Weight='5' XHeight='1' Midline='1' />
+          </FONT>
+        </FONTFACE>
+        <FONTFACE Lang='User' Count='2'>
+          <FONT Id='0' Type='ttf' Name='함초롬돋움'>
+            <TYPEINFO Proportion='4' FamilyType='2' Contrast='0' ArmStyle='1' Letterform='1' StrokeVariation='1' Weight='5' XHeight='1' Midline='1' />
+          </FONT>
+          <FONT Id='1' Type='ttf' Name='함초롬바탕'>
+            <TYPEINFO Proportion='4' FamilyType='2' Contrast='0' ArmStyle='1' Letterform='1' StrokeVariation='1' Weight='5' XHeight='1' Midline='1' />
+          </FONT>
+        </FONTFACE>
+      </FACENAMELIST>
+      <BORDERFILLLIST Count='1'>
+        <BORDERFILL ThreeD='false' Shadow='false' Slash='0' Id='1' CrookedSlash='0' CenterLine='0' CounterSlash='0' BreakCellSeparateLine='0' BackSlash='0' CounterBackSlash='0'>
+          <LEFTBORDER Width='0.1mm' Type='None' />
+          <RIGHTBORDER Width='0.1mm' Type='None' />
+          <TOPBORDER Width='0.1mm' Type='None' />
+          <BOTTOMBORDER Width='0.1mm' Type='None' />
+          <DIAGONAL Width='0.1mm' Type='Solid' />
+          <FILLBRUSH>
+            <WINDOWBRUSH FaceColor='4294967295' HatchColor='4278190080' Alpha='0' />
+          </FILLBRUSH>
+        </BORDERFILL>
+      </BORDERFILLLIST>
+      <CHARSHAPELIST Count='5'>
+        <CHARSHAPE UseKerning='false' UseFontSpace='false' Id='0' Height='1000' ShadeColor='4294967295' BorderFillId='1' SymMark='0' TextColor='0'>
+          <FONTID Hanja='1' Latin='1' Japanese='1' User='1' Symbol='1' Hangul='1' Other='1' />
+          <RATIO Hanja='100' Latin='100' Japanese='100' User='100' Symbol='100' Hangul='100' Other='100' />
+          <CHARSPACING Hanja='0' Latin='0' Japanese='0' User='0' Symbol='0' Hangul='0' Other='0' />
+          <RELSIZE Hanja='100' Latin='100' Japanese='100' User='100' Symbol='100' Hangul='100' Other='100' />
+          <CHAROFFSET Hanja='0' Latin='0' Japanese='0' User='0' Symbol='0' Hangul='0' Other='0' />
+        </CHARSHAPE>
+        <CHARSHAPE UseKerning='false' UseFontSpace='false' Id='1' Height='1000' ShadeColor='4294967295' BorderFillId='1' SymMark='0' TextColor='0'>
+          <FONTID Hanja='0' Latin='0' Japanese='0' User='0' Symbol='0' Hangul='0' Other='0' />
+          <RATIO Hanja='100' Latin='100' Japanese='100' User='100' Symbol='100' Hangul='100' Other='100' />
+          <CHARSPACING Hanja='0' Latin='0' Japanese='0' User='0' Symbol='0' Hangul='0' Other='0' />
+          <RELSIZE Hanja='100' Latin='100' Japanese='100' User='100' Symbol='100' Hangul='100' Other='100' />
+          <CHAROFFSET Hanja='0' Latin='0' Japanese='0' User='0' Symbol='0' Hangul='0' Other='0' />
+        </CHARSHAPE>
+        <CHARSHAPE UseKerning='false' UseFontSpace='false' Id='2' Height='900' ShadeColor='4294967295' BorderFillId='1' SymMark='0' TextColor='0'>
+          <FONTID Hanja='0' Latin='0' Japanese='0' User='0' Symbol='0' Hangul='0' Other='0' />
+          <RATIO Hanja='100' Latin='100' Japanese='100' User='100' Symbol='100' Hangul='100' Other='100' />
+          <CHARSPACING Hanja='0' Latin='0' Japanese='0' User='0' Symbol='0' Hangul='0' Other='0' />
+          <RELSIZE Hanja='100' Latin='100' Japanese='100' User='100' Symbol='100' Hangul='100' Other='100' />
+          <CHAROFFSET Hanja='0' Latin='0' Japanese='0' User='0' Symbol='0' Hangul='0' Other='0' />
+        </CHARSHAPE>
+        <CHARSHAPE UseKerning='false' UseFontSpace='false' Id='3' Height='900' ShadeColor='4294967295' BorderFillId='1' SymMark='0' TextColor='0'>
+          <FONTID Hanja='1' Latin='1' Japanese='1' User='1' Symbol='1' Hangul='1' Other='1' />
+          <RATIO Hanja='100' Latin='100' Japanese='100' User='100' Symbol='100' Hangul='100' Other='100' />
+          <CHARSPACING Hanja='0' Latin='0' Japanese='0' User='0' Symbol='0' Hangul='0' Other='0' />
+          <RELSIZE Hanja='100' Latin='100' Japanese='100' User='100' Symbol='100' Hangul='100' Other='100' />
+          <CHAROFFSET Hanja='0' Latin='0' Japanese='0' User='0' Symbol='0' Hangul='0' Other='0' />
+        </CHARSHAPE>
+        <CHARSHAPE UseKerning='false' UseFontSpace='false' Id='4' Height='900' ShadeColor='4294967295' BorderFillId='1' SymMark='0' TextColor='0'>
+          <FONTID Hanja='0' Latin='0' Japanese='0' User='0' Symbol='0' Hangul='0' Other='0' />
+          <RATIO Hanja='100' Latin='100' Japanese='100' User='100' Symbol='100' Hangul='100' Other='100' />
+          <CHARSPACING Hanja='-5' Latin='-5' Japanese='-5' User='-5' Symbol='-5' Hangul='-5' Other='-5' />
+          <RELSIZE Hanja='100' Latin='100' Japanese='100' User='100' Symbol='100' Hangul='100' Other='100' />
+          <CHAROFFSET Hanja='0' Latin='0' Japanese='0' User='0' Symbol='0' Hangul='0' Other='0' />
+        </CHARSHAPE>
+      </CHARSHAPELIST>
+      <TABDEFLIST Count='2'>
+        <TABDEF Id='0' AutoTabLeft='false' AutoTabRight='false' />
+        <TABDEF Id='1' AutoTabLeft='true' AutoTabRight='false' />
+      </TABDEFLIST>
+      <NUMBERINGLIST Count='1'>
+        <NUMBERING Id='1' Start='0'>
+          <PARAHEAD UseInstWidth='true' Alignment='Left' Start='1' TextOffsetType='percent' TextOffset='50' Level='1' NumFormat='Digit' WidthAdjust='0' AutoIndent='true'>^1.</PARAHEAD>
+          <PARAHEAD UseInstWidth='true' Alignment='Left' Start='1' TextOffsetType='percent' TextOffset='50' Level='2' NumFormat='HangulSyllable' WidthAdjust='0' AutoIndent='true'>^2.</PARAHEAD>
+          <PARAHEAD UseInstWidth='true' Alignment='Left' Start='1' TextOffsetType='percent' TextOffset='50' Level='3' NumFormat='Digit' WidthAdjust='0' AutoIndent='true'>^3)</PARAHEAD>
+          <PARAHEAD UseInstWidth='true' Alignment='Left' Start='1' TextOffsetType='percent' TextOffset='50' Level='4' NumFormat='HangulSyllable' WidthAdjust='0' AutoIndent='true'>^4)</PARAHEAD>
+          <PARAHEAD UseInstWidth='true' Alignment='Left' Start='1' TextOffsetType='percent' TextOffset='50' Level='5' NumFormat='Digit' WidthAdjust='0' AutoIndent='true'>(^5)</PARAHEAD>
+          <PARAHEAD UseInstWidth='true' Alignment='Left' Start='1' TextOffsetType='percent' TextOffset='50' Level='6' NumFormat='HangulSyllable' WidthAdjust='0' AutoIndent='true'>(^6)</PARAHEAD>
+          <PARAHEAD UseInstWidth='true' Alignment='Left' Start='1' TextOffsetType='percent' TextOffset='50' Level='7' NumFormat='CircledDigit' WidthAdjust='0' AutoIndent='true'>^7</PARAHEAD>
+        </NUMBERING>
+      </NUMBERINGLIST>
+      <PARASHAPELIST Count='12'>
+        <PARASHAPE HeadingType='None' PageBreakBefore='false' WidowOrphan='false' BreakNonLatinWord='false' KeepLines='false' VerAlign='Baseline' BreakLatinWord='KeepWord' LineWrap='Break' Id='0' TabDef='0' AutoSpaceEAsianNum='false' SnapToGrid='true' Condense='0' Align='Left' Level='0' AutoSpaceEAsianEng='false' FontLineHeight='false' KeepWithNext='false'>
+          <PARAMARGIN Right='0' LineSpacing='130' LineSpacingType='Percent' Next='0' Indent='0' Prev='0' Left='0' />
+          <PARABORDER BorderFill='1' IgnoreMargin='false' Connect='false' />
+        </PARASHAPE>
+        <PARASHAPE HeadingType='None' PageBreakBefore='false' WidowOrphan='false' BreakNonLatinWord='true' KeepLines='false' BreakLatinWord='KeepWord' LineWrap='Break' VerAlign='Baseline' Id='1' TabDef='0' AutoSpaceEAsianNum='false' SnapToGrid='true' Condense='0' Align='Justify' Level='0' AutoSpaceEAsianEng='false' FontLineHeight='false' KeepWithNext='false'>
+          <PARAMARGIN Right='0' LineSpacing='130' LineSpacingType='Percent' Next='0' Indent='-2620' Prev='0' Left='0' />
+          <PARABORDER BorderFill='1' IgnoreMargin='false' Connect='false' />
+        </PARASHAPE>
+        <PARASHAPE HeadingType='None' PageBreakBefore='false' WidowOrphan='false' BreakNonLatinWord='false' KeepLines='false' BreakLatinWord='KeepWord' LineWrap='Break' VerAlign='Baseline' Id='2' TabDef='0' AutoSpaceEAsianNum='false' SnapToGrid='true' Condense='0' Align='Justify' Level='0' AutoSpaceEAsianEng='false' FontLineHeight='false' KeepWithNext='false'>
+          <PARAMARGIN Right='0' LineSpacing='150' LineSpacingType='Percent' Next='0' Indent='0' Prev='0' Left='0' />
+          <PARABORDER BorderFill='1' IgnoreMargin='false' Connect='false' />
+        </PARASHAPE>
+        <PARASHAPE HeadingType='None' PageBreakBefore='false' WidowOrphan='false' BreakNonLatinWord='true' KeepLines='false' BreakLatinWord='KeepWord' LineWrap='Break' VerAlign='Baseline' Id='3' TabDef='0' AutoSpaceEAsianNum='false' SnapToGrid='true' Condense='0' Align='Justify' Level='0' AutoSpaceEAsianEng='false' FontLineHeight='false' KeepWithNext='false'>
+          <PARAMARGIN Right='0' LineSpacing='160' LineSpacingType='Percent' Next='0' Indent='0' Prev='0' Left='0' />
+          <PARABORDER BorderFill='1' IgnoreMargin='false' Connect='false' />
+        </PARASHAPE>
+        <PARASHAPE HeadingType='Outline' PageBreakBefore='false' WidowOrphan='false' BreakNonLatinWord='true' KeepLines='false' BreakLatinWord='KeepWord' LineWrap='Break' VerAlign='Baseline' Id='4' TabDef='1' AutoSpaceEAsianNum='false' SnapToGrid='true' Condense='20' Align='Justify' Level='6' AutoSpaceEAsianEng='false' FontLineHeight='false' KeepWithNext='false'>
+          <PARAMARGIN Right='0' LineSpacing='160' LineSpacingType='Percent' Next='0' Indent='0' Prev='0' Left='14000' />
+          <PARABORDER BorderFill='1' IgnoreMargin='false' Connect='false' />
+        </PARASHAPE>
+        <PARASHAPE HeadingType='Outline' PageBreakBefore='false' WidowOrphan='false' BreakNonLatinWord='true' KeepLines='false' BreakLatinWord='KeepWord' LineWrap='Break' VerAlign='Baseline' Id='5' TabDef='1' AutoSpaceEAsianNum='false' SnapToGrid='true' Condense='20' Align='Justify' Level='5' AutoSpaceEAsianEng='false' FontLineHeight='false' KeepWithNext='false'>
+          <PARAMARGIN Right='0' LineSpacing='160' LineSpacingType='Percent' Next='0' Indent='0' Prev='0' Left='12000' />
+          <PARABORDER BorderFill='1' IgnoreMargin='false' Connect='false' />
+        </PARASHAPE>
+        <PARASHAPE HeadingType='Outline' PageBreakBefore='false' WidowOrphan='false' BreakNonLatinWord='true' KeepLines='false' BreakLatinWord='KeepWord' LineWrap='Break' VerAlign='Baseline' Id='6' TabDef='1' AutoSpaceEAsianNum='false' SnapToGrid='true' Condense='20' Align='Justify' Level='4' AutoSpaceEAsianEng='false' FontLineHeight='false' KeepWithNext='false'>
+          <PARAMARGIN Right='0' LineSpacing='160' LineSpacingType='Percent' Next='0' Indent='0' Prev='0' Left='10000' />
+          <PARABORDER BorderFill='1' IgnoreMargin='false' Connect='false' />
+        </PARASHAPE>
+        <PARASHAPE HeadingType='Outline' PageBreakBefore='false' WidowOrphan='false' BreakNonLatinWord='true' KeepLines='false' BreakLatinWord='KeepWord' LineWrap='Break' VerAlign='Baseline' Id='7' TabDef='1' AutoSpaceEAsianNum='false' SnapToGrid='true' Condense='20' Align='Justify' Level='3' AutoSpaceEAsianEng='false' FontLineHeight='false' KeepWithNext='false'>
+          <PARAMARGIN Right='0' LineSpacing='160' LineSpacingType='Percent' Next='0' Indent='0' Prev='0' Left='8000' />
+          <PARABORDER BorderFill='1' IgnoreMargin='false' Connect='false' />
+        </PARASHAPE>
+        <PARASHAPE HeadingType='Outline' PageBreakBefore='false' WidowOrphan='false' BreakNonLatinWord='true' KeepLines='false' BreakLatinWord='KeepWord' LineWrap='Break' VerAlign='Baseline' Id='8' TabDef='1' AutoSpaceEAsianNum='false' SnapToGrid='true' Condense='20' Align='Justify' Level='2' AutoSpaceEAsianEng='false' FontLineHeight='false' KeepWithNext='false'>
+          <PARAMARGIN Right='0' LineSpacing='160' LineSpacingType='Percent' Next='0' Indent='0' Prev='0' Left='6000' />
+          <PARABORDER BorderFill='1' IgnoreMargin='false' Connect='false' />
+        </PARASHAPE>
+        <PARASHAPE HeadingType='Outline' PageBreakBefore='false' WidowOrphan='false' BreakNonLatinWord='true' KeepLines='false' BreakLatinWord='KeepWord' LineWrap='Break' VerAlign='Baseline' Id='9' TabDef='1' AutoSpaceEAsianNum='false' SnapToGrid='true' Condense='20' Align='Justify' Level='1' AutoSpaceEAsianEng='false' FontLineHeight='false' KeepWithNext='false'>
+          <PARAMARGIN Right='0' LineSpacing='160' LineSpacingType='Percent' Next='0' Indent='0' Prev='0' Left='4000' />
+          <PARABORDER BorderFill='1' IgnoreMargin='false' Connect='false' />
+        </PARASHAPE>
+        <PARASHAPE HeadingType='Outline' PageBreakBefore='false' WidowOrphan='false' BreakNonLatinWord='true' KeepLines='false' BreakLatinWord='KeepWord' LineWrap='Break' VerAlign='Baseline' Id='10' TabDef='1' AutoSpaceEAsianNum='false' SnapToGrid='true' Condense='20' Align='Justify' Level='0' AutoSpaceEAsianEng='false' FontLineHeight='false' KeepWithNext='false'>
+          <PARAMARGIN Right='0' LineSpacing='160' LineSpacingType='Percent' Next='0' Indent='0' Prev='0' Left='2000' />
+          <PARABORDER BorderFill='1' IgnoreMargin='false' Connect='false' />
+        </PARASHAPE>
+        <PARASHAPE HeadingType='None' PageBreakBefore='false' WidowOrphan='false' BreakNonLatinWord='true' KeepLines='false' BreakLatinWord='KeepWord' LineWrap='Break' VerAlign='Baseline' Id='11' TabDef='0' AutoSpaceEAsianNum='false' SnapToGrid='true' Condense='0' Align='Justify' Level='0' AutoSpaceEAsianEng='false' FontLineHeight='false' KeepWithNext='false'>
+          <PARAMARGIN Right='0' LineSpacing='160' LineSpacingType='Percent' Next='0' Indent='0' Prev='0' Left='3000' />
+          <PARABORDER BorderFill='1' IgnoreMargin='false' Connect='false' />
+        </PARASHAPE>
+      </PARASHAPELIST>
+      <STYLELIST Count='14'>
+        <STYLE NextStyle='0' Type='Para' ParaShape='3' LangId='1042' LockForm='0' CharShape='0' Id='0' Name='바탕글' EngName='Normal' />
+        <STYLE NextStyle='1' Type='Para' ParaShape='11' LangId='1042' LockForm='0' CharShape='0' Id='1' Name='본문' EngName='Body' />
+        <STYLE NextStyle='2' Type='Para' ParaShape='10' LangId='1042' LockForm='0' CharShape='0' Id='2' Name='개요 1' EngName='Outline 1' />
+        <STYLE NextStyle='3' Type='Para' ParaShape='9' LangId='1042' LockForm='0' CharShape='0' Id='3' Name='개요 2' EngName='Outline 2' />
+        <STYLE NextStyle='4' Type='Para' ParaShape='8' LangId='1042' LockForm='0' CharShape='0' Id='4' Name='개요 3' EngName='Outline 3' />
+        <STYLE NextStyle='5' Type='Para' ParaShape='7' LangId='1042' LockForm='0' CharShape='0' Id='5' Name='개요 4' EngName='Outline 4' />
+        <STYLE NextStyle='6' Type='Para' ParaShape='6' LangId='1042' LockForm='0' CharShape='0' Id='6' Name='개요 5' EngName='Outline 5' />
+        <STYLE NextStyle='7' Type='Para' ParaShape='5' LangId='1042' LockForm='0' CharShape='0' Id='7' Name='개요 6' EngName='Outline 6' />
+        <STYLE NextStyle='8' Type='Para' ParaShape='4' LangId='1042' LockForm='0' CharShape='0' Id='8' Name='개요 7' EngName='Outline 7' />
+        <STYLE NextStyle='9' Type='Para' ParaShape='3' LangId='1042' LockForm='0' CharShape='1' Id='9' Name='쪽 번호' EngName='Page Number' />
+        <STYLE NextStyle='10' Type='Para' ParaShape='2' LangId='1042' LockForm='0' CharShape='2' Id='10' Name='머리말' EngName='Header' />
+        <STYLE NextStyle='11' Type='Para' ParaShape='1' LangId='1042' LockForm='0' CharShape='3' Id='11' Name='각주' EngName='Footnote' />
+        <STYLE NextStyle='12' Type='Para' ParaShape='1' LangId='1042' LockForm='0' CharShape='3' Id='12' Name='미주' EngName='Endnote' />
+        <STYLE NextStyle='13' Type='Para' ParaShape='0' LangId='1042' LockForm='0' CharShape='4' Id='13' Name='메모' EngName='Memo' />
+      </STYLELIST>
+    </MAPPINGTABLE>
+    <COMPATIBLEDOCUMENT TargetProgram='None'>
+      <LAYOUTCOMPATIBILITY OverlapBothAllowOverlap='false' ExtendVertLimitToPageMargins='false' AdjustBaselineOfObjectToBottom='false' DoNotApplyImageEffect='false' UseInnerUnderline='false' ApplyParaBorderToOutside='false' DoNotHoldAnchorOfTable='false' BaseCharUnitOfIndentOnFirstChar='false' ApplyTabPosBasedOnSegment='false' ConnectParaBorderfillOfEqualBorder='false' ApplyFontWeightToBold='false' BreakTabOverLine='false' DoNotApplyAutoSpaceEAsianEng='false' AdjustBaselineInFixedLinespacing='false' ApplyExtendHeaderFooterEachSection='false' AdjustLineheightToFont='false' AdjustParaBorderfillToSpacing='false' ApplyCharSpacingToCharGrid='false' BaseCharUnitOnEAsian='false' BaseLinespacingOnLinegrid='false' ApplyFontspaceToLatin='false' DoNotAdjustEmptyAnchorLine='false' DoNotApplyExtensionCharCompose='false' DoNotApplyLinegridAtNoLinespacing='false' ApplyMinColumnWidthTo1mm='false' ApplyNextspacingOfLastPara='false' DoNotApplyGridInHeaderFooter='false' ExtendLineheightToParaBorderOffset='false' DoNotAdjustWordInJustify='false' DoNotAlignWhitespaceOnRight='false' ApplyAtLeastToPercent100Pct='false' DoNotApplyVertOffsetOfForward='false' ApplyPrevspacingBeneathObject='false' FixedUnderlineWidth='false' DoNotApplyAutoSpaceEAsianNum='false' DoNotApplyStrikeoutWithUnderline='false' AdjustParaBorderOffsetWithBorder='false' DoNotApplyShapeComment='false' AdjustVertPosOfLine='false' DoNotFormattingAtBeneathAnchor='false' ExtendLineheightToOffset='false' TreatQuotationAsLatin='false' DoNotApplyHeaderFooterAtNoSpace='false' DoNotApplyColSeparatorAtNoGap='false' UseLowercaseStrikeout='false' />
+    </COMPATIBLEDOCUMENT>
+  </HEAD>
+  <BODY>
+    <SECTION Id='0'>
+      <P ParaShape='3' ColumnBreak='false' Style='0' PageBreak='false'>
+        <TEXT CharShape='0'>
+          <SECDEF OutlineShape='1' TextVerticalWidthHead='0' CharGrid='0' SpaceColumns='1134' TextDirection='0' FirstBorder='false' FirstFill='false' LineGrid='0' TabStop='8000'>
+            <STARTNUMBER PageStartsOn='Both' Figure='0' Equation='0' Page='0' Table='0' />
+            <HIDE Footer='false' EmptyLine='false' MasterPage='false' Fill='false' Border='false' PageNumPos='false' Header='false' />
+            <PAGEDEF Landscape='0' Height='84188' Width='59528' GutterType='LeftOnly'>
+              <PAGEMARGIN Footer='4252' Bottom='4252' Gutter='0' Left='8504' Right='8504' Top='5668' Header='4252' />
+            </PAGEDEF>
+            <FOOTNOTESHAPE>
+              <AUTONUMFORMAT Type='Digit' SuffixChar=')' Superscript='false' />
+              <NOTELINE Type='Solid' Width='0.12mm' Length='5cm' />
+              <NOTESPACING AboveLine='850' BelowLine='567' BetweenNotes='283' />
+              <NOTENUMBERING Type='Continuous' NewNumber='1' />
+              <NOTEPLACEMENT BeneathText='false' Place='EachColumn' />
+            </FOOTNOTESHAPE>
+            <ENDNOTESHAPE>
+              <AUTONUMFORMAT Type='Digit' SuffixChar=')' Superscript='false' />
+              <NOTELINE Type='Solid' Width='0.12mm' Length='14692344' />
+              <NOTESPACING AboveLine='850' BelowLine='567' BetweenNotes='0' />
+              <NOTENUMBERING Type='Continuous' NewNumber='1' />
+              <NOTEPLACEMENT BeneathText='false' Place='EndOfDocument' />
+            </ENDNOTESHAPE>
+            <PAGEBORDERFILL Type='Both' FooterInside='false' HeaderInside='false' TextBorder='true' FillArea='Paper'>
+              <PAGEOFFSET Bottom='1417' Left='1417' Right='1417' Top='1417' />
+            </PAGEBORDERFILL>
+            <PAGEBORDERFILL Type='Even' FooterInside='false' HeaderInside='false' TextBorder='true' FillArea='Paper'>
+              <PAGEOFFSET Bottom='1417' Left='1417' Right='1417' Top='1417' />
+            </PAGEBORDERFILL>
+            <PAGEBORDERFILL Type='Odd' FooterInside='false' HeaderInside='false' TextBorder='true' FillArea='Paper'>
+              <PAGEOFFSET Bottom='1417' Left='1417' Right='1417' Top='1417' />
+            </PAGEBORDERFILL>
+          </SECDEF>
+          <COLDEF Type='Newspaper' SameSize='true' Layout='Left' SameGap='0' Count='1' />
+          <CHAR />
+        </TEXT>
+      </P>
+    </SECTION>
+  </BODY>
+  <TAIL>
+    <SCRIPTCODE Type='JScript' Version='1.0'>
+      <SCRIPTHEADER>var Documents = XHwpDocuments;
+var Document = Documents.Active_XHwpDocument;
+</SCRIPTHEADER>
+      <SCRIPTSOURCE>function OnDocument_New()
+{
+	//todo : 
+}
+
+</SCRIPTSOURCE>
+    </SCRIPTCODE>
+  </TAIL>
+</HWPML>
