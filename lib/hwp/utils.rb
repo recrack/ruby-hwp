@@ -8,3 +8,9 @@ module HWP
         end
     end # Utils
 end # HWP
+
+class String
+    def to_formatted_hex
+        self.bytes.to_a.map{|c| sprintf("%02x", c)}.join(" ")
+    end
+end
