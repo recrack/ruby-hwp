@@ -17,111 +17,108 @@ require 'gtk2'
 require 'cairo'
 
 class HwpViewer
-	# PAGE SIZE
-	# 1 point = size[mm] * 72.0 / 25.4
-	# 1 mm =    size[point] / 72.0 * 25.4
-	# Letter        612 * 792
-	# LetterSmall   612 * 792
-	# Tabloid       792 * 1224
-	# Ledger       1224 * 792
-	# Legal         612 * 1008
-	# Statement     396 * 612
-	# Executive     540 * 720
-	# A0           2384 * 3371
-	# A1           1685 * 2384
-	# A2           1190 * 1684
-	# A3            842 * 1190
-	# A4            595 * 842
-	# A4Small       595 * 842
-	# A5            420 * 595
-	# B4            729 * 1032
-	# B5            516 * 729
-	# Envelope      ??? * ???
-	# Folio         612 * 936
-	# Quarto        610 * 780
-	# 10x14         720 * 1008
+    # PAGE SIZE
+    # 1 point = size[mm] * 72.0 / 25.4
+    # 1 mm =    size[point] / 72.0 * 25.4
+    # Letter        612 * 792
+    # LetterSmall   612 * 792
+    # Tabloid       792 * 1224
+    # Ledger       1224 * 792
+    # Legal         612 * 1008
+    # Statement     396 * 612
+    # Executive     540 * 720
+    # A0           2384 * 3371
+    # A1           1685 * 2384
+    # A2           1190 * 1684
+    # A3            842 * 1190
+    # A4            595 * 842
+    # A4Small       595 * 842
+    # A5            420 * 595
+    # B4            729 * 1032
+    # B5            516 * 729
+    # Envelope      ??? * ???
+    # Folio         612 * 936
+    # Quarto        610 * 780
+    # 10x14         720 * 1008
     def initialize(filename=nil) # process 같은 함수로 변경한다.
-		create_gui
-		process filename if filename
+        create_gui
+        process filename if filename
     end
 
-	def create_gui
-		file_menu = Gtk::Menu.new
-		help_menu = Gtk::Menu.new
+    def create_gui
+        file_menu = Gtk::Menu.new
+        help_menu = Gtk::Menu.new
 
-		file_item = Gtk::MenuItem.new 'File'
-		help_item = Gtk::MenuItem.new 'Help'
+        file_item = Gtk::MenuItem.new 'File'
+        help_item = Gtk::MenuItem.new 'Help'
 
-		file_item.set_submenu file_menu
-		help_item.set_submenu help_menu
+        file_item.set_submenu file_menu
+        help_item.set_submenu help_menu
 
-		open_item = Gtk::MenuItem.new 'Open'
-		quit_item = Gtk::MenuItem.new 'Quit'
-		about_item = Gtk::MenuItem.new 'About'
+        open_item = Gtk::MenuItem.new 'Open'
+        quit_item = Gtk::MenuItem.new 'Quit'
+        about_item = Gtk::MenuItem.new 'About'
 
-		file_menu.append open_item
-		file_menu.append quit_item
-		help_menu.append about_item
+        file_menu.append open_item
+        file_menu.append quit_item
+        help_menu.append about_item
 
-		menu_bar = Gtk::MenuBar.new
-		menu_bar.append file_item
-		menu_bar.append help_item
+        menu_bar = Gtk::MenuBar.new
+        menu_bar.append file_item
+        menu_bar.append help_item
 
-		quit_item.signal_connect('activate') { Gtk.main_quit }
+        quit_item.signal_connect('activate') { Gtk.main_quit }
 
-		@w = Gtk::Window.new
-		@w.title = "HWP Viewer"
-		@w.set_size_request(640,480)
-		@w.signal_connect('delete-event') { Gtk.main_quit }
+        @w = Gtk::Window.new
+        @w.title = "HWP Viewer"
+        @w.set_size_request(640,480)
+        @w.signal_connect('delete-event') { Gtk.main_quit }
 
-		open_item.signal_connect('activate') do
-			dialog = Gtk::FileChooserDialog.new("Open File", @w,
-				Gtk::FileChooser::ACTION_OPEN,
-				nil,
-				[Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_CANCEL],
-				[Gtk::Stock::OPEN, Gtk::Dialog::RESPONSE_ACCEPT])
+        open_item.signal_connect('activate') do
+            dialog = Gtk::FileChooserDialog.new("Open File", @w,
+                Gtk::FileChooser::ACTION_OPEN,
+                nil,
+                [Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_CANCEL],
+                [Gtk::Stock::OPEN, Gtk::Dialog::RESPONSE_ACCEPT])
 
-			if dialog.run == Gtk::Dialog::RESPONSE_ACCEPT
-				filename = dialog.filename
-				dialog.destroy
-			end
+            if dialog.run == Gtk::Dialog::RESPONSE_ACCEPT
+                filename = dialog.filename
+                dialog.destroy
+            end
+            #hv = HwpViewer.new filename
+            process(filename)
+        end
 
-			process(filename)
-		end
+        about_item.signal_connect('activate') do
+            about = Gtk::AboutDialog.new
+            about.program_name = "HWP Viewer"
+            about.comments = "한글과컴퓨터의 글 문서 파일(.hwp) 공개 문서를 참고하여 개발하였습니다."
+            about.run
+            about.destroy
+        end
 
-		about_item.signal_connect('activate') do
-			about = Gtk::AboutDialog.new
-			about.program_name = "HWP Viewer"
-			about.comments = "한글과컴퓨터의 글 문서 파일(.hwp) 공개 문서를 참고하여 개발하였습니다."
-			about.run
-			about.destroy
-		end
-
-		@vbox = Gtk::VBox.new false, 0
-		@vbox.pack_start menu_bar, false, false, 0
-		@notebook = Gtk::Notebook.new
-		@vbox.add @notebook
-
-		@w.add @vbox
-		@w.show_all
-	end
+        @vbox = Gtk::VBox.new(false, 0)
+        @vbox.pack_start(menu_bar, false, false, 0)
+        @w.add @vbox
+        @w.show_all
+    end
 
     def on_changed(widget)
-        @current_page = @document.get_pages(widget.value_as_int)
+        @current_page = @document.get_page(widget.value_as_int)
         @dwg.set_size_request(@width * @scale, @height * @scale)
         @dwg.queue_draw()
     end
-    
+
     def on_scale_changed(widget)
         @scale = widget.value_as_int()
         @dwg.set_size_request(@width * @scale, @height * @scale)
         @dwg.queue_draw()
     end
-    
+
     def on_expose(widget, event)
         cr = widget.window.create_cairo_context
         cr.set_source_rgb(1, 1, 1)
-        
+
         if @scale != 1
             cr.scale(@scale, @scale)
         end
@@ -129,29 +126,28 @@ class HwpViewer
         cr.fill()
         cr.set_source_rgb(0, 0, 0)
         #@current_page.make_page
-		x = @page_def.left_margin / 100.0
-		y = (@page_def.top_margin + @page_def.header_margin) / 100.0
-		layouts = @current_page
-		layouts.each do |layout|
-			cr.move_to(x, y)
-			cr.show_pango_layout(layout)
-			y += layout.size[1] / 1000.0
-		end
-		cr.show_page
-		##
+        x = @page_def.left_margin / 100.0
+        y = (@page_def.top_margin + @page_def.header_margin) / 100.0
+        page = @current_page
+        page.layouts.each do |layout|
+            cr.move_to(x, y)
+            cr.show_pango_layout(layout)
+            y += layout.size[1] / 1000.0
+        end
+        cr.show_page
+        ##
     end
 
-	def process filename
+    def process filename
         @document = HWP.open filename
-        section_def = @document.body_text.para_headers[0].ctrl_headers[0].section_defs[0]
-		@page_def = section_def.page_defs[0]
-        @document.make_page
+        section_def = @document.body_text.paragraphs[0].ctrl_headers[0].section_defs[0]
+        @page_def = section_def.page_defs[0]
+
         @n_pages = @document.n_pages()
 
-        @current_page = @document.get_pages(0)
+        @current_page = @document.get_page(0)
         @scale = 1
-        @width = 595; @height = 842
-        #@width, @height = @current_page.size()
+        @width, @height = @current_page.size()
 
         adjust = Gtk::Adjustment.new(0, 0, @n_pages -1, 1, 0, 0)
         page_selector = Gtk::SpinButton.new(adjust, 0, 0)
@@ -160,17 +156,15 @@ class HwpViewer
         lab = Gtk::Label.new('Page:')
 
         hbox = Gtk::HBox.new(false, 0)
+        @vbox.pack_start(hbox, false, false, 1)
 
-        vbox = Gtk::VBox.new(false, 2)
-        vbox.pack_start(hbox, false, false, 0)
-        
         hbox.pack_start(lab, false, false, 4)
         hbox.pack_start(page_selector, false, false, 0)
-        
+
         adjust = Gtk::Adjustment.new(1, 1, 5, 1, 0, 0)
         scale_selector = Gtk::SpinButton.new(adjust, 0, 0);
         scale_selector.signal_connect("value-changed") { on_scale_changed(scale_selector) }
-        
+
         lab = Gtk::Label.new('Scale:')
 
         hbox.pack_start(lab, false, false, 4)
@@ -180,27 +174,18 @@ class HwpViewer
         @dwg.set_size_request(@width, @height)
         @dwg.signal_connect("expose-event") { |w, e| on_expose(w, e) }
 
-		@scrolled_w = Gtk::ScrolledWindow.new
-		@scrolled_w.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC)
-		@scrolled_w.add_with_viewport(@dwg)
-		@scrolled_w.show_all
+        @scrolled_w = Gtk::ScrolledWindow.new
+        @scrolled_w.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC)
+        @scrolled_w.add_with_viewport(@dwg)
+        @scrolled_w.show_all
 
-		button = Gtk::Button.new "Close"
-
-		button.signal_connect("clicked") do
-			@notebook.remove_page @notebook.page
-		end
-
-		vbox.pack_end(button, false, false, 0)
-		vbox.add @scrolled_w
-		@notebook.append_page vbox
-		#@notebook.next_page
-		@notebook.show_all
-		@document.close
-	end
+        @vbox.add @scrolled_w
+        @vbox.show_all
+        @document.close
+    end
 end
 
 if $PROGRAM_NAME == __FILE__
-	hv = HwpViewer.new ARGV[0]
+    hv = HwpViewer.new ARGV[0]
     Gtk.main
 end
