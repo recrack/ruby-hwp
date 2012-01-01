@@ -210,8 +210,8 @@ module HWP
                         # margin
                         left_margin  = sio.read(2).unpack("v")[0]
                         right_margin = sio.read(2).unpack("v")[0]
-                        up_margin    = sio.read(2).unpack("v")[0]
-                        down_margin  = sio.read(2).unpack("v")[0]
+                        top_margin    = sio.read(2).unpack("v")[0]
+                        bottom_margin  = sio.read(2).unpack("v")[0]
 
                         row_size = sio.read(2 * row_count).unpack("v*")
                         border_fill_id = sio.read(2).unpack("v")[0]
@@ -225,11 +225,6 @@ module HWP
 
                         # row 만들기
                         @rows = Array.new(row_count).collect { Table::Row.new }
-                        #@rows.each do |row|
-                        #    row.cells = Array.new(col_count).collect do
-                        #        Table::Cell.new
-                        #    end
-                        #end
                     when :HWPTAG_LIST_HEADER
                         #p context.data.to_formatted_hex
                         sio = StringIO.new context.data
@@ -256,6 +251,8 @@ module HWP
                         # cell 만들기
                         if @ctrl_header.ctrl_id == 'tbl '
                             @rows[row_addr].cells[col_addr] = Table::Cell.new
+                            @rows[row_addr].cells[col_addr].width  = width
+                            @rows[row_addr].cells[col_addr].height = height
                             @rows[row_addr].cells[col_addr].row_span = row_span
                             @rows[row_addr].cells[col_addr].col_span = col_span
                             if col_span > 1
@@ -282,6 +279,20 @@ module HWP
                 end # while
             end # parse
 
+            # TODO
+            def render(cr, x, y)
+                x0 = x
+                @rows.each do |row|
+                    row.each do |cell|
+                        cr.rectangle(x, y, cell.width, cell.height)
+                        cr.close_path
+                        x += cell.width
+                    end
+                    x = x0
+                    y += cell.height
+                end
+            end
+
             class Row
                 attr_accessor :cells
                 def initialize
@@ -290,7 +301,8 @@ module HWP
             end
 
             class Cell
-                attr_accessor :para_headers, :row_span, :col_span, :covered
+                attr_accessor :para_headers, :width, :height,
+                              :row_span, :col_span, :covered
                 def initialize
                     @para_headers = []
                     @covered = false
