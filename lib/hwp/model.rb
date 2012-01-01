@@ -1,63 +1,11 @@
 # coding: utf-8
 # 한글과컴퓨터의 글 문서 파일(.hwp) 공개 문서를 참고하여 개발하였습니다.
 
-module Record
-    class ViewText
-        def initialize dirent, header
-            raise NotImplementedError.new("ViewText is not supported")
-        end
-    end
-
-    class SummaryInformation; end
-
-    class BinData
-        def initialize(dirent, header)
-        end
-    end
-
-    class PrvText
-        def initialize(dirent)
-            @dirent = dirent
-        end
-
-        def to_s
-            @dirent.read.unpack("v*").pack("U*")
-        end
-    end
-
-    class PrvImage
-        def initialize(dirent)
-            @dirent = dirent
-        end
-
-        def parse
-            @dirent.read
-        end
-    end
-
-    class DocOptions
-    end
-
-    class Scripts;end
-
-    class XMLTemplate
-    end
-
-    class DocHistory
-        def initialize(dirent, header)
-        end
-    end
-end # Record
-
 require 'hwp/utils.rb'
 
 # HWP Document Model
 module HWP
     module Model
-        class Paragraph
-            attr_accessor :text
-        end
-
         class SectionDef
             attr_reader :page_defs, :footnote_shapes, :page_border_fills
 
@@ -214,12 +162,14 @@ module HWP
             end
         end # PageHiding
 
+        #class Table
+        #    attr_accessor :page_break, :repeat_header, :row_count, :col_count,
+        #                  :cell_spacing, :border_fill
+        #end
+
         class Table
             include HWP::Utils
             #table
-            #    column
-            #    column
-            #    column
             #    row1
             #        cell1
             #        cell2
@@ -232,109 +182,105 @@ module HWP
             #        cell1
             #        covered-table-cell
             #        cell3
-            attr_accessor :columns, :rows
+            attr_accessor :rows
 
             def initialize(ctrl_header)
                 @ctrl_header = ctrl_header
-                #@tables = [ {:list_header1 => para_headers1},
-                #            {:list_header2 => para_headers2},
-                #            ...
-                #          ]
                 @level = ctrl_header.level
-                @para_headers = []
-                @columns = []
                 @rows = []
             end
 
             def parse context
                 while context.has_next?
-                    if context.stack.empty?
-                        context.pull
-                    else
-                        context.stack.pop
-                    end
+                    context.stack.empty? ? context.pull : context.stack.pop
 
-                    case context.tag_id
-                    when :HWPTAG_CTRL_HEADER
-                        # CTRL_HEADER 가 끝이 나고 새롭게 시작됨을 알린다.
+                    if  context.level <= @level
                         context.stack << context.tag_id
                         break
-                    when :HWPTAG_LIST_HEADER
-                        # TODO
-                        hierarchy_check(@level, context.level, __LINE__)
-                    when :HWPTAG_PARA_HEADER
-                        if context.level <= @level
-                            context.stack << context.tag_id
-                            break
-                        else
-                            #p [@level, context.level, __LINE__]
-                            hierarchy_check(@level, context.level, __LINE__)
-                            para_header = Record::Section::
-                                ParaHeader.new(context)
-                            @para_headers << para_header # FIXME
-                        end
+                    end
+
+                    # 43쪽, 표 69,70 표 개체 속성, 149쪽
+                    case context.tag_id
                     when :HWPTAG_TABLE
-                        #hierarchy_check(@level, context.level, __LINE__)
+                        sio = StringIO.new context.data
+                        unknown = sio.read(4)
+                        row_count    = sio.read(2).unpack("v")[0]
+                        col_count    = sio.read(2).unpack("v")[0]
+                        cell_spacing = sio.read(2).unpack("v")[0]
+                        # margin
+                        left_margin  = sio.read(2).unpack("v")[0]
+                        right_margin = sio.read(2).unpack("v")[0]
+                        up_margin    = sio.read(2).unpack("v")[0]
+                        down_margin  = sio.read(2).unpack("v")[0]
+
+                        row_size = sio.read(2 * row_count).unpack("v*")
+                        border_fill_id = sio.read(2).unpack("v")[0]
+                        valid_zone_info_size = sio.read(2).unpack("v")[0]
+                        remain = sio.read
+                        unless remain.size.zero?
+                            raise "data size mismatch"
+                            sio.close
+                        end
+                        sio.close
+
+                        # row 만들기
+                        @rows = Array.new(row_count).collect { Table::Row.new }
+                        #@rows.each do |row|
+                        #    row.cells = Array.new(col_count).collect do
+                        #        Table::Cell.new
+                        #    end
+                        #end
+                    when :HWPTAG_LIST_HEADER
+                        #p context.data.to_formatted_hex
+                        sio = StringIO.new context.data
+                        ##
+                        para_count = sio.read(2).unpack("v")[0]
+                        sio.read(2).unpack("v")[0]
+                        sio.read(2).unpack("v")[0]
+                        sio.read(2).unpack("v")[0]
+                        ##
+                        col_addr = sio.read(2).unpack("v")[0]
+                        row_addr = sio.read(2).unpack("v")[0]
+                        col_span = sio.read(2).unpack("v")[0]
+                        row_span = sio.read(2).unpack("v")[0]
+                        width  = sio.read(4).unpack("V")[0]
+                        height = sio.read(4).unpack("V")[0]
+                        margins = sio.read(2 * 4).unpack("v*")
+                        border_fill_id = sio.read(2).unpack("v")[0]
+                        remain = sio.read
+                        unless remain.empty?
+                            puts "unknown LIST_HEADER data #{remain.to_formatted_hex}"
+                        end
+                        sio.close
+
+                        # cell 만들기
+                        if @ctrl_header.ctrl_id == 'tbl '
+                            @rows[row_addr].cells[col_addr] = Table::Cell.new
+                            @rows[row_addr].cells[col_addr].row_span = row_span
+                            @rows[row_addr].cells[col_addr].col_span = col_span
+                            if col_span > 1
+                                for i in col_addr...(col_addr + col_span)
+                                    @rows[row_addr].cells[i].covered = true
+                                end
+                            end
+
+                            if row_span > 1
+                                for i in row_addr...(row_addr + row_span)
+                                    @rows[i].cells[col_addr].covered = true
+                                end
+                            end
+                        else
+                            raise # FIXME
+                            @list_headers << list_header  # FIXME
+                        end
+                    when :HWPTAG_PARA_HEADER
+                        @rows[row_addr].cells[col_addr].para_headers <<
+                            Record::Section::ParaHeader.new(context)
                     else
                         raise "unhandled " + context.tag_id.to_s
                     end
                 end # while
-            end # parses
-
-            # @text_table은 임시로 만든 이름이다. 더 나은 API 설계를 할 것.
-            def append_table table
-                @tables << table
-                @text_table.rows = Array.new(table.row_count).collect do
-                    Text::Table::Row.new
-                end
-                
-                @text_table.rows.each do |row|
-                    row.cells = Array.new(table.col_count).collect do
-                        Text::Table::Cell.new
-                    end
-                end
-            end
-
-            def append_list_header list_header
-                if @ctrl_id == 'tbl '
-                    @col_addr = list_header.col_addr
-                    @row_addr = list_header.row_addr
-                    col_span = list_header.col_span
-                    row_span = list_header.row_span
-                    @text_table.rows[@row_addr].cells[@col_addr] =
-                        Text::Table::Cell.new
-                    @text_table.rows[@row_addr].cells[@col_addr].row_span =
-                        row_span
-                    @text_table.rows[@row_addr].cells[@col_addr].col_span =
-                        col_span
-                    if col_span > 1
-                        for i in @col_addr...(@col_addr+col_span)
-                            @text_table.rows[@row_addr].cells[i].covered = true
-                        end
-                    end
-
-                    if row_span > 1
-                        for i in @row_addr...(@row_addr+row_span)
-                            @text_table.rows[i].cells[@col_addr].covered = true
-                        end
-                    end
-                else
-                    @list_headers << list_header
-                end
-            end
-
-            def append_para_header para_header
-                if @ctrl_id == 'tbl '
-                    @para_headers << para_header
-                    # FIXME 파라 헤더가 없는 것이 있다. 고쳐야 된다.
-                    # list_header 다음에 오는 연속된 para_header 에 대하여
-                    # 올바르게 처리해야 한다.
-                    @text_table.rows[@row_addr].cells[@col_addr].
-                        para_headers << para_header
-                else
-                    @para_headers << para_header
-                end
-            end
+            end # parse
 
             class Row
                 attr_accessor :cells
@@ -447,14 +393,14 @@ module HWP
                 @data  = ctrl_header.data
                 @level = ctrl_header.level
                 io = StringIO.new(@data)
-                property = io.read(4).unpack("I")	# INT32
-                len = io.read(2).unpack("s")[0]	# WORD
-                #io.read(len * 2).unpack("S*").pack("U*")		# WCHAR
-                @script = io.read(len * 2).unpack("v*").pack("U*")	# WCHAR
-                #p unknown = io.read(2).unpack("S")	# 스펙 50쪽과 다름
-                #p size = io.read(4).unpack("I")		# HWPUNIT
-                #p color = io.read(4).unpack("I")	# COLORREF
-                #p baseline = io.read(2).unpack("s")	# INT16
+                property = io.read(4).unpack("I")   # INT32
+                len = io.read(2).unpack("s")[0] # WORD
+                #io.read(len * 2).unpack("S*").pack("U*")       # WCHAR
+                @script = io.read(len * 2).unpack("v*").pack("U*")  # WCHAR
+                #p unknown = io.read(2).unpack("S") # 스펙 50쪽과 다름
+                #p size = io.read(4).unpack("I")        # HWPUNIT
+                #p color = io.read(4).unpack("I")   # COLORREF
+                #p baseline = io.read(2).unpack("s")    # INT16
             end
 
             def parse context
