@@ -61,21 +61,21 @@ doc = HWP.open files[0]
 # Quarto        610 * 780
 # 10x14         720 * 1008
 
-section_def = doc.body_text.para_headers[0].ctrl_headers[0].section_defs[0]
+section_def = doc.body_text.paragraphs[0].ctrl_headers[0].section_defs[0]
 page_def = section_def.page_defs[0]
 
 surface = Cairo::PDFSurface.new("/tmp/out.pdf",
     page_def.width / 100.0, page_def.height / 100.0)
 
 cr = Cairo::Context.new(surface)
-doc.make_page
+doc.n_pages
 
 # page render
 (doc.n_pages+1).times do |n|
     x = page_def.left_margin / 100.0
     y = (page_def.top_margin + page_def.header_margin) / 100.0
-    layouts = doc.get_pages(n)
-    layouts.each do |layout|
+    page = doc.get_page(n)
+    page.layouts.each do |layout|
         cr.move_to(x, y)
         cr.show_pango_layout(layout)
         y += layout.size[1] / 1000.0
