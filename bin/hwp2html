@@ -25,58 +25,62 @@ end
 
 opts = {}
 op = OptionParser.new do |op|
-	#op.banner = "Usage: hwp2html [OPTION] [FILE]"
-	op.banner = "Usage: hwp2html [OPTION] [FILE]"
-	op.separator ' '
-	#op.separator "Output control:"
-	#op.on('-o', '--output=FILE', 'output file') { opts[:action] = :output }
-	#op.separator ''
-	op.on_tail('-h', '--help', 'Show this message') { puts op; exit }
+    #op.banner = "Usage: hwp2html [OPTION] [FILE]"
+    op.banner = "Usage: hwp2html [OPTION] [FILE]"
+    op.separator ' '
+    #op.separator "Output control:"
+    #op.on('-o', '--output=FILE', 'output file') { opts[:action] = :output }
+    #op.separator ''
+    op.on_tail('-h', '--help', 'Show this message') { puts op; exit }
 end
 
 files = op.parse ARGV
 
 if files.empty?
-	puts 'Must specify 1 .hwp file.'
-	puts op
-	exit 1
+    puts 'Must specify 1 .hwp file.'
+    puts op
+    exit 1
 end
 
 hwp = HWP.open files[0]
 
 builder = Builder::XmlMarkup.new(:target=>STDOUT, :indent=>2)
 builder.html do
-	builder.head do
-		builder.meta('http-equiv'=>'Content-Type', 'content'=>'application/html; charset=utf-8')
-		builder.meta('name'=>'HWP File Format', 'version'=> hwp.header.version)
-	end
+    builder.head do
+        builder.meta('http-equiv'=>'Content-Type', 'content'=>'application/html; charset=utf-8')
+        builder.meta('name'=>'HWP File Format', 'version'=> hwp.file_header.version)
+    end
 
-	builder.body do
-		hwp.body_text.para_headers.each do |para_header|
-			# FIXME m_pos 적용해야 한다.
-			size = hwp.doc_info.char_shapes[para_header.para_char_shape.m_id[0]].size / 100
-			builder.p do
-				builder.div('style'=> "font-size: #{size}px") do
-					builder.text! para_header.para_text.to_s
-				end
-			end
+    builder.body do
+        hwp.body_text.paragraphs.each do |para_header|
+            # FIXME m_pos 적용해야 한다.
+            size = hwp.doc_info.id_mappings.char_shapes[para_header.para_char_shapes[0].m_id[0]].size / 100
+            builder.p do
+                builder.div('style'=> "font-size: #{size}px") do
+                    builder.text! para_header.para_text.to_s
+                end
+            end
 
-			if para_header.table
-				builder.table('border'=>'1') do
-					para_header.table.rows.each_with_index do |row, row_index|
-						builder.tr do
-							row.cells.each_with_index do |cell, cell_index|
-								builder.td('colspan'=>cell.col_span, 'rowspan'=>cell.row_span) do
-									cell.para_headers.each do |para_header|
-										builder.p para_header.para_text.to_s
-									end # cell.para_headers.each
-								end # builder.td
-							end # row.cells.each_with_index
-						end # builder.tr
-					end # para_header.table.rows.each_with_index
-				end # builder.table
-			end # if
-		end
-	end
+            if para_header.ctrl_headers
+                builder.table('border'=>'1') do
+                    para_header.ctrl_headers.each do |ctrl_header|
+                        ctrl_header.tables.each do |table|
+                            table.rows.each_with_index do |row, row_index|
+                                builder.tr do
+                                    row.cells.each_with_index do |cell, cell_index|
+                                        builder.td('colspan'=>cell.col_span, 'rowspan'=>cell.row_span) do
+                                            cell.para_headers.each do |para_header|
+                                                builder.p para_header.para_text.to_s
+                                            end # cell.para_headers.each
+                                        end # builder.td
+                                    end # row.cells.each_with_index
+                                end # builder.tr
+                            end # table.row
+                        end
+                    end #
+                end # builder.table
+            end # if
+        end
+    end
 end
 hwp.close
