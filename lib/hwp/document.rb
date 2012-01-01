@@ -49,24 +49,16 @@ end
 
 
 module HWP
-    # FIXME 여러 파일을 열 경우에 대한 처리 필요함.
-    def self.current_document
-        @current_document
-    end
-
-    def self.current_document=(doc)
-        @current_document = doc
-    end
-
     class Document
-        attr_reader :header, :doc_info, :body_text, :view_text,
+        attr_reader :file_header, :doc_info, :body_text, :view_text,
                     :summary_info, :bin_data, :prv_text, :prv_image,
                     :doc_options, :scripts, :xml_template, :doc_history
 
         def initialize filename
             @ole = Ole::Storage.open(filename, 'rb')
             remain = @ole.dir.entries('/') - ['.', '..']
-
+            # 스펙이 명확하지 않고, 추후 스펙이 변할 수 있기 때문에
+            # 이를 감지하고자 코드를 이렇게 작성하였다.
             root_entries = [ "FileHeader", "DocInfo", "BodyText", "ViewText",
                         "\005HwpSummaryInformation", "BinData", "PrvText", "PrvImage",
                         "DocOptions", "Scripts", "XMLTemplate", "DocHistory" ]
@@ -82,58 +74,64 @@ module HWP
                 end
 
                 case entry
-                when "FileHeader" then @header = FileHeader.new file
+                when "FileHeader" then @file_header = FileHeader.new file
                 when "DocInfo"
-                    @doc_info = Record::DocInfo.new(file, @header)
+                    @doc_info = Record::DocInfo.new(file, @file_header)
                 when "BodyText"
-                    @body_text = Record::BodyText.new(dirent, @header)
+                    @body_text = HWP::Parser::BodyText.new(dirent, @file_header)
                 when "ViewText"
-                    @view_text = Record::ViewText.new(dirent, @header)
+                    @view_text = Record::ViewText.new(dirent, @file_header)
                 when "\005HwpSummaryInformation"
-                    @summary_info = Record::SummaryInformation.new
+                    @summary_info = HWP::Parser::SummaryInformation.new file
                 when "BinData"
-                    @bin_data = Record::BinData.new(dirent, @header)
+                    @bin_data = Record::BinData.new(dirent, @file_header)
                 when "PrvText"
-                    @prv_text = Record::PrvText.new file
+                    @prv_text = HWP::Parser::PrvText.new file
                 when "PrvImage"
-                    @prv_image = Record::PrvImage.new file
+                    @prv_image = HWP::Parser::PrvImage.new file
                 when "DocOptions"
-                    @doc_options = Record::DocOptions.new dirent
+                    @doc_options = HWP::Parser::DocOptions.new dirent
                 when "Scripts"
-                    @scripts = Record::Scripts.new dirent
+                    @scripts = HWP::Parser::Scripts.new dirent
                 when "XMLTemplate"
                     @xml_template = Record::XMLTemplate.new dirent
                 when "DocHistory"
                     @doc_history =
-                        Record::DocHistory.new(dirent, @header)
+                        Record::DocHistory.new(dirent, @file_header)
                 else raise "unknown entry"
                 end
+                # 스펙에 앖는 것을 감지하기 위한 코드
                 remain = remain - [entry]
             end # root_entries.each
-
-            HWP.current_document = self
 
             raise "unknown entry" unless remain.empty?
         end
 
-        def get_pages n
-            @page_layouts[n]
+        # 아래는 렌더링에 관련된 함수이다.
+        def get_page n
+            if @pages.nil?
+                make_pages()
+            end
+            @pages[n]
         end
 
         def n_pages
+            if @pages.nil?
+                make_pages()
+            end
             @n_pages
         end
 
-        def make_page
+        def make_pages
             layouts = []
-            @body_text.para_headers.each do |para|
+            @body_text.paragraphs.each do |para|
                 layouts << para.to_layout(self)
             end
 
-            @page_layouts = []
+            @pages = []
             @n_pages = 0
 
-            section_def = @body_text.para_headers[0].ctrl_headers[0].section_defs[0]
+            section_def = @body_text.paragraphs[0].ctrl_headers[0].section_defs[0]
             page_def = section_def.page_defs[0]
 
             @y = (page_def.top_margin + page_def.header_margin) / 100.0
@@ -144,8 +142,8 @@ module HWP
                     @n_pages += 1
                     @y = (page_def.top_margin + page_def.header_margin) / 100.0
                 end
-                @page_layouts[@n_pages] ||= []
-                @page_layouts[@n_pages] << layout
+                @pages[@n_pages] ||= Page.new(page_def.width / 100.0, page_def.height / 100.0)
+                @pages[@n_pages].layouts << layout
             end
         end
 
@@ -153,4 +151,16 @@ module HWP
             @ole.close
         end
     end # Document
+
+    class Page
+        attr_accessor :layouts
+        def initialize(width=nil, height=nil)
+            @width, @height = width, height
+            @layouts = []
+        end
+
+        def size
+            [@width, @height]
+        end
+    end
 end # HWP

@@ -1,61 +1,7 @@
 # coding: utf-8
 
 require 'hwp/utils'
-
-module Record
-    class BodyText
-        attr_accessor :para_headers
-
-        def initialize(dirent, header)
-            @para_headers = []
-
-            dirent.each_child do |section|
-                if header.compress?
-                    z = Zlib::Inflate.new(-Zlib::MAX_WBITS)
-                    context = HWP::Context.new StringIO.new(z.inflate section.read)
-                    z.finish
-                    z.close
-                else
-                    context = HWP::Context.new StringIO.new(section.read)
-                end
-
-                parse(context)
-                #print_para_headers(self)
-            end # dirent.each_child
-        end # initialize
-
-        # <BodyText> ::= <Section>+
-        # <Section> ::= <ParaHeader>+
-        # 여기서는 <BodyText> ::= <ParaHeader>+ 로 간주함.
-        def parse(context)
-            while context.has_next?
-                # stack 이 차 있으면 자식으로부터 제어를 넘겨받은 것이다.
-                context.stack.empty? ? context.pull : context.stack.pop
-
-                if context.tag_id == :HWPTAG_PARA_HEADER and context.level == 0
-                    @para_headers << Record::Section::ParaHeader.new(context)
-                else
-                    # FIXME UNKNOWN_TAG 때문에...
-                    @para_headers << Record::Section::ParaHeader.new(context)
-                    # FIXME 최상위 태그가 :HWPTAG_PARA_HEADER 가 아닐 수도 있다.
-                    puts "최상위 태그가 HWPTAG_PARA_HEADER 이 아닌 것 같음"
-                    # FIXME UNKNOWN_TAG 때문에.......
-                    #raise "unhandled: #{context.tag_id}"
-                end
-            end
-        end
-
-        def to_text
-            # FIXME yield 로 속도 저하 줄일 것.
-            text = ""
-            @para_headers.each do |para_header|
-                text << para_header.to_text + "\n"
-            end
-            text
-        end
-    end # BodyText
-end
-
+require 'pp'
 
 module Record::Section
     class ParaHeader
@@ -69,7 +15,7 @@ module Record::Section
                     :num_align,
                     :para_instance_id,
                     :level
-        attr_accessor :para_texts,
+        attr_accessor :para_text,
                       :para_char_shapes,
                       :para_line_segs,
                       :ctrl_headers,
@@ -90,8 +36,6 @@ module Record::Section
             # para_text, para_char_shape 가 1개 밖에 안 오는 것 같으나 확실하지 않으니
             # 배열로 처리한다. 추후 ParaText, ParaCharShape 클래스를 ParaHeader 이나
             # 이와 유사한 자료구조(예를 들면, Paragraph)에 내포하는 것을 고려한다.
-            # para_header 에는 para_text 가 1개만 오는 것 같다.
-            @para_texts = []
             @para_char_shapes = []
             @para_line_segs = []
             @ctrl_headers = []
@@ -109,7 +53,7 @@ module Record::Section
 
                 case context.tag_id
                 when :HWPTAG_PARA_TEXT
-                    @para_texts << ParaText.new(context)
+                    @para_text = ParaText.new(context)
                 when :HWPTAG_PARA_CHAR_SHAPE
                     @para_char_shapes << ParaCharShape.new(context)
                 when :HWPTAG_PARA_LINE_SEG
@@ -140,20 +84,20 @@ module Record::Section
                 #    else
                 #        raise "unhandled " + context.tag_id.to_s
                 #    end
-                when :UNKNOWN_TAG_0
-                when :UNKNOWN_TAG_4
-                when :UNKNOWN_TAG_172
-                when :UNKNOWN_TAG_190
-                when :UNKNOWN_TAG_199
-                when :UNKNOWN_TAG_257
-                when :UNKNOWN_TAG_288
-                when :UNKNOWN_TAG_512
-                when :UNKNOWN_TAG_520
-                when :UNKNOWN_TAG_560
-                when :UNKNOWN_TAG_652
-                when :UNKNOWN_TAG_710
-                when :UNKNOWN_TAG_888
-                when :HWPTAG_DOC_INFO_16
+                #when :UNKNOWN_TAG_0
+                #when :UNKNOWN_TAG_4
+                #when :UNKNOWN_TAG_172
+                #when :UNKNOWN_TAG_190
+                #when :UNKNOWN_TAG_199
+                #when :UNKNOWN_TAG_257
+                #when :UNKNOWN_TAG_288
+                #when :UNKNOWN_TAG_512
+                #when :UNKNOWN_TAG_520
+                #when :UNKNOWN_TAG_560
+                #when :UNKNOWN_TAG_652
+                #when :UNKNOWN_TAG_710
+                #when :UNKNOWN_TAG_888
+                #when :HWPTAG_DOC_INFO_16
                 else
                     raise "unhandled " + context.tag_id.to_s
                 end
@@ -162,22 +106,28 @@ module Record::Section
         private :parse
 
         def to_text
-            para_texts[0].to_s
+            para_text.to_s
         end
 
         def to_layout doc
-            section_def = doc.body_text.para_headers[0].ctrl_headers[0].section_defs[0]
+            section_def = doc.body_text.paragraphs[0].ctrl_headers[0].section_defs[0]
             page_def = section_def.page_defs[0]
             pango_context = Gdk::Pango.context
             desc = Pango::FontDescription.new("Sans 10")
             pango_context.load_font(desc)
+
+            unless @ctrl_headers.empty?
+                @ctrl_headers.each do |ctrl|
+                    pp ctrl
+                end
+            end
 
             layout = Pango::Layout.new pango_context
             layout.width = (page_def.width - page_def.left_margin - page_def.
                 right_margin) / 100.0 * Pango::SCALE
             layout.wrap = Pango::WRAP_WORD_CHAR
             layout.alignment = Pango::ALIGN_LEFT
-            layout.text = @para_texts[0].to_s
+            layout.text = @para_text.to_s
             layout
         end
 
@@ -225,16 +175,16 @@ module Record::Section
                 # L filler utf-16 값 "_\x11"
                 when 0xf784 # "\x84\xf7
                     @bytes << 0x115f
-                # V ㅘ		utf-16 값 "j\x11"
+                # V ㅘ       utf-16 값 "j\x11"
                 when 0xf81c # "\x1c\xf8"
                     @bytes << 0x116a
-                # V ㅙ		utf-16 값 "k\x11"
+                # V ㅙ       utf-16 값 "k\x11"
                 when 0xf81d # "\x1d\xf8"
                     @bytes << 0x116b
-                # V ㅝ		utf-16 값 "o\x11"
+                # V ㅝ       utf-16 값 "o\x11"
                 when 0xf834 # "\x34\xf8" "4\xf8"
                     @bytes << 0x116f
-                # T ㅆ		utf-16 값 "\xBB\x11"
+                # T ㅆ       utf-16 값 "\xBB\x11"
                 when 0xf8cd # "\xcd\xf8"
                     @bytes << 0x11bb
                 else
@@ -314,13 +264,16 @@ module Record::Section
 
         attr_reader :ctrl_id, :level, :data
         attr_accessor :section_defs, :list_headers, :para_headers, :tables,
-                      :text_table,   :eq_edits
+                      :eq_edits
 
         def initialize context
             @data = context.data
             @level = context.level
             s_io = StringIO.new context.data
             @ctrl_id = s_io.read(4).reverse
+
+            @section_defs, @list_headers, @para_headers = [], [], []
+            @tables, @eq_edits = [], []
 
             puts(" " * level + "\"#{@ctrl_id}\"")
 
@@ -344,9 +297,6 @@ module Record::Section
             rescue => e
                 STDERR.puts e.message
             end
-
-            @section_defs, @list_headers, @para_headers = [], [], []
-            @tables, @eq_edits = [], []
 
             parse(context)
         end
@@ -395,6 +345,7 @@ module Record::Section
             when 'tbl '
                 table = HWP::Model::Table.new(self)
                 table.parse(context)
+                @tables << table
             when 'gso '
                 gso = HWP::Model::ShapeComponent.new(self)
                 gso.parse(context)
@@ -466,7 +417,7 @@ module Record::Section
                 end
 
                 case context.tag_id
-                when :TODO
+                when :TO_DO
                 else
                     raise "unhandled " + context.tag_id.to_s
                 end
