@@ -199,10 +199,11 @@ module HWP
                         break
                     end
 
-                    # 43쪽, 표 69,70 표 개체 속성, 149쪽
+                    # 43쪽, 표 70, 표 개체 속성, 149쪽
                     case context.tag_id
                     when :HWPTAG_TABLE
                         sio = StringIO.new context.data
+
                         unknown = sio.read(4)
                         row_count    = sio.read(2).unpack("v")[0]
                         col_count    = sio.read(2).unpack("v")[0]
@@ -215,11 +216,12 @@ module HWP
 
                         row_size = sio.read(2 * row_count).unpack("v*")
                         border_fill_id = sio.read(2).unpack("v")[0]
-                        valid_zone_info_size = sio.read(2).unpack("v")[0]
-                        remain = sio.read
-                        unless remain.size.zero?
-                            raise "data size mismatch"
-                            sio.close
+                        unless sio.eof?
+							valid_zone_info_size = sio.read(2).unpack("v")[0]
+							unless sio.eof?
+								sio.close
+								raise "data size mismatch"
+							end
                         end
                         sio.close
 
@@ -250,19 +252,22 @@ module HWP
 
                         # cell 만들기
                         if @ctrl_header.ctrl_id == 'tbl '
-                            @rows[row_addr].cells[col_addr] = Table::Cell.new
+							@rows[row_addr].cells[col_addr] = Table::Cell.new
                             @rows[row_addr].cells[col_addr].width  = width
                             @rows[row_addr].cells[col_addr].height = height
                             @rows[row_addr].cells[col_addr].row_span = row_span
                             @rows[row_addr].cells[col_addr].col_span = col_span
+                            
                             if col_span > 1
                                 for i in col_addr...(col_addr + col_span)
+									@rows[row_addr].cells[i] ||= Table::Cell.new
                                     @rows[row_addr].cells[i].covered = true
                                 end
                             end
-
+							
                             if row_span > 1
                                 for i in row_addr...(row_addr + row_span)
+									@rows[i].cells[col_addr] ||= Table::Cell.new
                                     @rows[i].cells[col_addr].covered = true
                                 end
                             end
